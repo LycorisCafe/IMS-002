@@ -17,7 +17,7 @@
             <h1 class="header">Science For Technology</h1>
             <div class="center">
                 <h1>Login</h1>
-                <form action="#" method="POST">
+                <form action="AdminPanel.jsp" method="POST">
                     <div class="txt-field">
                         <input type="text" name="username" required>
                         <span></span>
