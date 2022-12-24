@@ -44,7 +44,7 @@ body
     border-radius: 10px;
 }
 
-.center h1
+.center .hd
 {
     text-align: center;
     padding: 0 0 20px 0;
@@ -131,7 +131,7 @@ input[type="submit"]
 
 input[type="submit"]:hover
 {
-    
+
     border-color: #2691d9;
     transition: 0.5s;
 }
