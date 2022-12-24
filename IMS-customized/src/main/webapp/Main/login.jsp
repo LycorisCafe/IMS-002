@@ -14,9 +14,23 @@
     </head>
     <body>
         <div class="background-image">
-            
-            
-        </div>
+            <div class="center">
+                <h1>Login</h1>
+                <form action="#" method="POST">
+                    <div class="txt-field">
+                        <input type="text" name="username" required>
+                        <span></span>
+                        <label>Username</label>
+                    </div>
+                    <div class="txt-field">
+                        <input type="Password" name="password" required>
+                        <span></span>
+                        <label>Password</label>
+                    </div>
+                    <input type="submit" name="submit" value="Login">
+                </form>
+            </div>
+        </div> 
         
     </body>
 </html>
