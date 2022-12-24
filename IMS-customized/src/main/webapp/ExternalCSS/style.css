@@ -30,7 +30,7 @@ body
     color: #fff;
     font-weight: 700;
     text-align: center;
-    transform: translate(0%, 250%);
+    transform: translate(0%, 300%);
 }
 
 .center
@@ -47,10 +47,10 @@ body
 .center .hd
 {
     text-align: center;
-    padding: 0 0 20px 0;
+    padding: 0 0 10px 0;
     border-bottom: 1px solid silver;
     font-size: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 70px;
     color: #2691d9;
     position: relative;
 }
