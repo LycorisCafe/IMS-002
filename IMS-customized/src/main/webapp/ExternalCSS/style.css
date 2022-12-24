@@ -26,6 +26,15 @@ body
     position: fixed;
 }
 
+.header
+{
+    font-size: 310%;
+    color: #fff;
+    font-weight: 700;
+    text-align: center;
+    transform: translate(0%, 250%);
+}
+
 .center
 {
     position: absolute;

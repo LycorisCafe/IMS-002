@@ -14,6 +14,7 @@
     </head>
     <body>
         <div class="background-image">
+            <h1 class="header">Science For Technology</h1>
             <div class="center">
                 <h1>Login</h1>
                 <form action="#" method="POST">
