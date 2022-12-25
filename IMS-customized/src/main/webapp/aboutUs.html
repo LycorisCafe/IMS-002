@@ -19,10 +19,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             .img
             {
                 width: 100%;
-                height: 100vh;
-                background-image: url('Media/images/bg5.jpg');
+                height: 50vh;
+                background-image: url('Media/images/bg2_1.jpg');
                 background-repeat: no-repeat;
                 background-size: cover;
+            }
+            
+            .img h1
+            {
+                margin-top: 100px;
+            }
+            
+            @media (max-width: 700px)
+            {
+                    .sub-header h1
+                    {
+                            margin-top: 5px;
+                    }
+
+                    .about-col h1
+                    {
+                            padding-top: 0;
+                            font-size: 25px;
+                            font-family: 'poppins', sans-serif;
+                    }
             }
         </style>
     </head>
@@ -54,10 +74,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             </div>
           </nav>
             
-            <br/><br/><h1 class="display-3" style="text-align: center; color: #000; font-weight: 800;">About Us</h1>
+            <br/><br/><h1 class="display-3" style="text-align: center; color: #fff; font-weight: 800;">About Us</h1>
         
         </section>
-        
+        <div class="container">
+            <section class="intro">
+                <p title="Introducing our team">Our Software Development team is responsible for designing, developing, and maintaining software applications that meet the needs of our customers and stakeholders. We work with a variety of programming languages and technologies to create solutions that are reliable, scalable, and easy to use. Our team consists of experienced software engineers, developers, and testers who have a passion for solving complex problems and delivering high-quality products. We follow agile development methodologies and work collaboratively to continuously improve our processes and deliver value to our customers.</p>
+            </section>
+        </div>
         <footer class="footer">
 
             <div class="container-fluid bg-primary">

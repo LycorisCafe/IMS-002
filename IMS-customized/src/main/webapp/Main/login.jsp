@@ -57,7 +57,7 @@
                             <div class="card" style="width: 28rem;">
                                 <img src="../Media/images/bg2.jpg" class="card-img-top" style="background-position: center; background-size: cover;">
                                 <div class="card-body">
-                                    <form action="login" method="POST" class="form-group">
+                                    <form action="login" method="POST" class="form-group col-sm-11">
                                         <div class="mb-3">
                                             <label for="exampleInputUsername" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp">
