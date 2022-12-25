@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Login</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../bootstrap/css/bootstrap.css" rel="stylesheet">
     </head>
     <body>
         <div class="container-fluid">
@@ -20,6 +21,7 @@
                     background-image: url('../Media/images/bg.jpg');
                     background-repeat: no-repeat;
                     background-size: cover;
+                    background-position: center;
                 }
             </style>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
@@ -55,7 +57,7 @@
                             <div class="card" style="width: 28rem;">
                                 <img src="../Media/images/bg2.jpg" class="card-img-top" style="background-position: center; background-size: cover;">
                                 <div class="card-body">
-                                    <form action="login" method="POST">
+                                    <form action="login" method="POST" class="form-group">
                                         <div class="mb-3">
                                             <label for="exampleInputUsername" class="form-label">Username</label>
                                             <input type="text" class="form-control" id="exampleInputUsername" aria-describedby="usernameHelp">
