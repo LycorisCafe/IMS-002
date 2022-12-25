@@ -44,6 +44,85 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             font-family: 'poppins', sans-serif;
                     }
             }
+            
+            @media (max-width: 700px) {
+                .row
+                {
+                        flex-direction: column;
+                }
+            }
+            
+            .mem-col
+            {
+                    flex-basis: 32%;
+                    border-radius: 10px;
+                    margin-bottom: 30px;
+                    position: relative;
+                    overflow: hidden;
+            }
+
+            .mem-col img
+            {
+                    width: 90%;
+                    cursor: pointer;
+            }
+
+            .layer
+            {
+                    background: transparent;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transition: 0.5s;
+            }
+
+            .layer:hover
+            {
+                    background: rgba(226, 0, 0, 0.7);
+            }
+
+            .layer h3
+            {
+                    width: 100%;
+                    font-weight: 500;
+                    color: #fff;
+                    bottom: 0;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-align: center;
+                    position: absolute;
+                    opacity: 0;
+                    transition: 0.5s;
+            }
+
+            .layer:hover h3
+            {
+                    bottom: 49%;
+                    opacity: 1;
+            }
+            
+            .layer p
+            {
+                width: 100%;
+                font-weight: 500;
+                color: #fff;
+                bottom: 0;
+                left: 50%;
+                text-align: center;
+                transform: translateX(-50%);
+                text-align: center;
+                position: absolute;
+                opacity: 0;
+                transition: 0.5s;
+            }
+            
+            .layer:hover p
+            {
+                bottom: 38%;
+               opacity: 1;
+            }
         </style>
     </head>
     <body>
@@ -78,7 +157,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         
         </section>
         <div class="container">
-            <section class="intro"><br/>
+            <section class="intro"><br/><br/>
                 <h1 class="display-3">Introduction</h1>
                 <p title="Introducing our team" class="p-1">
                 <p><em><b>Lycoris Cafe</b></em> is a Software Development team since 2022. Our Software Development team is a highly skilled and experienced group of professionals who are dedicated 
@@ -99,7 +178,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         delivering the highest quality software solutions and exceeding our customers' expectations. We are 
                         excited to share our knowledge and expertise with you and we look forward to working together to 
                         create innovative software applications that solve real-world problems.</p>
-                </p>
+                </p><br/><br/>
+                
+                <h1 class="display-3">Our Team</h1>
+                <div class="row">
+                    <div class="mem-col">
+                            <img src="Media/images/user.jpg">
+                            <div class="layer">
+                                    <h3>Naveen Balasooriya</h3>
+                                    <p>Founder, CEO, Software Developer</p>
+                            </div>
+                    </div>
+                    <div class="mem-col">
+                            <img src="Media/images/user.jpg">
+                            <div class="layer">
+                                    <h3>Lasith Randil</h3>
+                                    <p>Web Developer</p>
+                            </div>
+                    </div>
+                    <div class="mem-col">
+                            <img src="Media/images/user.jpg">
+                            <div class="layer">
+                                    <h3>Dasun Nethsara</h3>
+                                    <p>Software Developer</p>
+                            </div>
+                    </div>
+		</div>
+	</div>
             </section>
         </div>
         <footer class="footer">
