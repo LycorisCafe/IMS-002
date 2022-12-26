@@ -19,7 +19,6 @@
                 body {
                     background-image: url('../Media/images/bg.jpg');
                     background-repeat: no-repeat;
-                    background-attachment: fixed;
                     background-size: cover;
                 }
             </style>
@@ -32,13 +31,13 @@
                     <div class="collapse navbar-collapse" id="navbarCollapse">
                         <ul class="navbar-nav me-auto mb-2 mb-md-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="Main/login.jsp">Login</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About Us</a>
+                                <a class="nav-link" href="../aboutUs.html">About Us</a>
                             </li>
                         </ul>
                         <form class="d-flex">
