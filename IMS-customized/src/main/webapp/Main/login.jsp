@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Bootstrap demo</title>
+        <title>Login</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     </head>
     <body>
@@ -25,7 +25,7 @@
             </style>
             <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#">SFT Thaksalawa</a>
+                    <a class="navbar-brand" href="#"  style="font-weight: 900;"><span style="color: rgb(0, 191, 161);">SFT</span> Thaksalawa</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -50,7 +50,7 @@
             </nav>
             <div class="background-image">
                 <div class="container">
-                    <h1 class="display-3" style="text-align: center;">Science For Technology</h1><br><br>
+                    <h1 class="display-3" style="text-align: center; color: #fff;">Science For Technology</h1><br><br>
                     <div class="center">
                         <center>
                             <div class="card" style="width: 28rem;">
