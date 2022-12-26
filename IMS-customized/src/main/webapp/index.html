@@ -4,8 +4,6 @@
         <title>SFT Thaksalawa - Prasath Wickramasinghe</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <!-- Custom styles for this template -->
-        <link href="navbar-top.css" rel="stylesheet">
         <style>
             
             input[type="submit"]
@@ -28,9 +26,21 @@
                 border-color: #2691d9;
                 transition: 0.5s;
             }
+            
         </style>
     </head>
     <body>
+        <div class="img">
+            <style>
+                .img {
+                    width: 100%;
+                    height: 100vh;
+                    background-image: url('Media/images/bg3.png');
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                    background-size: cover;
+                }
+            </style>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#" style="font-weight: 900;"><span style="color: rgb(0, 191, 161);">SFT</span> Thaksalawa</a>
@@ -57,12 +67,14 @@
             </div>
           </nav>
 
-        <h1>Welcome to SFT Thaksalawa</h1>
+            <br/><h1 class="display-2" style="text-align: center; font-weight: 700; color: #000;">Welcome to SFT Thaksalawa</h1>
+            
+            <br/><br/><br/>
 
         <form action="Main/login.jsp">
-            <center><input type="submit" name="submit" value="Admin Login"></center>
+            <center><input type="submit" name="submit" value="Admin Login" class="btn btn-primary"></center>
         </form>
-
+</div>
         <footer class="footer">
 
             <div class="container-fluid bg-primary">
@@ -84,6 +96,7 @@
                         <h4><br></h4>
                     </div>
                 </div>
+            
         </footer>
 
     </body>
