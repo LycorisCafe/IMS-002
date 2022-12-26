@@ -7,11 +7,11 @@
     </session-config>-->
     <!-- login -->
     <servlet>
-        <servlet-name>aaa</servlet-name>
+        <servlet-name>login</servlet-name>
         <servlet-class>Main.login</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>aaa</servlet-name>
+        <servlet-name>login</servlet-name>
         <url-pattern>/Main/login</url-pattern>
     </servlet-mapping>
 </web-app>
