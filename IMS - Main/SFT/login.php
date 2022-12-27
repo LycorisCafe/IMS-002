@@ -14,38 +14,6 @@
 						}
 				</style>
 		</head>
-
-		<?php
-					require_once 'controller/connection.php';
-					if(isset($_POST['submit'])){
-            $usrname = $_POST['username'];
-            $psdw = $_POST['password'];
-        
-            $sql = "SELECT username, password FROM accounts where username='".$usrname."';";
-            $result = mysqli_query($con, $sql);
-        
-            if (mysqli_num_rows($result) > 0) {
-                while($row = $result->fetch_assoc()) {
-                    if($row['username'] == $usrname && $row['password'] == $psdw)
-                    {
-												if($usrname == "admin")
-												{
-													header("Location: view/Admin.php");
-												}
-												else
-												{
-													header("Location: view/Moderator.php");
-												}
-                        // header('Location: aboutUs.html');
-                    }else
-                    {
-                        echo "Login faild.";
-                    }
-                }
-					}
-				}
-		?>
-
 		<body>
 				<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
 						<div class="container-fluid">
@@ -79,19 +47,36 @@
 										<h3><i>Login</i></h3>
 								</div>
 								<div class="card-body">
-										<form action="login.php"  method="POST">
+										<?php if(isset($_GET['error'])) { ?>
+										<div class='alert alert-danger' role='alert'>
+											<?=$_GET['error']?>
+										</div>
+										<?php } ?>
+										<form action="req/login.php"  method="POST">
+												<div class="col-auto mb-3">
+														<label class="form-label">Login As :</label>
+														<select class="form-control" name='role'>
+															<option value='1'>Administrator</option>
+															<option value='2'>Moderator</option>
+														</select>
+														
+												</div>
 												<div class="col-auto mb-3">
 														<label class="form-label">Username :</label>
-														<input type="text" class="form-control" name="username" aria-describedby="username" autocomplete="off" required>
+														<input type="text" class="form-control" name="uname" aria-describedby="username" autocomplete="off">
 												</div>
 												<div class="col-auto mb-3">
 														<label class="form-label">Password :</label>
-														<input type="password" class="form-control" name="password" aria-describedby="password" autocomplete="off" required>
+														<input type="password" class="form-control" name="pass" aria-describedby="password" autocomplete="off">
 														<!-- <label class="font-monospace text-danger"><i>${label}</i></label> -->
 												</div>
 												<div class="mb-3 form-check">
 														<input type="checkbox" class="form-check-input" name="keeplogin">
 														<label class="form-check-label">Remember me!</label>
+														<div>
+															<?php 
+																
+															?></div>
 												</div>
 												<div class="d-grid gap-2">
 														<button type="submit" class="btn btn-primary" name='submit'>Login</button>

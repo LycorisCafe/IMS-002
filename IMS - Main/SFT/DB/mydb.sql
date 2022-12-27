@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 01:27 AM
+-- Generation Time: Dec 27, 2022 at 07:54 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -24,31 +24,59 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `accounts`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE `accounts` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `password` varchar(25) NOT NULL
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fname` varchar(25) NOT NULL,
+  `lname` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `accounts`
+-- Dumping data for table `admin`
 --
 
-INSERT INTO `accounts` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin'),
-(2, 'user', 'user');
+INSERT INTO `admin` (`id`, `username`, `password`, `fname`, `lname`) VALUES
+(1, 'admin', 'admin', 'Dasun', 'Nethsara');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fname` varchar(25) NOT NULL,
+  `lname` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `username`, `password`, `fname`, `lname`) VALUES
+(1, 'user', 'user', 'Naveen', 'Balasooriya');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `accounts`
+-- Indexes for table `admin`
 --
-ALTER TABLE `accounts`
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -56,9 +84,15 @@ ALTER TABLE `accounts`
 --
 
 --
--- AUTO_INCREMENT for table `accounts`
+-- AUTO_INCREMENT for table `admin`
 --
-ALTER TABLE `accounts`
+ALTER TABLE `admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
