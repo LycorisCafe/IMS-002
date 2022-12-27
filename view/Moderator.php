@@ -48,28 +48,42 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <h4>Attendane Marking</h4>
                     </div>
                     <div class="card-body">
+                        
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='index'>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Search</button>
+
+                        <?php
+                            
+                            // if(isset($_POST['submit']))
+                            // {
+                            //     $indexNo = $_POST['index'];
+                            //     include_once 'connection.php';
+                            //     $sql = "SELECT * FROM students WHERE indexNo='$indexNo'";
+                            //     $result = mysqli_query($con, $sql);
+                            //     if(mysqli_num_rows($result) > 0)
+                            //     {
+                            //         while($row = $result->fetch_assoc()){
+                            //             $stdName = $row['fname'] . ' ' . $row['lname'];
+                            //             echo "<acript>alert($stdName);</script>";
+                            //         }
+                            //     }
+                            // }
+
+                        ?>
+
+                            <form action='../req/getSearch.php' method='POST'>
+                                <button class="btn btn-primary" type="button" name='submit'>Search</button>
+                            </form>
                         </div>
                         <hr>
                         <div>
                             <img src="../Media/dummy.jpg" class="rounded border border-success" height="150" width="150" alt="studentImage">
                         </div>
                         <br>
-                        <div class="rounded border border-success">
-                            <p><i>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam interdum augue turpis,
-                                    ut porta sapien fringilla non. Sed at arcu dapibus, egestas nisi nec, laoreet arcu.
-                                    Maecenas sed tincidunt mauris. Praesent rhoncus posuere magna, nec molestie nisl dapibus
-                                    ac. Curabitur sagittis commodo ligula et auctor. Maecenas sit amet eros vel nulla elementum
-                                    placerat ut sit amet nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra,
-                                    per inceptos himenaeos. Aenean sed auctor orci. Nam ut est gravida, pulvinar ligula
-                                    congue, suscipit sapien. In hac habitasse platea dictumst. Nunc dictum consectetur felis
-                                    ut convallis.
-                                </i></p>
+                        <div class="rounded border border-success" style='font-size: 22px;'>
+                            <p><i><b>Dasun Nethsara</b></i></p>
                         </div>
                         <hr>
                         <div class="form-check text-start">
