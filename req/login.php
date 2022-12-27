@@ -35,7 +35,7 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
         else
         {
             $role = "User";
-            $sql = "SELECT * FROM user";
+            $sql = "SELECT * FROM user WHERE username='$uname'";
         }
         $result = mysqli_query($con, $sql);
         

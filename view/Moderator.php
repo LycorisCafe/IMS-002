@@ -15,7 +15,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     </head>
 
     <body>
-
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="https://sftthaksalawa.com" style="font-weight: 900;"><span style="color: rgb(0, 191, 161);">SFT</span> තක්සලාව</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item">
+                        <b style='color: white;'>User: <?php echo $_SESSION['fname']; ?></b>
+                  </li>
+                  <li class="nav-item">
+                        <b style='color: white;'>Role: <?php echo $_SESSION['role']; ?></b>
+                  </li>
+                </ul>
+                <a href='../req/logout.php' class='btn btn-danger'> Logout </a>
+              </div>
+            </div>
+          </nav>
         <br><br>
         <div class="text-center">
             <h1 class="display-6">SFT තක්සලාව</h1>
@@ -68,13 +86,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </form>
         </div>
         <br><br>
-
-        <div class="d-grid gap-2 col-3 mx-auto">
-            <button class="btn btn-primary" type="button">Logout</button>
-        </div>
         <br><br>
 
-        <script src="../bootstrap/js/bootstrap.bundle.min.js></script>
+        <script src="../bootstrap/js/bootstrap.bundle.min.js></script">
   </body>
 </html>
 
