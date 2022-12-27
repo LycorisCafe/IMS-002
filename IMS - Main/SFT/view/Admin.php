@@ -19,6 +19,7 @@ if(isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <small>Role: 
             <b><?php echo $_SESSION['role']; ?></b><br/>
             <h3> <?=$_SESSION['fname']?> </h3>
+            <a href='../req/logout.php' class='btn btn-warning'> Logout </a>
         </small>
     </div>
 </body>
