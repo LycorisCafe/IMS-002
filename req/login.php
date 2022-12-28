@@ -56,6 +56,7 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
                             $_SESSION['role'] = $role;
                             $sql = "UPDATE login SET lastLogin='$lastLogin' WHERE id='$id'";
                             $result = mysqli_query($con, $sql);
+                            $_SESSION['lastLogin'] = $lastLogin;
 
                             if($role == "Admin")
                             {

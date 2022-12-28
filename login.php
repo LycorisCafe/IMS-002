@@ -64,14 +64,6 @@
 														<input type="password" class="form-control" name="pass" aria-describedby="password" autocomplete="off">
 														<!-- <label class="font-monospace text-danger"><i>${label}</i></label> -->
 												</div>
-												<div class="mb-3 form-check">
-														<input type="checkbox" class="form-check-input" name="keeplogin">
-														<label class="form-check-label">Remember me!</label>
-														<div>
-															<?php 
-																
-															?></div>
-												</div>
 												<div class="d-grid gap-2">
 														<button type="submit" class="btn btn-primary" name='submit'>Login</button>
 												</div>

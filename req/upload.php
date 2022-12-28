@@ -26,7 +26,8 @@ if (isset($_SESSION['indexNo'])){
         {
             die("Error Uploading Image! Code: $error");
         }else{
-            move_uploaded_file($temp, $_SESSION['indexNo']);
+            $filename = "../uploads/".$_SESSION['indexNo'];
+            move_uploaded_file($temp, $filename);
             include_once '../connection.php';
             $sql = "UPDATE students SET pic='$filename' WHERE indexNo='".$_SESSION['indexNo']."';";
             $result = mysqli_query($con, $sql);
