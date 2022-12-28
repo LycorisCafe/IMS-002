@@ -28,7 +28,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             <ul class="main-menu">
             <li style='color: #fff;'>User: <?php echo $_SESSION['fname']; ?></li>
             <li style='color: #fff;'>Role: <?php echo $_SESSION['role']; ?></li>
-            <li><a href='../req/logout.php' class='btn btn-warning'> Logout </a></li>
+            <li><a href='../req/logout.php' class='btn btn-danger'> Logout </a></li>
 
             </ul>
         </nav>
@@ -43,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <div class="container col-lg-6">
                 <div class="card text-center">
                     <div class="card-header">
-                        <h4>Attendane Marking</h4>
+                        <h4 class='display-5' style='color: #000;'>Attendane Marking</h4>
                     </div>
                     <div class="card-body">
                         <?php
@@ -80,22 +80,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 }
                             ?>
                             
-                        </div><br/>
+                        </div><br/></form>
+                        <form action='Moderator.php' method='POST'>
                         <div class='d-grid gap-2'>
                             <a href='../req/upload.php' class='btn btn-warning'>Upload a Photo </a><br/>
                         </div>
-                        <div class="rounded border border-success" style='font-size: 22px;'>
-                            <p><i><b><?php if(isset($_POST['submit'])){ echo $stdName; } ?></b></i></p>
+                        <div class="rounded border border-success"  style='font-size: 22px;'>
+                            <b title='Student Name'><?php if(isset($_POST['submit'])){ echo $stdName; } ?></b>
                         </div>
                         <hr>
                         <div class="form-check text-start">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
                             <label class="form-check-label" for="flexCheckChecked">
-                                Day2Day Paper
+                                Day 2 Day Paper
                             </label>
+                            <?php
+                                if(isset($_POST['finals']))
+                                {
+                                    $isDone = $_POST['day2day'];
+                                    include_once '../connection.php';
+                                    $sql = "UPDATE students SET day2day='$isDone' WHERE indexNo='".$_SESSION['indexNo']."';";
+                                    $result = mysqli_query($con, $sql);
+                                    if($result)
+                                    {
+                                        echo "<script>alert('Attendance Marked!');</script>";
+                                        header("Refresh:0; url=Moderator.php");
+                                    }else{
+                                        echo "<script>alert('Upload Unsuccess!');</script>";
+                                    }
+                                }
+                            ?>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-primary" type="button">Mark as Attend!</button>
+                            <input class="btn btn-primary" type="submit" name='finals' value='Mark as Attend!'>
+                            <input class="btn btn-warning" type="reset" name='reset' value='RESET'>
                         </div>
                     </div>
                 </div>
