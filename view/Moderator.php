@@ -54,6 +54,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 $sql = "SELECT * FROM students WHERE indexNo='$indexNo'";
                                 $result = mysqli_query($con, $sql);
                                     while($row = $result->fetch_assoc()){
+                                        $day2day = $row['day2day'];
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
                                         $_SESSION['indexNo'] = $indexNo;
                                     }
@@ -90,7 +91,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <hr>
                         <div class="form-check text-start">
-                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day' <?php if(isset($_POST['submit'])){echo $day2day==1 ? 'checked' : '';}?>>
                             <label class="form-check-label" for="flexCheckChecked">
                                 Day 2 Day Paper
                             </label>
@@ -113,7 +114,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <div class="d-grid gap-2">
                             <input class="btn btn-primary" type="submit" name='finals' value='Mark as Attend!'>
-                            <input class="btn btn-warning" type="reset" name='reset' value='RESET'>
                         </div>
                     </div>
                 </div>

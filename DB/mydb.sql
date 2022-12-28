@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 30, 2022 at 12:59 PM
+-- Generation Time: Dec 28, 2022 at 07:37 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -54,17 +54,18 @@ CREATE TABLE `students` (
   `lname` varchar(30) NOT NULL,
   `al_year` year(4) NOT NULL,
   `DOB` date NOT NULL,
-  `pic` varchar(255) NOT NULL
+  `pic` varchar(255) NOT NULL,
+  `day2day` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`indexNo`, `fname`, `lname`, `al_year`, `DOB`, `pic`) VALUES
-('T23123', 'Lasith', 'Randil', 2023, '2004-05-18', '../uploads/bg5.jpg'),
-('T23456', 'Naveen', 'Balasooriya', 2023, '2004-11-21', '../uploads/bg5.jpg'),
-('T23774', 'Dasun', 'Nethsara', 2023, '2004-01-01', '../uploads/bg4.jpg');
+INSERT INTO `students` (`indexNo`, `fname`, `lname`, `al_year`, `DOB`, `pic`, `day2day`) VALUES
+('T23123', 'Lasith', 'Randil', 2023, '2004-05-18', '../uploads/bg5.jpg', 0),
+('T23456', 'Naveen', 'Balasooriya', 2023, '2004-11-21', '../uploads/bg5.jpg', 0),
+('T23774', 'Dasun', 'Nethsara', 2023, '2004-01-01', '../uploads/Untitled.png', 0);
 
 -- --------------------------------------------------------
 
