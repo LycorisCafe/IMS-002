@@ -78,7 +78,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         </nav>
     </header>
     <div class="container col-lg-4 col-md-5 align-self-center">
-						<div class="card" style="transform: translate(0%, 30%);">
+						<div class="card" style="transform: translate(0%, 20%);">
 								<div class="card-header text-center">
 										<h3 class='display-5' style='color: #000;'>New Student</h3>
 								</div>
@@ -117,6 +117,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 												</div>
 										</form>
 								</div>
+                                <a href='endSession.php' class='btn btn-warning'> Back </a>
 						</div>
 				</div>
 

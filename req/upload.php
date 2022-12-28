@@ -1,4 +1,5 @@
 <?php
+/*
 session_start();
 if (isset($_SESSION['indexNo'])){
 ?>
@@ -64,4 +65,5 @@ if (isset($_SESSION['indexNo'])){
     header("Location: ../view/Moderator.php");
     exit;
 }
+*/
 ?>
