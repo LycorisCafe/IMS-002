@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Moderator</title>
+        <title>Moderator Panel</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
