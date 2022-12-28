@@ -9,6 +9,8 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
     $pass = $_POST['pass'];
     $role = $_POST['role'];
 
+    $lastLogin = date("Y-m-d h:i:s A");
+
     if (empty($uname))
     {
         $em = "Username is required!";
@@ -52,9 +54,12 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
                             $_SESSION['id'] = $id;
                             $_SESSION['name'] = $fname;
                             $_SESSION['role'] = $role;
+                            $sql = "UPDATE login SET lastLogin='$lastLogin' WHERE id='$id'";
+                            $result = mysqli_query($con, $sql);
 
                             if($role == "Admin")
                             {
+                                
                                 header("Location: ../view/Admin.php");
                             }
                             else
