@@ -7,6 +7,8 @@ package Helper;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +22,7 @@ public class DB {
         String username = "root";
         String password = "";
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/" + db + "?user=" + username
                     + "&password=" + password);
         } catch (SQLException ex) {
@@ -27,6 +30,8 @@ public class DB {
             System.out.println("SQLException: " + ex.getMessage());
             System.out.println("SQLState: " + ex.getSQLState());
             System.out.println("VendorError: " + ex.getErrorCode());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DB.class.getName()).log(Level.SEVERE, null, ex);
         }
         return conn;
     }

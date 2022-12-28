@@ -14,4 +14,13 @@
         <servlet-name>login</servlet-name>
         <url-pattern>/Main/login</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>admin</servlet-name>
+        <servlet-class>Admin.main</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>admin</servlet-name>
+        <url-pattern>/Main/Admin</url-pattern>
+    </servlet-mapping>
 </web-app>
