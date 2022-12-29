@@ -94,6 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Institute: </label>
 														<select class="form-control" name='institute'>
+                                                            <!-- This code to poppulate all the institutes registered in database to combobox -->
                                                             <?php
                                                                 include_once '../connection.php';
                                                                 $sql5 = "SELECT institute, city FROM classes";
