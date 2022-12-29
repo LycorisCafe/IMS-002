@@ -179,30 +179,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $row5 = mysqli_fetch_assoc($result5);
                         $reclassid = $row5['id'];
                         
-                        $sql6 = "SELECT * FROM attendance WHERE regclassId='$reclassid'";
+                        $sql6 = "SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='$reclassid'";
                         $result6 = mysqli_query($con, $sql6);
-                        if(mysqli_num_rows($result6) > 0) {
-                            while($row6 = mysqli_fetch_assoc($result6)) {
-                                $day = $row6['date_'];
-                                $sql7 = "SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='$reclassid'";
-                                $result7 = mysqli_query($con, $sql7);
-                                while($row7 = mysqli_fetch_assoc($result7)) {
-                                    $d2d_done = $row7['d2d'];
-                                    if($d2d_done == '1') {
-                                        $calendar->add_event('Attended, D2D', $day, 1, 'green');
-                                        break;
-                                    } else {
-                                        $calendar->add_event('Attended', $day, 1, 'orange');
-                                        continue;
+                        if(mysqli_num_rows($result6) > 0){
+                            while($row6 = mysqli_fetch_assoc($result6)){
+                                    $date = $row6['date_'];
+                                    $d2d_done = $row6['d2d'];
+                                    if($d2d_done == '1'){
+                                        $calendar->add_event('Attended, D2D', $date, 1, 'green');
+                                    }else{
+                                        $calendar->add_event('Attended', $date, 1, 'orange');
                                     }
                                 }
                             }
-                        } else {
+                        }else{
                             // $calendar->add_event('Not Attended', $day, 1, 'red');
                         }
                         // SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='T23774';
 
-                    }
                     // $calendar->add_event('Birthday', '2022-12-03', 1, 'green');
                     // $calendar->add_event('Doctors', '2022-12-04', 1, 'red');
                     // $calendar->add_event('Holiday', '2022-12-16', 7);
