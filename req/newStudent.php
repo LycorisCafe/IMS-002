@@ -30,6 +30,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $alYear = $_POST['alYear'];
         $dob = $_POST['DOB'];
         $alYear = $_POST['alYear'];
+        $institute = $_POST['institute'];
 
         // file data
         $name = $_FILES['pic'] ['name'];
@@ -46,8 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             $filename = "../uploads/$id.".$temp2[1];
             move_uploaded_file($temp, $filename);
             include_once '../connection.php';
-            $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic) VALUES ('$id', '$admissionNo', '$fname', 
-                                                                                                    '$lname', '$alYear', '$dob', '$filename')";
+            $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
             $result = mysqli_query($con, $sql);
             if($result)
             {
@@ -84,6 +84,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								</div>
 								<div class="card-body">
 										<form action="newStudent.php"  method="POST" enctype='multipart/form-data'>
+                                                <div class="col-auto mb-3">
+														<label class="form-label">Institute: </label>
+														<select class="form-control" name='institute'>
+															<option value='Thigma'>New Thigma - Galle</option>
+															<option value='Apeiro'>Apeiro - Matara</option>
+															<option value='Zenic'>Zenic - Morawaka</option>
+														</select>
+												</div>
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Admission Number: </label>
 														<input type="text" class="form-control" name="admissionNo" aria-describedby="admissionNo" autocomplete="off" required placeholder="XXXX">

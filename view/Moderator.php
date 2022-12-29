@@ -102,7 +102,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 {
                                     $isDone = $_POST['day2day'];
                                     include_once '../connection.php';
-                                    $sql1 = "UPDATE students SET day2day='$isDone' WHERE id='".$_SESSION['id3']."';";
+                                    $sql1 = "";
                                     $result = mysqli_query($con, $sql);
                                     if($result)
                                     {
