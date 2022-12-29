@@ -45,13 +45,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         </div>
     </div>
 
-<<<<<<< HEAD
     <script src="js/isotope.min.js"></script>
     <script src="js/sftthaksalawacustom.js"></script>
 
-=======
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
->>>>>>> 9f37986a0bea8a244505780bf2c78580216a0eef
 </body>
 
 </html>
