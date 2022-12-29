@@ -11,6 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Moderator Panel</title>
+        <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
