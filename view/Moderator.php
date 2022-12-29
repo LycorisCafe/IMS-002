@@ -52,12 +52,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             {
                                 $id3 = $_POST['id3'];
                                 include_once '../connection.php';
-                                $sql = "SELECT * FROM students WHERE sID='$id'";
+                                $sql = "SELECT * FROM students WHERE id='$id3'";
                                 $result = mysqli_query($con, $sql);
                                     while($row = $result->fetch_assoc()){
                                         $day2day = $row['day2day'];
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
-                                        $id3 = $row['sID'];
+                                        $id3 = $row['id'];
                                         $_SESSION['id3'] = $id3;
                                     }
                                 }    
@@ -75,7 +75,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <?php
                                 if(isset($_POST['submit'])){
                                     include_once '../connection.php';
-                                    $sql = "SELECT pic FROM students WHERE sID='$id3'";
+                                    $sql = "SELECT pic FROM students WHERE id='$id3'";
                                     $result2 = mysqli_query($con, $sql);
                                     while($data = $result2->fetch_assoc()){
                                         echo "<img src='".$data['pic']."' class='rounded border border-success' height='150' width='150' alt='studentImage'>";
@@ -102,7 +102,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 {
                                     $isDone = $_POST['day2day'];
                                     include_once '../connection.php';
-                                    $sql = "UPDATE students SET day2day='$isDone' WHERE sID='".$_SESSION['sID']."';";
+                                    $sql1 = "UPDATE students SET day2day='$isDone' WHERE id='".$_SESSION['id3']."';";
                                     $result = mysqli_query($con, $sql);
                                     if($result)
                                     {
