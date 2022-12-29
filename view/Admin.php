@@ -9,11 +9,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<<<<<<< HEAD
-    <title>Admin</title>
-=======
     <title>Administrator Panel</title>
->>>>>>> 5fdf81d93579ca75554fd48f2ded4a3e4f5921ff
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
@@ -28,7 +24,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link" aria-current="page" href="#">Logout</a>
+                    <a class="btn btn-danger" aria-current="page" href="#">Logout</a>
                 </div>
             </div>
         </div>
@@ -49,12 +45,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         </div>
     </div>
 
-<<<<<<< HEAD
-=======
+
     <script src="js/isotope.min.js"></script>
     <script src="js/sftthaksalawacustom.js"></script>
 
->>>>>>> 5fdf81d93579ca75554fd48f2ded4a3e4f5921ff
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 
