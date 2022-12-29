@@ -96,7 +96,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div><br/></form>
                         <form action='Moderator.php' method='POST'>
                         <div class='d-grid gap-2'>
-                            <a href='../req/newStudent.php' class='btn btn-warning'>Add a New Student</a><br/>
+                            <a href='../req/newStudent2.php' class='btn btn-warning'>Add a New Student</a><br/>
                         </div>
                         <div class="rounded border border-success"  style='font-size: 22px;'>
                             <b title='Student Name'><?php if(isset($_POST['submit'])){ echo $stdName; } ?></b>
