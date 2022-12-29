@@ -50,6 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <?php
                             if(isset($_POST['submit']))
                             {
+                                if(!empty($_POST['id3'])){
                                 $id3 = $_POST['id3'];
                                 include_once '../connection.php';
                                 $sql1 = "SELECT * FROM students WHERE id='$id3'";
@@ -59,10 +60,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         $id3 = $row['id'];
                                         $_SESSION['id3'] = $id3;
                                     }
-                                }    
+                                }else{
+                                    $em = "Student ID is required!";
+                                    header("Location: Moderator.php?error=$em");
+                                    exit;
+                                }
+                            }    
                             
                         ?>
                     <form action='Moderator.php' method='POST'>
+                        <?php if(isset($_GET['error'])) { ?>
+										<div class='alert alert-danger' role='alert'>
+											<?=$_GET['error']?>
+										</div>
+						<?php } ?>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='id3'>
                         </div>

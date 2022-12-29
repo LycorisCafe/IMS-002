@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="btn btn-danger" aria-current="page" href="#">Logout</a>
+                    <a class="btn btn-danger" aria-current="page" href="../req/logout.php">Logout</a>
                 </div>
             </div>
         </nav>
