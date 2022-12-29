@@ -93,9 +93,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										<form action="newStudent2.php"  method="POST" enctype='multipart/form-data'>
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Institute: </label>
-                                                        <?php
-                                                            
-                                                        ?>
 														<select class="form-control" name='institute'>
                                                             <?php
                                                                 include_once '../connection.php';

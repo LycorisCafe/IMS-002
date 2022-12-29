@@ -55,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 include_once '../connection.php';
                                 $sql1 = "SELECT * FROM students WHERE id='$id3'";
                                 $result1 = mysqli_query($con, $sql1);
-                                if(!mysqli_num_rows($result1) > 0){
+                                if(mysqli_num_rows($result1) > 0){
                                     while($row = $result1->fetch_assoc()){
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
                                         $id3 = $row['id'];
@@ -81,7 +81,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										</div>
 						<?php } ?>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='id3'>
+                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='id3' autocomplete="off">
                         </div>
                         <div class="d-grid gap-2">
                                 <input class="btn btn-primary" type="submit" name='submit' value='Search'>

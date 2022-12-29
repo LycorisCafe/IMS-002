@@ -73,7 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <?php require_once "navbar.php"; ?>
 
     <div class="container col-lg-4 col-md-5 align-self-center">
-						<div class="card" style="transform: translate(0%, 20%);">
+						<div class="card" style="transform: translate(0%, 10%);">
 								<div class="card-header text-center">
 										<h3 class='display-5' style='color: #000;'>New Student</h3>
 								</div>
@@ -82,9 +82,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Institute: </label>
 														<select class="form-control" name='institute'>
-															<option value='Thigma'>New Thigma - Galle</option>
-															<option value='Apeiro'>Apeiro - Matara</option>
-															<option value='Zenic'>Zenic - Morawaka</option>
+                                                            <?php
+                                                                include_once '../connection.php';
+                                                                $sql5 = "SELECT institute, city FROM classes";
+                                                                $result5 = mysqli_query($con, $sql5);
+                                                                while($ri = mysqli_fetch_assoc($result5)) { 
+                                                            ?>
+                                                            <option value="<?php echo $ri['institute'] ?>"><?php echo $ri['institute']. " - " .$ri['city'] ?></option>
+                                                            <?php } ?>
 														</select>
 												</div>
                                                 <div class="col-auto mb-3">
