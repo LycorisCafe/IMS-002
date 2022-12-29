@@ -19,7 +19,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     </head>
 
 <?php
-
     if(isset($_POST['submit']))
     {
         // user data
@@ -46,9 +45,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             $temp2 = explode(".", $name);
             $filename = "../uploads/$id.".$temp2[1];
             move_uploaded_file($temp, $filename);
-            include_once '../connection.php';
-            $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
-            $result = mysqli_query($con, $sql);
+            
+            $sql1 = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
+            $result1 = mysqli_query($con, $sql1);
             $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
             $result2 = mysqli_query($con, $sql2);
             while($row = $result2->fetch_assoc())
@@ -94,11 +93,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										<form action="newStudent2.php"  method="POST" enctype='multipart/form-data'>
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Institute: </label>
+                                                        <?php
+                                                            
+                                                        ?>
 														<select class="form-control" name='institute'>
-															<option value='Thigma'>New Thigma - Galle</option>
-															<option value='Apeiro'>Apeiro - Matara</option>
-															<option value='Zenic'>Zenic - Morawaka</option>
+                                                            <?php
+                                                                include_once '../connection.php';
+                                                                $sql5 = "SELECT institute, city FROM classes";
+                                                                $result5 = mysqli_query($con, $sql5);
+                                                                while($ri = mysqli_fetch_assoc($result5)) { 
+                                                            ?>
+                                                            <option value="<?php echo $ri['institute'] ?>"><?php echo $ri['institute']. " - " .$ri['city'] ?></option>
+                                                            <?php } ?>
 														</select>
+                                                        
 												</div>
                                                 <div class="col-auto mb-3">
 														<label class="form-label">Admission Number: </label>

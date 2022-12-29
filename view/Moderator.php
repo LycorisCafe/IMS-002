@@ -55,11 +55,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 include_once '../connection.php';
                                 $sql1 = "SELECT * FROM students WHERE id='$id3'";
                                 $result1 = mysqli_query($con, $sql1);
+                                if(!mysqli_num_rows($result1) > 0){
                                     while($row = $result1->fetch_assoc()){
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
                                         $id3 = $row['id'];
                                         $_SESSION['id3'] = $id3;
                                     }
+                                }else{
+                                    $em = "Student ID is invalid!";
+                                    header("Location: Moderator.php?error=$em");
+                                    exit;
+                                }
                                 }else{
                                     $em = "Student ID is required!";
                                     header("Location: Moderator.php?error=$em");
