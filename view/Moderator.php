@@ -52,10 +52,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             {
                                 $id3 = $_POST['id3'];
                                 include_once '../connection.php';
-                                $sql = "SELECT * FROM students WHERE id='$id3'";
-                                $result = mysqli_query($con, $sql);
-                                    while($row = $result->fetch_assoc()){
-                                        $day2day = $row['day2day'];
+                                $sql1 = "SELECT * FROM students WHERE id='$id3'";
+                                $result1 = mysqli_query($con, $sql1);
+                                    while($row = $result1->fetch_assoc()){
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
                                         $id3 = $row['id'];
                                         $_SESSION['id3'] = $id3;
@@ -75,8 +74,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <?php
                                 if(isset($_POST['submit'])){
                                     include_once '../connection.php';
-                                    $sql = "SELECT pic FROM students WHERE id='$id3'";
-                                    $result2 = mysqli_query($con, $sql);
+                                    $sql2 = "SELECT pic FROM students WHERE id='$id3'";
+                                    $result2 = mysqli_query($con, $sql2);
                                     while($data = $result2->fetch_assoc()){
                                         echo "<img src='".$data['pic']."' class='rounded border border-success' height='150' width='150' alt='studentImage'>";
                                     }
@@ -93,18 +92,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <hr>
                         <div class="form-check text-start">
-                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day' <?php if(isset($_POST['submit'])){echo $day2day==1 ? 'checked' : '';}?>>
+                            <input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
                             <label class="form-check-label" for="flexCheckChecked">
                                 Day 2 Day Paper
                             </label>
                             <?php
                                 if(isset($_POST['finals']))
                                 {
+                                    $date = date("Y-m-d");
                                     $isDone = $_POST['day2day'];
                                     include_once '../connection.php';
-                                    $sql1 = "";
-                                    $result = mysqli_query($con, $sql);
-                                    if($result)
+                                    $sql3 = "SELECT id, classId FROM regclass WHERE studentId='".$_SESSION['id3']."'";
+                                    $result3 = mysqli_query($con, $sql3);
+                                    while($row = $result3->fetch_assoc())
+                                    {
+                                        $regClassId = $row['id'];
+                                        $sql4 = "INSERT INTO attendance (regclassId, date_, d2d) VALUES ('$regClassId', '$date', '$isDone');";
+                                        $result4 = mysqli_query($con, $sql4);
+                                    }
+                                    if($result3 && $result4)
                                     {
                                         echo "<script>alert('Attendance Marked!');</script>";
                                         header("Refresh:0; url=Moderator.php");

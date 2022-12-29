@@ -49,7 +49,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             include_once '../connection.php';
             $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
             $result = mysqli_query($con, $sql);
-            if($result)
+            $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
+            $result2 = mysqli_query($con, $sql2);
+            while($row = $result2->fetch_assoc())
+            {
+                $classid = $row['id'];
+                $sql3 = "INSERT INTO regclass(studentId, classId) VALUES ('$id', '$classid')";
+                $result3 = mysqli_query($con, $sql3);
+            }
+            if($result && $result2 && $result3)
             {
                 echo "<script>alert('New Student adding completed!');</script>";
             }else{
@@ -62,7 +70,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
     <body>
-    <header class="main-header clearfix" role="header">
+<!--    <header class="main-header clearfix" role="header">
         <div class="logo">
             <a href="index.html"><em>SFT</em> තක්සලාව</a>
         </div>
@@ -76,7 +84,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
             </ul>
         </nav>
-    </header>
+    </header>-->
     <div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 20%);">
 								<div class="card-header text-center">

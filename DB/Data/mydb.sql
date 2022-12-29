@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 04:06 AM
+-- Generation Time: Dec 29, 2022 at 06:03 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -34,15 +34,8 @@ INSERT INTO `classes` (`id`, `al_year`, `day`, `institute`) VALUES
 
 INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
 (1, 'admin', 'admin', 'Dasun Nethsara', '2022-12-29 03:56', 'Admin'),
-(2, 'user1', 'user1', 'Naveen Balasooriya', '2022-12-29 03:28', 'User'),
+(2, 'user1', 'user1', 'Naveen Balasooriya', '2022-12-29 05:56', 'User'),
 (3, 'user2', 'user2', 'Lasith Randil', '2022-12-28 10:06', 'User');
-
---
--- Dumping data for table `regclass`
---
-
-INSERT INTO `regclass` (`id`, `studentId`, `classId`) VALUES
-(2, 'T23774', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
