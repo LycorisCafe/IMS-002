@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2022 at 07:54 AM
+-- Generation Time: Dec 27, 2022 at 08:41 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -45,6 +45,29 @@ INSERT INTO `admin` (`id`, `username`, `password`, `fname`, `lname`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `students`
+--
+
+CREATE TABLE `students` (
+  `indexNo` varchar(7) NOT NULL,
+  `fname` varchar(30) NOT NULL,
+  `lname` varchar(30) NOT NULL,
+  `al_year` year(4) NOT NULL,
+  `DOB` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `students`
+--
+
+INSERT INTO `students` (`indexNo`, `fname`, `lname`, `al_year`, `DOB`) VALUES
+('T23123', 'Lasith', 'Randil', 2023, '2004-05-18'),
+('T23456', 'Naveen', 'Balasooriya', 2023, '2004-11-21'),
+('T23774', 'Dasun', 'Nethsara', 2023, '2004-01-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -61,7 +84,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `fname`, `lname`) VALUES
-(1, 'user', 'user', 'Naveen', 'Balasooriya');
+(1, 'user', 'user', 'Naveen', 'Balasooriya'),
+(3, 'user1', 'user1', 'Lasith', 'Randil'),
+(4, 'user2', 'user2', 'Dasun', 'Nethsara');
 
 --
 -- Indexes for dumped tables
@@ -72,6 +97,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `fname`, `lname`) VALUES
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `students`
+--
+ALTER TABLE `students`
+  ADD PRIMARY KEY (`indexNo`);
 
 --
 -- Indexes for table `user`
@@ -93,7 +124,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
