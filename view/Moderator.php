@@ -42,48 +42,51 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         <br><br>
         <div class="container col-lg-6">
-            <form>
                 <div class="card text-center">
                     <div class="card-header">
                         <h4>Attendane Marking</h4>
                     </div>
                     <div class="card-body">
-                        
+                        <?php
+                            if(isset($_POST['submit']))
+                            {
+                                $indexNo = $_POST['indexNo'];
+                                include_once '../connection.php';
+                                $sql = "SELECT * FROM students WHERE indexNo='$indexNo'";
+                                $result = mysqli_query($con, $sql);
+                                    while($row = $result->fetch_assoc()){
+                                        $stdName = $row['fname'] . ' ' . $row['lname'];
+                                        $_SESSION['indexNo'] = $indexNo;
+                                    }
+                                }    
+                            
+                        ?>
+                    <form action='Moderator.php' method='POST'>
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='index'>
+                            <input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='indexNo'>
                         </div>
                         <div class="d-grid gap-2">
-
-                        <?php
-                            
-                            // if(isset($_POST['submit']))
-                            // {
-                            //     $indexNo = $_POST['index'];
-                            //     include_once 'connection.php';
-                            //     $sql = "SELECT * FROM students WHERE indexNo='$indexNo'";
-                            //     $result = mysqli_query($con, $sql);
-                            //     if(mysqli_num_rows($result) > 0)
-                            //     {
-                            //         while($row = $result->fetch_assoc()){
-                            //             $stdName = $row['fname'] . ' ' . $row['lname'];
-                            //             echo "<acript>alert($stdName);</script>";
-                            //         }
-                            //     }
-                            // }
-
-                        ?>
-
-                            <form action='../req/getSearch.php' method='POST'>
-                                <button class="btn btn-primary" type="button" name='submit'>Search</button>
-                            </form>
+                                <input class="btn btn-primary" type="submit" name='submit' value='Search'>
                         </div>
                         <hr>
                         <div>
-                            <img src="../Media/dummy.jpg" class="rounded border border-success" height="150" width="150" alt="studentImage">
+                            <?php
+                                if(isset($_POST['submit'])){
+                                    include_once '../connection.php';
+                                    $sql = "SELECT pic FROM students WHERE indexNo='$indexNo'";
+                                    $result2 = mysqli_query($con, $sql);
+                                    while($data = $result2->fetch_assoc()){
+                                        echo "<img src='".$data['pic']."' class='rounded border border-success' height='150' width='150' alt='studentImage'>";
+                                    }
+                                }
+                            ?>
+                            
+                        </div><br/>
+                        <div class='d-grid gap-2'>
+                            <a href='../req/upload.php' class='btn btn-warning'>Upload a Photo </a><br/>
                         </div>
-                        <br>
                         <div class="rounded border border-success" style='font-size: 22px;'>
-                            <p><i><b>Dasun Nethsara</b></i></p>
+                            <p><i><b><?php if(isset($_POST['submit'])){ echo $stdName; } ?></b></i></p>
                         </div>
                         <hr>
                         <div class="form-check text-start">
