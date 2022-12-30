@@ -4,7 +4,11 @@
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<title>Login</title>
-				<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<link rel="stylesheet" href="css/fonts.css">
+				<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<link rel="stylesheet" href="css/temp.css">
+				<script src="fontawesome.com.js" crossorigin="anonymous"></script>
 				<style>
 						body {
 								background-image: url('Media/images/bg.jpg');
@@ -15,31 +19,21 @@
 				</style>
 		</head>
 		<body>
-				<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-						<div class="container-fluid">
-								<a class="navbar-brand" href="https://sftthaksalawa.com" style="font-weight: 900;"><span style="color: rgb(0, 191, 161);">SFT</span> තක්සලාව</a>
-							<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-								<span class="navbar-toggler-icon"></span>
-							</button>
-							<div class="collapse navbar-collapse" id="navbarCollapse">
-								<ul class="navbar-nav me-auto mb-2 mb-md-0">
-									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="index.html">Home</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="login.php">Login</a>
-									</li>
-									<li class="nav-item">
-											<a class="nav-link" href="aboutUs.html">About Us</a>
-									</li>
-								</ul>
-								<form class="d-flex">
-									<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline-success" type="submit">Search</button>
-								</form>
-							</div>
-						</div>
-					</nav>
+			<header class="main-header clearfix" role="header">
+                <div class="logo">
+                    <a href="index.html"><em>SFT</em> තක්සලාව</a>
+                </div>
+                <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
+                <nav id="menu" class="main-nav" role="navigation">
+                    <ul class="main-menu">
+                        <li><a href="index.html">Home</a></li>
+        
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="login.php">Login</a></li>
+        
+                    </ul>
+                </nav>
+            </header>
 				
 				<div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 50%);">
