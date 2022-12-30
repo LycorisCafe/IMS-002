@@ -27,7 +27,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
             <li style='color: #fff;'>User: <?php echo $_SESSION['fname']; ?></li>
-                <li style='color: #fff;'>Role: <?php echo $_SESSION['role']; ?></li>
+            <li style='color: #fff;'>Role: <?php echo $_SESSION['role']; ?></li>
+            <li><a href='../req/logout.php' class='btn btn-warning'> Logout </a></li>
 
             </ul>
         </nav>
