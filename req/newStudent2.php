@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Moderator Panel</title>
+        <title>Add a New Student</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
@@ -98,7 +98,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                             <!-- This code to poppulate all the institutes registered in database to combobox -->
                                                             <?php
                                                                 include_once '../connection.php';
-                                                                $sql5 = "SELECT institute, city FROM classes";
+                                                                $sql5 = "SELECT DISTINCT institute, city FROM classes";
                                                                 $result5 = mysqli_query($con, $sql5);
                                                                 while($ri = mysqli_fetch_assoc($result5)) { 
                                                             ?>
@@ -146,7 +146,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         
 
-        <script src="../bootstrap/js/bootstrap.bundle.min.js></script">
+        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
 

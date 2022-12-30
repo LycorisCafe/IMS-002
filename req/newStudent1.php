@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Moderator Panel</title>
+        <title>Add a New Student</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
@@ -42,7 +42,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         if($error > 0)
         {
-            die("Error Uploading Image! Code: $error");
+            $temp2 = explode(".", $name);
+            include_once '../connection.php';
+            $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
+                                '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '', '$institute')";
+            $result = mysqli_query($con, $sql);
+
+            $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
+            $result2 = mysqli_query($con, $sql2);
+            $row = $result2->fetch_assoc();
+            $classid = $row['id'];
+
+            $sql3 = "INSERT INTO regclass(studentId, classId) VALUES ('$id', '$classid')";
+            $result3 = mysqli_query($con, $sql3);
+            if($result && $result2 && $result3)
+            {
+                echo "<script>alert('New Student adding completed!');</script>";
+            }else{
+                echo "<script>alert('New Student adding Unsuccess!');</script>";
+            }
         }else{
             $temp2 = explode(".", $name);
             $filename = "../uploads/$id.".$temp2[1];
@@ -85,7 +103,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 														<select class="form-control" name='institute'>
                                                             <?php
                                                                 include_once '../connection.php';
-                                                                $sql5 = "SELECT institute, city FROM classes";
+                                                                $sql5 = "SELECT DISTINCT institute, city FROM classes";
                                                                 $result5 = mysqli_query($con, $sql5);
                                                                 while($ri = mysqli_fetch_assoc($result5)) { 
                                                             ?>

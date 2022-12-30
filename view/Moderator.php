@@ -115,25 +115,38 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 Day 2 Day Paper
                             </label>
                             <?php
+                            $date = date("Y-m-d");
+                            // echo "<script>alert('Attendance Marked!');</script>";
+                            // header("Refresh:0; url=Moderator.php");
                                 if(isset($_POST['finals']))
                                 {
+                                    $id3 = $_SESSION['id3'];
                                     $date = date("Y-m-d");
                                     $isDone = $_POST['day2day'];
                                     include_once '../connection.php';
-                                    $sql3 = "SELECT id, classId FROM regclass WHERE studentId='".$_SESSION['id3']."'";
+                                    
+                                    $sql3 = "SELECT * FROM regClass WHERE studentId='$id3'";
                                     $result3 = mysqli_query($con, $sql3);
-                                    while($row = $result3->fetch_assoc())
+                                    $row3 = mysqli_fetch_assoc($result3);
+                                    $regClassId = $row3['id'];
+
+                                    $sql4 = "SELECT COUNT(*) FROM attendance WHERE regclassId='$regClassId' AND date_='$date'";
+                                    $result4 = mysqli_query($con, $sql4);
+                                    $row4 = mysqli_fetch_assoc($result4);
+                                    $count = $row4['COUNT(*)'];
+                                    if($count == 0)
                                     {
-                                        $regClassId = $row['id'];
-                                        $sql4 = "INSERT INTO attendance (regclassId, date_, d2d) VALUES ('$regClassId', '$date', '$isDone');";
-                                        $result4 = mysqli_query($con, $sql4);
-                                    }
-                                    if($result3 && $result4)
-                                    {
-                                        echo "<script>alert('Attendance Marked!');</script>";
-                                        header("Refresh:0; url=Moderator.php");
+                                        $sql5 = "INSERT INTO attendance (regclassId, date_, d2d) VALUES ('$regClassId', '$date', '$isDone')";
+                                        $result5 = mysqli_query($con, $sql5);
+                                        if($result5)
+                                        {
+                                            echo "<script>alert('Attendance Marked!');</script>";
+                                            header("Refresh:0; url=Moderator.php");
+                                        }
                                     }else{
-                                        echo "<script>alert('Attendance Marking Unsuccess!');</script>";
+                                        $em = "Already marked the attendance!";
+                                        header("Location: Moderator.php?error=$em");
+                                        exit;
                                     }
                                 }
                             ?>
@@ -148,8 +161,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <br><br>
         <br><br>
 
-        <script src="../bootstrap/js/bootstrap.bundle.min.js></script">
-             <script src="js/isotope.min.js"></script>
+        <script src="../bootstrap/js/bootstrap.bundle.min.js"></script">
+        <script src="js/isotope.min.js"></script>
     <script src="js/sftthaksalawacustom.js"></script>
 
   </body>

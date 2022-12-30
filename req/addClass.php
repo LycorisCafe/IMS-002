@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Moderator Panel</title>
+        <title>Add a New Class</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
@@ -26,10 +26,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             $city = $_POST['city'];
             $al_year = $_POST['al_year'];
             $day = $_POST['day'];
+            $time = $_POST['time'];
 
             // db connection
             include_once '../connection.php';
-            $sql = "INSERT INTO classes (al_year,  day, institute, city) VALUES ('$al_year', '$day', '$insName', '$city')";
+            $sql = "INSERT INTO classes (al_year,  day, time,institute, city) VALUES ('$al_year', '$day', '$time', '$insName', '$city')";
             $result = mysqli_query($con, $sql);
             if($result)
             {
@@ -81,6 +82,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 															<option value='6'>Saturday</option>
 															<option value='7'>Sunday</option>
 														</select>
+												</div>
+                                                <div class="col-auto mb-3">
+														<label class="form-label">Time: </label>
+														<input type="text" class="form-control" name="time" aria-describedby="time" autocomplete="off" required placeholder="EXAMPLE - 01:30 PM">
 												</div>
                                                 
 												<div class="d-grid gap-2">
