@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 07:14 AM
+-- Generation Time: Dec 31, 2022 at 03:31 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -24,13 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `attendance`
+--
+
+CREATE TABLE `attendance` (
+  `id` int(11) NOT NULL,
+  `regclassId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `d2d` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `classes`
 --
 
 CREATE TABLE `classes` (
   `id` int(11) NOT NULL,
   `year` int(4) NOT NULL,
-  `day` int(1) NOT NULL
+  `day` int(1) NOT NULL,
+  `institute` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -57,9 +71,7 @@ CREATE TABLE `login` (
 CREATE TABLE `regclass` (
   `id` int(11) NOT NULL,
   `studentId` varchar(7) NOT NULL,
-  `classId` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `d2d` int(1) NOT NULL
+  `classId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -81,6 +93,13 @@ CREATE TABLE `students` (
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `regclassId` (`regclassId`,`date`);
 
 --
 -- Indexes for table `classes`
@@ -133,6 +152,12 @@ ALTER TABLE `regclass`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `attendance`
+--
+ALTER TABLE `attendance`
+  ADD CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`regclassId`) REFERENCES `regclass` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `regclass`
