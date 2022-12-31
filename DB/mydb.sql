@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 28, 2022 at 07:37 AM
--- Server version: 10.4.25-MariaDB
--- PHP Version: 8.1.10
+-- Generation Time: Dec 31, 2022 at 06:59 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.1.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,23 +24,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `classes`
 --
 
-CREATE TABLE `admin` (
+CREATE TABLE `classes` (
+  `id` int(11) NOT NULL,
+  `year` int(4) NOT NULL,
+  `day` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE `login` (
   `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `fname` varchar(25) NOT NULL,
-  `lname` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `password` varchar(20) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `lastLogin` varchar(16) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `admin`
+-- Table structure for table `regclass`
 --
 
-INSERT INTO `admin` (`id`, `username`, `password`, `fname`, `lname`) VALUES
-(1, 'admin', 'admin', 'Dasun', 'Nethsara');
+CREATE TABLE `regclass` (
+  `id` int(11) NOT NULL,
+  `studentId` int(11) NOT NULL,
+  `regclassId` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `d2d` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -50,54 +70,34 @@ INSERT INTO `admin` (`id`, `username`, `password`, `fname`, `lname`) VALUES
 
 CREATE TABLE `students` (
   `indexNo` varchar(7) NOT NULL,
+  `admissionNo` varchar(7) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `al_year` year(4) NOT NULL,
   `DOB` date NOT NULL,
-  `pic` varchar(255) NOT NULL,
-  `day2day` tinyint(4) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `students`
---
-
-INSERT INTO `students` (`indexNo`, `fname`, `lname`, `al_year`, `DOB`, `pic`, `day2day`) VALUES
-('T23123', 'Lasith', 'Randil', 2023, '2004-05-18', '../uploads/bg5.jpg', 0),
-('T23456', 'Naveen', 'Balasooriya', 2023, '2004-11-21', '../uploads/bg5.jpg', 0),
-('T23774', 'Dasun', 'Nethsara', 2023, '2004-01-01', '../uploads/Untitled.png', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `fname` varchar(25) NOT NULL,
-  `lname` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `username`, `password`, `fname`, `lname`) VALUES
-(1, 'user', 'user', 'Naveen', 'Balasooriya'),
-(3, 'user1', 'user1', 'Lasith', 'Randil'),
-(4, 'user2', 'user2', 'Dasun', 'Nethsara');
+  `pic` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `classes`
 --
-ALTER TABLE `admin`
+ALTER TABLE `classes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `regclass`
+--
+ALTER TABLE `regclass`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -107,26 +107,26 @@ ALTER TABLE `students`
   ADD PRIMARY KEY (`indexNo`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `classes`
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `login`
 --
-ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+ALTER TABLE `login`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `regclass`
+--
+ALTER TABLE `regclass`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
