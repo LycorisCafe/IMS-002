@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 31, 2022 at 06:59 AM
+-- Generation Time: Dec 31, 2022 at 07:14 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -56,8 +56,8 @@ CREATE TABLE `login` (
 
 CREATE TABLE `regclass` (
   `id` int(11) NOT NULL,
-  `studentId` int(11) NOT NULL,
-  `regclassId` int(11) NOT NULL,
+  `studentId` varchar(7) NOT NULL,
+  `classId` int(11) NOT NULL,
   `date` date NOT NULL,
   `d2d` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -98,7 +98,9 @@ ALTER TABLE `login`
 -- Indexes for table `regclass`
 --
 ALTER TABLE `regclass`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `studentId` (`studentId`,`classId`),
+  ADD KEY `regclassId` (`classId`);
 
 --
 -- Indexes for table `students`
@@ -127,6 +129,17 @@ ALTER TABLE `login`
 --
 ALTER TABLE `regclass`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `regclass`
+--
+ALTER TABLE `regclass`
+  ADD CONSTRAINT `regclass_ibfk_1` FOREIGN KEY (`classId`) REFERENCES `classes` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `regclass_ibfk_2` FOREIGN KEY (`studentId`) REFERENCES `students` (`indexNo`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
