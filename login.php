@@ -82,5 +82,8 @@
 				<br><br><br>
 
 				<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+				<script src="js/isotope.min.js"></script>
+    <script src="js/sftthaksalawacustom.js"></script>
+
 		</body>
 </html>

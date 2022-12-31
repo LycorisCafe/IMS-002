@@ -41,6 +41,10 @@ if(isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </small>
         </div>
     </div>
+
+    <script src="js/isotope.min.js"></script>
+    <script src="js/sftthaksalawacustom.js"></script>
+
 </body>
 </html>
 
