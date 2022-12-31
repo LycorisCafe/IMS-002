@@ -1,54 +1,62 @@
 <?php
 session_start();
-if(isset($_SESSION['id']) && isset($_SESSION['role'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/fonts.css">
-        <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../css/temp.css">
-        <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Administrator Panel</title>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-<header class="main-header clearfix" role="header">
-        <div class="logo">
-            <a href="index.html"><em>SFT</em> තක්සලාව</a>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">-/-</button>
+            <a class="navbar-brand" href="#">ClassName</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="#">Logout</a>
+                </div>
+            </div>
         </div>
-        <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
-        <nav id="menu" class="main-nav" role="navigation">
-            <ul class="main-menu">
-                <li style='color: #fff;'>User: <?php echo $_SESSION['fname']; ?></li>
-                <li style='color: #fff;'>Role: <?php echo $_SESSION['role']; ?></li>
-                <li><a href='../req/logout.php' class='btn btn-danger'> Logout </a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class='d-flex justify-content-center align-items-center vh-100'>
-        <h1 class='display-1'>Now you are in the Administrator Page</h1>
-        <div class='shadow w-450 p-3 text-center'>
-            <small>Role: 
-                <b><?php echo $_SESSION['role']; ?></b><br/>
-                <h3> <?=$_SESSION['fname']?> </h3>
-                <a href='../req/logout.php' class='btn btn-warning'> Logout </a>
-            </small>
+    </nav>
+
+
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasRightLabel"><em>SFT</em> තක්සලාව</a></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="button">Home</button>
+                <button class="btn btn-primary" type="button">Other</button>
+            </div>
         </div>
     </div>
 
+<<<<<<< HEAD
     <script src="js/isotope.min.js"></script>
     <script src="js/sftthaksalawacustom.js"></script>
 
+=======
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+>>>>>>> 9f37986a0bea8a244505780bf2c78580216a0eef
 </body>
+
 </html>
 
-<?php }else{ 
+<?php } else {
     header("Location: ../login.php");
     exit;
 }

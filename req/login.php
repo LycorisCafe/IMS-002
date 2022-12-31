@@ -9,6 +9,8 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
     $pass = $_POST['pass'];
     $role = $_POST['role'];
 
+    $lastLogin = date("Y-m-d h:i:s A");
+
     if (empty($uname))
     {
         $em = "Username is required!";
@@ -30,12 +32,12 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
         if($role == '1')
         {
             $role = "Admin";
-            $sql = "SELECT * FROM admin";
+            $sql = "SELECT * FROM login WHERE type='$role'";
         }
         else
         {
             $role = "User";
-            $sql = "SELECT * FROM user WHERE username='$uname'";
+            $sql = "SELECT * FROM login WHERE username='$uname'";
         }
         $result = mysqli_query($con, $sql);
         
@@ -43,18 +45,22 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
                  while($row = $result->fetch_assoc()) {
                     $username = $row['username'];
                     $password = $row['password'];
-                    $fname = $row['fname'];
+                    $fname = $row['name'];
                     $id = $row['id'];
                      if($username == $uname)
                      {
 			 			if($password == $pass)
                         {
                             $_SESSION['id'] = $id;
-                            $_SESSION['fname'] = $fname;
+                            $_SESSION['name'] = $fname;
                             $_SESSION['role'] = $role;
+                            $sql = "UPDATE login SET lastLogin='$lastLogin' WHERE id='$id'";
+                            $result = mysqli_query($con, $sql);
+                            $_SESSION['lastLogin'] = $lastLogin;
 
                             if($role == "Admin")
                             {
+                                
                                 header("Location: ../view/Admin.php");
                             }
                             else
