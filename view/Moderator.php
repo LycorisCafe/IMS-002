@@ -16,7 +16,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <link rel="stylesheet" href="../css/fonts.css">
         <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/temp.css">
+        <link href="../req/calendar.css" rel="stylesheet" type="text/css">   <!-- CSS for the calendar -->
+        <link href="../req/cal-area.css" rel="stylesheet" type="text/css">   <!-- CSS for the calendar body -->
         <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+
     </head>
 
     <body>
@@ -158,6 +161,61 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </div>
             </form>
         </div>
+        <hr noshade>
+        <!-- CAALENDAR AREA -->
+            <div class="container">
+                <?php
+                    if(isset($_POST['submit'])){
+                        $std_id = $_SESSION['id3'];
+                        include '../req/Calendar.php';
+                        include '../connection.php';
+                        $fulldate = date("Y-m-d");
+                        $sys_date = date("d");
+                        $sys_month = date("m");
+                        $sys_year = date("Y");
+                        $calendar = new Calendar($fulldate);
+                        $sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+                        $result5 = mysqli_query($con, $sql5);
+                        $row5 = mysqli_fetch_assoc($result5);
+                        $reclassid = $row5['id'];
+                        
+                        $sql6 = "SELECT * FROM attendance WHERE regclassId='$reclassid'";
+                        $result6 = mysqli_query($con, $sql6);
+                        if(mysqli_num_rows($result6) > 0) {
+                            while($row6 = mysqli_fetch_assoc($result6)) {
+                                $day = $row6['date_'];
+                                $sql7 = "SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='$reclassid'";
+                                $result7 = mysqli_query($con, $sql7);
+                                while($row7 = mysqli_fetch_assoc($result7)) {
+                                    $d2d_done = $row7['d2d'];
+                                    if($d2d_done == '1') {
+                                        $calendar->add_event('Attended, D2D', $day, 1, 'green');
+                                        break;
+                                    } else {
+                                        $calendar->add_event('Attended', $day, 1, 'orange');
+                                        continue;
+                                    }
+                                }
+                            }
+                        } else {
+                            // $calendar->add_event('Not Attended', $day, 1, 'red');
+                        }
+                        // SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='T23774';
+
+                    }
+                    // $calendar->add_event('Birthday', '2022-12-03', 1, 'green');
+                    // $calendar->add_event('Doctors', '2022-12-04', 1, 'red');
+                    // $calendar->add_event('Holiday', '2022-12-16', 7);
+                ?>
+                <nav class="navtop">
+                    <div>
+                        <h1>Day to Day Paper</h1>
+                    </div>
+                </nav>
+                <div class="content home">
+                     <?=$calendar?> 
+                </div>
+            </div>
         <br><br>
         <br><br>
 
