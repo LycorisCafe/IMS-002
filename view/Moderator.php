@@ -64,6 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         $stdName = $row['fname'] . ' ' . $row['lname'];
                                         $id3 = $row['id'];
                                         $_SESSION['id3'] = $id3;
+                                        
                                     }
                                 }else{
                                     $em = "Student ID is invalid!";
@@ -97,19 +98,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                     include_once '../connection.php';
                                     $sql2 = "SELECT pic FROM students WHERE id='$id3'";
                                     $result2 = mysqli_query($con, $sql2);
-                                    while($data = $result2->fetch_assoc()){
+                                    $data = mysqli_fetch_assoc($result2);
+                                    if($data['pic'] == ""){
+                                        echo "<img src='../Media/dummy.jpg' class='rounded border border-success' height='150' width='150' alt='studentImage'>";
+                                    } else {
                                         echo "<img src='".$data['pic']."' class='rounded border border-success' height='150' width='150' alt='studentImage'>";
                                     }
+                                    
                                 }
                             ?>
                             
                         </div><br/></form>
                         <form action='Moderator.php' method='POST'>
-                        <div class='d-grid gap-2'>
-                            <a href='../req/newStudent2.php' class='btn btn-warning'>Add a New Student</a><br/>
+                            <?php
+                                if(isset($_POST['submit'])) {
+                                    $std_id = $_SESSION['id3'];
+                                    include_once '../connection.php';
+                                    $sql7 = "SELECT id, admissionNo FROM students WHERE id='$std_id'";
+                                    $result7 = mysqli_query($con, $sql7);
+                                    $row7 = mysqli_fetch_assoc($result7);
+                                    $addmissionNo = $row7['admissionNo'];
+                                    
+                                }
+                            ?>
+                        <div class="rounded border border-success"  style='font-size: 22px;'>
+                            <b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Student ID: $std_id"; } ?></b>
                         </div>
                         <div class="rounded border border-success"  style='font-size: 22px;'>
-                            <b title='Student Name'><?php if(isset($_POST['submit'])){ echo $stdName; } ?></b>
+                            <b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Admission No.: $addmissionNo"; } ?></b>
+                        </div>
+                        <div class="rounded border border-success"  style='font-size: 22px;'>
+                            <b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Student Name: $stdName"; } ?></b>
                         </div>
                         <hr>
                         <div class="form-check text-start">
@@ -161,11 +180,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </div>
             </form>
         </div>
-        <hr noshade>
+        <hr style="border: 3px solid red;">
         <!-- CAALENDAR AREA -->
             <div class="container">
                 <?php
-                    if(isset($_POST['submit'])){
+                    if(isset($_POST['submit'])) {
                         $std_id = $_SESSION['id3'];
                         include '../req/Calendar.php';
                         include '../connection.php';
@@ -173,13 +192,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $sys_date = date("d");
                         $sys_month = date("m");
                         $sys_year = date("Y");
+                        $firstDay = date('Y-m-01');
+                        $lastDay = date('Y-m-t');
                         $calendar = new Calendar($fulldate);
                         $sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
                         $result5 = mysqli_query($con, $sql5);
                         $row5 = mysqli_fetch_assoc($result5);
                         $reclassid = $row5['id'];
                         
-                        $sql6 = "SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='$reclassid'";
+                        $sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
                         $result6 = mysqli_query($con, $sql6);
                         if(mysqli_num_rows($result6) > 0){
                             while($row6 = mysqli_fetch_assoc($result6)){
@@ -207,7 +228,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     </div>
                 </nav>
                 <div class="content home">
-                     <?=$calendar?> 
+                     <?php if(isset($_POST['submit'])) { echo $calendar; } ?>
                 </div>
             </div>
         <br><br>
