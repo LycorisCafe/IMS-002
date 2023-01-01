@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2022 at 06:24 PM
+-- Generation Time: Jan 01, 2023 at 10:54 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -26,9 +26,9 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
-(1, 'admin', 'admin', 'Dasun Nethsara', '2022-12-29 06:20', 'Admin'),
-(2, 'user1', 'user1', 'Naveen Balasooriya', '2022-12-29 06:03', 'User'),
-(3, 'user2', 'user2', 'Lasith Randil', '2022-12-29 04:52', 'User');
+(1, 'admin', 'admin', 'Dasun Nethsara', '2023-01-01 09:01', 'Admin'),
+(2, 'user1', 'user1', 'Naveen Balasooriya', '2023-01-01 09:00', 'User'),
+(3, 'user2', 'user2', 'Lasith Randil', '2022-12-30 04:31', 'User');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
