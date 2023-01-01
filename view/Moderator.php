@@ -180,7 +180,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </div>
             </form>
         </div>
-        <hr style="border: 3px solid red;">
+        <hr style="border: 2px solid red;">
         <!-- CAALENDAR AREA -->
             <div class="container">
                 <?php
