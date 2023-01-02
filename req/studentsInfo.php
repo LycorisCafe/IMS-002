@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 <?php require_once "navbar.php"; ?>
 
 <br/><h1 class='display-1' style='color: #f00;'>Student Info Design karapallaa....</h1>
-
+<?php include 'footer.php'; ?>
 </body>
 </html>
 

@@ -5,7 +5,7 @@
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<title>Login</title>
 				<link rel="icon" type="image/x-icon" href="Media/favicon.png">
-				<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 				<link rel="stylesheet" href="css/fonts.css">
 				<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 				<link rel="stylesheet" href="css/temp.css">
@@ -39,7 +39,7 @@
 				<div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 50%);">
 								<div class="card-header text-center">
-										<h3><i>Login</i></h3>
+										<h3>Login</h3>
 								</div>
 								<div class="card-body">
 										<?php if(isset($_GET['error'])) { ?>

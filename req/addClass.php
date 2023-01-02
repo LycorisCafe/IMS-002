@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 20%);">
 								<div class="card-header text-center">
-										<h3 class='display-5' style='color: #000;'>New Class</h3>
+										<h3 class='display-5' style='color: #fff;'>New Class</h3>
 								</div>
 								<div class="card-body">
 										<form action="addClass.php"  method="POST">
@@ -94,9 +94,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										</form>
 								</div>
 						</div>
-				</div>
+				</div><br/><br/><br/><br/><br/><br/>
 
-
+        
+<?php include 'footer.php'; ?>
 </body>
 </html>
 

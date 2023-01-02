@@ -80,6 +80,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					<th scope="col">A/L Year</th>
 					<th scope="col">Day</th>
 					<th scope="col">Time</th>
+					<th scope="col">No. of Students</th>
 			  	</tr>
 			  	</thead>
 			  	<tbody>
@@ -94,6 +95,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								  7 => 'Saturday'
 								];
 			  			include_once '../connection.php';
+
+			  			
+			  			
 			  			$sql3 = "SELECT al_year, day, time, institute, city FROM classes ORDER BY `classes`.`al_year` ASC";
 			  			$result3 = mysqli_query($con, $sql3);
 			  			while($row3 = mysqli_fetch_assoc($result3)) {
@@ -118,6 +122,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 		</div>
+		<?php include '../req/footer.php'; ?>
 	</body>
 
 	</html>

@@ -94,7 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 10%);">
 								<div class="card-header text-center">
-										<h3 class='display-5' style='color: #000;'>New Student</h3>
+										<h3 class='display-5' style='color: #fff;'>New Student</h3>
 								</div>
 								<div class="card-body">
 										<form action="newStudent1.php"  method="POST" enctype='multipart/form-data'>
@@ -145,10 +145,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										</form>
 								</div>
 						</div>
-				</div>
+				</div><br/><br/><br/>
 
         
-
+<?php include 'footer.php'; ?>
   </body>
 </html>
 

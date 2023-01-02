@@ -142,10 +142,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								</div>
                                 <a href='endSession.php' class='btn btn-warning'> Back </a>
 						</div>
-				</div>
+				</div><br/><br/>
 
         
-
+<?php include 'footer.php'; ?>
         <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
