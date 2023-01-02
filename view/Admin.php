@@ -96,8 +96,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								];
 			  			include_once '../connection.php';
 
-			  			
-			  			
+
 			  			$sql3 = "SELECT al_year, day, time, institute, city FROM classes ORDER BY `classes`.`al_year` ASC";
 			  			$result3 = mysqli_query($con, $sql3);
 			  			while($row3 = mysqli_fetch_assoc($result3)) {
@@ -106,20 +105,84 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			  				$al_year = $row3['al_year'];
 			  				$day = $days[date($row3['day'])];
 			  				$time = $row3['time'];
+			  				
+			  				$sql4 = "SELECT COUNT(id) FROM students WHERE institute='$institute' AND al_year='$al_year'";
+			  				$result4 = mysqli_query($con, $sql4);
+			  				$row4 = mysqli_fetch_assoc($result4);
+			  				$numOfStd = $row4['COUNT(id)'];
+
 			  				echo "<tr>";
 				  				echo "<td>$institute</td>";
 				  				echo "<td>$city</td>";
 				  				echo "<td>$al_year</td>";
 				  				echo "<td>$day</td>";
 				  				echo "<td>$time</td>";
+				  				echo "<td>$numOfStd</td>";
 				  			echo "</tr>";
 			  			}
 			  		?>
 			  	</tbody>
 			</table>
 			</div>
+			<hr style="border: 2px solid red;"><br/>
+			<h1 class="display-4">Student Information</h1><br/>
+			<div class="container">
+				<form action="Admin.php" method="POST">
+					<div class="col-auto mb-3">
+						<?php if(isset($_GET['error'])) { ?>
+										<div class='alert alert-danger' role='alert'>
+											<?=$_GET['error']?>
+										</div>
+						<?php } ?>
+						<input type="text" class="form-control" name="std_id" aria-describedby="std_id" autocomplete="off" required placeholder="Search for a Student by ID">
+					</div>
+					<div class="d-grid gap-2">
+						<button type="submit" class="btn btn-primary" name='search'>Search</button>
+					</div><br/><br/>
+					<div>
+						<h1 class="display-6">Exam History (This Month)</h1><br/>
+						<table class="table table-striped">
+						 	<thead>
+						  	<tr>
+						  		<th scope="col">Date</th>
+								<th scope="col">Marks</th>
+								<th scope="col">Grade</th>
+								<th scope="col">Rank</th>
+						  	</tr>
+						  	</thead>
+						  	<tbody>
+						  		<?php 
+									if(isset($_POST['search'])) {
+										$month = date("m");
+										$std_id = $_POST['std_id'];
+										$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+										$result5 = mysqli_query($con, $sql5);
+										$row5 = mysqli_fetch_assoc($result5);
+										$regClassid = $row5['id'];
+										$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+										$result6 = mysqli_query($con, $sql6);
+										while($row6 = mysqli_fetch_assoc($result6)){
+											$date = $row6['date'];
+											$marks = $row6['marks'];
+											$grade = $row6['grade'];
+											$rank = $row6['rank'];
 
+											echo "<tr>";
+								  				echo "<td>$date</td>";
+								  				echo "<td>$marks</td>";
+								  				echo "<td>$grade</td>";
+								  				echo "<td>$rank</td>";
+								  			echo "</tr>";
 
+										}
+
+									}
+								?>
+						  	</tbody>
+							</table>
+					</div>
+				</form>
+			</div>
 
 		</div>
 		<?php include '../req/footer.php'; ?>

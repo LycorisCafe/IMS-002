@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2023 at 10:53 PM
+-- Generation Time: Jan 02, 2023 at 04:53 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -47,6 +47,21 @@ CREATE TABLE `classes` (
   `time` varchar(8) NOT NULL,
   `institute` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `exam`
+--
+
+CREATE TABLE `exam` (
+  `id` int(11) NOT NULL,
+  `regclassID` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `marks` int(11) NOT NULL,
+  `grade` varchar(2) NOT NULL,
+  `rank` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -111,6 +126,12 @@ ALTER TABLE `classes`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `exam`
+--
+ALTER TABLE `exam`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
@@ -144,6 +165,12 @@ ALTER TABLE `attendance`
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `exam`
+--
+ALTER TABLE `exam`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --

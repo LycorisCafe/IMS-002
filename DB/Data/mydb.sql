@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2023 at 10:54 PM
+-- Generation Time: Jan 02, 2023 at 04:54 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -22,12 +22,19 @@ SET time_zone = "+00:00";
 --
 
 --
+-- Dumping data for table `exam`
+--
+
+INSERT INTO `exam` (`id`, `regclassID`, `date`, `marks`, `grade`, `rank`) VALUES
+(1, 1, '2023-01-03', 68, 'B', 26);
+
+--
 -- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
-(1, 'admin', 'admin', 'Dasun Nethsara', '2023-01-01 09:01', 'Admin'),
-(2, 'user1', 'user1', 'Naveen Balasooriya', '2023-01-01 09:00', 'User'),
+(1, 'admin', 'admin', 'Dasun Nethsara', '2023-01-02 03:28', 'Admin'),
+(2, 'user1', 'user1', 'Naveen Balasooriya', '2023-01-02 12:31', 'User'),
 (3, 'user2', 'user2', 'Lasith Randil', '2022-12-30 04:31', 'User');
 COMMIT;
 
