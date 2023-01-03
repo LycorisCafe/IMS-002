@@ -137,8 +137,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<?= $_GET['error'] ?>
 						</div>
 					<?php } ?>
-					<input class="form-control me-2" type="search" placeholder="Search for a Student by ID" aria-label="Search">
-					<button class="btn btn-outline-success col-lg-3" type="submit">Search</button>
+					<input class="form-control me-2" type="search" placeholder="Search for a Student by ID" aria-label="Search" name="std_id">
+					<button class="btn btn-outline-success col-lg-3" type="submit" name="search">Search</button>
 				</form>
 				<br />
 
@@ -160,9 +160,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql9 = "SELECT fname, lname FROM students WHERE id='$std_id'";
 													$result9 = mysqli_query($con, $sql9);
-													$row9 = mysqli_fetch_assoc($result9);
-													$name = $row9['fname'] . " " . $row9['lname'];
-													echo $name;
+													if(mysqli_num_rows($result9) > 0) {
+														$row9 = mysqli_fetch_assoc($result9);
+														$name = $row9['fname'] . " " . $row9['lname'];
+														echo $name;
+													} else {
+														echo "No Records";
+													}
 												}
 												?>
 											</h5>
@@ -186,9 +190,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
 													$result11 = mysqli_query($con, $sql11);
-													$row11 = mysqli_fetch_assoc($result11);
-													$admissionNo = $row11['admissionNo'];
-													echo $admissionNo;
+													if(mysqli_num_rows($result11) > 0) {
+														$row11 = mysqli_fetch_assoc($result11);
+														$admissionNo = $row11['admissionNo'];
+														echo $admissionNo;
+													} else {
+														echo "No Records";
+													}
 												}
 												?>
 											</h5>
@@ -212,9 +220,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql12 = "SELECT institute FROM students WHERE id='$std_id'";
 													$result12 = mysqli_query($con, $sql12);
-													$row12 = mysqli_fetch_assoc($result12);
-													$institute = $row12['institute'];
-													echo $institute;
+													if(mysqli_num_rows($result12) > 0) {
+														$row12 = mysqli_fetch_assoc($result12);
+														$institute = $row12['institute'];
+														echo $institute;
+													} else {
+														echo "No records";
+													}
 												}
 												?>
 											</h5>
@@ -236,10 +248,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$std_id = $_POST['std_id'];
 					$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
 					$result7 = mysqli_query($con, $sql7);
-					$row7 = mysqli_fetch_assoc($result7);
-					$regClassid = $row7['id'];
-					$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
-					$result8 = mysqli_query($con, $sql8);
+					if(mysqli_num_rows($result7) > 0) {
+						$row7 = mysqli_fetch_assoc($result7);
+						$regClassid = $row7['id'];
+						$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+						$result8 = mysqli_query($con, $sql8);
+					}
 				}
 				?>
 				<div class="container">
@@ -260,22 +274,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								$std_id = $_POST['std_id'];
 								$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
 								$result5 = mysqli_query($con, $sql5);
-								$row5 = mysqli_fetch_assoc($result5);
-								$regClassid = $row5['id'];
-								$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
-								$result6 = mysqli_query($con, $sql6);
-								while ($row6 = mysqli_fetch_assoc($result6)) {
-									$date = $row6['date'];
-									$marks = $row6['marks'];
-									$grade = $row6['grade'];
-									$rank = $row6['rank'];
+								if(mysqli_num_rows($result5) > 0) {
+									$row5 = mysqli_fetch_assoc($result5);
+									$regClassid = $row5['id'];
+									$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+									$result6 = mysqli_query($con, $sql6);
+									while ($row6 = mysqli_fetch_assoc($result6)) {
+										$date = $row6['date'];
+										$marks = $row6['marks'];
+										$grade = $row6['grade'];
+										$rank = $row6['rank'];
 
-									echo "<tr>";
-									echo "<td>$date</td>";
-									echo "<td>$marks</td>";
-									echo "<td>$grade</td>";
-									echo "<td>$rank</td>";
-									echo "</tr>";
+										echo "<tr>";
+										echo "<td>$date</td>";
+										echo "<td>$marks</td>";
+										echo "<td>$grade</td>";
+										echo "<td>$rank</td>";
+										echo "</tr>";
+									}
 								}
 							}
 							?>
