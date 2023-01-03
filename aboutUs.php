@@ -1,3 +1,9 @@
+<?php
+
+	setcookie("data-bs-theme", "dark", time() + 1814400);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
   <head>
@@ -17,7 +23,7 @@
       <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
       <nav id="menu" class="main-nav" role="navigation">
           <ul class="main-menu">
-              <li><a href="index.html">Home</a></li>
+              <li><a href="index.php">Home</a></li>
 
               <li><a href="aboutUs.html">About Us</a></li>
               <li><a href="login.php">Login</a></li>

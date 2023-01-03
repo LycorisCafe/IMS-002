@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $city = $_POST['city'];
         $al_year = $_POST['al_year'];
         $day = $_POST['day'];
-        $time = $_POST['h'] . ":" . $_POST['m'] ." ". 
+        $time = strtotime($_POST['h'] . ":" . $_POST['m'] ." ". $_POST['a_p']);
 
         // db connection
         include_once '../connection.php';
@@ -92,6 +92,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                     <li><a class="dropdown-item" href="#" name="am">AM</a></li>
                                     <li><a class="dropdown-item" href="#" name="pm">PM</a></li>
                                 </ul>
+                                <select class="dropdown-menu dropdown-menu-end" name='a_p'>
+                                    <option value='AM'>AM</option>
+                                    <option value='PM'>PM</option>
+                                </select>
                             </div>
                         </div>
 
