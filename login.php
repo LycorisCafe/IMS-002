@@ -1,3 +1,9 @@
+<?php 
+
+	setcookie("data-bs-theme", "dark", time() + 1814400);
+
+?>
+
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 		<head>
@@ -39,7 +45,7 @@
 				<div class="container col-lg-4 col-md-5 align-self-center">
 						<div class="card" style="transform: translate(0%, 50%);">
 								<div class="card-header text-center">
-										<h3>Login</h3>
+										<h3 style="color: #000;">Login</h3>
 								</div>
 								<div class="card-body">
 										<?php if(isset($_GET['error'])) { ?>

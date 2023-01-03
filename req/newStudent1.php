@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie("data-bs-theme", "dark", time() + 1814400);
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 

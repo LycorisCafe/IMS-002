@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie("data-bs-theme", "dark", time() + 1814400);
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
@@ -25,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $city = $_POST['city'];
         $al_year = $_POST['al_year'];
         $day = $_POST['day'];
-        $time = $_POST['time'];
+        $time = $_POST['h'] . ":" . $_POST['m'] ." ". 
 
         // db connection
         include_once '../connection.php';
@@ -84,12 +85,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <div class="col-auto mb-3">
                             <label class="form-label">Time: </label>
                             <div class="input-group mb-3">
-                                <input type="text" placeholder="HH" class="form-control" aria-label="Text input with dropdown button">
-                                <input type="text" placeholder="MM" class="form-control" aria-label="Text input with dropdown button">
+                                <input type="text" placeholder="HH" class="form-control" aria-label="Text input with dropdown button" name="h">
+                                <input type="text" placeholder="MM" class="form-control" aria-label="Text input with dropdown button" name="m">
                                 <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">AM/PM</button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">AM</a></li>
-                                    <li><a class="dropdown-item" href="#">PM</a></li>
+                                    <li><a class="dropdown-item" href="#" name="am">AM</a></li>
+                                    <li><a class="dropdown-item" href="#" name="pm">PM</a></li>
                                 </ul>
                             </div>
                         </div>

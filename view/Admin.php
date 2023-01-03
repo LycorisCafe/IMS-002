@@ -1,5 +1,6 @@
 <?php
 session_start();
+setcookie("data-bs-theme", "dark", time() + 1814400);
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 	<!doctype html>
@@ -137,7 +138,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<input type="text" class="form-control" name="std_id" aria-describedby="std_id" autocomplete="off" required placeholder="Search for a Student by ID">
 					</div>
 					<div class="d-grid gap-2">
-						<button type="submit" class="btn btn-primary" name='search'>Search</button>
+						<button class="btn btn-outline-success" type="submit" name="search">Search</button>
 					</div><br/><br/>
 
 					<div class="container">
