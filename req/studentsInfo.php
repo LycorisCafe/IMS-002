@@ -19,13 +19,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
     </head>
 
-<body>
-<?php require_once "navbar.php"; ?>
+    <body>
+        <?php require_once "navbar.php"; ?>
 
-<br/><h1 class='display-1' style='color: #f00;'>Student Info Design karapallaa....</h1>
-<?php include 'footer.php'; ?>
-</body>
-</html>
+        <div class="container">
+            <br>
+            <form class="d-flex mb-3" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+
+        <?php include 'footer.php'; ?>
+    </body>
+
+    </html>
 
 <?php } else {
     header("Location: ../login.php");
