@@ -121,15 +121,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									
 								}
 							?>
+							<div class="mb-3">
 						<div class="rounded border border-success"  style='font-size: 22px;'>
 							<b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Student ID: $std_id"; } ?></b>
 						</div>
+							</div>
+							<div class="mb-3">
 						<div class="rounded border border-success"  style='font-size: 22px;'>
 							<b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Admission No.: $addmissionNo"; } ?></b>
 						</div>
+							</div>
+							<div class="mb-3">
 						<div class="rounded border border-success"  style='font-size: 22px;'>
 							<b title='Student Name'><?php if(isset($_POST['submit'])){ echo "Student Name: $stdName"; } ?></b>
 						</div>
+							</div>
 						<hr>
 						<div class="form-check text-start">
 							<input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
