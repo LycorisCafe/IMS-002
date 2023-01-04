@@ -126,7 +126,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</div>
 			<hr style="border: 2px solid red;"><br/>
 			<h1 class="display-4">Student Information</h1><br/>
-			<div class="container">
+			
 				<form action="Admin.php" method="POST">
 					<div class="col-auto mb-3">
 						<?php if(isset($_GET['error'])) { ?>
@@ -139,6 +139,107 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					<div class="d-grid gap-2">
 						<button type="submit" class="btn btn-primary" name='search'>Search</button>
 					</div><br/><br/>
+
+					<div class="container">
+				<div class="row justify-content-around">
+				<div class="col-sm-12 col-lg-4 p-1 d-flex">
+					<div class="card">
+						<div class="row">
+							<div class="col-4">
+								<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h3 class="card-title">Student Name</h3>
+									<h5 class="card-subtitle mb-2 text-muted">
+										<?php
+											if(isset($_POST['search'])) {
+												require_once '../connection.php';
+												$std_id = $_POST['std_id'];
+												$sql9 = "SELECT fname, lname FROM students WHERE id='$std_id'";
+												$result9 = mysqli_query($con,$sql9);
+												$row9 = mysqli_fetch_assoc($result9);
+												$name = $row9['fname'] ." ". $row9['lname'];
+												echo $name;
+											}
+										?>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-around">
+				<div class="col-sm-12 col-lg-4 p-1 d-flex">
+					<div class="card">
+						<div class="row">
+							<div class="col-4">
+								<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h3 class="card-title">Addmission No.</h3>
+									<h5 class="card-subtitle mb-2 text-muted">
+										<?php
+										if (isset($_POST['search'])) {
+											$std_id = $_POST['std_id'];
+											$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
+											$result11 = mysqli_query($con,$sql11);
+											$row11 = mysqli_fetch_assoc($result11);
+											$admissionNo = $row11['admissionNo'];
+											echo $admissionNo;
+										}
+										?>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row justify-content-around">
+				<div class="col-sm-12 col-lg-4 p-1 d-flex">
+					<div class="card">
+						<div class="row">
+							<div class="col-4">
+								<img src="../Media/images/school.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+							</div>
+							<div class="col-8">
+								<div class="card-body">
+									<h3 class="card-title">Institute</h3>
+									<h5 class="card-subtitle mb-2 text-muted">
+										<?php
+										if (isset($_POST['search'])) {
+											$std_id = $_POST['std_id'];
+											$sql12 = "SELECT institute FROM students WHERE id='$std_id'";
+											$result12 = mysqli_query($con,$sql12);
+											$row12 = mysqli_fetch_assoc($result12);
+											$institute = $row12['institute'];
+											echo $institute;
+										}
+										?>
+									</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+					<div class="container"><br/>
+						
+					</div>
+						<h1 class="display-6">Latest Exam Result (Last Day)</h1><br/>
+						<?php
+							if(isset($_POST['search'])) {
+								$month = date("m");
+								$std_id = $_POST['std_id'];
+								$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+								$result7 = mysqli_query($con, $sql7);
+								$row7 = mysqli_fetch_assoc($result7);
+								$regClassid = $row7['id'];
+								$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+								$result8 = mysqli_query($con, $sql8);
+							}
+						?>
 					<div>
 						<h1 class="display-6">Exam History (This Month)</h1><br/>
 						<table class="table table-striped">
