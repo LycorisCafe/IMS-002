@@ -88,9 +88,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 <input type="text" placeholder="HH" class="form-control" aria-label="Text input with dropdown button" name="h">
                                 <input type="text" placeholder="MM" class="form-control" aria-label="Text input with dropdown button" name="m">
                                 <select class="form-select" id="inputGroupSelect01" name='a_p'>
-                                    <option selected>AM/PM</option>
-                                    <option value="1">AM</option>
-                                    <option value="2">PM</option>
+                                
+                                    <option value="AM">AM</option>
+                                    <option value="PM">PM</option>
                                 </select>
                             </div>
                         </div>
