@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $city = $_POST['city'];
         $al_year = $_POST['al_year'];
         $day = $_POST['day'];
-        $time = $_POST['h'] . ":" . $_POST['m'] ." ". $_POST['a_p'];
+        $time = $_POST['h'] . ":" . $_POST['m'] . " " . $_POST['a_p'];
 
         // db connection
         include_once '../connection.php';
@@ -87,9 +87,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <div class="input-group mb-3">
                                 <input type="text" placeholder="HH" class="form-control" aria-label="Text input with dropdown button" name="h">
                                 <input type="text" placeholder="MM" class="form-control" aria-label="Text input with dropdown button" name="m">
-                                <select class="dropdown-menu dropdown-menu-end" name='a_p'>
-                                    <option value='AM'>AM</option>
-                                    <option value='PM'>PM</option>
+                                <select class="form-select" id="inputGroupSelect01" name='a_p'>
+                                    <option selected>AM/PM</option>
+                                    <option value="1">AM</option>
+                                    <option value="2">PM</option>
                                 </select>
                             </div>
                         </div>
