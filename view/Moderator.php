@@ -21,12 +21,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css">   <!-- CSS for the calendar body -->
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
 
+		
+
 	</head>
 
 	<body>
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
-			<a href="index.html"><em>SFT</em> තක්සලාව</a>
+			<a href="../index.php"><em>SFT</em> තක්සලාව</a>
 		</div>
 		<a href="" class="menu-link"><i class="fa fa-bars"></i></a>
 		<nav id="menu" class="main-nav" role="navigation">
@@ -241,9 +243,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<br><br>
 		<br><br>
 
-		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script">
-		<script src="js/isotope.min.js"></script>
-	<script src="js/sftthaksalawacustom.js"></script>
+		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="../js/isotope.min.js"></script>
+	<script src="../js/sftthaksalawacustom.js"></script>
 	<?php include '../req/footer.php'; ?>
   </body>
 </html>
