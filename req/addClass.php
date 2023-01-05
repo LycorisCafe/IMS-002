@@ -87,11 +87,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <div class="input-group mb-3">
                                 <input type="text" placeholder="HH" class="form-control" aria-label="Text input with dropdown button" name="h">
                                 <input type="text" placeholder="MM" class="form-control" aria-label="Text input with dropdown button" name="m">
-                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">AM/PM</button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#" name="am">AM</a></li>
-                                    <li><a class="dropdown-item" href="#" name="pm">PM</a></li>
-                                </ul>
                                 <select class="dropdown-menu dropdown-menu-end" name='a_p'>
                                     <option value='AM'>AM</option>
                                     <option value='PM'>PM</option>
