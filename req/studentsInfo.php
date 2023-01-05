@@ -1,6 +1,5 @@
 <?php
 session_start();
-setcookie("data-bs-theme", "dark", time() + 1814400);
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
@@ -25,11 +24,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         <div class="container">
             <br>
-            <form class="d-flex mb-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+            <form class="d-flex mb-3" role="search" method="POST" onsubmit="drawChart();" method="studentsInfo.php">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="std_id">
+                <button class="btn btn-outline-success" type="submit" name="search">Search</button>
+                <button class="btn btn-outline-warning" type="reset" name="reset">Reset</button>
             </form>
-        </div>
+        </div><br/>
+
+        <?php include 'loadtoStdInfo.php'; ?>
 
         <?php include 'footer.php'; ?>
     </body>
