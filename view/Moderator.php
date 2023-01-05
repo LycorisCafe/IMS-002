@@ -142,9 +142,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<hr>
 						<div class="form-check text-start">
 							<input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
-							<label class="form-check-label" for="flexCheckChecked">
-								Day 2 Day Paper
-							</label>
+							<label class="form-check-label" for="flexCheckChecked">Day 2 Day Paper</label>
 							<?php
 							$date = date("Y-m-d");
 							// echo "<script>alert('Attendance Marked!');</script>";
@@ -155,7 +153,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									$date = date("Y-m-d");
 									$isDone = $_POST['day2day'];
 									include_once '../connection.php';
-									
+									$p = $_POST['paid'];
 									$sql3 = "SELECT * FROM regClass WHERE studentId='$id3'";
 									$result3 = mysqli_query($con, $sql3);
 									$row3 = mysqli_fetch_assoc($result3);
@@ -171,6 +169,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										$result5 = mysqli_query($con, $sql5);
 										if($result5)
 										{
+											$sql6 = ""
 											echo "<script>alert('Attendance Marked!');</script>";
 											header("Refresh:0; url=Moderator.php");
 										}
@@ -181,6 +180,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									}
 								}
 							?>
+						</div>
+						<div class="form-check text-start">
+							<input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='paid'>
+							<label class="form-check-label" for="flexCheckChecked">Paid/ Not Paid</label>
 						</div>
 						<div class="d-grid gap-2">
 							<input class="btn btn-primary" type="submit" name='finals' value='Mark as Attend!'>
@@ -225,11 +228,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						}else{
 							// $calendar->add_event('Not Attended', $day, 1, 'red');
 						}
-						// SELECT * FROM attendance WHERE '2022-12-01' <= date_ and date_ <= '2022-12-31' AND regclassId='T23774';
-
-					// $calendar->add_event('Birthday', '2022-12-03', 1, 'green');
-					// $calendar->add_event('Doctors', '2022-12-04', 1, 'red');
-					// $calendar->add_event('Holiday', '2022-12-16', 7);
 				?>
 				<nav class="navtop">
 					<div>

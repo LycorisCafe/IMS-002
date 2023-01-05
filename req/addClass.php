@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $city = $_POST['city'];
         $al_year = $_POST['al_year'];
         $day = $_POST['day'];
-        $time = strtotime($_POST['h'] . ":" . $_POST['m'] ." ". $_POST['a_p']);
+        $time = $_POST['h'] . ":" . $_POST['m'] ." ". $_POST['a_p'];
 
         // db connection
         include_once '../connection.php';
@@ -77,7 +77,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 <option value='2'>Tuesday</option>
                                 <option value='3'>Wednesdy</option>
                                 <option value='4'>Thursday</option>
-                                <option value='5'>Froday</option>
+                                <option value='5'>Friday</option>
                                 <option value='6'>Saturday</option>
                                 <option value='7'>Sunday</option>
                             </select>
