@@ -26,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	<body>
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
-			<a href="index.html"><em>SFT</em> තක්සලාව</a>
+			<a href="index.php"><em>SFT</em> තක්සලාව</a>
 		</div>
 		<a href="" class="menu-link"><i class="fa fa-bars"></i></a>
 		<nav id="menu" class="main-nav" role="navigation">
