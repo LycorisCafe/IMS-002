@@ -131,7 +131,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<hr style="border: 2px solid red;"><br />
 				<h1 class="display-4">Student Information</h1><br />
 
-				<form class="d-flex" role="search" action="Admin.php" method="POST">
+				<form class="d-flex" role="search" action="Admin.php" method="POST" onclick="drawChart();">
 					<?php if (isset($_GET['error'])) { ?>
 						<div class='alert alert-danger' role='alert'>
 							<?= $_GET['error'] ?>
@@ -241,21 +241,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 				<br />
-				<h1 class="display-6">Latest Exam Result (Last Day)</h1><br />
-				<?php
-				if (isset($_POST['search'])) {
-					$month = date("m");
-					$std_id = $_POST['std_id'];
-					$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-					$result7 = mysqli_query($con, $sql7);
-					if(mysqli_num_rows($result7) > 0) {
-						$row7 = mysqli_fetch_assoc($result7);
-						$regClassid = $row7['id'];
-						$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
-						$result8 = mysqli_query($con, $sql8);
+				<div class="container">
+					<h1 class="display-6">Latest Exam Result (Last Day)</h1><br />
+					<?php
+					if (isset($_POST['search'])) {
+						$month = date("m");
+						$std_id = $_POST['std_id'];
+						$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+						$result7 = mysqli_query($con, $sql7);
+						if(mysqli_num_rows($result7) > 0) {
+							$row7 = mysqli_fetch_assoc($result7);
+							$regClassid = $row7['id'];
+							$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+							$result8 = mysqli_query($con, $sql8);
+						}
 					}
-				}
-				?>
+					?>
+				</div>
+				
 				<div class="container">
 					<h1 class="display-6">Exam History (This Month)</h1><br />
 					<table class="table table-striped">
@@ -296,7 +299,61 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							}
 							?>
 						</tbody>
-					</table>
+					</table><br><br>
+				</div>
+				<h1 class="display-6">Progress Analysis (This Month)</h1><br />
+			<div class="container">
+
+			<div id="curve_chart"></div>
+
+				<br><br>
+				
+				<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+				<script type="text/javascript">
+					
+					google.charts.load('current', {'packages':['corechart']});
+				    google.charts.setOnLoadCallback(drawChart);
+
+				      function drawChart() {
+				        var data = google.visualization.arrayToDataTable([
+				          ['Month', 'Marks'],
+				          <?php
+							if(isset($_POST['search'])) {
+								//$date = array();
+								//$marks = array();
+								$data = array();
+								$firstDay = date('Y-m-01');
+								$lastDay = date('Y-m-t');
+								$std_id = $_POST['std_id'];
+								$sql9 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+								$result9 = mysqli_query($con, $sql9);
+								if(mysqli_num_rows($result9) > 0) {
+									$row9 = mysqli_fetch_assoc($result9);
+									$regClassid = $row5['id'];
+									$sql10 = "SELECT * FROM exam WHERE '$firstDay' <= date and date <= '$lastDay' AND regclassID='$regClassid'";
+									$result10 = mysqli_query($con, $sql10);
+									while ($row10 = mysqli_fetch_assoc($result10)) {
+										echo "['".$row10['date']."', ".$row10['marks']."],";
+									}
+								}
+							}
+						?>
+				        ]);
+
+				        var options = {
+				          title: 'Student Progress',
+				          curveType: 'function',
+				          legend: { position: 'bottom' }
+				        };
+
+				        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+				        chart.draw(data, options);
+				      }
+
+				</script>
+				
+				<div id="curve_chart" style="width: 100%; height: 50%;"></div>
 				</div>
 			</div>
 
