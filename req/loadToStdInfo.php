@@ -4,7 +4,7 @@
 							<div class="card">
 								<div class="row">
 									<div class="col-4">
-										<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+										<img src="../Media/dummy.jpg" class="img-fluid rounded-start" alt="..." width="320" height="320">
 									</div>
 									<div class="col-8">
 										<div class="card-body">
@@ -82,6 +82,68 @@
 														echo $institute;
 													} else {
 														echo "No records";
+													}
+												}
+												?>
+											</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-4 p-1 d-flex">
+							<div class="card">
+								<div class="row">
+									<div class="col-4">
+										<img src="../Media/dummy.jpg" class="img-fluid rounded-start" alt="..." width="320" height="320">
+										<a href="https://www.flaticon.com/free-icons/exam" title="exam icons">Exam icons created by Freepik - Flaticon</a>
+									</div>
+									<div class="col-8">
+										<div class="card-body">
+											<h3 class="card-title">Birthday</h3>
+											<h5 class="card-subtitle mb-2 text-muted">
+												<?php
+												if (isset($_POST['search'])) {
+													require_once '../connection.php';
+													$std_id = $_POST['std_id'];
+													$sql13 = "SELECT DOB FROM students WHERE id='$std_id'";
+													$result9 = mysqli_query($con, $sql13);
+													if(mysqli_num_rows($result13) > 0) {
+														$row13 = mysqli_fetch_assoc($result9);
+														$name = $row13['fname'] . " " . $row13['lname'];
+														echo $name;
+													} else {
+														echo "No Records";
+													}
+												}
+												?>
+											</h5>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-lg-4 p-1 d-flex">
+							<div class="card">
+								<div class="row">
+									<div class="col-4">
+										<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+									</div>
+									<div class="col-8">
+										<div class="card-body">
+											<h3 class="card-title">Addmission No.</h3>
+											<h5 class="card-subtitle mb-2 text-muted">
+												<?php
+												if (isset($_POST['search'])) {
+													$std_id = $_POST['std_id'];
+													$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
+													$result11 = mysqli_query($con, $sql11);
+													if(mysqli_num_rows($result11) > 0) {
+														$row11 = mysqli_fetch_assoc($result11);
+														$admissionNo = $row11['admissionNo'];
+														echo $admissionNo;
+													} else {
+														echo "No Records";
 													}
 												}
 												?>

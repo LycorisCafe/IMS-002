@@ -41,6 +41,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $temp = $_FILES['pic'] ['tmp_name'];
         $error = $_FILES['pic'] ['error'];
 
+        if(!file_exists("../uploads")) {
+            mkdir("../uploads", 0777, true);
+        }
+
         if($error > 0)
         {
             $temp2 = explode(".", $name);

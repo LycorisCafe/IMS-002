@@ -429,6 +429,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			        renderCalendar(); // calling renderCalendar function
 			    });
 			});
+			
 		</script>
 	<?php include '../req/footer.php'; ?>
   </body>

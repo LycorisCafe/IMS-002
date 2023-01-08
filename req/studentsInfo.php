@@ -21,11 +21,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
     <body>
         <?php require_once "navbar.php"; ?>
-
+        <h1 class="display-2 text-center">Student Details</h1>
         <div class="container">
             <br>
             <form class="d-flex mb-3" role="search" method="POST" onsubmit="drawChart();" method="studentsInfo.php">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="std_id">
+                <input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id">
                 <button class="btn btn-outline-success" type="submit" name="search">Search</button>
                 <button class="btn btn-outline-warning" type="reset" name="reset">Reset</button>
             </form>
