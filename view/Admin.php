@@ -72,7 +72,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<h5><?php echo $_SESSION['name']; ?>,<strong><span style="color:#cf4ed4;"> Welcome back! </span></strong><br />
 			</h5>
 			<hr style="border: 2px solid red;"><br />
-
+			
 			<h1 class="display-4">Registered Classes</h1><br />
 			<div class="bd-example-snippet bd-code-snippet">
 				<div class="bd-example">
@@ -179,7 +179,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="card">
 								<div class="row">
 									<div class="col-4">
-										<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+										<img src="../Media/images/id-card.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
 									</div>
 									<div class="col-8">
 										<div class="card-body">
