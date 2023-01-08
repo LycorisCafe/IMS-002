@@ -10,8 +10,7 @@ Institute Management System
 > Project Details :
 - For : Mr. Prasath Wickramasinghe
 - Start Date : 28.12.2022
-- Targeted Release Date : 07.01.2023
-- Project Progress : 97%
+- Targeted Release Date : 21.01.2023
+- Project Progress : 81%
 - Release Date : pending...
-- Final Date : pending...
 - Total Project Duration : pending...
