@@ -1,6 +1,5 @@
 <?php
 session_start();
-setcookie("data-bs-theme", "dark", time() + 1814400);
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 	<!doctype html>
@@ -72,7 +71,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<h5><?php echo $_SESSION['name']; ?>,<strong><span style="color:#cf4ed4;"> Welcome back! </span></strong><br />
 			</h5>
 			<hr style="border: 2px solid red;"><br />
-			
+
 			<h1 class="display-4">Registered Classes</h1><br />
 			<div class="bd-example-snippet bd-code-snippet">
 				<div class="bd-example">
