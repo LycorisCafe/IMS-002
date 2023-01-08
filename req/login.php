@@ -81,9 +81,13 @@ if(isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role']))
                             exit;
                      }
                  }
-			 		}
+			 } else {
+                $em = "Account not found!";
+                header("Location: ../login.php?error=$em");
+                exit;
 			 		
     }
+             }
 }
 else
 {

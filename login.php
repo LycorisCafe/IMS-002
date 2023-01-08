@@ -5,7 +5,7 @@
 ?>
 
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 		<head>
 				<meta charset="utf-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
 				<link rel="icon" type="image/x-icon" href="Media/favicon.png">
 				<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 				<link rel="stylesheet" href="css/fonts.css">
-				<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+				<!-- <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 				<link rel="stylesheet" href="css/temp.css">
 				<script src="fontawesome.com.js" crossorigin="anonymous"></script>
 				<style>

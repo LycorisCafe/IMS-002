@@ -6,7 +6,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 	<!doctype html>
-	<html lang="en" data-bs-theme="dark">
+	<html lang="en" data-bs-theme="light">
 
 	<head>
 		<meta charset="utf-8">
@@ -21,7 +21,111 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css">   <!-- CSS for the calendar body -->
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
 
-		
+		<style type="text/css">
+			/* Import Google font - Poppins */
+			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+			*{
+			  margin: 0;
+			  padding: 0;
+			  box-sizing: border-box;
+			  font-family: 'Poppins', sans-serif;
+			}
+			body{
+			  display: flex;
+			  align-items: center;
+			  padding: 0 10px;
+			  justify-content: center;
+			  min-height: 100vh;
+			  background: #9B59B6;
+			}
+			.wrapper{
+			  width: 450px;
+			  background: #fff;
+			  border-radius: 10px;
+			  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+			}
+			.wrapper header{
+			  display: flex;
+			  align-items: center;
+			  padding: 25px 30px 10px;
+			  justify-content: space-between;
+			}
+			header .icons{
+			  display: flex;
+			}
+			header .icons span{
+			  height: 38px;
+			  width: 38px;
+			  margin: 0 1px;
+			  cursor: pointer;
+			  color: #878787;
+			  text-align: center;
+			  line-height: 38px;
+			  font-size: 1.9rem;
+			  user-select: none;
+			  border-radius: 50%;
+			}
+			.icons span:last-child{
+			  margin-right: -10px;
+			}
+			header .icons span:hover{
+			  background: #f2f2f2;
+			}
+			header .current-date{
+			  font-size: 1.45rem;
+			  font-weight: 500;
+			}
+			.calendar{
+			  padding: 20px;
+			}
+			.calendar ul{
+			  display: flex;
+			  flex-wrap: wrap;
+			  list-style: none;
+			  text-align: center;
+			}
+			.calendar .days{
+			  margin-bottom: 20px;
+			}
+			.calendar li{
+			  color: #333;
+			  width: calc(100% / 7);
+			  font-size: 1.07rem;
+			}
+			.calendar .weeks li{
+			  font-weight: 500;
+			  cursor: default;
+			}
+			.calendar .days li{
+			  z-index: 1;
+			  cursor: pointer;
+			  position: relative;
+			  margin-top: 30px;
+			}
+			.days li.inactive{
+			  color: #aaa;
+			}
+			.days li.active{
+			  color: #fff;
+			}
+			.days li::before{
+			  position: absolute;
+			  content: "";
+			  left: 50%;
+			  top: 50%;
+			  height: 40px;
+			  width: 40px;
+			  z-index: -1;
+			  border-radius: 50%;
+			  transform: translate(-50%, -50%);
+			}
+			.days li.active::before{
+			  background: #9B59B6;
+			}
+			.days li:not(.active):hover::before{
+			  background: #f2f2f2;
+			}
+		</style>
 
 	</head>
 
@@ -41,7 +145,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</ul>
 		</nav>
 	</header>
-		<br><br>
+		<br><br><br><br><br><br>
 		<div class="text-center">
 			<h1 class="display-6">SFT තක්සලාව</h1>
 			<h6>Moderator Panel</h6>
@@ -169,7 +273,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										$result5 = mysqli_query($con, $sql5);
 										if($result5)
 										{
-											$sql6 = ""
+											// $sql6 = "SELECT COUNT(*) ";
 											echo "<script>alert('Attendance Marked!');</script>";
 											header("Refresh:0; url=Moderator.php");
 										}
@@ -206,7 +310,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						$sys_year = date("Y");
 						$firstDay = date('Y-m-01');
 						$lastDay = date('Y-m-t');
-						$calendar = new Calendar($fulldate);
+						//$calendar = new Calendar($fulldate);
 						$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
 						$result5 = mysqli_query($con, $sql5);
 						$row5 = mysqli_fetch_assoc($result5);
@@ -214,14 +318,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						
 						$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
 						$result6 = mysqli_query($con, $sql6);
-						if(mysqli_num_rows($result6) > 0){
+						if(mysqli_num_rows($result6) > 0) {
 							while($row6 = mysqli_fetch_assoc($result6)){
 									$date = $row6['date_'];
 									$d2d_done = $row6['d2d'];
 									if($d2d_done == '1'){
-										$calendar->add_event('Attended, D2D', $date, 1, 'green');
+										//$calendar->add_event('Attended, D2D', $date, 1, 'green');
 									}else{
-										$calendar->add_event('Attended', $date, 1, 'orange');
+										//$calendar->add_event('Attended', $date, 1, 'orange');
 									}
 								}
 							}
@@ -234,16 +338,98 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<h1>Day to Day Paper</h1>
 					</div>
 				</nav>
-				<div class="content home">
-					 <?php if(isset($_POST['submit'])) { echo $calendar; } ?>
+				<!-- <div class="content home"> -->
+					 <?php //if(isset($_POST['submit'])) { echo $calendar; } ?>
+					 <div class="wrapper">
+				      <header>
+				        <p class="current-date"></p>
+				        <div class="icons">
+				          <span id="prev" class="material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+  <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
+</svg></span>
+          <span id="next" class="material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+  <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+</svg></span>
+				        </div>
+				      </header>
+				      <div class="calendar">
+				        <ul class="weeks">
+				          <li>Sun</li>
+				          <li>Mon</li>
+				          <li>Tue</li>
+				          <li>Wed</li>
+				          <li>Thu</li>
+				          <li>Fri</li>
+				          <li>Sat</li>
+				        </ul>
+				        <ul class="days"></ul>
+				      </div>
+				    </div>
 				</div>
-			</div>
+			<!-- </div> --></div></div>
 		<br><br>
 		<br><br>
 
 		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../js/isotope.min.js"></script>
-	<script src="../js/sftthaksalawacustom.js"></script>
+		<script src="../js/sftthaksalawacustom.js"></script>
+		<script type="text/javascript">
+			const daysTag = document.querySelector(".days"),
+			currentDate = document.querySelector(".current-date"),
+			prevNextIcon = document.querySelectorAll(".icons span");
+
+			// getting new date, current year and month
+			let date = new Date(),
+			currYear = date.getFullYear(),
+			currMonth = date.getMonth();
+
+			// storing full name of all months in array
+			const months = ["January", "February", "March", "April", "May", "June", "July",
+			              "August", "September", "October", "November", "December"];
+
+			const renderCalendar = () => {
+			    let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
+			    lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
+			    lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
+			    lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
+			    let liTag = "";
+
+			    for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
+			        liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
+			    }
+
+			    for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
+			        // adding active class to li if the current day, month, and year matched
+			        let isToday = i === date.getDate() && currMonth === new Date().getMonth() 
+			                     && currYear === new Date().getFullYear() ? "active" : "";
+			        liTag += `<li class="${isToday}">${i}</li>`;
+			    }
+
+			    for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
+			        liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
+			    }
+			    currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
+			    daysTag.innerHTML = liTag;
+			}
+			renderCalendar();
+
+			prevNextIcon.forEach(icon => { // getting prev and next icons
+			    icon.addEventListener("click", () => { // adding click event on both icons
+			        // if clicked icon is previous icon then decrement current month by 1 else increment it by 1
+			        currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
+
+			        if(currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
+			            // creating a new date of current year & month and pass it as date value
+			            date = new Date(currYear, currMonth);
+			            currYear = date.getFullYear(); // updating current year with new date year
+			            currMonth = date.getMonth(); // updating current month with new date month
+			        } else {
+			            date = new Date(); // pass the current date as date value
+			        }
+			        renderCalendar(); // calling renderCalendar function
+			    });
+			});
+		</script>
 	<?php include '../req/footer.php'; ?>
   </body>
 </html>

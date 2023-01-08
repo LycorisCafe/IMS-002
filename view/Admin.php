@@ -283,7 +283,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						</tbody>
 					</table><br>
 				</div>
-		</div></div>
+		</div>
+		<a href="../req/studentsInfo.php" class="btn btn-primary">See more details</a>
+	</div>
 		<?php include '../req/footer.php'; ?>
 	</body>
 
