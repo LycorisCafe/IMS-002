@@ -38,7 +38,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     exit;
                 }
             }else {
-                $em = "$acc_name is already exists!";
+                $em = "$acc_name is already exist!";
                 header("Location: accounts.php?error=$em");
                 exit;
             }
@@ -48,12 +48,45 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 <body>
     <!-- Imports -->
     <?php require_once "navbar.php"; ?>
+    <h1 class="display-2 text-center">User Accounts</h1><br/>
+    <div class="container">
+					<h1 class="display-6">Registered Accounts (without Admin)</h1><br />
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Name</th>
+								<th scope="col">Username</th>
+								<th scope="col">Last Login</th>
+							</tr>
+						</thead>
+						<tbody>
+							<?php
+                                include_once "../connection.php";
+                                $sql3 = "SELECT name, username, lastLogin FROM login WHERE type='User'";
+                                $result3 = mysqli_query($con, $sql3);
+                                if (mysqli_num_rows($result3) > 0) {
+                                    while ($row3 = mysqli_fetch_assoc($result3)) {
+                                        $name = $row3['name'];
+                                        $username = $row3['username'];
+                                        $lastLogin = $row3['lastLogin'];
 
+                                        echo "<tr>";
+                                            echo "<td>$name</td>";
+                                            echo "<td>$username</td>";
+                                            echo "<td>$lastLogin</td>";
+                                        echo "</tr>";
+                                    }
+                                }
+							?>
+						</tbody>
+					</table><br>
+				</div><br/>
+    <h1 class="display-6 container">Add new Account</h1><br />
     <div class="container col-lg-4 col-md-5 align-self-center">
-                        <div class="card" style="transform: translate(0%, 20%);">
-                                <div class="card-header text-center">
+                        <div class="card" style="transform: translate(0%, 5%);">
+                                <!-- <div class="card-header text-center">
                                         <h3 class='display-5' style='color: #fff;'>New Account</h3>
-                                </div>
+                                </div> -->
                                 <div class="card-body">
                                         <form action="accounts.php"  method="POST">
                                         <?php if(isset($_GET['error'])) { ?>
@@ -79,7 +112,46 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                 </div>
                                         </form>
                                 </div>
-                        </div><br><br><br>
+                        </div><br><br><br></div>
+    
+    <?php                                            
+        if(isset($_POST['delete'])) {
+            $usrname = $_POST['account'];
+            include_once '../connection.php';
+            $sql5 = "SELECT * FROM login WHERE username='$usrname'";
+            $result5 = mysqli_query($con, $sql5);
+            if(mysqli_num_rows($result5) > 0) {
+                $sql6 = "DELETE FROM login WHERE username='$usrname'";
+                $result6 = mysqli_query($con, $sql6);
+                if($result6) {
+                    echo "<script>alert('Account Deleted!');</script>";
+                } else {
+                    $em = "Error Deleting account: $acc_name!";
+                    header("Location: accounts.php?error=$em");
+                    exit;
+                }
+            }
+        }
+    ?>
+
+    <div class="container">
+        <h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
+        <form class="d-flex mb-3" role="delteAcc" method="POST" action="accounts.php">
+				<label class="form-label">Institute: </label>
+				<select class="form-control" name='account'>
+					<?php
+						include_once '../connection.php';
+						$sql4 = "SELECT username, name FROM login WHERE type='User'";
+						$result4 = mysqli_query($con, $sql4);
+						while($ri = mysqli_fetch_assoc($result4)) { 
+					?>
+					<option value="<?php echo $ri['username'] ?>"><?php echo $ri['username']. " - " .$ri['name'] ?></option>
+					<?php } ?>
+				</select>
+
+				<button class="btn btn-outline-danger" type="submit" name="delete">Delete</button>
+			</form>
+    </div>
 
 <?php include 'footer.php'; ?>
 </body>

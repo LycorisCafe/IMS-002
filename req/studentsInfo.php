@@ -355,7 +355,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			?>
 
         <div class="container">
-            <h1 class="display-4 text-danger">Danger Zone</h1>
+            <h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
             <form class="d-flex mb-3" role="delete" action="studentsInfo.php" method="POST">
                 <div class="d-grid gap-2"><br>
                     <button class="btn btn-outline-danger" type="submit" name="delete">Remove from Class</button>
