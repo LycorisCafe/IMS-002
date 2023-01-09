@@ -124,6 +124,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			.days li:not(.active):hover::before{
 			  background: #f2f2f2;
 			}
+
+			.Daytoday{
+				position:relative;
+				left:0;
+			}
+
+		
+			.abs {
+  				position: absolute;
+}
+.rel {
+  position: relative;
+}
 		</style>
 
 	</head>
@@ -144,14 +157,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</ul>
 		</nav>
 	</header>
-		<br><br><br><br><br><br>
-		<div class="text-center">
-			<h1 class="display-6">SFT තක්සලාව</h1>
-			<h6>Moderator Panel</h6>
-		</div>
+		
+		
 
 		<br><br>
 		<div class="container col-lg-6">
+		<br><br><br><br><br><br>
+		<div class="modtext text-center">
+			<h1 class="display-6">SFT තක්සලාව</h1>
+			<h6>Moderator Panel</h6>
+		</div>
 				<div class="card text-center">
 					<div class="card-header">
 						<h4 class='display-6' style='color: #000;'>Attendane Marking</h4>
@@ -294,10 +309,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					</div>
 				</div>
 			</form>
-		</div>
+		<!-- </div> -->
 		<hr style="border: 2px solid red;">
 		<!-- CAALENDAR AREA -->
-			<div class="container">
+			<!-- <div class="container"> -->
 				<?php
 					if(isset($_POST['submit'])) {
 						$std_id = $_SESSION['id3'];
@@ -332,17 +347,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							// $calendar->add_event('Not Attended', $day, 1, 'red');
 						}
 				?>
-				<nav class="navtop">
-					<div>
-						<h1>Day to Day Paper</h1>
+				<nav class="nav-justified bg-dark ">
+					<div  class = "Daytoday text-center">
+						<h1 class='display-6' style='color: #FFFFFF;' >Day to Day Paper</h1>
 					</div>
 				</nav>
 				<!-- <div class="content home"> -->
 					 <?php //if(isset($_POST['submit'])) { echo $calendar; } ?>
 					 <div class="wrapper">
 				      <header>
-				        <p class="current-date"></p>
-				        <div class="icons">
+				        <p class="current-date d-flex justify-content-center"></p>
+				        <div class="icons ral">
 				          <span id="prev" class="material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
   <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z"/>
 </svg></span>
@@ -351,8 +366,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 </svg></span>
 				        </div>
 				      </header>
-				      <div class="calendar">
-				        <ul class="weeks">
+				      <div class="calendar ral">
+				        <ul class="weeks ral">
 				          <li>Sun</li>
 				          <li>Mon</li>
 				          <li>Tue</li>
