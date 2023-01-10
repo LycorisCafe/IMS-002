@@ -19,147 +19,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="../req/calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
-
-		<!-- <style type="text/css">
-			/* Import Google font - Poppins */
-			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-				font-family: 'Poppins', sans-serif;
-			}
-
-			body {
-				display: flex;
-				align-items: center;
-				padding: 0 10px;
-				justify-content: center;
-				min-height: 100vh;
-				background: #9B59B6;
-			}
-
-			.wrapper {
-				width: 450px;
-				background: #fff;
-				border-radius: 10px;
-				box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
-			}
-
-			.wrapper header {
-				display: flex;
-				align-items: center;
-				padding: 25px 30px 10px;
-				justify-content: space-between;
-			}
-
-			header .icons {
-				display: flex;
-			}
-
-			header .icons span {
-				height: 38px;
-				width: 38px;
-				margin: 0 1px;
-				cursor: pointer;
-				color: #878787;
-				text-align: center;
-				line-height: 38px;
-				font-size: 1.9rem;
-				user-select: none;
-				border-radius: 50%;
-			}
-
-			.icons span:last-child {
-				margin-right: -10px;
-			}
-
-			header .icons span:hover {
-				background: #f2f2f2;
-			}
-
-			header .current-date {
-				font-size: 1.45rem;
-				font-weight: 500;
-			}
-
-			.calendar {
-				padding: 20px;
-			}
-
-			.calendar ul {
-				display: flex;
-				flex-wrap: wrap;
-				list-style: none;
-				text-align: center;
-			}
-
-			.calendar .days {
-				margin-bottom: 20px;
-			}
-
-			.calendar li {
-				color: #333;
-				width: calc(100% / 7);
-				font-size: 1.07rem;
-			}
-
-			.calendar .weeks li {
-				font-weight: 500;
-				cursor: default;
-			}
-
-			.calendar .days li {
-				z-index: 1;
-				cursor: pointer;
-				position: relative;
-				margin-top: 30px;
-			}
-
-			.days li.inactive {
-				color: #aaa;
-			}
-
-			.days li.active {
-				color: #fff;
-			}
-
-			.days li::before {
-				position: absolute;
-				content: "";
-				left: 50%;
-				top: 50%;
-				height: 40px;
-				width: 40px;
-				z-index: -1;
-				border-radius: 50%;
-				transform: translate(-50%, -50%);
-			}
-
-			.days li.active::before {
-				background: #9B59B6;
-			}
-
-			.days li:not(.active):hover::before {
-				background: #f2f2f2;
-			}
-
-			.Daytoday {
-				position: relative;
-				left: 0;
-			}
-
-
-			.abs {
-				position: absolute;
-			}
-
-			.rel {
-				position: relative;
-			}
-		</style> -->
-
 	</head>
 
 	<body>
@@ -330,7 +189,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 			</div>
 			</form>
-			<!-- </div> -->
+			</div>
 			<hr style="border: 2px solid red;">
 			<!-- CAALENDAR AREA -->
 			<div class="container">
@@ -369,13 +228,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			}
 			?>
 			<nav class="navtop">
-					<div>
-						<h1>Day to Day Paper</h1>
+				<div>
+					<h1>Day to Day Paper</h1>
 				</div>
 			</nav>
-			 <div class="content home">
-			<?php if(isset($_POST['submit'])) { echo $calendar; } 
-			?>
+			<div class="content home">
+			<?php if(isset($_POST['submit'])) { echo $calendar; } ?>
 		</div></div>
 		</div>
 		<br><br>
