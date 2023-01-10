@@ -1,4 +1,4 @@
-/* .calendar {
+ .calendar {
     display: flex;
     flex-flow: column;
 }
@@ -76,4 +76,4 @@
 .calendar .days .day_num.selected {
     background-color: #f1f2f3;
     cursor: inherit;
-} */
+}

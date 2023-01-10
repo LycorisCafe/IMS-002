@@ -20,7 +20,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
 
-		<style type="text/css">
+		<!-- <style type="text/css">
 			/* Import Google font - Poppins */
 			@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
@@ -158,7 +158,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			.rel {
 				position: relative;
 			}
-		</style>
+		</style> -->
 
 	</head>
 
@@ -333,7 +333,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<!-- </div> -->
 			<hr style="border: 2px solid red;">
 			<!-- CAALENDAR AREA -->
-			<!-- <div class="container"> -->
+			<div class="container">
 			<?php
 			if (isset($_POST['submit'])) {
 				$std_id = $_SESSION['id3'];
@@ -345,7 +345,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$sys_year = date("Y");
 				$firstDay = date('Y-m-01');
 				$lastDay = date('Y-m-t');
-				//$calendar = new Calendar($fulldate);
+				$calendar = new Calendar($fulldate);
 				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
 				$result5 = mysqli_query($con, $sql5);
 				$row5 = mysqli_fetch_assoc($result5);
@@ -358,9 +358,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						$date = $row6['date_'];
 						$d2d_done = $row6['d2d'];
 						if ($d2d_done == '1') {
-							//$calendar->add_event('Attended, D2D', $date, 1, 'green');
+							$calendar->add_event('Attended, D2D', $date, 1, 'green');
 						} else {
-							//$calendar->add_event('Attended', $date, 1, 'orange');
+							$calendar->add_event('Attended', $date, 1, 'orange');
 						}
 					}
 				}
@@ -368,41 +368,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				// $calendar->add_event('Not Attended', $day, 1, 'red');
 			}
 			?>
-			<nav class="nav-justified bg-dark ">
-				<div class="Daytoday text-center">
-					<h1 class='display-6' style='color: #FFFFFF;'>Day to Day Paper</h1>
+			<nav class="navtop">
+					<div>
+						<h1>Day to Day Paper</h1>
 				</div>
 			</nav>
-			<!-- <div class="content home"> -->
-			<?php //if(isset($_POST['submit'])) { echo $calendar; } 
+			 <div class="content home">
+			<?php if(isset($_POST['submit'])) { echo $calendar; } 
 			?>
-			<div class="wrapper">
-				<header>
-					<p class="current-date d-flex justify-content-center"></p>
-					<div class="icons ral">
-						<span id="prev" class="material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
-								<path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
-							</svg></span>
-						<span id="next" class="material-symbols-rounded"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-								<path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
-							</svg></span>
-					</div>
-				</header>
-				<div class="calendar ral">
-					<ul class="weeks ral">
-						<li>Sun</li>
-						<li>Mon</li>
-						<li>Tue</li>
-						<li>Wed</li>
-						<li>Thu</li>
-						<li>Fri</li>
-						<li>Sat</li>
-					</ul>
-					<ul class="days"></ul>
-				</div>
-			</div>
-		</div>
-		<!-- </div> --></div>
+		</div></div>
 		</div>
 		<br><br>
 		<br><br>
@@ -410,64 +384,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="../js/isotope.min.js"></script>
 		<script src="../js/sftthaksalawacustom.js"></script>
-		<script type="text/javascript">
-			const daysTag = document.querySelector(".days"),
-				currentDate = document.querySelector(".current-date"),
-				prevNextIcon = document.querySelectorAll(".icons span");
-
-			// getting new date, current year and month
-			let date = new Date(),
-				currYear = date.getFullYear(),
-				currMonth = date.getMonth();
-
-			// storing full name of all months in array
-			const months = ["January", "February", "March", "April", "May", "June", "July",
-				"August", "September", "October", "November", "December"
-			];
-
-			const renderCalendar = () => {
-				let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), // getting first day of month
-					lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), // getting last date of month
-					lastDayofMonth = new Date(currYear, currMonth, lastDateofMonth).getDay(), // getting last day of month
-					lastDateofLastMonth = new Date(currYear, currMonth, 0).getDate(); // getting last date of previous month
-				let liTag = "";
-
-				for (let i = firstDayofMonth; i > 0; i--) { // creating li of previous month last days
-					liTag += `<li class="inactive">${lastDateofLastMonth - i + 1}</li>`;
-				}
-
-				for (let i = 1; i <= lastDateofMonth; i++) { // creating li of all days of current month
-					// adding active class to li if the current day, month, and year matched
-					let isToday = i === date.getDate() && currMonth === new Date().getMonth() &&
-						currYear === new Date().getFullYear() ? "active" : "";
-					liTag += `<li class="${isToday}">${i}</li>`;
-				}
-
-				for (let i = lastDayofMonth; i < 6; i++) { // creating li of next month first days
-					liTag += `<li class="inactive">${i - lastDayofMonth + 1}</li>`
-				}
-				currentDate.innerText = `${months[currMonth]} ${currYear}`; // passing current mon and yr as currentDate text
-				daysTag.innerHTML = liTag;
-			}
-			renderCalendar();
-
-			prevNextIcon.forEach(icon => { // getting prev and next icons
-				icon.addEventListener("click", () => { // adding click event on both icons
-					// if clicked icon is previous icon then decrement current month by 1 else increment it by 1
-					currMonth = icon.id === "prev" ? currMonth - 1 : currMonth + 1;
-
-					if (currMonth < 0 || currMonth > 11) { // if current month is less than 0 or greater than 11
-						// creating a new date of current year & month and pass it as date value
-						date = new Date(currYear, currMonth);
-						currYear = date.getFullYear(); // updating current year with new date year
-						currMonth = date.getMonth(); // updating current month with new date month
-					} else {
-						date = new Date(); // pass the current date as date value
-					}
-					renderCalendar(); // calling renderCalendar function
-				});
-			});
-		</script>
 		<?php include '../req/footer.php'; ?>
 	</body>
 
