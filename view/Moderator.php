@@ -145,7 +145,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='day2day'>
 							<label class="form-check-label" for="flexCheckChecked">Day 2 Day Paper</label>
 							<?php
-							$date = date("Y-m-d");
+							$year = date("Y");
+							$month = date("m");
 							// echo "<script>alert('Attendance Marked!');</script>";
 							// header("Refresh:0; url=Moderator.php");
 							if (isset($_POST['finals'])) {
@@ -167,9 +168,37 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									$sql5 = "INSERT INTO attendance (regclassId, date_, d2d) VALUES ('$regClassId', '$date', '$isDone')";
 									$result5 = mysqli_query($con, $sql5);
 									if ($result5) {
-										// $sql6 = "SELECT COUNT(*) ";
-										echo "<script>alert('Attendance Marked!');</script>";
-										header("Refresh:0; url=Moderator.php");
+										if ($p == 1) {
+											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='1'";
+											$result6 = mysqli_query($con, $sql6);
+											if(mysqli_num_rows($result6) == 0) {
+												$sql7 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '1')";
+												$result7 = mysqli_query($con, $sql7);
+												if($result7) {
+													echo "<script>alert('Attendance Marked!');</script>";
+													header("Refresh:0; url=Moderator.php");
+												}
+											} else {
+												$em = "Already paid the class fees!";
+												header("Location: Moderator.php?error=$em");
+												exit;
+											}
+										} else {
+											$sql8 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='0'";
+											$result8 = mysqli_query($con, $sql8);
+											if (mysqli_num_rows($result8) == 0) {
+												$sql9 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '0')";
+												$result9 = mysqli_query($con, $sql9);
+												if ($result9) {
+													echo "<script>alert('Attendance Marked!');</script>";
+													header("Refresh:0; url=Moderator.php");
+												}
+											} else {
+												$em = "Please Pay the Class Fees!";
+												header("Location: Moderator.php?error=$em");
+												exit;
+											}
+										}
 									}
 								} else {
 									$em = "Already marked the attendance!";
@@ -180,8 +209,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							?>
 						</div>
 						<div class="form-check text-start">
-							<input class="form-check-input" type="checkbox" value="1" id="flexCheckChecked" name='paid'>
-							<label class="form-check-label" for="flexCheckChecked">Paid/ Not Paid</label>
+							<input class="form-check-input" type="checkbox" value="1
+																			<?php
+																			// if (isset($_PoST['submit'])) {
+																			// 	include_once '../connection.php';
+																			// 	$sql11 = "SELECT status FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
+																			// 	$result11 = mysqli_query($con, $sql11);
+																			// 	if (mysqli_num_rows($result11) == 1) {
+																			// 		$s = mysqli_fetch_assoc($resul11);
+																			// 		echo $s;
+																			// 	} else {
+																			// 		echo '0';
+																			// 	}
+																			// }
+																			?>" id="fees" name='paid'>
+							<label class="form-check-label" for="fees">Paid/ Not Paid</label>
 						</div>
 						<div class="d-grid gap-2">
 							<input class="btn btn-primary" type="submit" name='finals' value='Mark as Attend!'>
@@ -189,10 +231,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 			</div>
 			</form>
-			</div>
-			<hr style="border: 2px solid red;">
-			<!-- CAALENDAR AREA -->
-			<div class="container">
+		</div>
+		<hr style="border: 2px solid red;">
+		<!-- CAALENDAR AREA -->
+		<div class="container">
 			<?php
 			if (isset($_POST['submit'])) {
 				$std_id = $_SESSION['id3'];
@@ -233,8 +275,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 			</nav>
 			<div class="content home">
-			<?php if(isset($_POST['submit'])) { echo $calendar; } ?>
-		</div></div>
+				<?php if (isset($_POST['submit'])) {
+					echo $calendar;
+				} ?>
+			</div>
+		</div>
 		</div>
 		<br><br>
 		<br><br>
