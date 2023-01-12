@@ -45,6 +45,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         }
     }
 ?>
+
 <body>
     <!-- Imports -->
     <?php require_once "navbar.php"; ?>
