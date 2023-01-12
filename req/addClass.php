@@ -243,6 +243,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 									$ins = $_POST['institute'];
 									$year = $_POST['year'];
+									$_SESSION['ins'] = $ins;
+									$_SESSION['year'] = $year;
 									$sql6 = "SELECT * FROM classes WHERE institute='$ins' AND al_year='$year'";
 									$result6 = mysqli_query($con, $sql6);
 									while ($row6 = mysqli_fetch_assoc($result6)) {
@@ -273,20 +275,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					</div>
 				</div>
 
-				<script type="text/javascript">
-					function confirmation() {
-						choice = confirm("Do you really want to remove this class from the Database?");
-						if (choice) {
-							<?php
-							$ins2 = $_POST['institute'];
-							$year2 = $_POST['year'];
-							include_once '../connection.php';
-							$sql8 = "DELETE FROM classes WHERE institute='$ins2' AND al_year='$year2'";
-							$result8 = mysqli_query($con, $sql8);
-							?>
-						}
+				<?php
+				if(isset($_POST['delete'])) {
+				include_once '../connection.php';
+					// $sid = $_SESSION['sid'];
+					$ins = $_SESSION['ins'];
+					$year = $_SESSION['year'];
+					$sql16 = "DELETE FROM classes WHERE institute='$ins' AND al_year='$year'";
+					if(mysqli_query($con, $sql16)) {
+						echo "<script>alert('Class Removed!');</script>";
+					} else {
+						echo "<script>alert('Error Removing Class');</script>";
 					}
-				</script>
+				}
+			?>
 
 				<form class="d-flex mb-3" role="delete" method="POST" onsubmit="confirmation();">
 					<div class="d-grid gap-2"><br>
