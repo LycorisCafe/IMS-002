@@ -29,12 +29,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 		// db connection
 		include_once '../connection.php';
-		$sql = "INSERT INTO classes (al_year,  day, time,institute, city) VALUES ('$al_year', '$day', '$time', '$insName', '$city')";
-		$result = mysqli_query($con, $sql);
-		if ($result) {
-			echo "<script>alert('New Class adding completed!');</script>";
+		$sql15 = "SELECT * FROM classes WHERE institute='$insName' AND al_year='$al_year'";
+		$result15 = mysqli_query($con, $sql15);
+		if (mysqli_num_rows($result15) == 0) {
+			$sql = "INSERT INTO classes (al_year,  day, time,institute, city) VALUES ('$al_year', '$day', '$time', '$insName', '$city')";
+			$result = mysqli_query($con, $sql);
+			if ($result) {
+				echo "<script>alert('New Class adding completed!');</script>";
+			} else {
+				$em = "Error adding new class";
+				header("Location: addClass.php?error=$em");
+				exit;
+			}
 		} else {
-			$em = "Error adding new class";
+			$em = "$al_year - $insName is already exist!";
 			header("Location: addClass.php?error=$em");
 			exit;
 		}
