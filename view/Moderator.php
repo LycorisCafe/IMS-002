@@ -209,20 +209,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							?>
 						</div>
 						<div class="form-check text-start">
-							<input class="form-check-input" type="checkbox" value="1
+							<input class="form-check-input" type="checkbox" value="1" id="fees" name='paid'
 																			<?php
-																			// if (isset($_PoST['submit'])) {
-																			// 	include_once '../connection.php';
-																			// 	$sql11 = "SELECT status FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
-																			// 	$result11 = mysqli_query($con, $sql11);
-																			// 	if (mysqli_num_rows($result11) == 1) {
-																			// 		$s = mysqli_fetch_assoc($resul11);
-																			// 		echo $s;
-																			// 	} else {
-																			// 		echo '0';
-																			// 	}
-																			// }
-																			?>" id="fees" name='paid'>
+																			if (isset($_PoST['submit'])) {
+																				include_once '../connection.php';
+																			 	$sql11 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
+																			 	$result11 = mysqli_query($con, $sql11);
+																			 	if (mysqli_num_rows($result11) > 0) {
+																			 		$s = mysqli_fetch_assoc($resul11);
+																			 		if($s['status'] == 1) {
+																						echo "checked";
+																					} else {
+																						// echo "checked";
+																					}
+															
+																				}
+																			}
+																			?>>
 							<label class="form-check-label" for="fees">Paid/ Not Paid</label>
 						</div>
 						<div class="d-grid gap-2">
