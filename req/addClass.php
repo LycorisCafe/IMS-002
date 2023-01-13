@@ -284,19 +284,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 
 				<?php
-				if(isset($_POST['delete'])) {
-				include_once '../connection.php';
+				if (isset($_POST['delete'])) {
+					include_once '../connection.php';
 					// $sid = $_SESSION['sid'];
 					$ins = $_SESSION['ins'];
 					$year = $_SESSION['year'];
 					$sql16 = "DELETE FROM classes WHERE institute='$ins' AND al_year='$year'";
-					if(mysqli_query($con, $sql16)) {
+					if (mysqli_query($con, $sql16)) {
 						echo "<script>alert('Class Removed!');</script>";
 					} else {
 						echo "<script>alert('Error Removing Class');</script>";
 					}
 				}
-			?>
+				?>
 
 				<form class="d-flex mb-3" role="delete" method="POST" onsubmit="confirmation();">
 					<div class="d-grid gap-2"><br>

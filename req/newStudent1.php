@@ -115,11 +115,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     <h3 class='display-5' style='color: #fff;'>New Student</h3>
                 </div>
                 <div class="card-body">
-                                        <?php if(isset($_GET['error'])) { ?>
-                                            <div class='alert alert-danger' role='alert'>
-                                                <?=$_GET['error']?>
-                                            </div>
-                                        <?php } ?>
+                    <?php if (isset($_GET['error'])) { ?>
+                        <div class='alert alert-danger' role='alert'>
+                            <?= $_GET['error'] ?>
+                        </div>
+                    <?php } ?>
                     <form action="newStudent1.php" method="POST" enctype='multipart/form-data'>
                         <div class="col-auto mb-3">
                             <label class="form-label">Institute: </label>

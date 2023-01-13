@@ -159,7 +159,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql9 = "SELECT fname, lname FROM students WHERE id='$std_id'";
 													$result9 = mysqli_query($con, $sql9);
-													if(mysqli_num_rows($result9) > 0) {
+													if (mysqli_num_rows($result9) > 0) {
 														$row9 = mysqli_fetch_assoc($result9);
 														$name = $row9['fname'] . " " . $row9['lname'];
 														echo $name;
@@ -189,7 +189,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
 													$result11 = mysqli_query($con, $sql11);
-													if(mysqli_num_rows($result11) > 0) {
+													if (mysqli_num_rows($result11) > 0) {
 														$row11 = mysqli_fetch_assoc($result11);
 														$admissionNo = $row11['admissionNo'];
 														echo $admissionNo;
@@ -219,7 +219,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													$std_id = $_POST['std_id'];
 													$sql12 = "SELECT institute FROM students WHERE id='$std_id'";
 													$result12 = mysqli_query($con, $sql12);
-													if(mysqli_num_rows($result12) > 0) {
+													if (mysqli_num_rows($result12) > 0) {
 														$row12 = mysqli_fetch_assoc($result12);
 														$institute = $row12['institute'];
 														echo $institute;
@@ -258,7 +258,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								$std_id = $_POST['std_id'];
 								$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
 								$result5 = mysqli_query($con, $sql5);
-								if(mysqli_num_rows($result5) > 0) {
+								if (mysqli_num_rows($result5) > 0) {
 									$row5 = mysqli_fetch_assoc($result5);
 									$regClassid = $row5['id'];
 									$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
@@ -282,9 +282,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						</tbody>
 					</table><br>
 				</div>
+			</div>
+			<a href="../req/studentsInfo.php" class="btn btn-primary">See more details</a>
 		</div>
-		<a href="../req/studentsInfo.php" class="btn btn-primary">See more details</a>
-	</div>
 		<?php include '../req/footer.php'; ?>
 	</body>
 

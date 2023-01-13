@@ -171,10 +171,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 										if ($p == 1) {
 											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='1'";
 											$result6 = mysqli_query($con, $sql6);
-											if(mysqli_num_rows($result6) == 0) {
+											if (mysqli_num_rows($result6) == 0) {
 												$sql7 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '1')";
 												$result7 = mysqli_query($con, $sql7);
-												if($result7) {
+												if ($result7) {
 													echo "<script>alert('Attendance Marked!');</script>";
 													header("Refresh:0; url=Moderator.php");
 												}
@@ -209,23 +209,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							?>
 						</div>
 						<div class="form-check text-start">
-							<input class="form-check-input" type="checkbox" value="1" id="fees" name='paid'
-																			<?php
-																			if (isset($_PoST['submit'])) {
-																				include_once '../connection.php';
-																			 	$sql11 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
-																			 	$result11 = mysqli_query($con, $sql11);
-																			 	if (mysqli_num_rows($result11) > 0) {
-																			 		$s = mysqli_fetch_assoc($resul11);
-																			 		if($s['status'] == 1) {
-																						echo "checked";
-																					} else {
-																						// echo "checked";
-																					}
-															
-																				}
-																			}
-																			?>>
+							<input class="form-check-input" type="checkbox" value="1" id="fees" name='paid' <?php
+																											if (isset($_PoST['submit'])) {
+																												include_once '../connection.php';
+																												$sql11 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
+																												$result11 = mysqli_query($con, $sql11);
+																												if (mysqli_num_rows($result11) > 0) {
+																													$s = mysqli_fetch_assoc($resul11);
+																													if ($s['status'] == 1) {
+																														echo "checked";
+																													} else {
+																														// echo "checked";
+																													}
+																												}
+																											}
+																											?>>
 							<label class="form-check-label" for="fees">Paid/ Not Paid</label>
 						</div>
 						<div class="d-grid gap-2">
