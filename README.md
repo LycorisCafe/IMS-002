@@ -10,9 +10,9 @@ Institute Management System
 - Used Pre Trained models/ APIs : [Google Visualization API](https://developers.google.com/chart/interactive/docs/reference)
 
 > Languages :
-- PHP         - 73.40%
-- CSS         - 25.21%
-- JavaScript  - 01.24%
+- PHP         - 67.43%
+- CSS         - 29.11%
+- JavaScript  - 03.34%
 
 > Project Details :
 - For : Mr. Prasath Wickramasinghe
