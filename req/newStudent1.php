@@ -76,9 +76,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             $filename = "../uploads/$id." . $temp2[1];
             move_uploaded_file($temp, $filename);
             include_once '../connection.php';
-            $sql7 = "SELECT COUNT(id) FROM students WHERE id='$id'";
+            $sql7 = "SELECT id FROM students WHERE id='$id'";
             $result7 = mysqli_query($con, $sql7);
-            $row7 = mysqli_fetch_assoc($result7);
+            // $row7 = mysqli_fetch_assoc($result7);
             if (mysqli_num_rows($result7) == 0) {
                 $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
                                         '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
