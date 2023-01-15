@@ -5,17 +5,23 @@
 package back;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.stream.Stream;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Anupama
+ * @author Lycoris Cafe
  */
 public class updater {
 
@@ -39,15 +45,25 @@ public class updater {
     }
 
     private static String thisVersion() {
-        return "";
-    }
-
-    private static String tempPath() {
-        return "";
+        String version = null;
+        try (Stream<String> lines = Files.lines(Paths.get(
+                installPath() + "\\version.lc"))) {
+            version = lines.skip(0).findFirst().get();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return version;
     }
 
     private static String installPath() {
-        return "";
+        String path = null;
+        try (Stream<String> lines = Files.lines(Paths.get(
+                "C:\\ProgramData\\LycorisCafe\\IMS-002\\path.lc"))) {
+            path = lines.skip(0).findFirst().get();
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return path;
     }
 
     private static String newVersion() {
@@ -100,6 +116,49 @@ public class updater {
         Thread t1 = new Thread(new Runnable() {
             @Override
             public void run() {
+                front.updater.jProgressBar1.setMinimum(0);
+                front.updater.jProgressBar1.setMaximum(downloads().size());
+                front.updater.jProgressBar1.setStringPainted(true);
+
+                for (int i = 0; i < 5; i++) {
+                    try {
+                        front.updater.jProgressBar1.setValue(i);
+                        InputStream in = new URL(downloads().get(i).toString()).openStream();
+                        Files.copy(in, Paths.get("C:\\ProgramData\\LycorisCafe\\IMS-002\\part" + i + ".rar"),
+                                StandardCopyOption.REPLACE_EXISTING);
+                    } catch (IOException e) {
+                        System.out.println(e);
+                    }
+                }
+
+                try {
+                    InputStream in = new URL(UnRAR()).openStream();
+                    Files.copy(in, Paths.get("C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe"),
+                            StandardCopyOption.REPLACE_EXISTING);
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+
+                org.apache.commons.io.FileUtils.deleteQuietly(new File(installPath()));
+                if (!new File(installPath()).exists()){
+                    new File(installPath()).mkdirs();
+                }
+
+                try {
+                    ProcessBuilder processBuilder
+                            = new ProcessBuilder("cmd.exe", "/c",
+                                    "\"C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe\" "
+                                    + "x "
+                                    + "\"C:\\ProgramData\\LycorisCafe\\IMS-002\\part1.rar\" "
+                                    + "\"" + installPath() + "\"");
+                    processBuilder.redirectErrorStream(true);
+                    processBuilder.start();
+                } catch (IOException e) {
+                    System.out.println(e);
+                }
+
+                JOptionPane.showMessageDialog(new front.updater(), "Update success!");
+                new front.updater().dispose();
                 
             }
         }
