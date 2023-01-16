@@ -141,7 +141,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <div class="container">
             <h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
             <form class="d-flex mb-3" role="delteAcc" method="POST" action="accounts.php">
-                <label class="form-label">Institute: </label>
+                <label class="form-label">Account: </label>
                 <select class="form-control" name='account'>
                     <?php
                     include_once '../connection.php';

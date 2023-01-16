@@ -136,7 +136,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<?= $_GET['error'] ?>
 						</div>
 					<?php } ?>
-					<input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id">
+					<input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id" autocomplete="off">
 					<button class="btn btn-outline-success col-lg-3" type="submit" name="search">Search</button>
 				</form>
 				<br />

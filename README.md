@@ -30,5 +30,5 @@ Institute Management System
 
 > QA Testing
 - Stage 1 : Pass (12.01.2023)
-- Stage 2 : Pending...
+- Stage 2 : Pass (13.01.2023)
 - Stage 3 : Pending...
