@@ -14,10 +14,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.stream.Stream;
 import javax.swing.JOptionPane;
+import org.telegram.telegrambots.meta.api.methods.GetFile;
+import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 /**
  *
@@ -109,7 +110,23 @@ public class updater {
     }
 
     private static String UnRAR() {
-        return "https://pastebin.com/raw/iLHAGbGS";
+        String UnRAR = null;
+        try {
+            URL url = new URL("https://pastebin.com/raw/iLHAGbGS");
+            URLConnection con = url.openConnection();
+            InputStream is = con.getInputStream();
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+                String line = null;
+                while ((line = br.readLine()) != null) {
+                    UnRAR = line;
+                }
+            }
+        } catch (MalformedURLException ex) {
+            System.out.println(ex);
+        } catch (IOException ex) {
+            System.out.println(ex);
+        }
+        return UnRAR;
     }
 
     public void update() {
@@ -122,25 +139,28 @@ public class updater {
 
                 for (int i = 0; i < 5; i++) {
                     try {
-                        front.updater.jProgressBar1.setValue(i);
-                        InputStream in = new URL(downloads().get(i).toString()).openStream();
-                        Files.copy(in, Paths.get("C:\\ProgramData\\LycorisCafe\\IMS-002\\part" + i + ".rar"),
-                                StandardCopyOption.REPLACE_EXISTING);
-                    } catch (IOException e) {
+                        GetFile getFile = new GetFile();
+                        getFile.setFileId(downloads().get(i).toString());
+                        String filePath = new bot().execute(getFile).getFilePath();
+                        new bot().downloadFile(filePath, new File(
+                                "C:\\ProgramData\\LycorisCafe\\IMS-002\\part" + i + ".rar"));
+                    } catch (TelegramApiException e) {
                         System.out.println(e);
                     }
                 }
 
                 try {
-                    InputStream in = new URL(UnRAR()).openStream();
-                    Files.copy(in, Paths.get("C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe"),
-                            StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
+                    GetFile getFile = new GetFile();
+                    getFile.setFileId(UnRAR());
+                    String filePath = new bot().execute(getFile).getFilePath();
+                    new bot().downloadFile(filePath, new File(
+                            "C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe"));
+                } catch (TelegramApiException e) {
                     System.out.println(e);
                 }
 
                 org.apache.commons.io.FileUtils.deleteQuietly(new File(installPath()));
-                if (!new File(installPath()).exists()){
+                if (!new File(installPath()).exists()) {
                     new File(installPath()).mkdirs();
                 }
 
@@ -159,7 +179,7 @@ public class updater {
 
                 JOptionPane.showMessageDialog(new front.updater(), "Update success!");
                 new front.updater().dispose();
-                
+
             }
         }
         );

@@ -36,8 +36,6 @@ public class main {
             if (back.updater.checkUpdates() == true) {
                 new front.updater().setVisible(true);
                 new back.updater().update();
-            } else {
-                System.exit(0);
             }
             String access = null;
             try (Stream<String> lines = Files.lines(Paths.get(
@@ -46,9 +44,11 @@ public class main {
             } catch (IOException ex) {
                 System.out.println(ex);
             }
-            if (access.equals("1")){
+            if (access.equals("1")) {
                 new front.admin().setVisible(true);
             }
+        } else {
+            new front.admin().setVisible(true);
         }
     }
 }
