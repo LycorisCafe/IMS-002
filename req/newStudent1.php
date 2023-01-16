@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             include_once '../connection.php';
             $sql6 = "SELECT * FROM students WHERE id='$id'";
             $result6 = mysqli_query($con, $sql6);
-            $row6 = mysqli_fetch_assoc($result6);
+            //$row6 = mysqli_fetch_assoc($result6);
             if (mysqli_num_rows($result6) == 0) {
 
                 $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
