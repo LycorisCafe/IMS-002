@@ -114,7 +114,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                 $range = $_POST['timeRange'];
                                 $state = $_POST['state'];
 
-                                //
+                                
                             }
                             ?>
                         </tbody>

@@ -102,7 +102,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -124,7 +124,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -148,7 +148,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -170,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -189,6 +189,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </div>
             </div>
         </div>
+
+
+        <script>
+            function ChangeColor(tableRow, highLight) {
+                if (highLight) {
+                    tableRow.style.backgroundColor = '#dcfac9';
+
+
+                } else {
+                    tableRow.style.backgroundColor = '#212529';
+                }
+            }
+
+            function readvalues(tableRow) {
+                var columns = tableRow.querySelectorAll("td");
+                for (var i = 0; i < columns.length; i++)
+                    console.log('Column ' + i + ': ' + columns[i].innerHTML);
+            }
+        </script>
+
+
     </body>
 
     </html>
