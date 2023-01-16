@@ -55,10 +55,10 @@ public class updater {
         return version;
     }
 
-    private static String installPath() {
+    public static String installPath() {
         String path = null;
         try (Stream<String> lines = Files.lines(Paths.get(
-                "C:\\ProgramData\\LycorisCafe\\IMS-002\\path.lc"))) {
+                "C:\\ProgramData\\LycorisCafe\\IMS-002\\details.lc"))) {
             path = lines.skip(0).findFirst().get();
         } catch (IOException ex) {
             System.out.println(ex);
