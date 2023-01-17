@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </svg>
             </button>
             <a class="navbar-brand" href="#">
-                <img src="../Media/dummy.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+                <!-- <img src="../Media/dummy.jpg" alt="Logo" width="30" height="30" class="d-inline-block align-text-top"> -->
                 User: <?php echo $_SESSION['name']; ?>
             </a>
         </div>
