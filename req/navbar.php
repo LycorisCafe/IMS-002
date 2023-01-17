@@ -23,7 +23,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         </div>
         <div class="offcanvas-body">
             <div class="d-grid gap-2">
-                <a class="btn btn-primary btn-sm" aria-current="page" href="../view/admin.php">Dashboard</a>
+                <a class="btn btn-primary btn-sm" aria-current="page" href="../view/Admin.php">Dashboard</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/Students.php">Students</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/attendanceReport.php">Attendance Report</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/newStudent1.php">Add a New Student</a>
