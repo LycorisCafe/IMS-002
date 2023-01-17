@@ -23,8 +23,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         <!-- Imports -->
         <?php require_once "navbar.php"; ?>
-        <div class="container"><br/>
-            <h1 class="display-2 text-center" style="color: #fff;">Daily Attendance Report</h1><br><br/>
+        <div class="container"><br />
+            <h1 class="display-2 text-center" style="color: #fff;">Daily Attendance Report</h1><br><br />
         </div>
     </body>
 
