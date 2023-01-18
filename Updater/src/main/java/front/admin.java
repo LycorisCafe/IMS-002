@@ -5,7 +5,11 @@
 package front;
 
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +23,31 @@ public class admin extends javax.swing.JFrame {
      */
     public admin() {
         initComponents();
+        grabData();
+    }
+
+    private void grabData() {
+        File f1 = new File("C:\\ProgramData\\LycorisCafe\\IMS-002\\details.lc");
+        if (f1.exists()) {
+            try (Stream<String> lines = Files.lines(Paths.get(
+                    "C:\\ProgramData\\LycorisCafe\\IMS-002\\details.lc"))) {
+                jTextField1.setText(lines.skip(0).findFirst().get());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+            try (Stream<String> lines = Files.lines(Paths.get(
+                    "C:\\ProgramData\\LycorisCafe\\IMS-002\\details.lc"))) {
+                jTextField2.setText(lines.skip(1).findFirst().get());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+            try (Stream<String> lines = Files.lines(Paths.get(
+                    "C:\\ProgramData\\LycorisCafe\\IMS-002\\details.lc"))) {
+                jTextField3.setText(lines.skip(2).findFirst().get());
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(this, ex);
+            }
+        }
     }
 
     /**

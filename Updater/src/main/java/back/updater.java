@@ -137,48 +137,67 @@ public class updater {
                 front.updater.jProgressBar1.setMaximum(downloads().size());
                 front.updater.jProgressBar1.setStringPainted(true);
 
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < downloads().size(); i++) {
+                    front.updater.jProgressBar1.setValue(i);
+                    front.updater.jTextArea1.append("Connecting...\n\n");
+                    front.updater.jTextArea1.append("Downloading update (part " + i + ")...\n");
                     try {
                         GetFile getFile = new GetFile();
                         getFile.setFileId(downloads().get(i).toString());
                         String filePath = new bot().execute(getFile).getFilePath();
                         new bot().downloadFile(filePath, new File(
                                 "C:\\ProgramData\\LycorisCafe\\IMS-002\\part" + i + ".rar"));
+                        front.updater.jTextArea1.append("Success!\n");
                     } catch (TelegramApiException e) {
                         System.out.println(e);
+                        front.updater.jTextArea1.append("Failed!\n");
                     }
                 }
 
+                front.updater.jTextArea1.append("\nDownloading Extractor...\n");
                 try {
                     GetFile getFile = new GetFile();
                     getFile.setFileId(UnRAR());
                     String filePath = new bot().execute(getFile).getFilePath();
                     new bot().downloadFile(filePath, new File(
                             "C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe"));
+                    front.updater.jTextArea1.append("Success!\n");
                 } catch (TelegramApiException e) {
                     System.out.println(e);
+                    front.updater.jTextArea1.append("Failed!\n");
                 }
 
+                front.updater.jTextArea1.append("\nSetting directories...\n");
                 org.apache.commons.io.FileUtils.deleteQuietly(new File(installPath()));
                 if (!new File(installPath()).exists()) {
                     new File(installPath()).mkdirs();
                 }
 
+                front.updater.jTextArea1.append("\nCopping fiels...\n");
+                for (int i = 0; i < downloads().size(); i++) {
+                    new File("C:\\ProgramData\\LycorisCafe\\IMS-002\\part" + i + ".rar")
+                            .renameTo(new File(installPath() + "\\part" + i + ".rar"));
+                }
+
+                new File("C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe")
+                        .renameTo(new File(installPath() + "\\unrar.exe"));
+
+                front.updater.jTextArea1.append("\nStarting installation...\n");
                 try {
                     ProcessBuilder processBuilder
                             = new ProcessBuilder("cmd.exe", "/c",
-                                    "\"C:\\ProgramData\\LycorisCafe\\IMS-002\\unrar.exe\" "
-                                    + "x "
-                                    + "\"C:\\ProgramData\\LycorisCafe\\IMS-002\\part1.rar\" "
-                                    + "\"" + installPath() + "\"");
+                                    "cd " + installPath() + " && unrar.exe x part1.rar");
                     processBuilder.redirectErrorStream(true);
                     processBuilder.start();
+                    front.updater.jTextArea1.append("\nInstallation compleated!");
                 } catch (IOException e) {
                     System.out.println(e);
+                    front.updater.jTextArea1.append("\nInstallation unsuccess!"
+                            + "\nPlease contact the developers to fix the errors!");
                 }
 
-                JOptionPane.showMessageDialog(new front.updater(), "Update success!");
-                new front.updater().dispose();
+                JOptionPane.showMessageDialog(new front.updater(), "Update Compleated!");
+                front.updater.disposeText.setText("1");
 
             }
         }
