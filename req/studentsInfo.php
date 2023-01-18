@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['role']) && isset($_SESSION['SID'])) {
 ?>
 
 
@@ -14,20 +14,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/fonts.css">
-		<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/temp.css">
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
 	</head>
 
 	<body>
-		<?php require_once "navbar.php"; ?>
+		<?php require_once "navbar.php";?>
 		<h1 class="display-2 text-center">Student Details</h1>
 		<div class="container">
 			<br>
 			<form class="d-flex mb-3" role="search" method="POST" onsubmit="drawChart();" action="studentsInfo.php">
 				<input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id" autocomplete="off">
 				<button class="btn btn-outline-success" type="submit" name="search">Search</button>
-				<button class="btn btn-outline-warning" type="reset" name="reset">Reset</button>
 			</form>
 		</div><br />
 
@@ -45,7 +43,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Student Name</h3>
-									<h5 class="card-subtitle mb-2 text-muted">
+									<?php echo $_SESSION['SID']; ?>
+									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											require_once '../connection.php';
@@ -77,7 +76,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Addmission No.</h3>
-									<h5 class="card-subtitle mb-2 text-muted" name='an'>
+									<h5 class="card-subtitle mb-2" name='an' style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											$std_id = $_SESSION['sid'];
@@ -107,7 +106,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Institute</h3>
-									<h5 class="card-subtitle mb-2 text-muted">
+									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											$std_id = $_SESSION['sid'];
@@ -137,7 +136,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Birthday</h3>
-									<h5 class="card-subtitle mb-2 text-muted">
+									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											require_once '../connection.php';
@@ -168,7 +167,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">A/L Year</h3>
-									<h5 class="card-subtitle mb-2 text-muted">
+									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											$std_id = $_SESSION['sid'];

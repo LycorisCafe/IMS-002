@@ -171,13 +171,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $institute = $row3['institute'];
 
                                             echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
-                                            echo "<td>$addNo</td>";
-                                            echo "<td>$sid</td>";
-                                            echo "<td>$fname</td>";
-                                            echo "<td>$lname</td>";
-                                            echo "<td>$alYear</td>";
-                                            echo "<td>$dob</td>";
-                                            echo "<td>$institute</td>";
+                                                echo "<td>$addNo</td>";
+                                                echo "<td>$sid</td>";
+                                                echo "<td>$fname</td>";
+                                                echo "<td>$lname</td>";
+                                                echo "<td>$alYear</td>";
+                                                echo "<td>$dob</td>";
+                                                echo "<td>$institute</td>";
                                             echo "</tr>";
                                         }
                                     }
@@ -204,10 +204,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
             function readvalues(tableRow) {
                 var columns = tableRow.querySelectorAll("td");
-                for (var i = 0; i < columns.length; i++)
-                    console.log('Column ' + i + ': ' + columns[i].innerHTML);
+                for (var i = 0; i < columns.length; i++) {
+                    //console.log('Column ' + i + ': ' + columns[i].innerHTML);
+                }
+                var sid = columns[1].innerHTML;
+                
             }
         </script>
+
+        <?php
+        if(isset($_POST['search'])) {
+            $_SESSION['SID'] = "<script>document.writeln(sid);</script>";
+            
+            //header("Location: studentsInfo.php");
+            if($_SESSION['SID'] != "") {
+                echo $_SESSION['SID'];
+                //echo "<script>location.replace('studentsInfo.php');</script>";
+            }
+        }
+        ?>
 
 
     </body>
