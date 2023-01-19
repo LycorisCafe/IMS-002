@@ -50,7 +50,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <select class="form-control" name='year'>
                                 <option value="All">All</option>
                                 <?php
-                                //include_once '../connection.php';
                                 $sql2 = "SELECT DISTINCT al_year FROM classes";
                                 $result2 = mysqli_query($con, $sql2);
                                 while ($ri2 = mysqli_fetch_assoc($result2)) {
@@ -105,9 +104,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         if ($year == "All") {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
-                                            //$count = mysqli_num_rows($result3);
-                                            // echo $today;
-                                            //echo $count;
                                             $count = 0;
                                             while ($row4 = mysqli_fetch_assoc($result4)) {
                                                 $clzID = $row4['regclassId'];
@@ -144,8 +140,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         } else {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
-                                            //$count = mysqli_num_rows($result3);
-                                            // echo $today;
                                             $count = 0;
                                             while ($row4 = mysqli_fetch_assoc($result4)) {
                                                 $clzID = $row4['regclassId'];
@@ -184,9 +178,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         if ($year == "All") {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
-                                            //$count = mysqli_num_rows($result3);
-                                            // echo $today;
-                                            //echo $count;
                                             $count = 0;
                                             while ($row4 = mysqli_fetch_assoc($result4)) {
                                                 $clzID = $row4['regclassId'];
@@ -223,8 +214,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                         } else {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
-                                            //$count = mysqli_num_rows($result3);
-                                            // echo $today;
                                             $count = 0;
                                             while ($row4 = mysqli_fetch_assoc($result4)) {
                                                 $clzID = $row4['regclassId'];
