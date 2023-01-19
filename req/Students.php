@@ -101,7 +101,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -123,7 +123,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -147,7 +147,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
                                             echo "<td>$addNo</td>";
                                             echo "<td>$sid</td>";
                                             echo "<td>$fname</td>";
@@ -169,7 +169,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             $dob = $row3['DOB'];
                                             $institute = $row3['institute'];
 
-                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);'>";
+                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
                                                 echo "<td>$addNo</td>";
                                                 echo "<td>$sid</td>";
                                                 echo "<td>$fname</td>";
@@ -207,20 +207,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     //console.log('Column ' + i + ': ' + columns[i].innerHTML);
                 }
                 var sid = columns[1].innerHTML;
+                document.cookie = "sid = " + sid;
+                location.replace('studentsInfo.php');
                 
             }
         </script>
 
         <?php
-        if(isset($_POST['search'])) {
-            $_SESSION['SID'] = "<script>document.writeln(sid);</script>";
+        /*if(isset($_POST['clicked'])) {
+            $_SESSION['stdID'] = $_COOKIE['sid'];
             
             //header("Location: studentsInfo.php");
-            if($_SESSION['SID'] != "") {
-                echo $_SESSION['SID'];
+            //if($_SESSION['stdID'] == "") {
+                //echo $_SESSION['stdID'];
                 //echo "<script>location.replace('studentsInfo.php');</script>";
-            }
-        }
+                header("Location: studentInfo.php");
+            //}
+        }*/
         ?>
 
 

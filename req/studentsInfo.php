@@ -20,13 +20,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 	</head>
 
+	<?php
+		if(isset($_COOKIE['sid'])) {
+		$id = $_COOKIE['sid'];
+		echo "<script>document.getElementById('id').value = $id;</script>";
+		} else {
+			echo "<script>alert('cookie not found');</script>";
+		}
+	?>
+
 	<body>
 		<?php require_once "navbar.php";?>
 		<h1 class="display-2 text-center">Student Details</h1>
 		<div class="container">
 			<br>
 			<form class="d-flex mb-3" role="search" method="POST" onsubmit="drawChart();" action="studentsInfo.php">
-				<input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id" autocomplete="off">
+				<input class="form-control me-2" type="search" placeholder="Search for Student by ID" aria-label="Search" name="std_id" autocomplete="off" id="id">
 				<button class="btn btn-outline-success" type="submit" name="search">Search</button>
 			</form>
 		</div><br />
