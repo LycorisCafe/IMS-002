@@ -82,6 +82,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </fieldset>
         </div><br /><br />
 
+<div class="container">
+<h4>Student Count : <span class="badge bg-secondary">(count)</span></h4>
+</div>
+
         <div class="container-fluid">
             <?php
             if (isset($_POST['search'])) {
