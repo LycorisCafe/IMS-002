@@ -26,9 +26,6 @@
 
         <li><a href="aboutUs.php">About Us</a></li>
         <li><a href="login.php">Login</a></li>
-
-      </ul>
-      </li>
       </ul>
     </nav>
   </header>
