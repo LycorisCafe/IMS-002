@@ -96,9 +96,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/naveenb2004.jpg" alt="Card image" title="Naveen Balasooriya's Avatar" />
+          <img class="card-img-top" src="Media/szeto.png" alt="Card image" title="Naveen Balasooriya's Avatar" />
           <div class="card-body">
-            <h5 class="card-title text-center">Naveen Balasooriya</h5>
+            <h5 class="card-title text-center">Avatar Szeto</h5>
             <p class="card-text text-center">
               Founder, CEO, Software Developer<br />QA Tester
             </p>
@@ -134,9 +134,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/RandilLasith.jpg" alt="Card image" title="Lasith Randil's Avatar" />
+          <img class="card-img-top" src="Media/aang.png" alt="Card image" title="Lasith Randil's Avatar" />
           <div class="card-body">
-            <h5 class="card-title text-center">Lasith Randil</h5>
+            <h5 class="card-title text-center">Avatar Aang</h5>
             <p class="card-text text-center">
               Co-Founder, Web developer, Interface Designer<br />QA Tester
             </p>
@@ -172,9 +172,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/Mr. Doctor.png" alt="Card image" title="Dasun Nethsara's Avatar">
+          <img class="card-img-top" src="Media/roku.png" alt="Card image" title="Dasun Nethsara's Avatar">
           <div class="card-body">
-            <h5 class="card-title text-center">Dasun Nethsara</h5>
+            <h5 class="card-title text-center">Avatar Roku</h5>
             <p class="card-text text-center">
               Co-Founder, Software Developer, Web Developer<br />QA Tester
             </p>

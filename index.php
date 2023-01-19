@@ -47,8 +47,8 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
     <div class="video-overlay header-text">
       <div class="caption">
-        <h6>Science For Technology - Control Panel</h6>
-        <h2><em>SFT</em> නම් ප්‍රසාත් වික්‍රමසිංහ</h2>
+        <h6>Tset Sub Text</h6>
+        <h2><em>Heading </em>Text</h2>
         <div class="main-button">
           <a class="scroll-to-section" href="login.php">Login</a>
         </div>
@@ -64,7 +64,7 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
   <div class="text-center mt-auto py-3 bg-dark">
     <br />
     <h5 style="color: #fff">
-      &copy; COPYRIGHT SFT තක්සලාව | DESIGN BY LYCORIS CAFE
+      &copy; COPYRIGHT Test | DESIGN BY LYCORIS CAFE
     </h5>
     <br />
   </div>
