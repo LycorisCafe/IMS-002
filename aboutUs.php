@@ -214,7 +214,7 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   <div class="text-center mt-auto py-3 bg-dark"><br>
-    <h5 style="color: #fff;">&copy; COPYRIGHT SFT තක්සලාව | DESIGN BY LYCORIS CAFE</h5><br>
+    <h5 style="color: #fff;">&copy; COPYRIGHT Test | DESIGN BY LYCORIS CAFE</h5><br>
   </div>
 </body>
 

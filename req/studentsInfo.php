@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id']) && isset($_SESSION['role']) && isset($_SESSION['SID'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
 
@@ -16,6 +16,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role']) && isset($_SESSION['SID']
 		<link rel="stylesheet" href="../css/fonts.css">
 		<link rel="stylesheet" href="../css/temp.css">
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+		<link href="calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
+		<link href="cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 	</head>
 
 	<body>
@@ -43,7 +45,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role']) && isset($_SESSION['SID']
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Student Name</h3>
-									<?php echo $_SESSION['SID']; ?>
 									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
@@ -280,7 +281,55 @@ if (isset($_SESSION['id']) && isset($_SESSION['role']) && isset($_SESSION['SID']
 					?>
 				</tbody>
 			</table><br>
-		</div>
+		</div><br />
+
+		<!-- CAALENDAR AREA -->
+		<div class="container">
+			<?php
+			if (isset($_POST['search'])) {
+				$std_id = $_SESSION['sid'];
+				include 'Calendar.php';
+				include '../connection.php';
+				$fulldate = date("Y-m-d");
+				$sys_date = date("d");
+				$sys_month = date("m");
+				$sys_year = date("Y");
+				$firstDay = date('Y-m-01');
+				$lastDay = date('Y-m-t');
+				$calendar = new Calendar($fulldate);
+				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+				$result5 = mysqli_query($con, $sql5);
+				$row5 = mysqli_fetch_assoc($result5);
+				$reclassid = $row5['id'];
+
+				$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
+				$result6 = mysqli_query($con, $sql6);
+				if (mysqli_num_rows($result6) > 0) {
+					while ($row6 = mysqli_fetch_assoc($result6)) {
+						$date = $row6['date_'];
+						$d2d_done = $row6['d2d'];
+						if ($d2d_done == '1') {
+							$calendar->add_event('Attended, D2D', $date, 1, 'green');
+						} else {
+							$calendar->add_event('Attended', $date, 1, 'orange');
+						}
+					}
+				}
+			} else {
+				// $calendar->add_event('Not Attended', $day, 1, 'red');
+			}
+			?>
+			<nav class="navtop">
+				<div>
+					<h1>Attendane of this month</h1>
+				</div>
+			</nav>
+			<div class="content home">
+				<?php if (isset($_POST['search'])) {
+					echo $calendar;
+				} ?>
+			</div>
+		</div><br /><br />
 
 		<div class="container">
 			<h1 class="display-6">Progress Analysis (This Month)</h1><br />
