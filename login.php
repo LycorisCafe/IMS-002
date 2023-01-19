@@ -1,9 +1,3 @@
-<?php
-
-setcookie("data-bs-theme", "dark", time() + 1814400);
-
-?>
-
 <!doctype html>
 <html lang="en" data-bs-theme="light">
 
@@ -14,7 +8,6 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 	<link rel="icon" type="image/x-icon" href="Media/favicon.png">
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/fonts.css">
-	<!-- <link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="css/temp.css">
 	<script src="fontawesome.com.js" crossorigin="anonymous"></script>
 	<style>
@@ -30,7 +23,7 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 <body>
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
-			<a href="index.php"><em>SFT</em> තක්සලාව</a>
+			<a href="index.php"><em>Test</em> Name</a>
 		</div>
 		<a href="" class="menu-link"><i class="fa fa-bars"></i></a>
 		<nav id="menu" class="main-nav" role="navigation">
@@ -71,7 +64,6 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 					<div class="col-auto mb-3">
 						<label class="form-label">Password :</label>
 						<input type="password" class="form-control" name="pass" aria-describedby="password" autocomplete="off">
-						<!-- <label class="font-monospace text-danger"><i>${label}</i></label> -->
 					</div>
 					<div class="d-grid gap-2">
 						<button type="submit" class="btn btn-primary" name='submit'>Login</button>

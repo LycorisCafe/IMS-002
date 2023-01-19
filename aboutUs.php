@@ -1,9 +1,3 @@
-<?php
-
-setcookie("data-bs-theme", "dark", time() + 1814400);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
@@ -20,7 +14,7 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 <body>
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="index.php"><em>SFT</em> තක්සලාව</a>
+      <a href="index.php"><em>Test</em> Name</a>
     </div>
     <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -96,9 +90,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/szeto.png" alt="Card image" title="Naveen Balasooriya's Avatar" />
+          <img class="card-img-top" src="Media/naveenb2004.jpg" alt="Card image" title="Naveen Balasooriya's Avatar" />
           <div class="card-body">
-            <h5 class="card-title text-center">Avatar Szeto</h5>
+            <h5 class="card-title text-center">Naveen Balasooriya</h5>
             <p class="card-text text-center">
               Founder, CEO, Software Developer<br />QA Tester
             </p>
@@ -134,9 +128,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/aang.png" alt="Card image" title="Lasith Randil's Avatar" />
+          <img class="card-img-top" src="Media/randillasith.jpg" alt="Card image" title="Lasith Randil's Avatar" />
           <div class="card-body">
-            <h5 class="card-title text-center">Avatar Aang</h5>
+            <h5 class="card-title text-center">Lasith Randil</h5>
             <p class="card-text text-center">
               Co-Founder, Web developer, Interface Designer<br />QA Tester
             </p>

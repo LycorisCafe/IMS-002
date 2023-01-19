@@ -14,7 +14,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/fonts.css">
-		<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/temp.css">
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
 	</head>

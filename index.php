@@ -1,9 +1,3 @@
-<?php
-
-setcookie("data-bs-theme", "dark", time() + 1814400);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +17,7 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 <body>
   <header class="main-header clearfix" role="header">
     <div class="logo">
-    <!-- <a href="index.php"><em>SFT</em> තක්සලාව</a> -->
+      <!-- <a href="index.php"><em>SFT</em> තක්සලාව</a> -->
       <a href="index.php"><em>Test</em> Name</a>
     </div>
     <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
@@ -33,9 +27,9 @@ setcookie("data-bs-theme", "dark", time() + 1814400);
 
         <li><a href="aboutUs.php">About Us</a></li>
         <li><a href="login.php">Login</a></li>
-        
-          </ul>
-        </li>
+
+      </ul>
+      </li>
       </ul>
     </nav>
   </header>

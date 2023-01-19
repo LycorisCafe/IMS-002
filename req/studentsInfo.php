@@ -21,16 +21,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	</head>
 
 	<?php
-		if(isset($_COOKIE['sid'])) {
+	if (isset($_COOKIE['sid'])) {
 		$id = $_COOKIE['sid'];
 		echo "<script>document.getElementById('id').value = $id;</script>";
-		} else {
-			echo "<script>alert('cookie not found');</script>";
-		}
+	} else {
+		echo "<script>alert('cookie not found');</script>";
+	}
 	?>
 
 	<body>
-		<?php require_once "navbar.php";?>
+		<?php require_once "navbar.php"; ?>
 		<h1 class="display-2 text-center">Student Details</h1>
 		<div class="container">
 			<br>
@@ -116,7 +116,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Institute</h3>
-									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
+									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											$std_id = $_SESSION['sid'];
@@ -146,7 +146,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">Birthday</h3>
-									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
+									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											require_once '../connection.php';
@@ -177,7 +177,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="col-8">
 								<div class="card-body">
 									<h3 class="card-title">A/L Year</h3>
-									<h5 class="card-subtitle mb-2"  style='color: #10A0FF'>
+									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
 										if (isset($_POST['search'])) {
 											$std_id = $_SESSION['sid'];
