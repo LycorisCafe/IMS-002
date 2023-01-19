@@ -5,7 +5,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 	<!doctype html>
-	<html lang="en" data-bs-theme="light">
+	<html lang="en" data-bs-theme="dark">
 
 	<head>
 		<meta charset="utf-8">
@@ -14,7 +14,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/fonts.css">
-		<link href="https://www.sftthaksalawa.com/home/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="../css/temp.css">
 		<link href="../req/calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
@@ -24,7 +23,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	<body>
 		<header class="main-header clearfix" role="header">
 			<div class="logo">
-				<a href="../index.php"><em>SFT</em> තක්සලාව</a>
+				<a href="../index.php"><em>Test</em> Name</a>
 			</div>
 			<a href="" class="menu-link"><i class="fa fa-bars"></i></a>
 			<nav id="menu" class="main-nav" role="navigation">
@@ -44,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<div class="container col-lg-6">
 			<br><br><br><br><br><br>
 			<div class="modtext text-center">
-				<h1 class="display-6">SFT තක්සලාව</h1>
+				<h1 class="display-6">Test Name</h1>
 				<h6>Moderator Panel</h6>
 			</div>
 			<div class="card text-center">

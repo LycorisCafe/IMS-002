@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>SFT තක්සලාව</title>
+  <title>Test Title</title>
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="icon" type="image/x-icon" href="Media/favicon.png" />
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -17,7 +17,6 @@
 <body>
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <!-- <a href="index.php"><em>SFT</em> තක්සලාව</a> -->
       <a href="index.php"><em>Test</em> Name</a>
     </div>
     <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
@@ -52,8 +51,6 @@
 
   <script src="js/isotope.min.js"></script>
   <script src="js/sftthaksalawacustom.js"></script>
-
-  <!-- color: rgb(22, 34, 56); -->
 
   <div class="text-center mt-auto py-3 bg-dark">
     <br />
