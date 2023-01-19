@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Exams</title>
+        <title>Attendance Report</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
@@ -60,18 +60,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             </select>
                         </div>
                         <div class="col">
-                            <label class="form-label">Range: </label>
-                            <select class="form-control" name='timeRange'>
-                                <option value="All">Today</option>
-                                <option value="All">This Month</option>
-                                <option value="All">This Year</option>
-                            </select>
-                        </div>
-                        <div class="col">
                             <label class="form-label">State: </label>
                             <select class="form-control" name='state'>
-                                <option value="All">Attended</option>
-                                <option value="All">Not Attended</option>
+                                <option value="attend">Attended</option>
+                                <option value="nAttend">Not Attended</option>
                             </select>
                         </div>
                     </div><br />
@@ -82,19 +74,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             </fieldset>
         </div><br /><br />
 
-<div class="container">
-<h4>Student Count : <span class="badge bg-secondary">(count)</span></h4>
-</div>
+        <div class="container">
+            <h4>Student Count : <span class="badge bg-secondary" id="count"></span></h4>
+        </div>
 
         <div class="container-fluid">
-            <?php
-            if (isset($_POST['search'])) {
-                $ins = $_POST['institute'];
-                $year = $_POST['year'];
-                $range = $_POST['timeRange'];
-                $state = $_POST['state'];
-            }
-            ?>
             <div class="bd-example-snippet bd-code-snippet"><br />
                 <div class="bd-example">
                     <table class="table table-striped">
@@ -114,8 +98,169 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             if (isset($_POST['search'])) {
                                 $ins = $_POST['institute'];
                                 $year = $_POST['year'];
-                                $range = $_POST['timeRange'];
                                 $state = $_POST['state'];
+                                $today = date("Y-m-d");
+                                if ($state == "attend") {
+                                    if ($ins == "All") {
+                                        if ($year == "All") {
+                                            $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $result4 = mysqli_query($con, $sql4);
+                                            //$count = mysqli_num_rows($result3);
+                                            // echo $today;
+                                            //echo $count;
+                                            $count = 0;
+                                            while ($row4 = mysqli_fetch_assoc($result4)) {
+                                                $clzID = $row4['regclassId'];
+                                                $sql5 = "SELECT * FROM regclass WHERE id='$clzID'";
+                                                $result5 = mysqli_query($con, $sql5);
+                                                while ($row5 = mysqli_fetch_assoc($result5)) {
+                                                    $stdID = $row5['studentId'];
+                                                    $sql6 = "SELECT * FROM students WHERE id='$stdID'";
+                                                    $result6 = mysqli_query($con, $sql6);
+                                                    $countRow = mysqli_num_rows($result6);
+                                                    $count += $countRow;
+                                                    while ($row6 = mysqli_fetch_assoc($result6)) {
+                                                        $addNo = $row6['admissionNo'];
+                                                        $sid = $row6['id'];
+                                                        $fname = $row6['fname'];
+                                                        $lname = $row6['lname'];
+                                                        $alYear = $row6['al_year'];
+                                                        $dob = $row6['DOB'];
+                                                        $institute = $row6['institute'];
+
+                                                        echo "<tr>";
+                                                        echo "<td>$addNo</td>";
+                                                        echo "<td>$sid</td>";
+                                                        echo "<td>$fname</td>";
+                                                        echo "<td>$lname</td>";
+                                                        echo "<td>$alYear</td>";
+                                                        echo "<td>$dob</td>";
+                                                        echo "<td>$institute</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                            }
+                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                        } else {
+                                            $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $result4 = mysqli_query($con, $sql4);
+                                            //$count = mysqli_num_rows($result3);
+                                            // echo $today;
+                                            $count = 0;
+                                            while ($row4 = mysqli_fetch_assoc($result4)) {
+                                                $clzID = $row4['regclassId'];
+                                                $sql5 = "SELECT * FROM regclass WHERE id='$clzID'";
+                                                $result5 = mysqli_query($con, $sql5);
+                                                while ($row5 = mysqli_fetch_assoc($result5)) {
+                                                    $stdID = $row5['studentId'];
+                                                    $sql6 = "SELECT * FROM students WHERE id='$stdID' AND al_year='$year'";
+                                                    $result6 = mysqli_query($con, $sql6);
+                                                    $countRow = mysqli_num_rows($result6);
+                                                    $count += $countRow;
+                                                    while ($row6 = mysqli_fetch_assoc($result6)) {
+                                                        $addNo = $row6['admissionNo'];
+                                                        $sid = $row6['id'];
+                                                        $fname = $row6['fname'];
+                                                        $lname = $row6['lname'];
+                                                        $alYear = $row6['al_year'];
+                                                        $dob = $row6['DOB'];
+                                                        $institute = $row6['institute'];
+
+                                                        echo "<tr>";
+                                                        echo "<td>$addNo</td>";
+                                                        echo "<td>$sid</td>";
+                                                        echo "<td>$fname</td>";
+                                                        echo "<td>$lname</td>";
+                                                        echo "<td>$alYear</td>";
+                                                        echo "<td>$dob</td>";
+                                                        echo "<td>$institute</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                            }
+                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                        }
+                                    } else {
+                                        if ($year == "All") {
+                                            $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $result4 = mysqli_query($con, $sql4);
+                                            //$count = mysqli_num_rows($result3);
+                                            // echo $today;
+                                            //echo $count;
+                                            $count = 0;
+                                            while ($row4 = mysqli_fetch_assoc($result4)) {
+                                                $clzID = $row4['regclassId'];
+                                                $sql5 = "SELECT * FROM regclass WHERE id='$clzID'";
+                                                $result5 = mysqli_query($con, $sql5);
+                                                while ($row5 = mysqli_fetch_assoc($result5)) {
+                                                    $stdID = $row5['studentId'];
+                                                    $sql6 = "SELECT * FROM students WHERE id='$stdID' AND institute='$ins'";
+                                                    $result6 = mysqli_query($con, $sql6);
+                                                    $countRow = mysqli_num_rows($result6);
+                                                    $count += $countRow;
+                                                    while ($row6 = mysqli_fetch_assoc($result6)) {
+                                                        $addNo = $row6['admissionNo'];
+                                                        $sid = $row6['id'];
+                                                        $fname = $row6['fname'];
+                                                        $lname = $row6['lname'];
+                                                        $alYear = $row6['al_year'];
+                                                        $dob = $row6['DOB'];
+                                                        $institute = $row6['institute'];
+
+                                                        echo "<tr>";
+                                                        echo "<td>$addNo</td>";
+                                                        echo "<td>$sid</td>";
+                                                        echo "<td>$fname</td>";
+                                                        echo "<td>$lname</td>";
+                                                        echo "<td>$alYear</td>";
+                                                        echo "<td>$dob</td>";
+                                                        echo "<td>$institute</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                            }
+                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                        } else {
+                                            $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $result4 = mysqli_query($con, $sql4);
+                                            //$count = mysqli_num_rows($result3);
+                                            // echo $today;
+                                            $count = 0;
+                                            while ($row4 = mysqli_fetch_assoc($result4)) {
+                                                $clzID = $row4['regclassId'];
+                                                $sql5 = "SELECT * FROM regclass WHERE id='$clzID'";
+                                                $result5 = mysqli_query($con, $sql5);
+                                                while ($row5 = mysqli_fetch_assoc($result5)) {
+                                                    $stdID = $row5['studentId'];
+                                                    $sql6 = "SELECT * FROM students WHERE id='$stdID' AND al_year='$year' AND institute='$ins'";
+                                                    $result6 = mysqli_query($con, $sql6);
+                                                    $countRow = mysqli_num_rows($result6);
+                                                    $count += $countRow;
+                                                    while ($row6 = mysqli_fetch_assoc($result6)) {
+                                                        $addNo = $row6['admissionNo'];
+                                                        $sid = $row6['id'];
+                                                        $fname = $row6['fname'];
+                                                        $lname = $row6['lname'];
+                                                        $alYear = $row6['al_year'];
+                                                        $dob = $row6['DOB'];
+                                                        $institute = $row6['institute'];
+
+                                                        echo "<tr>";
+                                                        echo "<td>$addNo</td>";
+                                                        echo "<td>$sid</td>";
+                                                        echo "<td>$fname</td>";
+                                                        echo "<td>$lname</td>";
+                                                        echo "<td>$alYear</td>";
+                                                        echo "<td>$dob</td>";
+                                                        echo "<td>$institute</td>";
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                            }
+                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                        }
+                                    }
+                                }
                             }
                             ?>
                         </tbody>

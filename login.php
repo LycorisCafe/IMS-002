@@ -40,7 +40,7 @@
 	<div class="container col-lg-4 col-md-5 align-self-center">
 		<div class="card" style="transform: translate(0%, 60%);">
 			<div class="card-header text-center">
-				<h3 style="color: #000;">Login</h3>
+				<h3 style="color: #fff;">Login</h3>
 			</div>
 			<div class="card-body">
 				<?php if (isset($_GET['error'])) { ?>
