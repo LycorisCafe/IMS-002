@@ -20,15 +20,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link href="cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 	</head>
 
-	<?php
-	if (isset($_COOKIE['sid'])) {
-		$id = $_COOKIE['sid'];
-		echo "<script>document.getElementById('id').value = $id;</script>";
-	} else {
-		echo "<script>alert('cookie not found');</script>";
-	}
-	?>
-
 	<body>
 		<?php require_once "navbar.php"; ?>
 		<h1 class="display-2 text-center">Student Details</h1>
@@ -328,11 +319,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				// $calendar->add_event('Not Attended', $day, 1, 'red');
 			}
 			?>
-			<nav class="navtop">
-				<div>
-					<h1>Attendane of this month</h1>
-				</div>
-			</nav>
+			<div class="container">
+				<h1 class="display-6">Attendance (This Month)</h1><br />
+			</div>
 			<div class="content home">
 				<?php if (isset($_POST['search'])) {
 					echo $calendar;
