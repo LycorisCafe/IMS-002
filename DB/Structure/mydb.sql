@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 13, 2023 at 03:25 AM
+-- Host: localhost
+-- Generation Time: Jan 20, 2023 at 07:31 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -102,7 +102,8 @@ CREATE TABLE `payments` (
 CREATE TABLE `regclass` (
   `id` int(11) NOT NULL,
   `studentId` varchar(7) NOT NULL,
-  `classId` int(11) NOT NULL
+  `classId` int(11) NOT NULL,
+  `attendance` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------

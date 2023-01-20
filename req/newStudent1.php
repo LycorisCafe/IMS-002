@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 $row = $result2->fetch_assoc();
                 $classid = $row['id'];
 
-                $sql3 = "INSERT INTO regclass(studentId, classId) VALUES ('$id', '$classid')";
+                $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
                 $result3 = mysqli_query($con, $sql3);
                 if ($result && $result2 && $result3) {
                     echo "<script>alert('New Student adding completed!');</script>";
@@ -86,7 +86,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 $result2 = mysqli_query($con, $sql2);
                 while ($row = $result2->fetch_assoc()) {
                     $classid = $row['id'];
-                    $sql3 = "INSERT INTO regclass(studentId, classId) VALUES ('$id', '$classid')";
+                    $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
                     $result3 = mysqli_query($con, $sql3);
                 }
                 if ($result && $result2 && $result3) {

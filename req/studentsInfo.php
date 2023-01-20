@@ -31,9 +31,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</form>
 		</div><br />
 
-		<?php //include 'loadtoStdInfo.php'; 
-		?>
-
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-sm-12 col-lg-4 p-1 d-flex">
@@ -323,6 +320,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<h1 class="display-6">Attendance (This Month)</h1><br />
 			</div>
 			<div class="content home">
+				<!-- <form method="POST">
+				<button id="prev" name='prev'><</button></form> -->
 				<?php if (isset($_POST['search'])) {
 					echo $calendar;
 				} ?>

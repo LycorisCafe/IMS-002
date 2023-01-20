@@ -164,9 +164,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								$row4 = mysqli_fetch_assoc($result4);
 								$count = $row4['COUNT(*)'];
 								if ($count == 0) {
+									$sql10 = "UPDATE regclass SET attendance='1' WHERE studentId='$id3'";
+									$result10 = mysqli_query($con, $sql10);
 									$sql5 = "INSERT INTO attendance (regclassId, date_, d2d) VALUES ('$regClassId', '$date', '$isDone')";
 									$result5 = mysqli_query($con, $sql5);
-									if ($result5) {
+									if ($result5 && $result10) {
 										if ($p == 1) {
 											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='1'";
 											$result6 = mysqli_query($con, $sql6);
@@ -225,9 +227,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 																											?>>
 							<label class="form-check-label" for="fees">Paid/ Not Paid</label>
 						</div>
+
+
+						<?php
+						require_once '../connection.php';
+							if(isset($_POST['finish'])) {
+								$sql11 = "UPDATE regclass SET attendance=0";
+								$result11 = mysqli_query($con, $sql11);
+								if($result11) {
+									echo "<script>alert('Done');</script>";
+								}
+							}
+							
+						?>
+
+
 						<div class="d-grid gap-2">
 							<input class="btn btn-primary" type="submit" name='finals' value='Mark as Attend!'>
 						</div>
+						<div class="d-grid gap-2">
+							<br/><button class="btn btn-warning" name="finish">Finish</button>
+						</div>
+
+
 				</div>
 			</div>
 			</form>

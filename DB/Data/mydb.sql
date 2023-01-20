@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jan 13, 2023 at 03:27 AM
+-- Host: localhost
+-- Generation Time: Jan 20, 2023 at 07:32 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 --
 
 INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
-(1, 'admin', 'admin', 'Dasun Nethsara', '2023-01-12 09:44', 'Admin');
+(1, 'admin', 'admin', 'Dasun Nethsara', '2023-01-20 07:25', 'Admin'),
+(2, 'fix', '12345', 'Mr. Fix', '2023-01-20 07:24', 'User');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
