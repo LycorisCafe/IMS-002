@@ -54,6 +54,7 @@
 						<select class="form-control" name='role'>
 							<option value='1'>Administrator</option>
 							<option value='2'>Moderator</option>
+							<option value='3'>Maintainer</option>
 						</select>
 
 					</div>

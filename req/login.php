@@ -25,11 +25,12 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
     } else {
         if ($role == '1') {
             $role = "Admin";
-            $sql = "SELECT * FROM login WHERE type='$role'";
-        } else {
+        } else if ($role == '2') {
             $role = "User";
-            $sql = "SELECT * FROM login WHERE type='$role'";
+        } else {
+            $role = "Maintainer";
         }
+        $sql = "SELECT * FROM login WHERE type='$role'";
         $result = mysqli_query($con, $sql);
 
         if (mysqli_num_rows($result) > 0) {
@@ -48,10 +49,11 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $_SESSION['lastLogin'] = $lastLogin;
 
                         if ($role == "Admin") {
-
                             header("Location: ../view/Admin.php");
-                        } else {
+                        } else if($role == "User") {
                             header("Location: ../view/Moderator.php");
+                        } else {
+                            header("Location: ../view/Maintainer.php");
                         }
                     } else {
                         $em = "Invalid Username or Passowrd";
