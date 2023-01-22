@@ -15,7 +15,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 	<body>
 		<?php require_once "../req/navbar.php"; ?>
-
 		<div class="container"><br />
 			<div class="row justify-content-around">
 				<div class="col-sm-12 col-lg-4 p-1 d-flex">
@@ -147,7 +146,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<div class="card">
 								<div class="row">
 									<div class="col-4">
-										<img src="../Media/images/group.png" class="img-fluid rounded-start" alt="..." width="320" height="320">
+										<img src="../Media/images/user.jpg" class="img-fluid rounded-start" alt="..." width="320" height="320">
 									</div>
 									<div class="col-8">
 										<div class="card-body">

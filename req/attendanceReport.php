@@ -254,19 +254,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                     if($ins == "All") {
                                         if($year == "All") {
                                             $count = 0;
-                                            $sql5 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $sql5 = "SELECT * FROM regclass";
                                             $result5 = mysqli_query($con, $sql5);
-                                            while ($row5 = mysqli_fetch_assoc($result5)) {
-                                                $regclzid = $row5['regclassId'];
-                                                $sql6 = "SELECT * FROM regclass WHERE attendance='0' AND id='$regclzid'";
+                                            while($row5 = mysqli_fetch_assoc($result5)) {
+                                                $id = $row5['id'];
+                                                $sid = $row5['studentId'];
+                                                $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                while($row6 = mysqli_fetch_assoc($result6)) {
-                                                    $studentId = $row6['studentId'];
-                                                    $sql7 = "SELECT * FROM students WHERE id='$studentId'";
+                                                if(mysqli_num_rows($result6) < 1) {
+                                                    $sql7 = "SELECT * FROM students WHERE id='$sid'";
                                                     $result7 = mysqli_query($con, $sql7);
-                                                    $countRow = mysqli_num_rows($result7);
-                                                    $count += $countRow;
-                                                    while ($row7 = mysqli_fetch_assoc($result7)) {
+                                                    while($row7 = mysqli_fetch_assoc($result7)) {
                                                         $addNo = $row7['admissionNo'];
                                                         $sid = $row7['id'];
                                                         $fname = $row7['fname'];
@@ -284,25 +282,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                         echo "<td>$dob</td>";
                                                         echo "<td>$institute</td>";
                                                         echo "</tr>";
+
+                                                        $count += 1;
                                                     }
                                                 }
                                             }
                                             echo "<script>document.getElementById('count').textContent = $count</script>";
                                         } else {
                                             $count = 0;
-                                            $sql5 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $sql5 = "SELECT * FROM regclass";
                                             $result5 = mysqli_query($con, $sql5);
-                                            while ($row5 = mysqli_fetch_assoc($result5)) {
-                                                $regclzid = $row5['regclassId'];
-                                                $sql6 = "SELECT * FROM regclass WHERE attendance='0' AND id='$regclzid'";
+                                            while($row5 = mysqli_fetch_assoc($result5)) {
+                                                $id = $row5['id'];
+                                                $sid = $row5['studentId'];
+                                                $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                while($row6 = mysqli_fetch_assoc($result6)) {
-                                                    $studentId = $row6['studentId'];
-                                                    $sql7 = "SELECT * FROM students WHERE id='$studentId' AND al_year='$year'";
+                                                if(mysqli_num_rows($result6) < 1) {
+                                                    $sql7 = "SELECT * FROM students WHERE id='$sid' AND al_year='$year'";
                                                     $result7 = mysqli_query($con, $sql7);
-                                                    $countRow = mysqli_num_rows($result7);
-                                                    $count += $countRow;
-                                                    while ($row7 = mysqli_fetch_assoc($result7)) {
+                                                    while($row7 = mysqli_fetch_assoc($result7)) {
                                                         $addNo = $row7['admissionNo'];
                                                         $sid = $row7['id'];
                                                         $fname = $row7['fname'];
@@ -320,6 +318,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                         echo "<td>$dob</td>";
                                                         echo "<td>$institute</td>";
                                                         echo "</tr>";
+
+                                                        $count += 1;
                                                     }
                                                 }
                                             }
@@ -328,19 +328,17 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                     } else {
                                         if($year == "All") {
                                             $count = 0;
-                                            $sql5 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $sql5 = "SELECT * FROM regclass";
                                             $result5 = mysqli_query($con, $sql5);
-                                            while ($row5 = mysqli_fetch_assoc($result5)) {
-                                                $regclzid = $row5['regclassId'];
-                                                $sql6 = "SELECT * FROM regclass WHERE attendance='0' AND id='$regclzid'";
+                                            while($row5 = mysqli_fetch_assoc($result5)) {
+                                                $id = $row5['id'];
+                                                $sid = $row5['studentId'];
+                                                $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                while($row6 = mysqli_fetch_assoc($result6)) {
-                                                    $studentId = $row6['studentId'];
-                                                    $sql7 = "SELECT * FROM students WHERE id='$studentId' AND institute='$ins'";
+                                                if(mysqli_num_rows($result6) < 0) {
+                                                    $sql7 = "SELECT * FROM students WHERE id='$sid' AND institute='$ins'";
                                                     $result7 = mysqli_query($con, $sql7);
-                                                    $countRow = mysqli_num_rows($result7);
-                                                    $count += $countRow;
-                                                    while ($row7 = mysqli_fetch_assoc($result7)) {
+                                                    while($row7 = mysqli_fetch_assoc($result7)) {
                                                         $addNo = $row7['admissionNo'];
                                                         $sid = $row7['id'];
                                                         $fname = $row7['fname'];
@@ -358,25 +356,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                         echo "<td>$dob</td>";
                                                         echo "<td>$institute</td>";
                                                         echo "</tr>";
+
+                                                        $count += 1;
                                                     }
                                                 }
                                             }
                                             echo "<script>document.getElementById('count').textContent = $count</script>";
                                         } else {
                                             $count = 0;
-                                            $sql5 = "SELECT * FROM attendance WHERE date_='$today'";
+                                            $sql5 = "SELECT * FROM regclass";
                                             $result5 = mysqli_query($con, $sql5);
-                                            while ($row5 = mysqli_fetch_assoc($result5)) {
-                                                $regclzid = $row5['regclassId'];
-                                                $sql6 = "SELECT * FROM regclass WHERE attendance='0' AND id='$regclzid'";
+                                            while($row5 = mysqli_fetch_assoc($result5)) {
+                                                $id = $row5['id'];
+                                                $sid = $row5['studentId'];
+                                                $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                while($row6 = mysqli_fetch_assoc($result6)) {
-                                                    $studentId = $row6['studentId'];
-                                                    $sql7 = "SELECT * FROM students WHERE id='$studentId' AND al_year='$year' AND institute='$ins'";
+                                                if(mysqli_num_rows($result6) < 0) {
+                                                    $sql7 = "SELECT * FROM students WHERE id='$sid' AND al_year='$year' AND institute='$ins'";
                                                     $result7 = mysqli_query($con, $sql7);
-                                                    $countRow = mysqli_num_rows($result7);
-                                                    $count += $countRow;
-                                                    while ($row7 = mysqli_fetch_assoc($result7)) {
+                                                    while($row7 = mysqli_fetch_assoc($result7)) {
                                                         $addNo = $row7['admissionNo'];
                                                         $sid = $row7['id'];
                                                         $fname = $row7['fname'];
@@ -394,6 +392,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                         echo "<td>$dob</td>";
                                                         echo "<td>$institute</td>";
                                                         echo "</tr>";
+
+                                                        $count += 1;
                                                     }
                                                 }
                                             }
