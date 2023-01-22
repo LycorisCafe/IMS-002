@@ -44,21 +44,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									<h3 class="card-title">Student Name</h3>
 									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
-										if (isset($_POST['search'])) {
-											require_once '../connection.php';
-											$std_id = $_POST['std_id'];
-											$_SESSION['sid'] = $std_id;
-											$sql9 = "SELECT fname, lname FROM students WHERE id='$std_id'";
-											$result9 = mysqli_query($con, $sql9);
-											if (mysqli_num_rows($result9) > 0) {
-												$row9 = mysqli_fetch_assoc($result9);
-												$name = $row9['fname'] . " " . $row9['lname'];
-												echo $name;
-											} else {
-												echo "No Records";
-											}
-										}
-										?>
+	if (isset($_POST['search'])) {
+		require_once '../connection.php';
+		$std_id = $_POST['std_id'];
+		$_SESSION['sid'] = $std_id;
+		$sql9 = "SELECT fname, lname FROM students WHERE id='$std_id'";
+		$result9 = mysqli_query($con, $sql9);
+		if (mysqli_num_rows($result9) > 0) {
+			$row9 = mysqli_fetch_assoc($result9);
+			$name = $row9['fname'] . " " . $row9['lname'];
+			echo $name;
+		}
+		else {
+			echo "No Records";
+		}
+	}
+?>
 									</h5>
 								</div>
 							</div>
@@ -76,19 +77,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									<h3 class="card-title">Addmission No.</h3>
 									<h5 class="card-subtitle mb-2" name='an' style='color: #10A0FF'>
 										<?php
-										if (isset($_POST['search'])) {
-											$std_id = $_SESSION['sid'];
-											$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
-											$result11 = mysqli_query($con, $sql11);
-											if (mysqli_num_rows($result11) > 0) {
-												$row11 = mysqli_fetch_assoc($result11);
-												$admissionNo = $row11['admissionNo'];
-												echo $admissionNo;
-											} else {
-												echo "No Records";
-											}
-										}
-										?>
+	if (isset($_POST['search'])) {
+		$std_id = $_SESSION['sid'];
+		$sql11 = "SELECT admissionNo FROM students WHERE id='$std_id'";
+		$result11 = mysqli_query($con, $sql11);
+		if (mysqli_num_rows($result11) > 0) {
+			$row11 = mysqli_fetch_assoc($result11);
+			$admissionNo = $row11['admissionNo'];
+			echo $admissionNo;
+		}
+		else {
+			echo "No Records";
+		}
+	}
+?>
 									</h5>
 								</div>
 							</div>
@@ -106,19 +108,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									<h3 class="card-title">Institute</h3>
 									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
-										if (isset($_POST['search'])) {
-											$std_id = $_SESSION['sid'];
-											$sql12 = "SELECT institute FROM students WHERE id='$std_id'";
-											$result12 = mysqli_query($con, $sql12);
-											if (mysqli_num_rows($result12) > 0) {
-												$row12 = mysqli_fetch_assoc($result12);
-												$institute = $row12['institute'];
-												echo $institute;
-											} else {
-												echo "No records";
-											}
-										}
-										?>
+	if (isset($_POST['search'])) {
+		$std_id = $_SESSION['sid'];
+		$sql12 = "SELECT institute FROM students WHERE id='$std_id'";
+		$result12 = mysqli_query($con, $sql12);
+		if (mysqli_num_rows($result12) > 0) {
+			$row12 = mysqli_fetch_assoc($result12);
+			$institute = $row12['institute'];
+			echo $institute;
+		}
+		else {
+			echo "No records";
+		}
+	}
+?>
 									</h5>
 								</div>
 							</div>
@@ -136,20 +139,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									<h3 class="card-title">Birthday</h3>
 									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
-										if (isset($_POST['search'])) {
-											require_once '../connection.php';
-											$std_id = $_SESSION['sid'];
-											$sql13 = "SELECT DOB FROM students WHERE id='$std_id'";
-											$result13 = mysqli_query($con, $sql13);
-											if (mysqli_num_rows($result13) > 0) {
-												$row13 = mysqli_fetch_assoc($result13);
-												$dob = $row13['DOB'];
-												echo $dob;
-											} else {
-												echo "No Records";
-											}
-										}
-										?>
+	if (isset($_POST['search'])) {
+		require_once '../connection.php';
+		$std_id = $_SESSION['sid'];
+		$sql13 = "SELECT DOB FROM students WHERE id='$std_id'";
+		$result13 = mysqli_query($con, $sql13);
+		if (mysqli_num_rows($result13) > 0) {
+			$row13 = mysqli_fetch_assoc($result13);
+			$dob = $row13['DOB'];
+			echo $dob;
+		}
+		else {
+			echo "No Records";
+		}
+	}
+?>
 									</h5>
 								</div>
 							</div>
@@ -167,19 +171,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									<h3 class="card-title">A/L Year</h3>
 									<h5 class="card-subtitle mb-2" style='color: #10A0FF'>
 										<?php
-										if (isset($_POST['search'])) {
-											$std_id = $_SESSION['sid'];
-											$sql14 = "SELECT al_year FROM students WHERE id='$std_id'";
-											$result14 = mysqli_query($con, $sql14);
-											if (mysqli_num_rows($result14) > 0) {
-												$row14 = mysqli_fetch_assoc($result14);
-												$alYear = $row14['al_year'];
-												echo $alYear;
-											} else {
-												echo "No Records";
-											}
-										}
-										?>
+	if (isset($_POST['search'])) {
+		$std_id = $_SESSION['sid'];
+		$sql14 = "SELECT al_year FROM students WHERE id='$std_id'";
+		$result14 = mysqli_query($con, $sql14);
+		if (mysqli_num_rows($result14) > 0) {
+			$row14 = mysqli_fetch_assoc($result14);
+			$alYear = $row14['al_year'];
+			echo $alYear;
+		}
+		else {
+			echo "No Records";
+		}
+	}
+?>
 									</h5>
 								</div>
 							</div>
@@ -204,33 +209,33 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<tbody>
 
 					<?php
-					if (isset($_POST['search'])) {
-						$month = date("m");
-						$std_id = $_SESSION['sid'];
-						$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-						$result7 = mysqli_query($con, $sql7);
-						if (mysqli_num_rows($result7) > 0) {
-							$row7 = mysqli_fetch_assoc($result7);
-							$regClassid = $row7['id'];
-							$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid' ORDER BY date DESC LIMIT 1;";
-							$result8 = mysqli_query($con, $sql8);
-							if (mysqli_num_rows($result8) > 0) {
-								$row8 = mysqli_fetch_assoc($result8);
-								$date = $row8['date'];
-								$marks = $row8['marks'];
-								$grade = $row8['grade'];
-								$rank = $row8['rank'];
+	if (isset($_POST['search'])) {
+		$month = date("m");
+		$std_id = $_SESSION['sid'];
+		$sql7 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+		$result7 = mysqli_query($con, $sql7);
+		if (mysqli_num_rows($result7) > 0) {
+			$row7 = mysqli_fetch_assoc($result7);
+			$regClassid = $row7['id'];
+			$sql8 = "SELECT * FROM exam WHERE regclassID='$regClassid' ORDER BY date DESC LIMIT 1;";
+			$result8 = mysqli_query($con, $sql8);
+			if (mysqli_num_rows($result8) > 0) {
+				$row8 = mysqli_fetch_assoc($result8);
+				$date = $row8['date'];
+				$marks = $row8['marks'];
+				$grade = $row8['grade'];
+				$rank = $row8['rank'];
 
-								echo "<tr>";
-								echo "<td>$date</td>";
-								echo "<td>$marks</td>";
-								echo "<td>$grade</td>";
-								echo "<td>$rank</td>";
-								echo "</tr>";
-							}
-						}
-					}
-					?>
+				echo "<tr>";
+				echo "<td>$date</td>";
+				echo "<td>$marks</td>";
+				echo "<td>$grade</td>";
+				echo "<td>$rank</td>";
+				echo "</tr>";
+			}
+		}
+	}
+?>
 				</tbody>
 			</table><br />
 		</div>
@@ -248,34 +253,34 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</thead>
 				<tbody>
 					<?php
-					if (isset($_POST['search'])) {
-						$month = date("m");
-						$std_id = $_SESSION['sid'];
-						$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-						$result5 = mysqli_query($con, $sql5);
-						if (mysqli_num_rows($result5) > 0) {
-							$row5 = mysqli_fetch_assoc($result5);
-							$regClassid = $row5['id'];
-							$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
-							$result6 = mysqli_query($con, $sql6);
-							if (mysqli_num_rows($result6) > 0) {
-								while ($row6 = mysqli_fetch_assoc($result6)) {
-									$date = $row6['date'];
-									$marks = $row6['marks'];
-									$grade = $row6['grade'];
-									$rank = $row6['rank'];
+	if (isset($_POST['search'])) {
+		$month = date("m");
+		$std_id = $_SESSION['sid'];
+		$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+		$result5 = mysqli_query($con, $sql5);
+		if (mysqli_num_rows($result5) > 0) {
+			$row5 = mysqli_fetch_assoc($result5);
+			$regClassid = $row5['id'];
+			$sql6 = "SELECT * FROM exam WHERE regclassID='$regClassid'";
+			$result6 = mysqli_query($con, $sql6);
+			if (mysqli_num_rows($result6) > 0) {
+				while ($row6 = mysqli_fetch_assoc($result6)) {
+					$date = $row6['date'];
+					$marks = $row6['marks'];
+					$grade = $row6['grade'];
+					$rank = $row6['rank'];
 
-									echo "<tr>";
-									echo "<td>$date</td>";
-									echo "<td>$marks</td>";
-									echo "<td>$grade</td>";
-									echo "<td>$rank</td>";
-									echo "</tr>";
-								}
-							}
-						}
-					}
-					?>
+					echo "<tr>";
+					echo "<td>$date</td>";
+					echo "<td>$marks</td>";
+					echo "<td>$grade</td>";
+					echo "<td>$rank</td>";
+					echo "</tr>";
+				}
+			}
+		}
+	}
+?>
 				</tbody>
 			</table><br>
 		</div><br />
@@ -283,39 +288,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<!-- CAALENDAR AREA -->
 		<div class="container">
 			<?php
-			if (isset($_POST['search'])) {
-				$std_id = $_SESSION['sid'];
-				include 'Calendar.php';
-				include '../connection.php';
-				$fulldate = date("Y-m-d");
-				$sys_date = date("d");
-				$sys_month = date("m");
-				$sys_year = date("Y");
-				$firstDay = date('Y-m-01');
-				$lastDay = date('Y-m-t');
-				$calendar = new Calendar($fulldate);
-				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-				$result5 = mysqli_query($con, $sql5);
-				$row5 = mysqli_fetch_assoc($result5);
-				$reclassid = $row5['id'];
-
-				$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
-				$result6 = mysqli_query($con, $sql6);
-				if (mysqli_num_rows($result6) > 0) {
-					while ($row6 = mysqli_fetch_assoc($result6)) {
-						$date = $row6['date_'];
-						$d2d_done = $row6['d2d'];
-						if ($d2d_done == '1') {
-							$calendar->add_event('Attended, D2D', $date, 1, 'green');
-						} else {
-							$calendar->add_event('Attended', $date, 1, 'orange');
-						}
+	if (isset($_POST['search'])) {
+		$std_id = $_SESSION['sid'];
+		include 'Calendar.php';
+		include '../connection.php';
+		$fulldate = date("Y-m-d");
+		$sys_date = date("d");
+		$sys_month = date("m");
+		$sys_year = date("Y");
+		$firstDay = date('Y-m-01');
+		$lastDay = date('Y-m-t');
+		$calendar = new Calendar($fulldate);
+		$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+		$result5 = mysqli_query($con, $sql5);
+		if(mysqli_num_rows($result5) > 0) {
+			$row5 = mysqli_fetch_assoc($result5);
+			$reclassid = $row5['id'];
+			$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
+			$result6 = mysqli_query($con, $sql6);
+			if (mysqli_num_rows($result6) > 0) {
+				while ($row6 = mysqli_fetch_assoc($result6)) {
+					$date = $row6['date_'];
+					$d2d_done = $row6['d2d'];
+					if ($d2d_done == '1') {
+						$calendar->add_event('Attended, D2D', $date, 1, 'green');
+					}
+					else {
+						$calendar->add_event('Attended', $date, 1, 'orange');
 					}
 				}
-			} else {
-				// $calendar->add_event('Not Attended', $day, 1, 'red');
 			}
-			?>
+		}
+
+		
+	}
+	else {
+	// $calendar->add_event('Not Attended', $day, 1, 'red');
+	}
+?>
 			<div class="container">
 				<h1 class="display-6">Attendance (This Month)</h1><br />
 			</div>
@@ -323,8 +333,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<!-- <form method="POST">
 				<button id="prev" name='prev'><</button></form> -->
 				<?php if (isset($_POST['search'])) {
-					echo $calendar;
-				} ?>
+		echo $calendar;
+	}?>
 			</div>
 		</div><br /><br />
 
@@ -345,28 +355,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					var data = google.visualization.arrayToDataTable([
 						['Month', 'Marks'],
 						<?php
-						if (isset($_POST['search'])) {
-							//$date = array();
-							//$marks = array();
-							$data = array();
-							$firstDay = date('Y-m-01');
-							$lastDay = date('Y-m-t');
-							$std_id = $_SESSION['sid'];
-							$sql9 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-							$result9 = mysqli_query($con, $sql9);
-							if (mysqli_num_rows($result9) > 0) {
-								$row9 = mysqli_fetch_assoc($result9);
-								$regClassid = $row5['id'];
-								$sql10 = "SELECT * FROM exam WHERE '$firstDay' <= date and date <= '$lastDay' AND regclassID='$regClassid'";
-								$result10 = mysqli_query($con, $sql10);
-								if (mysqli_num_rows($result10) > 0) {
-									while ($row10 = mysqli_fetch_assoc($result10)) {
-										echo "['" . $row10['date'] . "', " . $row10['marks'] . "],";
-									}
-								}
-							}
-						}
-						?>
+	if (isset($_POST['search'])) {
+		//$date = array();
+		//$marks = array();
+		$data = array();
+		$firstDay = date('Y-m-01');
+		$lastDay = date('Y-m-t');
+		$std_id = $_SESSION['sid'];
+		$sql9 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+		$result9 = mysqli_query($con, $sql9);
+		if (mysqli_num_rows($result9) > 0) {
+			$row9 = mysqli_fetch_assoc($result9);
+			$regClassid = $row5['id'];
+			$sql10 = "SELECT * FROM exam WHERE '$firstDay' <= date and date <= '$lastDay' AND regclassID='$regClassid'";
+			$result10 = mysqli_query($con, $sql10);
+			if (mysqli_num_rows($result10) > 0) {
+				while ($row10 = mysqli_fetch_assoc($result10)) {
+					echo "['" . $row10['date'] . "', " . $row10['marks'] . "],";
+				}
+			}
+		}
+	}
+?>
 					]);
 
 					var options = {
@@ -389,25 +399,126 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 		</div>
 
-		<?php
-		if (isset($_POST['delete'])) {
-			include_once '../connection.php';
-			$sid = $_SESSION['sid'];
-			$sql15 = "DELETE FROM students WHERE id='$sid'";
-			if (mysqli_query($con, $sql15)) {
-				echo "<script>alert('Student Removed!');</script>";
-			} else {
-				echo "<script>alert('Error Removing Student');</script>";
-			}
-		}
-		?>
+		<div class='container'>
+		    <h1 class='display-4 text-warning' style='font-weight: 500;'>Edit Student Details</h1>
+			<fieldset>
+				<br/><legend >Edit Student Detials</legend>
+				<form role="delete" action="studentsInfo.php" method="POST">
+					<div class='row'>
+						<div class='col'>
+							<label class="form-label">First Name: </label>
+							<input type="text" class="form-control" name="fname" id='fname' autocomplete="off" required placeholder="David">
+						</div>
+						<div class='col'>
+							<label class="form-label">Last Name: </label>
+							<input type="text" class="form-control" name="lname" id='lname' autocomplete="off" required placeholder="Johns">
+						</div>
+					</div><div class='row'>
+						<div class='col'>
+							<label class="form-label">Admission Number: </label>
+							<input type="text" class="form-control" name="admission" id='admission' autocomplete="off" required placeholder="XXXXXX">
+						</div>
+						<div class='col'>
+							<label class="form-label">Student ID: </label>
+							<input type="text" class="form-control" name="sid" id='sid' autocomplete="off" required placeholder="XXXXXX">
+						</div>
+					</div><div class='row'>
+						<div class='col'>
+							<label class="form-label">A/L Year: </label>
+							<input type="text" class="form-control" name="year" id='year' autocomplete="off" required placeholder="2020">
+						</div>
+						<div class='col'>
+							<label class="form-label">Date of Birthday (DOB): </label>
+							<input type="text" class="form-control" name="DOB" id='DOB' autocomplete="off" required placeholder="2020-01-01">
+						</div>
+					</div>
+					<div class="d-grid gap-2"><br/>
+						<button class="btn btn-outline-warning" type="submit" name="update">UPDATE</button>
+					</div>
+				</form>
+			</fieldset>
 
+		<?php
+			include_once '../connection.php';
+			if (isset($_POST['search'])) {
+				//include_once '../connection.php';
+				$id = $_SESSION['sid'];
+				$sql10 = "SELECT * FROM students WHERE id='$id'";
+				$result10 = mysqli_query($con, $sql10);
+				if (mysqli_num_rows($result10) > 0) {
+					$row10 = mysqli_fetch_assoc($result10);
+					$fname = $row10['fname'];
+					$lname = $row10['lname'];
+					$admission = $row10['admissionNo'];
+					$sid = $row10['id'];
+					$year = $row10['al_year'];
+					$dob = $row10['DOB'];
+
+					echo "<script>document.getElementById('fname').value = '$fname';</script>";
+					echo "<script>document.getElementById('lname').value = '$lname';</script>";
+					echo "<script>document.getElementById('admission').value = '$admission';</script>";
+					echo "<script>document.getElementById('sid').value = '$sid';</script>";
+					echo "<script>document.getElementById('year').value = '$year';</script>";
+					echo "<script>document.getElementById('DOB').value = '$dob';</script>";
+				}
+				else {
+					$fname = "";
+					$lname = "";
+					$admission = "";
+					$year = "";
+					$dob = "";
+
+					echo "<script>document.getElementById('fname').value = 'No Data'</script>";
+					echo "<script>document.getElementById('lname').value = 'No Data'</script>";
+					echo "<script>document.getElementById('admission').value = 'No Data'</script>";
+					echo "<script>document.getElementById('sid').value = 'No Data'</script>";
+					echo "<script>document.getElementById('year').value = 'No Data'</script>";
+					echo "<script>document.getElementById('DOB').value = 'No Data'</script>";
+				}
+			}
+
+			if(isset($_POST['update'])) {
+				$fname = $_POST['fname'];
+				$lname = $_POST['lname'];
+				$admission = $_POST['admission'];
+				$sid = $_POST['sid'];
+				$year = $_POST['year'];
+				$dob = $_POST['DOB'];
+
+				$id = $_SESSION['sid'];
+				$sql16 = "UPDATE students SET id='$sid', fname='$fname', lname='$lname', admissionNo='$admission', 
+						  al_year='$year', DOB='$dob' WHERE id='$id'";
+				$result16 = mysqli_query($con, $sql16);
+				if($result16) {
+					echo "<script>alert('$fname\'s details updated!');</script>";
+				} else {
+					echo "<script>alert('$fname\'s details updating faild!');</script>";
+				}
+
+			}
+		?>
+		</div>
+
+		<?php
+	if (isset($_POST['delete'])) {
+		include_once '../connection.php';
+		$sid = $_SESSION['sid'];
+		$sql15 = "DELETE FROM students WHERE id='$sid'";
+		if (mysqli_query($con, $sql15)) {
+			echo "<script>alert('Student Removed!');</script>";
+		}
+		else {
+			echo "<script>alert('Error Removing Student');</script>";
+		}
+	}
+?>
+        <br/><br/>
 		<div class="container">
 			<h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
-			<form class="d-flex mb-3" role="delete" action="studentsInfo.php" method="POST">
+			<form role="delete" action="studentsInfo.php" method="POST">
 				<div class="d-grid gap-2"><br>
 					<button class="btn btn-outline-danger" type="submit" name="delete">Remove from Class</button>
-				</div>
+			    </div>
 
 			</form>
 		</div>
@@ -418,7 +529,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 	</html>
 
-<?php } else {
+<?php
+}
+else {
 	header("Location: ../login.php");
 	exit;
 }
