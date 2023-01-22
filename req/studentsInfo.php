@@ -401,8 +401,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 		<div class='container'>
 		    <h1 class='display-4 text-warning' style='font-weight: 500;'>Edit Student Details</h1>
-			<fieldset>
-				<br/><legend >Edit Student Detials</legend>
 				<form role="delete" action="studentsInfo.php" method="POST">
 					<div class='row'>
 						<div class='col'>
@@ -431,12 +429,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<label class="form-label">Date of Birthday (DOB): </label>
 							<input type="text" class="form-control" name="DOB" id='DOB' autocomplete="off" required placeholder="2020-01-01">
 						</div>
-					</div>
-					<div class="d-grid gap-2"><br/>
+					</div><br/><br/>
+					<div class="d-grid gap-2">
 						<button class="btn btn-outline-warning" type="submit" name="update">UPDATE</button>
 					</div>
 				</form>
-			</fieldset>
 
 		<?php
 			include_once '../connection.php';
@@ -515,7 +512,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <br/><br/>
 		<div class="container">
 			<h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
-			<form role="delete" action="studentsInfo.php" method="POST">
+			<form role="delete" action="studentsInfo.php" method="POST"><br/>
 				<div class="d-grid gap-2"><br>
 					<button class="btn btn-outline-danger" type="submit" name="delete">Remove from Class</button>
 			    </div>
