@@ -20,88 +20,165 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
     <?php
 
-    if (isset($_POST['submit'])) {
-        // user data
-        $id = $_POST['id2'];
-        $admissionNo = $_POST['admissionNo'];
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $dob = $_POST['DOB'];
-        $alYear = $_POST['alYear'];
-        $institute = $_POST['institute'];
-
-        // file data
-        $name = $_FILES['pic']['name'];
-        $type = $_FILES['pic']['type'];
-        $size = $_FILES['pic']['size'];
-        $temp = $_FILES['pic']['tmp_name'];
-        $error = $_FILES['pic']['error'];
-
-        if (!file_exists("../uploads")) {
-            mkdir("../uploads", 0777, true);
-        }
-
-        if ($error > 0) {
-            $temp2 = explode(".", $name);
-            include_once '../connection.php';
-            $sql6 = "SELECT * FROM students WHERE id='$id'";
-            $result6 = mysqli_query($con, $sql6);
-            //$row6 = mysqli_fetch_assoc($result6);
-            if (mysqli_num_rows($result6) == 0) {
-
-                $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
-                                    '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '', '$institute')";
-                $result = mysqli_query($con, $sql);
-
-                $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
-                $result2 = mysqli_query($con, $sql2);
-                $row = $result2->fetch_assoc();
-                $classid = $row['id'];
-
-                $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
-                $result3 = mysqli_query($con, $sql3);
-                if ($result && $result2 && $result3) {
-                    echo "<script>alert('New Student adding completed!');</script>";
-                } else {
-                    echo "<script>alert('New Student adding Unsuccess!');</script>";
-                }
-            } else {
-                $em = "$id is already exist!";
-                header("Location: newStudent1.php?error=$em");
-                exit;
-            }
-        } else {
-            $temp2 = explode(".", $name);
-            $filename = "../uploads/$id." . $temp2[1];
-            move_uploaded_file($temp, $filename);
-            include_once '../connection.php';
-            $sql7 = "SELECT id FROM students WHERE id='$id'";
-            $result7 = mysqli_query($con, $sql7);
-            // $row7 = mysqli_fetch_assoc($result7);
-            if (mysqli_num_rows($result7) == 0) {
-                $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
-                                        '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
-                $result = mysqli_query($con, $sql);
-                $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
-                $result2 = mysqli_query($con, $sql2);
-                while ($row = $result2->fetch_assoc()) {
-                    $classid = $row['id'];
-                    $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
-                    $result3 = mysqli_query($con, $sql3);
-                }
-                if ($result && $result2 && $result3) {
-                    echo "<script>alert('New Student adding completed!');</script>";
-                } else {
-                    echo "<script>alert('New Student adding Unsuccess!');</script>";
-                }
-            } else {
-                $em = "$id is already exist!";
-                header("Location: newStudent1.php?error=$em");
-                exit;
-            }
-            //
-        }
+    function input_data($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;  
     }
+
+    $fnameErr = $lnameErr = $admissionErr = $yearErr = $dateErr = "";
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+        $fname = input_data($_POST["fname"]);  
+        // check if name only contains letters and whitespace  
+        if (!preg_match("/^[a-zA-Z]*$/",$fname)) {  
+            $fnameErr = "Only alphabets and white space are not allowed";
+            header("Location: newStudent1.php?error=$fnameErr");
+            exit;
+        }
+
+        $lname = input_data($_POST["lname"]);  
+        // check if name only contains letters and whitespace  
+        if (!preg_match("/^[a-zA-Z]*$/",$lname)) {  
+            $lnameErr = "Only alphabets and white space are not allowed";
+            header("Location: newStudent1.php?error=$lnameErr");
+            exit;
+        }
+
+        $aNO = input_data($_POST["admissionNo"]);  
+        // check if admission number is well-formed  
+        if (!preg_match ("/^[0-9]*$/", $aNO) ) {  
+            $admissionErr = "Only numeric value is allowed."; 
+            header("Location: newStudent1.php?error=$admissionErr");
+            exit;
+        } 
+
+        // $sid = input_data($_POST["id2"]);  
+        // // check if student id is well-formed  
+        // if (!preg_match ("/^[0-9]*$/", $sid) ) {  
+        //     $admissionErr = "Only numeric value is allowed."; 
+        //     header("Location: newStudent1.php?error=$sid");
+        //     exit;
+        // }
+
+        $year = input_data($_POST["alYear"]);  
+        // check if al year is well-formed  
+        if (!preg_match ("/^[0-9]*$/", $year) || strlen ($year) != 4 ) {
+            $yearErr = "Enter a valid year."; 
+            header("Location: newStudent1.php?error=$yearErr");
+            exit;
+        }
+
+        if (empty($_POST["DOB"])) {  
+            $dateErr = "Date of Birth (DOB) is required";  
+        } else {  
+           $dob = $_POST["DOB"];
+           try {
+                $arr = explode('-', $dob);
+                if(!checkdate($arr[1], $arr[2], $arr[0])) {
+                    $dateErr = "Enter a valid date";
+                    header("Location: newStudent1.php?error=$dateErr");
+                    exit;
+                }
+           } catch (Exception $e) {
+                $dateErr = "Enter a valid date";
+                header("Location: newStudent1.php?error=$dateErr");
+                exit;
+           }
+       }
+
+
+    }
+
+        if (isset($_POST['submit'])) {
+            if($fnameErr == "" && $lnameErr == "" && $admissionErr == "" && $yearErr == "" && $dateErr == "") {
+                // user data
+                $id = $_POST['id2'];
+                $admissionNo = $_POST['admissionNo'];
+                $fname = $_POST['fname'];
+                $lname = $_POST['lname'];
+                $dob = $_POST['DOB'];
+                $alYear = $_POST['alYear'];
+                $institute = $_POST['institute'];
+
+                // file data
+                $name = $_FILES['pic']['name'];
+                $type = $_FILES['pic']['type'];
+                $size = $_FILES['pic']['size'];
+                $temp = $_FILES['pic']['tmp_name'];
+                $error = $_FILES['pic']['error'];
+
+                if (!file_exists("../uploads")) {
+                    mkdir("../uploads", 0777, true);
+                }
+
+                if ($error > 0) {
+                    $temp2 = explode(".", $name);
+                    include_once '../connection.php';
+                    $sql6 = "SELECT * FROM students WHERE id='$id'";
+                    $result6 = mysqli_query($con, $sql6);
+                    //$row6 = mysqli_fetch_assoc($result6);
+                    if (mysqli_num_rows($result6) == 0) {
+
+                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
+                                            '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '', '$institute')";
+                        $result = mysqli_query($con, $sql);
+
+                        $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
+                        $result2 = mysqli_query($con, $sql2);
+                        $row = $result2->fetch_assoc();
+                        $classid = $row['id'];
+
+                        $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
+                        $result3 = mysqli_query($con, $sql3);
+                        if ($result && $result2 && $result3) {
+                            echo "<script>alert('New Student adding completed!');</script>";
+                        } else {
+                            echo "<script>alert('New Student adding Unsuccess!');</script>";
+                        }
+                    } else {
+                        $em = "$id is already exist!";
+                        header("Location: newStudent1.php?error=$em");
+                        exit;
+                    }
+                } else {
+                    $temp2 = explode(".", $name);
+                    $filename = "../uploads/$id." . $temp2[1];
+                    move_uploaded_file($temp, $filename);
+                    include_once '../connection.php';
+                    $sql7 = "SELECT id FROM students WHERE id='$id'";
+                    $result7 = mysqli_query($con, $sql7);
+                    // $row7 = mysqli_fetch_assoc($result7);
+                    if (mysqli_num_rows($result7) == 0) {
+                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
+                                                '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
+                        $result = mysqli_query($con, $sql);
+                        $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
+                        $result2 = mysqli_query($con, $sql2);
+                        while ($row = $result2->fetch_assoc()) {
+                            $classid = $row['id'];
+                            $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
+                            $result3 = mysqli_query($con, $sql3);
+                        }
+                        if ($result && $result2 && $result3) {
+                            echo "<script>alert('New Student adding completed!');</script>";
+                        } else {
+                            echo "<script>alert('New Student adding Unsuccess!');</script>";
+                        }
+                    } else {
+                        $em = "$id is already exist!";
+                        header("Location: newStudent1.php?error=$em");
+                        exit;
+                    }
+                    //
+                }
+            } else {
+                $em = "Error occurred in adding new Student!";
+                header("Location: newStudent1.php?error=$em");
+                exit;
+            }
+        }
 
     ?>
 
