@@ -136,7 +136,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </tbody>
             </table><br>
         </div>
-
+        <a class="btn btn-outline-danger btn-sm" aria-current="page" href="../req/logout.php">Logout</a>
+    <?php include '../req/footer.php'; ?>
 </body>
 
 </html>

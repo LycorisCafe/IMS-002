@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <title>Test Title</title>
+  <title>Lycoris Cafe</title>
   <link rel="stylesheet" href="css/fonts.css" />
   <link rel="icon" type="image/x-icon" href="Media/favicon.png" />
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/temp.css" />
+  <link rel="manifest" href="manifest.json" />
   <script src="fontawesome.com.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="index.php"><em>Test</em> Name</a>
+      <a href="index.php"><em>Lycoris</em> Cafe</a>
     </div>
     <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -37,8 +38,8 @@
 
     <div class="video-overlay header-text">
       <div class="caption">
-        <h6>Tset Sub Text</h6>
-        <h2><em>Heading </em>Text</h2>
+        <h6>Test Sub Text</h6>
+        <h2><em>Lycoris </em>Cafe</h2>
         <div class="main-button">
           <a class="scroll-to-section" href="login.php">Login</a>
         </div>
@@ -52,7 +53,7 @@
   <div class="text-center mt-auto py-3 bg-dark">
     <br />
     <h5 style="color: #fff">
-      &copy; COPYRIGHT Test | DESIGN BY LYCORIS CAFE
+      &copy; COPYRIGHT LYCORIS CAFE | DESIGN BY LYCORIS CAFE
     </h5>
     <br />
   </div>

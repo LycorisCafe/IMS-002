@@ -23,7 +23,7 @@
 <body>
 	<header class="main-header clearfix" role="header">
 		<div class="logo">
-			<a href="index.php"><em>Test</em> Name</a>
+			<a href="index.php"><em>Lycoris</em> Cafe</a>
 		</div>
 		<a href="" class="menu-link"><i class="fa fa-bars"></i></a>
 		<nav id="menu" class="main-nav" role="navigation">

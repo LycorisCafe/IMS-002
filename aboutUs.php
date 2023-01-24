@@ -14,7 +14,7 @@
 <body>
   <header class="main-header clearfix" role="header">
     <div class="logo">
-      <a href="index.php"><em>Test</em> Name</a>
+      <a href="index.php"><em>Lycoris</em> Cafe</a>
     </div>
     <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
     <nav id="menu" class="main-nav" role="navigation">
@@ -85,7 +85,7 @@
   </div>
 
   <div class="container">
-    <hr />
+    <hr /><br/>
     <h1 class="display-4 text-center">Our Team</h1>
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
@@ -168,7 +168,7 @@
         <div class="card" style="width: 508px">
           <img class="card-img-top" src="Media/roku.png" alt="Card image" title="Dasun Nethsara's Avatar">
           <div class="card-body">
-            <h5 class="card-title text-center">Avatar Roku</h5>
+            <h5 class="card-title text-center">Dasun Nethsara</h5>
             <p class="card-text text-center">
               Co-Founder, Software Developer, Web Developer<br />QA Tester
             </p>
@@ -208,7 +208,7 @@
 
   <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
   <div class="text-center mt-auto py-3 bg-dark"><br>
-    <h5 style="color: #fff;">&copy; COPYRIGHT Test | DESIGN BY LYCORIS CAFE</h5><br>
+    <h5 style="color: #fff;">&copy; COPYRIGHT LYCORIS CAFE | DESIGN BY LYCORIS CAFE</h5><br>
   </div>
 </body>
 

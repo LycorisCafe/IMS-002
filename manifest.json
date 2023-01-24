@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "IMS-002",
+    "description": "Educational Institute Management System",
+    "version": "1.0",
+    "action": {
+        "default_popup": "index.php"
+    },
+    "icons": {
+        "src": "Media/favicon.png",
+        "sizes": "253x253",
+        "type": "image/png"
+    }
+}
