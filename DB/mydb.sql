@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 20, 2023 at 07:31 PM
+-- Host: 127.0.0.1
+-- Generation Time: Jan 24, 2023 at 10:44 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -76,8 +76,15 @@ CREATE TABLE `login` (
   `password` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
   `lastLogin` varchar(16) NOT NULL,
-  `type` varchar(5) NOT NULL
+  `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
+(3, 'maintainer', 'maintainer', 'Lycoris Cafe', '2023-01-24 10:33', 'Maintainer');
 
 -- --------------------------------------------------------
 
@@ -200,7 +207,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `payments`
