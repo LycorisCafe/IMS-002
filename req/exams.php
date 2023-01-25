@@ -15,7 +15,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link rel="stylesheet" href="../css/temp.css">
-        <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+        <script src="../fontawesome.com.js"></script>
     </head>
 
     <?php
@@ -24,8 +24,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         $marks = $_POST['marks'];
         $rank = $_POST['rank'];
 
-        // finding the grade
-        if ($marks >= 0 and $marks <= 100) {
+        // messedup if...else if... else statement with python. && for AND operator in php
+        if ($marks >= 0 && $marks <= 100) { 
             if ($marks >= 75) {
                 $grade = "A";
             } else if ($marks >= 65) {
