@@ -44,8 +44,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         }
 
         $date = date("Y-m-d");
-
-        // db
         include_once '../connection.php';
         $sql1 = "SELECT id FROM regclass WHERE studentId='$id'";
         $result1 = mysqli_query($con, $sql1);
@@ -73,8 +71,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     ?>
 
     <body>
-        <!-- Imports -->
-        <?php require_once "navbar.php"; ?>
+        <?php require_once "navbar.php"; ?>        <!-- Imports -->
         <div class="container col-lg-4 col-md-5 align-self-center">
             <div class="card" style="transform: translate(0%, 20%);">
                 <div class="card-header text-center">

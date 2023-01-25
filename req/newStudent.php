@@ -4,7 +4,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
 
-    <!doctype html>
+    <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
 
     <head>
@@ -15,7 +15,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link rel="stylesheet" href="../css/temp.css">
-        <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+        <script src="../fontawesome.com.js"></script>
     </head>
 
     <?php
@@ -34,7 +34,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         // check if name only contains letters and whitespace  
         if (!preg_match("/^[a-zA-Z]*$/",$fname)) {  
             $fnameErr = "Only alphabets and white space are not allowed";
-            header("Location: newStudent1.php?error=$fnameErr");
+            header("Location: newStudent.php?error=$fnameErr");
             exit;
         }
 
@@ -42,7 +42,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         // check if name only contains letters and whitespace  
         if (!preg_match("/^[a-zA-Z]*$/",$lname)) {  
             $lnameErr = "Only alphabets and white space are not allowed";
-            header("Location: newStudent1.php?error=$lnameErr");
+            header("Location: newStudent.php?error=$lnameErr");
             exit;
         }
 
@@ -50,23 +50,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         // check if admission number is well-formed  
         if (!preg_match ("/^[0-9]*$/", $aNO) ) {  
             $admissionErr = "Only numeric value is allowed."; 
-            header("Location: newStudent1.php?error=$admissionErr");
+            header("Location: newStudent.php?error=$admissionErr");
             exit;
-        } 
-
-        // $sid = input_data($_POST["id2"]);  
-        // // check if student id is well-formed  
-        // if (!preg_match ("/^[0-9]*$/", $sid) ) {  
-        //     $admissionErr = "Only numeric value is allowed."; 
-        //     header("Location: newStudent1.php?error=$sid");
-        //     exit;
-        // }
+        }
 
         $year = input_data($_POST["alYear"]);  
         // check if al year is well-formed  
         if (!preg_match ("/^[0-9]*$/", $year) || strlen ($year) != 4 ) {
             $yearErr = "Enter a valid year."; 
-            header("Location: newStudent1.php?error=$yearErr");
+            header("Location: newStudent.php?error=$yearErr");
             exit;
         }
 
@@ -78,12 +70,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 $arr = explode('-', $dob);
                 if(!checkdate($arr[1], $arr[2], $arr[0])) {
                     $dateErr = "Enter a valid date";
-                    header("Location: newStudent1.php?error=$dateErr");
+                    header("Location: newStudent.php?error=$dateErr");
                     exit;
                 }
            } catch (Exception $e) {
                 $dateErr = "Enter a valid date";
-                header("Location: newStudent1.php?error=$dateErr");
+                header("Location: newStudent.php?error=$dateErr");
                 exit;
            }
        }
@@ -118,7 +110,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     include_once '../connection.php';
                     $sql6 = "SELECT * FROM students WHERE id='$id'";
                     $result6 = mysqli_query($con, $sql6);
-                    //$row6 = mysqli_fetch_assoc($result6);
                     if (mysqli_num_rows($result6) == 0) {
 
                         $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
@@ -139,7 +130,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         }
                     } else {
                         $em = "$id is already exist!";
-                        header("Location: newStudent1.php?error=$em");
+                        header("Location: newStudent.php?error=$em");
                         exit;
                     }
                 } else {
@@ -149,7 +140,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     include_once '../connection.php';
                     $sql7 = "SELECT id FROM students WHERE id='$id'";
                     $result7 = mysqli_query($con, $sql7);
-                    // $row7 = mysqli_fetch_assoc($result7);
                     if (mysqli_num_rows($result7) == 0) {
                         $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
                                                 '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
@@ -168,14 +158,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         }
                     } else {
                         $em = "$id is already exist!";
-                        header("Location: newStudent1.php?error=$em");
+                        header("Location: newStudent.php?error=$em");
                         exit;
                     }
                     //
                 }
             } else {
                 $em = "Error occurred in adding new Student!";
-                header("Location: newStudent1.php?error=$em");
+                header("Location: newStudent.php?error=$em");
                 exit;
             }
         }
@@ -196,7 +186,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <?= $_GET['error'] ?>
                         </div>
                     <?php } ?>
-                    <form action="newStudent1.php" method="POST" enctype='multipart/form-data'>
+                    <form action="newStudent.php" method="POST" enctype='multipart/form-data'>
                         <div class="col-auto mb-3">
                             <label class="form-label">Institute: </label>
                             <select class="form-control" name='institute'>

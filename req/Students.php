@@ -4,7 +4,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
 
-    <!doctype html>
+    <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
 
     <head>
@@ -15,7 +15,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link rel="stylesheet" href="../css/temp.css">
-        <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+        <script src="../fontawesome.com.js"></script>
     </head>
 
     <body>
@@ -45,7 +45,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     <select class="form-control" name='year'>
                         <option value="All">All</option>
                         <?php
-                        //include_once '../connection.php';
                         $sql2 = "SELECT DISTINCT al_year FROM classes";
                         $result2 = mysqli_query($con, $sql2);
                         while ($ri2 = mysqli_fetch_assoc($result2)) {
@@ -212,21 +211,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 
             }
         </script>
-
-        <?php
-        /*if(isset($_POST['clicked'])) {
-            $_SESSION['stdID'] = $_COOKIE['sid'];
-            
-            //header("Location: studentsInfo.php");
-            //if($_SESSION['stdID'] == "") {
-                //echo $_SESSION['stdID'];
-                //echo "<script>location.replace('studentsInfo.php');</script>";
-                header("Location: studentInfo.php");
-            //}
-        }*/
-        ?>
-
-
     </body>
 
     </html>
