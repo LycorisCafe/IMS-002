@@ -2,9 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-
-
-	<!doctype html>
+	<!DOCTYPE html>
 	<html lang="en" data-bs-theme="dark">
 
 	<head>
@@ -118,9 +116,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<h1 class="display-4">Add a New Class</h1><br />
 			<div class="container col-lg-4 col-md-5 align-self-center">
 				<div class="card" style="transform: translate(0%, 5%);">
-					<!-- <div class="card-header text-center">
-					<h3 class='display-5' style='color: #fff;'>New Class</h3>
-				</div> -->
 					<div class="card-body">
 						<form action="addClass.php" method="POST">
 							<?php if (isset($_GET['error'])) { ?>
@@ -285,7 +280,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<?php
 				if (isset($_POST['delete'])) {
 					include_once '../connection.php';
-					// $sid = $_SESSION['sid'];
 					$ins = $_SESSION['ins'];
 					$year = $_SESSION['year'];
 					$sql16 = "DELETE FROM classes WHERE institute='$ins' AND al_year='$year'";
@@ -305,10 +299,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</form>
 
 			</div>
-
-			<!-- <br /><br /><br /><br /><br /><br /> -->
-
-
 			<?php include 'footer.php'; ?>
 	</body>
 

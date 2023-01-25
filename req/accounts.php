@@ -35,7 +35,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 } else {
                     $em = "Error adding new account";
                     header("Location: accounts.php?error=$em");
-                    exit;
                     break;
                 }
             } else {
@@ -86,9 +85,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <h1 class="display-6 container">Add new Account</h1><br />
         <div class="container col-lg-4 col-md-5 align-self-center">
             <div class="card" style="transform: translate(0%, 5%);">
-                <!-- <div class="card-header text-center">
-                                        <h3 class='display-5' style='color: #fff;'>New Account</h3>
-                                </div> -->
                 <div class="card-body">
                     <form action="accounts.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
