@@ -27,7 +27,7 @@ Institute Management System
 > Vulnerability Check
 - Stage 1 : Pass
 - Stage 2 : Pass
-- Stage 3 : Pending...
+- Stage 3 : Pass
 
 > QA Testing
 - Stage 1 : Pending...
