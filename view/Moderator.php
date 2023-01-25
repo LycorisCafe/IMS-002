@@ -2,9 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-
-
-	<!doctype html>
+	<!DOCTYPE html>
 	<html lang="en" data-bs-theme="dark">
 
 	<head>
@@ -146,8 +144,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<?php
 							$year = date("Y");
 							$month = date("m");
-							// echo "<script>alert('Attendance Marked!');</script>";
-							// header("Refresh:0; url=Moderator.php");
 							if (isset($_POST['finals'])) {
 								$id3 = $_SESSION['id3'];
 								$date = date("Y-m-d");
@@ -220,7 +216,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 																													if ($s['status'] == 1) {
 																														echo "checked";
 																													} else {
-																														// echo "checked";
+																													
 																													}
 																												}
 																											}
@@ -287,8 +283,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						}
 					}
 				}
-			} else {
-				// $calendar->add_event('Not Attended', $day, 1, 'red');
 			}
 			?>
 			<nav class="navtop">

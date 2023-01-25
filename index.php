@@ -52,23 +52,6 @@
 </head>
 
 <body>
-
-
-  <!-- <section class="section main-banner" id="top">
-    <video autoplay muted loop id="bg-video">
-      <source src="/Media/images/bg2_1.jpg" type="video/mp4" />
-    </video>
-
-    <div class="video-overlay header-text">
-      <div class="caption">
-        <h6>Test Sub Text</h6>
-        <h2><em>Lycoris </em>Cafe</h2>
-        <div class="main-button">
-          <a class="scroll-to-section" href="login.php">Login</a>
-        </div>
-      </div>
-    </div>
-  </section> -->
   <div class="img-home">
     <header class="main-header clearfix" role="header">
       <div class="logo">
