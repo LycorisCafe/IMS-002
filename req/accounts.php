@@ -135,8 +135,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         <div class="container">
             <h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
-            <form class="d-flex mb-3" role="delteAcc" method="POST" action="accounts.php">
-                <label class="form-label">Account: </label>
+            <form role="delteAcc" method="POST" action="accounts.php">
+            <div class="col-auto mb-3">
+				<label class="form-label">Account: </label>
                 <select class="form-control" name='account'>
                     <?php
                     include_once '../connection.php';
@@ -147,8 +148,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <option value="<?php echo $ri['username'] ?>"><?php echo $ri['username'] . " - " . $ri['name'] ?></option>
                     <?php } ?>
                 </select>
-
+            </div>
+            <div class="d-grid gap-2">
                 <button class="btn btn-outline-danger" type="submit" name="delete">Delete</button>
+            </div>
+
             </form>
         </div>
 
