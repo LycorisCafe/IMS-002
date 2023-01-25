@@ -2,9 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-
-
-    <!doctype html>
+    <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
 
     <head>
@@ -67,14 +65,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                     </div><br />
                     <div class="d-grid gap-2">
-                        <button class="btn btn-outline-success" type="submit" name="search">Fetch Data</button>
+                        <button class="btn btn-outline-success" type="submit" name="search">Search</button>
                     </div>
                 </form>
             </fieldset>
         </div><br /><br />
 
         <div class="container">
-            <h4>Student Count : <span class="badge bg-secondary" id="count"></span></h4>
+            <h3>Student Count : <span class="badge bg-secondary" id="count" style="font-size: 18pt; color: #ff0;"></span></h3>
         </div>
 
         <div class="container-fluid">
@@ -136,7 +134,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         } else {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
@@ -172,7 +170,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         }
                                     } else {
                                         if ($year == "All") {
@@ -210,7 +208,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         } else {
                                             $sql4 = "SELECT * FROM attendance WHERE date_='$today'";
                                             $result4 = mysqli_query($con, $sql4);
@@ -246,7 +244,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         }
                                     }
                                 } else {
@@ -287,7 +285,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         } else {
                                             $count = 0;
                                             $sql5 = "SELECT * FROM regclass";
@@ -323,7 +321,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         }
                                     } else {
                                         if($year == "All") {
@@ -361,7 +359,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         } else {
                                             $count = 0;
                                             $sql5 = "SELECT * FROM regclass";
@@ -397,7 +395,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                     }
                                                 }
                                             }
-                                            echo "<script>document.getElementById('count').textContent = $count</script>";
+                                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         }
                                     }
                                     
