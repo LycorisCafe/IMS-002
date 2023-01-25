@@ -4,7 +4,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
 
-	<!doctype html>
+	<!DOCTYPE html>
 	<html lang="en" data-bs-theme="dark">
 
 	<head>
@@ -322,16 +322,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 					
 				}
-				else {
-				// $calendar->add_event('Not Attended', $day, 1, 'red');
-				}
 			?>
 			<div class="container">
 				<h1 class="display-6">Attendance (This Month)</h1><br />
 			</div>
 			<div class="content home">
-				<!-- <form method="POST">
-				<button id="prev" name='prev'><</button></form> -->
 				<?php if (isset($_POST['search'])) {
 					echo $calendar;
 				}?>
@@ -356,8 +351,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						['Month', 'Marks'],
 						<?php
 							if (isset($_POST['search'])) {
-								//$date = array();
-								//$marks = array();
 								$data = array();
 								$firstDay = date('Y-m-01');
 								$lastDay = date('Y-m-t');
@@ -438,7 +431,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<?php
 			include_once '../connection.php';
 			if (isset($_POST['search'])) {
-				//include_once '../connection.php';
 				$id = $_SESSION['sid'];
 				$sql10 = "SELECT * FROM students WHERE id='$id'";
 				$result10 = mysqli_query($con, $sql10);
@@ -465,12 +457,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$year = "";
 					$dob = "";
 
-					echo "<script>document.getElementById('fname').value = 'No Data'</script>";
-					echo "<script>document.getElementById('lname').value = 'No Data'</script>";
-					echo "<script>document.getElementById('admission').value = 'No Data'</script>";
-					echo "<script>document.getElementById('sid').value = 'No Data'</script>";
-					echo "<script>document.getElementById('year').value = 'No Data'</script>";
-					echo "<script>document.getElementById('DOB').value = 'No Data'</script>";
+					echo "<script>document.getElementById('fname').value = 'No Data';</script>";
+					echo "<script>document.getElementById('lname').value = 'No Data';</script>";
+					echo "<script>document.getElementById('admission').value = 'No Data';</script>";
+					echo "<script>document.getElementById('sid').value = 'No Data';</script>";
+					echo "<script>document.getElementById('year').value = 'No Data';</script>";
+					echo "<script>document.getElementById('DOB').value = 'No Data';s</script>";
 				}
 			}
 

@@ -8,7 +8,7 @@
   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/temp.css">
   <link rel="icon" type="image/x-icon" href="Media/favicon.png">
-  <script src="fontawesome.com.js" crossorigin="anonymous"></script>
+  <script src="fontawesome.com.js"></script>
 </head>
 
 <body>
@@ -170,7 +170,7 @@
           <div class="card-body">
             <h5 class="card-title text-center">Dasun Nethsara</h5>
             <p class="card-text text-center">
-              Co-Founder, Software Developer, Web Developer<br />QA Tester
+              Co-Founder, Software Developer, <br/>Back-End Web Developer
             </p>
             <div class="card-footer">
               <div class="row">

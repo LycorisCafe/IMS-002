@@ -3,12 +3,12 @@ Institute Management System
 [ IMS-002 ]
 
 > Coding :
+- Version : 1.2
 - Base Language : PHP
-- Used Language/s : HTML, CSS, JavaScript (Also known as JS), SQL (MySQL), Java (for Updater)
+- Used Language/s : HTML, CSS, JavaScript (Also known as JS), SQL (MySQL), Java
 - Framework : Bootstrap (CSS Framework)
 - Used Pre Trained models/ APIs : [Google Visualization API](https://developers.google.com/chart/interactive/docs/reference)
 - Platform : Any (Windows, MacOS, Linux Destros., iOS, Android etc.)
-- Version : 1.2
 - Environments : [Visual Studio Code](https://code.visualstudio.com/download), [Sublime Text](https://www.sublimetext.com/)
 
 > Project Details :

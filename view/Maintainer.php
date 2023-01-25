@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
@@ -54,10 +54,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
                 
             }
-
-
-
-
         }
     ?>
 
@@ -82,15 +78,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Username: </label>
-                            <input type="text" class="form-control" name="username" aria-describedby="username" autocomplete="off" required placeholder="WarMachine 68">
+                            <input type="text" class="form-control" name="username" autocomplete="off" required placeholder="WarMachine 68">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Password: </label>
-                            <input type="password" class="form-control" name="pswd" aria-describedby="pswd" autocomplete="off" required placeholder="xxxxxxxxxxx">
+                            <input type="password" class="form-control" name="pswd" autocomplete="off" required placeholder="xxxxxxxxxxx">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Account Name: </label>
-                            <input type="text" class="form-control" name="name" aria-describedby="name" autocomplete="off" required placeholder="David Johns">
+                            <input type="text" class="form-control" name="name" autocomplete="off" required placeholder="David Johns">
                         </div>
 
                         <div class="d-grid gap-2">
@@ -143,7 +139,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 </html>
 
 <?php } else {
-header("Location: ../login.php");
-exit;
+    header("Location: ../login.php");
+    exit;
 }
 ?>
