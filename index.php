@@ -45,6 +45,12 @@
         transform: translate(0%, 150%);
       }
     }
+
+    @media(max-height: 500px) {
+      .cnt {
+        transform: translate(0%, 100%);
+      }
+    }
   </style>
   <script src="fontawesome.com.js" crossorigin="anonymous"></script>
 </head>
