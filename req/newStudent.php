@@ -178,7 +178,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
     <body>
         <?php require_once "navbar.php"; ?>
-        <div class="container align-self-center" style="transform:translate(0%, 10%);">
+        <div class="container col-lg-8 col-md-5 align-self-center" style="transform:translate(0%, 10%);">
                     <h3 class='display-5 text-center' style='color: #fff;'>New Student</h3>
                 <div class="card-body">
                     <?php if (isset($_GET['error'])) { ?>
@@ -187,7 +187,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                     <?php } ?>
                     <form action="newStudent.php" method="POST" enctype='multipart/form-data'>
-                        <div class="col-auto mb-3">
+                        <br/><br/><div class="col-auto mb-3">
                             <label class="form-label">Institute: </label>
                             <select class="form-control" name='institute'>
                                 <?php

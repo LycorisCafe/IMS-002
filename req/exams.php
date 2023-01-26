@@ -102,11 +102,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
     <body>
         <?php require_once "navbar.php"; ?>        <!-- Imports -->
-        <div class="container col-lg-4 col-md-5 align-self-center">
-            <div class="card" style="transform: translate(0%, 20%);">
-                <div class="card-header text-center">
-                    <h3 class='display-5' style='color: #fff;'>Exam Result</h3>
-                </div>
+        <div class="container col-lg-8 col-md-5 align-self-center" style="transform: translate(0%, 20%);">
+                    <h3 class='display-4 text-center' style='color: #fff;'>Exam Result</h3><br/>
                 <div class="card-body">
                     <form action="exams.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
@@ -131,7 +128,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <button type="submit" class="btn btn-primary" name='submit'>Search & Submit</button>
                         </div>
                     </form>
-                </div>
             </div><br><br><br><br>
 
             <?php include 'footer.php'; ?>

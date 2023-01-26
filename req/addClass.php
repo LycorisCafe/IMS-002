@@ -114,8 +114,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 			<h1 class="display-4">Add a New Class</h1><br />
-			<div class="container col-lg-4 col-md-5 align-self-center">
-				<div class="card" style="transform: translate(0%, 5%);">
+			<div class="container col-lg-8 col-md-5 align-self-center">
 					<div class="card-body">
 						<form action="addClass.php" method="POST">
 							<?php if (isset($_GET['error'])) { ?>
@@ -164,12 +163,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								<button type="submit" class="btn btn-primary" name='submit'>Add</button>
 							</div>
 						</form>
-					</div>
 				</div>
-			</div><br /><br />
+			</div><br /><br /><br />
 
 			<div class="container">
-				<h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1>
+				<h1 class="display-4 text-danger" style="font-weight: 500;">Danger Zone</h1><br />
 				<form role="delteAcc" method="POST">
 
 					<div class="row">
