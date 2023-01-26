@@ -36,13 +36,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         if($_SERVER["REQUEST_METHOD"] == "POST") {
             $marks = input_data($_POST["marks"]);  
-            // check if al year is well-formed  
             if (!preg_match ("/^[0-9]*$/", $marks)) {
                 $markErr = "Only numeric value is allowed"; 
                 header("Location: exams.php?error=$markErr");
                 exit;
             } else {
-                // messedup if...else if... else statement with python. && for AND operator in php
                 if ($marks >= 0 && $marks <= 100) { 
                     if ($marks >= 75) {
                         $grade = "A";
@@ -62,7 +60,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 }
             }
             $rank = input_data($_POST["rank"]);  
-            // check if al year is well-formed  
             if (!preg_match ("/^[0-9]*$/", $rank)) {
                 $rankErr = "Only numeric value is allowed"; 
                 header("Location: exams.php?error=$rankErr");
@@ -113,15 +110,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <?php } ?>
                         <div class="col-auto mb-3">
                             <label class="form-label">Student ID: </label>
-                            <input type="text" class="form-control" name="id" aria-describedby="id" autocomplete="off" required placeholder="123456">
+                            <input type="text" class="form-control" name="id" autocomplete="off" required placeholder="123456">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Marks: </label>
-                            <input type="text" class="form-control" name="marks" aria-describedby="marks" autocomplete="off" required placeholder="100">
+                            <input type="text" class="form-control" name="marks" autocomplete="off" required placeholder="100">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Rank: </label>
-                            <input type="text" class="form-control" name="rank" aria-describedby="rank" autocomplete="off" required placeholder="1">
+                            <input type="text" class="form-control" name="rank" autocomplete="off" required placeholder="1">
                         </div>
 
                         <div class="d-grid gap-2">

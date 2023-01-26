@@ -159,7 +159,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         header("Location: newStudent.php?error=$em");
                         exit;
                     }
-                    //
                 }
             } else {
                 $em = "Error occurred in adding new Student!";

@@ -65,7 +65,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             if (isset($_POST['search'])) {
                 $ins = $_POST['institute'];
                 $year = $_POST['year'];
-                echo "<br/><br/><h1 class='display-6' style='color: #fff;'>Showing Results for: Institute: <font color='red'>" . $ins . "</font>  and  A/L Year: <font color='red'>" . $year . "</font></h1>";
+                echo "<br/><br/><h1 class='display-6' style='color: #fff;'>Showing Results for:- Institute: <font color='red'>" . $ins . "</font>  and  A/L Year: <font color='red'>" . $year . "</font></h1>";
             }
             ?>
             <div class="bd-example-snippet bd-code-snippet"><br />
@@ -193,8 +193,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             function ChangeColor(tableRow, highLight) {
                 if (highLight) {
                     tableRow.style.backgroundColor = '#dcfac9';
-
-
                 } else {
                     tableRow.style.backgroundColor = '#212529';
                 }
@@ -203,10 +201,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             function readvalues(tableRow) {
                 var columns = tableRow.querySelectorAll("td");
                 for (var i = 0; i < columns.length; i++) {
-                    //console.log('Column ' + i + ': ' + columns[i].innerHTML);
                 }
-                var sid = columns[1].innerHTML;
-                document.cookie = "sid = " + sid;
                 location.replace('studentsInfo.php');
                 
             }

@@ -3,7 +3,6 @@ session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
-
 	<!DOCTYPE html>
 	<html lang="en" data-bs-theme="dark">
 
@@ -16,8 +15,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<link rel="stylesheet" href="../css/fonts.css">
 		<link rel="stylesheet" href="../css/temp.css">
 		<script src="../fontawesome.com.js" crossorigin="anonymous"></script>
-		<link href="calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
-		<link href="cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
+		<link href="calendar.css" rel="stylesheet" type="text/css">
+		<link href="cal-area.css" rel="stylesheet" type="text/css">
 	</head>
 
 	<body>
@@ -285,7 +284,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</table><br>
 		</div><br />
 
-		<!-- CAALENDAR AREA -->
+		<!-- CALENDAR AREA -->
 		<div class="container">
 			<?php
 				if (isset($_POST['search'])) {
