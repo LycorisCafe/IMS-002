@@ -178,12 +178,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
     <body>
         <?php require_once "navbar.php"; ?>
-
-        <div class="container col-lg-4 col-md-5 align-self-center">
-            <div class="card" style="transform: translate(0%, 10%);">
-                <div class="card-header text-center">
-                    <h3 class='display-5' style='color: #fff;'>New Student</h3>
-                </div>
+        <div class="container align-self-center" style="transform:translate(0%, 10%);">
+                    <h3 class='display-5 text-center' style='color: #fff;'>New Student</h3>
                 <div class="card-body">
                     <?php if (isset($_GET['error'])) { ?>
                         <div class='alert alert-danger' role='alert'>
@@ -195,10 +191,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <label class="form-label">Institute: </label>
                             <select class="form-control" name='institute'>
                                 <?php
-                                include_once '../connection.php';
-                                $sql5 = "SELECT DISTINCT institute, city FROM classes";
-                                $result5 = mysqli_query($con, $sql5);
-                                while ($ri = mysqli_fetch_assoc($result5)) {
+                                    include_once '../connection.php';
+                                    $sql5 = "SELECT DISTINCT institute, city FROM classes";
+                                    $result5 = mysqli_query($con, $sql5);
+                                    while ($ri = mysqli_fetch_assoc($result5)) {
                                 ?>
                                     <option value="<?php echo $ri['institute'] ?>"><?php echo $ri['institute'] . " - " . $ri['city'] ?></option>
                                 <?php } ?>
@@ -236,8 +232,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <button type="submit" class="btn btn-primary" name='submit'>Add</button>
                         </div>
                     </form>
-                </div>
-            </div>
         </div><br /><br /><br />
 
 
