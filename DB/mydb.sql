@@ -75,7 +75,7 @@ CREATE TABLE `login` (
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `lastLogin` varchar(22) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `lastLogin` varchar(22) CHARACTER SET utf8mb4 NOT NULL,
   `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -207,7 +207,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
