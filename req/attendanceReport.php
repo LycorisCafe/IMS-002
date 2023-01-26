@@ -335,7 +335,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                 $sid = $row5['studentId'];
                                                 $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                if(mysqli_num_rows($result6) < 0) {
+                                                if(mysqli_num_rows($result6) < 1) {
                                                     $sql7 = "SELECT * FROM students WHERE id='$sid' AND institute='$ins'";
                                                     $result7 = mysqli_query($con, $sql7);
                                                     while($row7 = mysqli_fetch_assoc($result7)) {
@@ -371,7 +371,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                 $sid = $row5['studentId'];
                                                 $sql6 = "SELECT * FROM attendance WHERE date_='$today' AND regclassId='$id'";
                                                 $result6 = mysqli_query($con, $sql6);
-                                                if(mysqli_num_rows($result6) < 0) {
+                                                if(mysqli_num_rows($result6) < 1) {
                                                     $sql7 = "SELECT * FROM students WHERE id='$sid' AND al_year='$year' AND institute='$ins'";
                                                     $result7 = mysqli_query($con, $sql7);
                                                     while($row7 = mysqli_fetch_assoc($result7)) {
