@@ -24,7 +24,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		$day = $_POST['day'];
 		$time = $_POST['h'] . ":" . $_POST['m'] . " " . $_POST['a_p'];
 
-		// db connection
 		include_once '../connection.php';
 		$sql15 = "SELECT * FROM classes WHERE institute='$insName' AND al_year='$al_year'";
 		$result15 = mysqli_query($con, $sql15);
@@ -80,8 +79,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 								7 => 'Saturday'
 							];
 							include_once '../connection.php';
-
-
 							$sql2 = "SELECT al_year, day, time, institute, city FROM classes ORDER BY `classes`.`al_year` ASC";
 							$result2 = mysqli_query($con, $sql2);
 							while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -111,8 +108,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 			</div>
 			<hr style="border: 2px solid red;"><br />
-
-
 			<h1 class="display-4">Add a New Class</h1><br />
 			<div class="container col-lg-8 col-md-5 align-self-center">
 					<div class="card-body">
@@ -289,7 +284,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				}
 				?>
 
-				<form class="d-flex mb-3" role="delete" method="POST" onsubmit="confirmation();">
+				<form class="d-flex mb-3" role="delete" method="POST">
 					<div class="d-grid gap-2"><br>
 						<button class="btn btn-outline-danger" type="submit" name="delete">Remove from Database</button>
 					</div>

@@ -13,7 +13,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
         <link rel="stylesheet" href="../css/temp.css">
-        <script src="../fontawesome.com.js" crossorigin="anonymous"></script>
+        <script src="../fontawesome.com.js"></script>
     </head>
 
     <body>
@@ -398,7 +398,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                             echo "<script>document.getElementById('count').textContent = $count;</script>";
                                         }
                                     }
-                                    
                                 }
                             }
                             ?>

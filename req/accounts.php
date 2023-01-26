@@ -2,9 +2,7 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-
-
-    <!doctype html>
+    <!DOCTYPE html>
     <html lang="en" data-bs-theme="dark">
 
     <head>

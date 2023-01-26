@@ -35,8 +35,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     $fnameErr = $lnameErr = $admissionErr = $yearErr = $dateErr = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
-        $fname = input_data($_POST["fname"]);  
-        // check if name only contains letters and whitespace  
+        $fname = input_data($_POST["fname"]);    
         if (!preg_match("/^[a-zA-Z]*$/",$fname)) {  
             $fnameErr = "Only alphabets and white space are not allowed";
             header("Location: newStudent.php?error=$fnameErr");
@@ -44,7 +43,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         }
 
         $lname = input_data($_POST["lname"]);  
-        // check if name only contains letters and whitespace  
         if (!preg_match("/^[a-zA-Z]*$/",$lname)) {  
             $lnameErr = "Only alphabets and white space are not allowed";
             header("Location: newStudent.php?error=$lnameErr");
@@ -52,7 +50,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         }
 
         $aNO = input_data($_POST["admissionNo"]);  
-        // check if admission number is well-formed  
         if (!preg_match ("/^[0-9]*$/", $aNO) ) {  
             $admissionErr = "Only numeric value is allowed."; 
             header("Location: newStudent.php?error=$admissionErr");
@@ -60,7 +57,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         }
 
         $year = input_data($_POST["alYear"]);  
-        // check if al year is well-formed  
         if (!preg_match ("/^[0-9]*$/", $year) || strlen ($year) != 4 ) {
             $yearErr = "Enter a valid year."; 
             header("Location: newStudent.php?error=$yearErr");
@@ -89,7 +85,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         if (isset($_POST['submit'])) {
             if($fnameErr == "" && $lnameErr == "" && $admissionErr == "" && $yearErr == "" && $dateErr == "") {
-                // user data
                 $id = $_POST['id2'];
                 $admissionNo = $_POST['admissionNo'];
                 $fname = $_POST['fname'];
@@ -98,7 +93,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 $alYear = $_POST['alYear'];
                 $institute = $_POST['institute'];
 
-                // file data
                 $name = $_FILES['pic']['name'];
                 $type = $_FILES['pic']['type'];
                 $size = $_FILES['pic']['size'];
@@ -202,31 +196,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Admission Number: </label>
-                            <input type="text" class="form-control" name="admissionNo" aria-describedby="admissionNo" autocomplete="off" required placeholder="XXXX">
+                            <input type="text" class="form-control" name="admissionNo" autocomplete="off" required placeholder="XXXX">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Student ID: </label>
-                            <input type="text" class="form-control" name="id2" aria-describedby="id2" autocomplete="off" required placeholder="XXXX">
+                            <input type="text" class="form-control" name="id2" autocomplete="off" required placeholder="XXXX">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">First Name: </label>
-                            <input type="text" class="form-control" name="fname" aria-describedby="fname" autocomplete="off" required placeholder="David">
+                            <input type="text" class="form-control" name="fname" autocomplete="off" required placeholder="David">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Last Name: </label>
-                            <input type="text" class="form-control" name="lname" aria-describedby="lname" autocomplete="off" required placeholder="Johns">
+                            <input type="text" class="form-control" name="lname" autocomplete="off" required placeholder="Johns">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">A/L year: </label>
-                            <input type="text" class="form-control" name="alYear" aria-describedby="alYear" autocomplete="off" required placeholder="2022">
+                            <input type="text" class="form-control" name="alYear" autocomplete="off" required placeholder="2022">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Date of Birth (DOB): </label>
-                            <input type="text" class="form-control" name="DOB" aria-describedby="DOB" autocomplete="off" required placeholder="FORMAT: 2022-01-01">
+                            <input type="text" class="form-control" name="DOB" autocomplete="off" required placeholder="FORMAT: 2022-01-01">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Student Photo :</label>
-                            <input type="file" class="form-control" name="pic" aria-describedby="pic">
+                            <input type="file" class="form-control" name="pic">
                         </div>
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary" name='submit'>Add</button>
