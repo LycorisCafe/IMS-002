@@ -51,7 +51,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <?php require_once "navbar.php"; ?>
         <h1 class="display-2 text-center">User Accounts</h1><br />
         <div class="container">
-            <h1 class="display-6">Registered Accounts (without Admin)</h1><br />
+            <h1 class="display-6">Registered Accounts (Moderators)</h1><br />
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -82,7 +82,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </tbody>
             </table><br>
         </div><br />
-        <h1 class="display-6 container">Add new Account</h1><br />
+        <h1 class="display-6 container">Add new moderator account</h1><br />
         <div class="container col-lg-4 col-md-5 align-self-center">
             <div class="card" style="transform: translate(0%, 5%);">
                 <div class="card-body">
