@@ -2,21 +2,22 @@
 session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+    <!DOCTYPE html>
+    <html lang="en" data-bs-theme="dark">
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>System Maintainer</title>
-	<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
-	<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>System Maintainer</title>
+        <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    </head>
 
-    <?php
+    <body>
+
+        <?php
         include_once '../connection.php';
-        if(isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) {
             $type = $_POST['role'];
             $username = $_POST['username'];
             $pswd = $_POST['pswd'];
@@ -29,10 +30,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     $em = "Account $username is already exist!";
                     header("Location: Maintainer.php?error=$em");
                     exit;
-                } else if($type == 'Admin') {
+                } else if ($type == 'Admin') {
                     $sql2 = "SELECT * FROM login WHERE type='Admin'";
                     $result2 = mysqli_query($con, $sql2);
-                    if(mysqli_num_rows($result2) > 0) {
+                    if (mysqli_num_rows($result2) > 0) {
                         $em = "You can't add Admin accounts more than one!";
                         header("Location: Maintainer.php?error=$em");
                         exit;
@@ -41,27 +42,24 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $result2 = mysqli_query($con, $sql2);
                         if ($result2)
                             echo "<script>alert('$type account added!')</script>";
-                            break;
+                        break;
                     }
-
                 } else {
                     $sql2 = "INSERT INTO login (username, password, name, lastLogin, type) VALUE ('$username', '$pswd', '$name', '', '$type')";
                     $result2 = mysqli_query($con, $sql2);
                     if ($result2)
                         echo "<script>alert('$type account added!')</script>";
-                        break;
+                    break;
                 }
-
-                
             }
         }
-    ?>
+        ?>
 
-    <div class="container"><br/>
-        <h1 class="display-1 text-center" style="color: #fff;">System Maintainer</h1><br><br /><br />
-        <h1 class="display-5" style="color: #10A0FF;">Add an Account</h1><br />
+        <div class="container"><br />
+            <h1 class="display-1 text-center" style="color: #fff;">System Maintainer</h1><br><br /><br />
+            <h1 class="display-5" style="color: #10A0FF;">Add an Account</h1><br />
 
-        <div>
+            <div>
                 <div>
                     <form action="Maintainer.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
@@ -74,7 +72,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <select class="form-control" name='role'>
                                 <option value='Admin'>Administrator</option>
                                 <option value='User'>Moderator</option>
-						    </select>
+                            </select>
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Username: </label>
@@ -95,9 +93,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     </form>
                 </div>
             </div>
-    </div>
-    <br/><br/>
-    <div class="container">
+        </div>
+        <br /><br />
+        <div class="container">
             <h1 class="display-5" style="color: #10A0FF;">Registered Accounts</h1><br />
             <table class="table table-striped">
                 <thead>
@@ -132,11 +130,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </tbody>
             </table><br>
         </div>
-        <a class="btn btn-outline-danger btn-sm" aria-current="page" href="../req/logout.php">Logout</a>
-    <?php include '../req/footer.php'; ?>
-</body>
+        <div class="d-grid gap-2 col-6 mx-auto">
+            <a class="btn btn-outline-danger btn-sm" role="button" data-bs-toggle="button" href="../req/logout.php">Logout</a>
+        </div>
+        <?php include '../req/footer.php'; ?>
+    </body>
 
-</html>
+    </html>
 
 <?php } else {
     header("Location: ../login.php");
