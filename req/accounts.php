@@ -80,9 +80,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 </tbody>
             </table><br>
         </div><br />
-        <h1 class="display-6 container">Add new moderator account</h1><br />
-        <div class="container col-lg-4 col-md-5 align-self-center">
-            <div class="card" style="transform: translate(0%, 5%);">
+        <h1 class="display-6 container">Add new Moderator Account</h1><br />
+        <div class="container col-lg-8 col-md-5 align-self-center">
                 <div class="card-body">
                     <form action="accounts.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
@@ -107,7 +106,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <button type="submit" class="btn btn-primary" name='submit'>Add</button>
                         </div>
                     </form>
-                </div>
             </div><br><br><br>
         </div>
 
