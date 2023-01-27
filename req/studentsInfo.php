@@ -410,7 +410,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						</div>
 						<div class='col'>
 							<label class="form-label">Student ID: </label>
-							<input type="text" class="form-control" name="sid" id='sid' autocomplete="off" required placeholder="XXXXXX">
+							<input type="text" class="form-control" name="sid" id='sid' autocomplete="off" required placeholder="XXXXXX" disabled>s
 						</div>
 					</div><div class='row'>
 						<div class='col'>
