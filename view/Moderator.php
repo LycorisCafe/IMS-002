@@ -46,7 +46,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</div>
 			<div class="card text-center">
 				<div class="card-header">
-					<h4 class='display-6' style='color: #000;'>Attendane Marking</h4>
+					<h4 class='display-6' style='color: #fff;'>Attendane Marking</h4>
 				</div>
 				<div class="card-body">
 					<?php
@@ -61,6 +61,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									$stdName = $row['fname'] . ' ' . $row['lname'];
 									$id3 = $row['id'];
 									$_SESSION['id3'] = $id3;
+									$sql10 = "SELECT * FROM regclass WHERE studentId='$id3'";
+									$result10 = mysqli_query($con, $sql10);
+									$row10 = mysqli_fetch_assoc($result10);
+									$rid = $row10['id'];
+									$sql11 = "SELECT * FROM payments WHERE regclassId='$rid'";
+									$result11 = mysqli_query($con, $sql11);
+									if(mysqli_num_rows($result11) > 0) {
+										$row11 = mysqli_fetch_assoc($result11);
+										if($row11['status'] == '0') {
+											echo "<script>alert('Please Pay the Class Fees!');</script>";
+										}
+									}
 								}
 							} else {
 								$em = "Student ID is invalid!";
@@ -82,7 +94,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							</div>
 						<?php } ?>
 						<div class="input-group mb-3">
-							<input type="text" class="form-control" placeholder="Enter Student ID!" aria-label="studentId" aria-describedby="basic-addon1" name='id3' autocomplete="off">
+							<input type="text" class="form-control" placeholder="Enter Student ID!" name='id3' autocomplete="off">
 						</div>
 						<div class="d-grid gap-2">
 							<input class="btn btn-primary" type="submit" name='submit' value='Search'>
@@ -206,21 +218,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							?>
 						</div>
 						<div class="form-check text-start">
-							<input class="form-check-input" type="checkbox" value="1" id="fees" name='paid' <?php
-																											if (isset($_PoST['submit'])) {
-																												include_once '../connection.php';
-																												$sql11 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
-																												$result11 = mysqli_query($con, $sql11);
-																												if (mysqli_num_rows($result11) > 0) {
-																													$s = mysqli_fetch_assoc($resul11);
-																													if ($s['status'] == 1) {
-																														echo "checked";
-																													} else {
-																													
-																													}
-																												}
-																											}
-																											?>>
+							<input class="form-check-input" type="checkbox" value="1" id="fees" name='paid'>
 							<label class="form-check-label" for="fees">Paid/ Not Paid</label>
 						</div>
 
