@@ -207,8 +207,205 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                                                         echo "</tr>";
                                                     } 
                                                 }
+                                            } else {
+                                                $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$ALyear'";
+                                                $result3 = mysqli_query($con, $sql3);
+                                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                    $addNo = $row3['admissionNo'];
+                                                    $sid = $row3['id'];
+                                                    $fname = $row3['fname'];
+                                                    $lname = $row3['lname'];
+                                                    $alYear = $row3['al_year'];
+                                                    $dob = $row3['DOB'];
+                                                    $institute = $row3['institute'];
+
+                                                    $sql4 = "SELECT id FROM regclass WHERE studentId='$sid'";
+                                                    $result4 = mysqli_query($con, $sql4);
+                                                    $row4 = mysqli_fetch_assoc($result4);
+                                                    $regClassid = $row4['id'];
+
+                                                    $fee = "";
+                                                    $sql5 = "SELECT * FROM payments WHERE regclassID='$regClassid' AND year='$year' AND month='$month' AND status='1'";
+                                                    $result5 = mysqli_query($con, $sql5);
+                                                    if(mysqli_num_rows($result5) > 0) {
+                                                        $fee = "Yes";
+                                                        echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
+                                                        echo "<td>$addNo</td>";
+                                                        echo "<td>$sid</td>";
+                                                        echo "<td>$fname</td>";
+                                                        echo "<td>$lname</td>";
+                                                        echo "<td>$alYear</td>";
+                                                        echo "<td>$dob</td>";
+                                                        echo "<td>$institute</td>";
+                                                        echo "<td>$fee</td>";
+                                                        echo "</tr>";
+                                                    } 
+                                                }
                                             }
                                         }
+                                    } else {
+                                        if($ins == "All") {
+                                            if($ALyear == "All") {
+                                                $sql3 = "SELECT * FROM `students` ORDER BY `students`.`al_year` ASC";
+                                                $result3 = mysqli_query($con, $sql3);
+                                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                    $addNo = $row3['admissionNo'];
+                                                    $sid = $row3['id'];
+                                                    $fname = $row3['fname'];
+                                                    $lname = $row3['lname'];
+                                                    $alYear = $row3['al_year'];
+                                                    $dob = $row3['DOB'];
+                                                    $institute = $row3['institute'];
+
+                                                    $sql4 = "SELECT id FROM regclass WHERE studentId='$sid'";
+                                                    $result4 = mysqli_query($con, $sql4);
+                                                    $row4 = mysqli_fetch_assoc($result4);
+                                                    $regClassid = $row4['id'];
+
+                                                    $fee = "";
+                                                    $sql5 = "SELECT * FROM payments WHERE regclassID='$regClassid' AND year='$year' AND month='$month'";
+                                                    $result5 = mysqli_query($con, $sql5);
+                                                    if(mysqli_num_rows($result5) < 1) {
+                                                        $sql6 = "SELECT studentId FROM regclass WHERE id='$regClassid'";
+                                                        $result6 = mysqli_query($con, $sql6);
+                                                        if(mysqli_num_rows($result6) > 0) {
+                                                            $fee = "No";
+                                                            $row6 = mysqli_fetch_assoc($result6);
+                                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
+                                                            echo "<td>$addNo</td>";
+                                                            echo "<td>$sid</td>";
+                                                            echo "<td>$fname</td>";
+                                                            echo "<td>$lname</td>";
+                                                            echo "<td>$alYear</td>";
+                                                            echo "<td>$dob</td>";
+                                                            echo "<td>$institute</td>";
+                                                            echo "<td>$fee</td>";
+                                                            echo "</tr>";
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                $sql3 = "SELECT * FROM students WHERE al_year='$ALyear'";
+                                                $result3 = mysqli_query($con, $sql3);
+                                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                    $addNo = $row3['admissionNo'];
+                                                    $sid = $row3['id'];
+                                                    $fname = $row3['fname'];
+                                                    $lname = $row3['lname'];
+                                                    $alYear = $row3['al_year'];
+                                                    $dob = $row3['DOB'];
+                                                    $institute = $row3['institute'];
+
+                                                    $sql4 = "SELECT id FROM regclass WHERE studentId='$sid'";
+                                                    $result4 = mysqli_query($con, $sql4);
+                                                    $row4 = mysqli_fetch_assoc($result4);
+                                                    $regClassid = $row4['id'];
+
+                                                    $fee = "";
+                                                    $sql5 = "SELECT * FROM payments WHERE regclassID='$regClassid' AND year='$year' AND month='$month'";
+                                                    $result5 = mysqli_query($con, $sql5);
+                                                    if(mysqli_num_rows($result5) < 1) {
+                                                        $sql6 = "SELECT * FROM regclass WHERE id='$regClassid'";
+                                                        $result6 = mysqli_query($con, $sql6);
+                                                        if(mysqli_num_rows($result6) > 0) {
+                                                            $fee = "No";
+                                                            $row6 = mysqli_fetch_assoc($result6);
+                                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
+                                                            echo "<td>$addNo</td>";
+                                                            echo "<td>$sid</td>";
+                                                            echo "<td>$fname</td>";
+                                                            echo "<td>$lname</td>";
+                                                            echo "<td>$alYear</td>";
+                                                            echo "<td>$dob</td>";
+                                                            echo "<td>$institute</td>";
+                                                            echo "<td>$fee</td>";
+                                                            echo "</tr>";
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            if($ALyear == "All") {
+                                                $sql3 = "SELECT * FROM students WHERE institute='$ins'";
+                                                $result3 = mysqli_query($con, $sql3);
+                                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                    $addNo = $row3['admissionNo'];
+                                                    $sid = $row3['id'];
+                                                    $fname = $row3['fname'];
+                                                    $lname = $row3['lname'];
+                                                    $alYear = $row3['al_year'];
+                                                    $dob = $row3['DOB'];
+                                                    $institute = $row3['institute'];
+
+                                                    $sql4 = "SELECT id FROM regclass WHERE studentId='$sid'";
+                                                    $result4 = mysqli_query($con, $sql4);
+                                                    $row4 = mysqli_fetch_assoc($result4);
+                                                    $regClassid = $row4['id'];
+
+                                                    $fee = "";
+                                                    $sql5 = "SELECT * FROM payments WHERE regclassID='$regClassid' AND year='$year' AND month='$month'";
+                                                    $result5 = mysqli_query($con, $sql5);
+                                                    if(mysqli_num_rows($result5) < 1) {
+                                                        $sql6 = "SELECT * FROM regclass WHERE id='$regClassid'";
+                                                        $result6 = mysqli_query($con, $sql6);
+                                                        if(mysqli_num_rows($result6) > 0) {
+                                                            $fee = "No";
+                                                            $row6 = mysqli_fetch_assoc($result6);
+                                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
+                                                            echo "<td>$addNo</td>";
+                                                            echo "<td>$sid</td>";
+                                                            echo "<td>$fname</td>";
+                                                            echo "<td>$lname</td>";
+                                                            echo "<td>$alYear</td>";
+                                                            echo "<td>$dob</td>";
+                                                            echo "<td>$institute</td>";
+                                                            echo "<td>$fee</td>";
+                                                            echo "</tr>";
+                                                        }
+                                                    }
+                                                }
+                                            } else {
+                                                $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$ALyear'";
+                                                $result3 = mysqli_query($con, $sql3);
+                                                while ($row3 = mysqli_fetch_assoc($result3)) {
+                                                    $addNo = $row3['admissionNo'];
+                                                    $sid = $row3['id'];
+                                                    $fname = $row3['fname'];
+                                                    $lname = $row3['lname'];
+                                                    $alYear = $row3['al_year'];
+                                                    $dob = $row3['DOB'];
+                                                    $institute = $row3['institute'];
+
+                                                    $sql4 = "SELECT id FROM regclass WHERE studentId='$sid'";
+                                                    $result4 = mysqli_query($con, $sql4);
+                                                    $row4 = mysqli_fetch_assoc($result4);
+                                                    $regClassid = $row4['id'];
+
+                                                    $fee = "";
+                                                    $sql5 = "SELECT * FROM payments WHERE regclassID='$regClassid' AND year='$year' AND month='$month'";
+                                                    $result5 = mysqli_query($con, $sql5);
+                                                    if(mysqli_num_rows($result5) < 1) {
+                                                        $sql6 = "SELECT * FROM regclass WHERE id='$regClassid'";
+                                                        $result6 = mysqli_query($con, $sql6);
+                                                        if(mysqli_num_rows($result6) > 0) {
+                                                            $fee = "No";
+                                                            $row6 = mysqli_fetch_assoc($result6);
+                                                            echo "<tr onmouseover='ChangeColor(this, true);' onmouseout='ChangeColor(this, false);' onclick='readvalues(this);' name='clicked'>";
+                                                            echo "<td>$addNo</td>";
+                                                            echo "<td>$sid</td>";
+                                                            echo "<td>$fname</td>";
+                                                            echo "<td>$lname</td>";
+                                                            echo "<td>$alYear</td>";
+                                                            echo "<td>$dob</td>";
+                                                            echo "<td>$institute</td>";
+                                                            echo "<td>$fee</td>";
+                                                            echo "</tr>";
+                                                        }
+                                                    } 
+                                                }
+                                            }
+                                        }
+                                        
                                     }
                                 }
                             ?>
