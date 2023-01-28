@@ -106,9 +106,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 if ($error > 0) {
                     $temp2 = explode(".", $name);
                     include_once '../connection.php';
-                    $sql6 = "SELECT * FROM students WHERE id='$id'";
+                    $sql6 = "SELECT * FROM students WHERE id='$id' OR admissionNo='$aNO'";
                     $result6 = mysqli_query($con, $sql6);
-                    if (mysqli_num_rows($result6) == 0) {
+                    if (mysqli_num_rows($result6) < 1) {
 
                         $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
                                             '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '', '$institute')";
@@ -127,7 +127,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             echo "<script>alert('New Student adding Unsuccess!');</script>";
                         }
                     } else {
-                        $em = "$id is already exist!";
+                        $em = "Student ID or Admission No. is already exist!";
                         header("Location: newStudent.php?error=$em");
                         exit;
                     }
