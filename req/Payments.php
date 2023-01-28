@@ -64,6 +64,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             <button class="tablink" onclick="openPage('monthly', this, 'orange')">Monthly</button>
 
             <div id="daily" class="tabcontent">
+                
                 <h3>Daily Payments</h3><br/>
                 <div class="row">
                 <div class="col-4 mb-3">
@@ -72,8 +73,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <option value="0">-- Select --</option>
                         <option value="All">All</option>
                         <?php
+                        $day = date("N");
                         include_once '../connection.php';
-                        $sql1 = "SELECT DISTINCT institute, city FROM classes";
+                        $sql1 = "SELECT DISTINCT institute, city FROM classes WHERE day='$day'";
                         $result1 = mysqli_query($con, $sql1);
                         while ($ri = mysqli_fetch_assoc($result1)) {
                             ?>
@@ -88,7 +90,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <option value="0">-- Select --</option>
                         <option value="All">All</option>
                         <?php
-                        $sql2 = "SELECT DISTINCT al_year FROM classes";
+                        $sql2 = "SELECT DISTINCT al_year FROM classes WHERE day='$day'";
                         $result2 = mysqli_query($con, $sql2);
                         while ($ri2 = mysqli_fetch_assoc($result2)) {
                             ?>
@@ -99,7 +101,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 <div class="d-grid gap-2">
                     <button class="btn btn-outline-success" type="submit" name="search">Search</button>
                 </div>
-            </div>
             <br />
                 <div class="bd-example-snippet bd-code-snippet"><br />
                 <div class="bd-example"><br/>
@@ -117,7 +118,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     </table>
                 </div>
                 </div>
-            </div>
+            </div></div>
 
             <div id="monthly" class="tabcontent">
             <h3>Monthly Payments</h3><br/>
