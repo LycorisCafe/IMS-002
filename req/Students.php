@@ -21,24 +21,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <body>
 
         <script>
-            function makeInitialTextReadOnly(input) {
-                var readOnlyLength = input.value.length;
-                field.addEventListener('keydown', function (event) {
-                    var which = event.which;
-                    if (((which == 8) && (input.selectionStart <= readOnlyLength)) ||
-                        ((which == 46) && (input.selectionStart < readOnlyLength))) {
-                        event.preventDefault();
-                    }
-                });
-                field.addEventListener('keypress', function (event) {
-                    var which = event.which;
-                    if ((event.which != 0) && (input.selectionStart < readOnlyLength)) {
-                        event.preventDefault();
-                    }
-                });
-            }
-
-            
             function check1() {
                 document.getElementById('t2').disabled = true;
                 document.getElementById('s1').disabled = true;
@@ -63,12 +45,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     <div class="col">
                         <label class="form-label">Name: </label>
                         <input type="text" class="form-control" name="name" placeholder="Search by Name" id="t1"
-                            onkeypress="check1();">
+                            onkeypress="check1();" autocomplete="off">
                     </div>
                     <div class="col">
                         <label class="form-label">Student ID: </label>
                         <input type="text" class="form-control" name="id" placeholder="Search by Student Name" id="t2"
-                            onkeypress="check2();">
+                            onkeypress="check2();" autocomplete="off">
                     </div>
                 </div><br />
                 <div class="row">
