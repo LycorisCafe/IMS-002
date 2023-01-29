@@ -1,0 +1,46 @@
+		<div class="container">
+			<?php
+			if (isset($_POST['submit'])) {
+				$std_id = $_SESSION['id3'];
+				include '../req/Calendar.php';
+				include '../connection.php';
+				$fulldate = date("Y-m-d");
+				$sys_date = date("d");
+				$sys_month = date("m");
+				$sys_year = date("Y");
+				$firstDay = date('Y-m-01');
+				$lastDay = date('Y-m-t');
+				$calendar = new Calendar($fulldate);
+				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+				$result5 = mysqli_query($con, $sql5);
+				$row5 = mysqli_fetch_assoc($result5);
+				$reclassid = $row5['id'];
+
+				$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
+				$result6 = mysqli_query($con, $sql6);
+				if (mysqli_num_rows($result6) > 0) {
+					while ($row6 = mysqli_fetch_assoc($result6)) {
+						$date = $row6['date_'];
+						$d2d_done = $row6['d2d'];
+						if ($d2d_done == '1') {
+							$calendar->add_event('Attended, D2D', $date, 1, 'green');
+						} else {
+							$calendar->add_event('Attended', $date, 1, 'orange');
+						}
+					}
+				}
+			} else {
+				// $calendar->add_event('Not Attended', $day, 1, 'red');
+			}
+			?>
+			<nav class="navtop">
+				<div>
+					<h1>Day to Day Paper</h1>
+				</div>
+			</nav>
+			<div class="content home">
+				<?php if (isset($_POST['submit'])) {
+					echo $calendar;
+				} ?>
+			</div>
+		</div>
