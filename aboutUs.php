@@ -1,54 +1,67 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<!doctype html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About Us</title>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/temp.css">
-  <link rel="icon" type="image/x-icon" href="Media/favicon.png">
-  <script src="fontawesome.com.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/fonts/icomoon/style.css">
+  <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/owl.carousel.min.css">
+
+  <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/style.css">
+  <title>Lycoris Cafe</title>
 </head>
 
-<body>
-  <header class="main-header clearfix" role="header">
-    <div class="logo">
-      <a href="index.php"><em>Lycoris</em> Cafe</a>
-    </div>
-    <a href="" class="menu-link"><i class="fa fa-bars"></i></a>
-    <nav id="menu" class="main-nav" role="navigation">
-      <ul class="main-menu">
-        <li><a href="index.php">Home</a></li>
-
-        <li><a href="aboutUs.php">About Us</a></li>
-        <li><a href="login.php">Login</a></li>
-
-      </ul>
-    </nav>
-  </header>
-
-  <div id="carouselExampleSlidesOnly" class="carousel slide" style="position: relative" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="Media/images/bg2.jpg" class="d-block w-100 img-fluid" alt="..." />
-        <h5 class="display-1 text-warning" style="
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%);
-            ">
-          About Us
-        </h5>
+<body style="background-color: #1a1a1a;">
+  <div class="site-mobile-menu">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="js-menu-toggle"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+          </svg>
+        </span>
       </div>
     </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+  <header class="site-navbar" role="banner">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-11 col-xl-2">
+          <h1 class="mb-0 site-logo"><a href="index.php" class="text-white mb-0">Lycoris Cafe</a></h1>
+        </div>
+        <div class="col-12 col-md-10 d-none d-xl-block">
+          <nav class="site-navigation position-relative text-right" role="navigation">
+            <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+              <li><a href="index.php"><span>Home</span></a></li>
+              <li class="active"><a href="aboutUs.php"><span>About</span></a></li>
+              <li><a href="login.php"><span>Login</span></a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+            </svg></a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </header>
+
+  <div class="hero text-center" style="background-image: url('Media/images/bg2.jpg');">
+
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1 style="color:white">About Us</h1>
   </div>
 
   <br />
 
   <div class="container col-9">
     <p class="font-monospace">
-      <code><b>Lycoris Cafe</b></code> is a Software Development team since
+      <code style="color:deepskyblue"><b>Lycoris Cafe</b></code> is a Software Development team since
       2022. Our Software Development team is a highly skilled and experienced
       group of professionals who are dedicated to delivering top-quality
       software solutions that meet the needs of our customers and
@@ -85,14 +98,16 @@
   </div>
 
   <div class="container">
-    <hr /><br />
-    <h1 class="display-4 text-center">Our Team</h1>
+    <br>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+    <br />
+    <h1 class="display-4 text-center" style="color:white">Our Team</h1>
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
-        <div class="card" style="width: 508px">
+        <div class="card bg-dark" style="width: 508px;">
           <img class="card-img-top" src="Media/naveenb2004.jpg" alt="Card image" title="Zoro" />
           <div class="card-body">
-            <h5 class="card-title text-center">Naveen Balasooriya</h5>
+            <h5 class="card-title text-center" style="color:white">Naveen Balasooriya</h5>
             <p class="card-text text-center">
               Founder, CEO, Software Developer<br />QA Tester
             </p>
@@ -127,12 +142,12 @@
       </div>
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
-        <div class="card" style="width: 508px">
+        <div class="card bg-dark" style="width: 508px">
           <img class="card-img-top" src="Media/randillasith.jpg" alt="Card image" title="Kazuto Kirigaya" />
           <div class="card-body">
-            <h5 class="card-title text-center">Lasith Randil</h5>
+            <h5 class="card-title text-center" style="color:white">Lasith Randil</h5>
             <p class="card-text text-center">
-              Co-Founder, Web developer, Interface Designer<br />QA Tester
+              Co-Founder, Web developer, Interface Designer, QA Tester
             </p>
             <div class="card-footer">
               <div class="row">
@@ -165,11 +180,11 @@
       </div>
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
-        <div class="card" style="width: 508px">
+        <div class="card bg-dark" style="width: 508px">
           <img class="card-img-top" src="Media/roku.png" alt="Card image" title="Avatar Roku
 ">
           <div class="card-body">
-            <h5 class="card-title text-center">Dasun Nethsara</h5>
+            <h5 class="card-title text-center" style="color:white">Dasun Nethsara</h5>
             <p class="card-text text-center">
               Co-Founder, Software Developer, <br />Back-End Web Developer
             </p>
@@ -207,10 +222,13 @@
 
   <br />
 
-  <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
-  <div class="text-center mt-auto py-3 bg-dark"><br>
-    <h5 style="color: #fff;">&copy; COPYRIGHT LYCORIS CAFE | DESIGN BY LYCORIS CAFE</h5><br>
-  </div>
+  <?php include 'req/footer.php'; ?>
+  <script src="https://preview.colorlib.com/theme/bootstrap/website-menu-03/js/jquery-3.3.1.min.js"></script>
+  <script src="https://preview.colorlib.com/theme/bootstrap/website-menu-03/js/popper.min.js"></script>
+  <script src="https://preview.colorlib.com/theme/bootstrap/website-menu-03/js/bootstrap.min.js"></script>
+  <script src="https://preview.colorlib.com/theme/bootstrap/website-menu-03/js/jquery.sticky.js"></script>
+  <script src="https://preview.colorlib.com/theme/bootstrap/website-menu-03/js/main.js"></script>
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"790351ce2864a138","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.3","si":100}' crossorigin="anonymous"></script>
 </body>
 
 </html>
