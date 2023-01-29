@@ -85,7 +85,7 @@
   </div>
 
   <div class="container">
-    <hr /><br/>
+    <hr /><br />
     <h1 class="display-4 text-center">Our Team</h1>
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
@@ -171,7 +171,7 @@
           <div class="card-body">
             <h5 class="card-title text-center">Dasun Nethsara</h5>
             <p class="card-text text-center">
-              Co-Founder, Software Developer, <br/>Back-End Web Developer
+              Co-Founder, Software Developer, <br />Back-End Web Developer
             </p>
             <div class="card-footer">
               <div class="row">
