@@ -52,8 +52,8 @@
 	</header>
 
 	<div class="hero text-center" style="background-image: url('Media/images/bg.jpg');">
-		<br><br><br><br><br><br>
-		<div class="container col-lg-4 col-md-5 align-self-center" style="transform: translate(0%, 20%);">
+		<br><br><br><br><br>
+		<div class="container col-lg-4 col-md-5 align-self-center">
 			<div class="card">
 				<div class="card-header text-center">
 					<h3 style="color: black;">Login</h3>
