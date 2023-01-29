@@ -90,7 +90,7 @@
     <div class="row">
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/naveenb2004.jpg" alt="Card image" title="Naveen Balasooriya's Avatar" />
+          <img class="card-img-top" src="Media/naveenb2004.jpg" alt="Card image" title="Zoro" />
           <div class="card-body">
             <h5 class="card-title text-center">Naveen Balasooriya</h5>
             <p class="card-text text-center">
@@ -128,7 +128,7 @@
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/randillasith.jpg" alt="Card image" title="Lasith Randil's Avatar" />
+          <img class="card-img-top" src="Media/randillasith.jpg" alt="Card image" title="Kazuto Kirigaya" />
           <div class="card-body">
             <h5 class="card-title text-center">Lasith Randil</h5>
             <p class="card-text text-center">
@@ -166,7 +166,8 @@
 
       <div class="col-sm-12 col-lg-4 p-3 d-flex justify-content-center">
         <div class="card" style="width: 508px">
-          <img class="card-img-top" src="Media/roku.png" alt="Card image" title="Dasun Nethsara's Avatar">
+          <img class="card-img-top" src="Media/roku.png" alt="Card image" title="Avatar Roku
+">
           <div class="card-body">
             <h5 class="card-title text-center">Dasun Nethsara</h5>
             <p class="card-text text-center">
