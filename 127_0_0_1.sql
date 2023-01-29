@@ -191,9 +191,15 @@ CREATE TABLE `students` (
   `admissionNo` varchar(7) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
+  `initials` varchar(30) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `school` varchar(100) NOT NULL,
   `al_year` year(4) NOT NULL,
   `DOB` date NOT NULL,
   `pic` varchar(255) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `guardianTel` int(10) NOT NULL,
   `institute` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
