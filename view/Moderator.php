@@ -156,6 +156,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<?php
 							$year = date("Y");
 							$month = date("m");
+							$today = date("Y-m-d");
 							if (isset($_POST['finals'])) {
 								$id3 = $_SESSION['id3'];
 								$date = date("Y-m-d");
@@ -181,7 +182,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
 											$result6 = mysqli_query($con, $sql6);
 											if (mysqli_num_rows($result6) == 0) {
-												$sql7 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '1')";
+												$sql7 = "INSERT INTO payments (regclassId, year, month, status, pDate) VALUES ('$regClassId', '$year', '$month', '1', '$today')";
 												$result7 = mysqli_query($con, $sql7);
 												if ($result7) {
 													echo "<script>alert('Attendance Marked!');</script>";
@@ -190,7 +191,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 											} else {
 												$row6 = mysqli_fetch_assoc($result6);
 												if($row6['status'] == "0") {
-													$sql7 = "UPDATE payments SET status='1'";
+													$sql7 = "UPDATE payments SET status='1', pDate='$today' WHERE regclassId='$regClassId'";
 													if(mysqli_query($con, $sql7)) {
 														echo "<script>alert('Attendance Marked!');</script>";
 														header("Refresh:0; url=Moderator.php");
@@ -205,7 +206,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 											$sql8 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='0'";
 											$result8 = mysqli_query($con, $sql8);
 											if (mysqli_num_rows($result8) == 0) {
-												$sql9 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '0')";
+												$sql9 = "INSERT INTO payments (regclassId, year, month, status, pDate) VALUES ('$regClassId', '$year', '$month', '0', '')";
 												$result9 = mysqli_query($con, $sql9);
 												if ($result9) {
 													echo "<script>alert('Attendance Marked!');</script>";

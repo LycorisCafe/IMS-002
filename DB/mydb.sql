@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 26, 2023 at 05:12 AM
--- Server version: 8.0.31
--- PHP Version: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Jan 29, 2023 at 03:43 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `attendance` (
-  `id` int NOT NULL,
-  `regclassId` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `regclassId` int(11) NOT NULL,
   `date_` date NOT NULL,
   `d2d` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,9 +41,9 @@ CREATE TABLE `attendance` (
 --
 
 CREATE TABLE `classes` (
-  `id` int NOT NULL,
-  `al_year` int NOT NULL,
-  `day` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `al_year` int(11) NOT NULL,
+  `day` int(11) NOT NULL,
   `time` varchar(8) NOT NULL,
   `institute` varchar(50) NOT NULL,
   `city` varchar(50) NOT NULL
@@ -56,12 +56,12 @@ CREATE TABLE `classes` (
 --
 
 CREATE TABLE `exam` (
-  `id` int NOT NULL,
-  `regclassID` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `regclassID` int(11) NOT NULL,
   `date` date NOT NULL,
-  `marks` int NOT NULL,
+  `marks` int(11) NOT NULL,
   `grade` varchar(2) NOT NULL,
-  `rank` int NOT NULL
+  `rank` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -71,20 +71,13 @@ CREATE TABLE `exam` (
 --
 
 CREATE TABLE `login` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `lastLogin` varchar(22) CHARACTER SET utf8mb4 NOT NULL,
+  `lastLogin` varchar(22) NOT NULL,
   `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
-(3, 'maintainer', 'maintainer', 'Lycoris Cafe', '2023-01-26 05:11:17 AM', 'Maintainer');
 
 -- --------------------------------------------------------
 
@@ -93,11 +86,12 @@ INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) 
 --
 
 CREATE TABLE `payments` (
-  `id` int NOT NULL,
-  `regclassID` int NOT NULL,
-  `year` int NOT NULL,
-  `month` int NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `id` int(11) NOT NULL,
+  `regclassID` int(11) NOT NULL,
+  `year` int(11) NOT NULL,
+  `month` int(11) NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `pDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -107,10 +101,10 @@ CREATE TABLE `payments` (
 --
 
 CREATE TABLE `regclass` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `studentId` varchar(7) NOT NULL,
-  `classId` int NOT NULL,
-  `attendance` tinyint NOT NULL
+  `classId` int(11) NOT NULL,
+  `attendance` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -124,10 +118,10 @@ CREATE TABLE `students` (
   `admissionNo` varchar(7) NOT NULL,
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
-  `al_year` year NOT NULL,
+  `al_year` year(4) NOT NULL,
   `DOB` date NOT NULL,
   `pic` varchar(255) NOT NULL,
-  `institute` varchar(10) NOT NULL
+  `institute` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -189,37 +183,37 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `exam`
 --
 ALTER TABLE `exam`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `regclass`
 --
 ALTER TABLE `regclass`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
