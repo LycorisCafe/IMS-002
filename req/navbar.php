@@ -24,6 +24,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             <div class="d-grid gap-2">
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../view/Admin.php">Dashboard</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/Students.php">Students</a>
+                <a class="btn btn-primary btn-sm" aria-current="page" href="../req/Payments.php">Payments</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/attendanceReport.php">Attendance Report</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/newStudent.php">Add New Students</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/studentsInfo.php">Student Information</a>
