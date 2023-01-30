@@ -31,7 +31,7 @@ Institute Management System
 
 > QA Testing
 - Stage 1 : Done (Occurred some errors)
-- Stage 2 : Pending...
+- Stage 2 : Canceled
 - Stage 3 : Canceled
 
 > Final Test
