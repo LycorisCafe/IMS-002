@@ -178,7 +178,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									$result5 = mysqli_query($con, $sql5);
 									if ($result5 && $result10) {
 										if ($p == 1) {
-											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='1'";
+											$sql6 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month'";
 											$result6 = mysqli_query($con, $sql6);
 											if (mysqli_num_rows($result6) == 0) {
 												$sql7 = "INSERT INTO payments (regclassId, year, month, status) VALUES ('$regClassId', '$year', '$month', '1')";
@@ -188,9 +188,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													header("Refresh:0; url=Moderator.php");
 												}
 											} else {
-												$em = "Already paid the class fees!";
-												header("Location: Moderator.php?error=$em");
-												exit;
+												$row6 = mysqli_fetch_assoc($result6);
+												if($row6['status'] == "0") {
+													$sql7 = "UPDATE payments SET status='1'";
+													if(mysqli_query($con, $sql7)) {
+														echo "<script>alert('Attendance Marked!');</script>";
+														header("Refresh:0; url=Moderator.php");
+													}
+												} else {
+													$em = "Already paid the class fees!";
+												 	header("Location: Moderator.php?error=$em");
+												 	exit;
+												}
 											}
 										} else {
 											$sql8 = "SELECT * FROM payments WHERE regclassId='$regClassId' AND year='$year' AND month='$month' AND status='0'";
@@ -202,11 +211,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 													echo "<script>alert('Attendance Marked!');</script>";
 													header("Refresh:0; url=Moderator.php");
 												}
-											} else {
-												$em = "Please Pay the Class Fees!";
-												header("Location: Moderator.php?error=$em");
-												exit;
-											}
+											} 
+
+											 else {
+											 	$em = "Please Pay the Class Fees!";
+											 	header("Location: Moderator.php?error=$em");
+											 	exit;
+											 }
 										}
 									}
 								} else {
