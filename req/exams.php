@@ -19,53 +19,83 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     </head>
 
     <?php
+
+    function input_data($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;  
+    }
+
+    $markErr = $rankErr = "";
+
     if (isset($_POST['submit'])) {
         $id = $_POST['id'];
         $marks = $_POST['marks'];
         $rank = $_POST['rank'];
 
-        // messedup if...else if... else statement with python. && for AND operator in php
-        if ($marks >= 0 && $marks <= 100) { 
-            if ($marks >= 75) {
-                $grade = "A";
-            } else if ($marks >= 65) {
-                $grade = "B";
-            } else if ($marks >= 55) {
-                $grade = "C";
-            } else if ($marks >= 35) {
-                $grade = "S";
+        if($_SERVER["REQUEST_METHOD"] == "POST") {
+            $marks = input_data($_POST["marks"]);  
+            // check if al year is well-formed  
+            if (!preg_match ("/^[0-9]*$/", $marks)) {
+                $markErr = "Only numeric value is allowed"; 
+                header("Location: exams.php?error=$markErr");
+                exit;
             } else {
-                $grade = "W";
+                // messedup if...else if... else statement with python. && for AND operator in php
+                if ($marks >= 0 && $marks <= 100) { 
+                    if ($marks >= 75) {
+                        $grade = "A";
+                    } else if ($marks >= 65) {
+                        $grade = "B";
+                    } else if ($marks >= 55) {
+                        $grade = "C";
+                    } else if ($marks >= 35) {
+                        $grade = "S";
+                    } else {
+                        $grade = "W";
+                    }
+                } else {
+                    $em = "Marks should be 0 - 100 range!";
+                    header("Location: exams.php?error=$em");
+                    exit;
+                }
             }
-        } else {
-            $em = "Marks should be 0 - 100 range!";
-            header("Location: exams.php?error=$em");
-            exit;
+            $rank = input_data($_POST["rank"]);  
+            // check if al year is well-formed  
+            if (!preg_match ("/^[0-9]*$/", $rank)) {
+                $rankErr = "Only numeric value is allowed"; 
+                header("Location: exams.php?error=$rankErr");
+                exit;
+            }
+
         }
 
         $date = date("Y-m-d");
         include_once '../connection.php';
-        $sql1 = "SELECT id FROM regclass WHERE studentId='$id'";
-        $result1 = mysqli_query($con, $sql1);
-        if (mysqli_num_rows($result1) > 0) {
-            $row1 = mysqli_fetch_assoc($result1);
-            $regclzid = $row1['id'];
+        if($markErr == "" && $rankErr == "") {
+            $sql1 = "SELECT id FROM regclass WHERE studentId='$id'";
+            $result1 = mysqli_query($con, $sql1);
+            if (mysqli_num_rows($result1) > 0) {
+                $row1 = mysqli_fetch_assoc($result1);
+                $regclzid = $row1['id'];
 
-            $sql2 = "SELECT * FROM exam WHERE regclassID='$regclzid' AND date='$date'";
-            $result2 = mysqli_query($con, $sql2);
-            if (mysqli_num_rows($result2) == 0) {
-                $sql3 = "INSERT INTO exam (regclassID, date, marks, grade, rank) VALUES ('$regclzid', '$date', '$marks', '$grade', '$rank')";
-                $result3 = mysqli_query($con, $sql3);
-                echo "<script>alert('Marksheet updated!');</script>";
+                $sql2 = "SELECT * FROM exam WHERE regclassID='$regclzid' AND date='$date'";
+                $result2 = mysqli_query($con, $sql2);
+                if (mysqli_num_rows($result2) == 0) {
+                    $sql3 = "INSERT INTO exam (regclassID, date, marks, grade, rank) VALUES ('$regclzid', '$date', '$marks', '$grade', '$rank')";
+                    $result3 = mysqli_query($con, $sql3);
+                    echo "<script>alert('Marksheet updated!');</script>";
+                } else {
+                    $em = "Marks already added!";
+                    header("Location: exams.php?error=$em");
+                    exit;
+                }
             } else {
-                $em = "Marks already added!";
+                $em = "Invalid Student ID or Not found the ID";
                 header("Location: exams.php?error=$em");
                 exit;
             }
-        } else {
-            $em = "Invalid Student ID or Not found the iD";
-            header("Location: exams.php?error=$em");
-            exit;
         }
     }
     ?>

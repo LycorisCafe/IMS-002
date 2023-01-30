@@ -72,7 +72,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         } else {  
            $dob = $_POST["DOB"];
            try {
-                $arr = explode('-', $dob);
                 if(!validateDate($dob)) {
                     $dateErr = "Enter a valid date";
                     header("Location: newStudent.php?error=$dateErr");
