@@ -27,6 +27,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         return $data;  
     }
 
+    function validateDate($date, $format = 'Y-m-d'){
+        $d = DateTime::createFromFormat($format, $date);
+        return $d && $d->format($format) === $date;
+    }
+
     $fnameErr = $lnameErr = $admissionErr = $yearErr = $dateErr = "";
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -68,7 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
            $dob = $_POST["DOB"];
            try {
                 $arr = explode('-', $dob);
-                if(!checkdate($arr[1], $arr[2], $arr[0])) {
+                if(!validateDate($dob)) {
                     $dateErr = "Enter a valid date";
                     header("Location: newStudent.php?error=$dateErr");
                     exit;
