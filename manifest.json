@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
     "name": "IMS-002",
-    "description": "Educational Institute Management System",
-    "version": "1.0",
+    "description": "Educational Institute Management System - 002",
+    "version": "1.2",
     "action": {
         "default_popup": "index.php"
     },
