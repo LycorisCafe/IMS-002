@@ -17,7 +17,7 @@ Institute Management System
 - Start Date : 28.12.2022
 - End Date : 25.01.2023
 - Release Date : 28.01.2023
-- Further Updates : Active
+- Further Updates : Disabled
 
 > Time Durations : 
 - Project Development Duration : 28 days
