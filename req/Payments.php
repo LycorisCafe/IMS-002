@@ -8,7 +8,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Attendance Report</title>
+        <title>Payments Report</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../css/fonts.css">
@@ -77,7 +77,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
         <script>
             function openPage(pageName, elmnt, color) {
-                // Hide all elements with class="tabcontent" by default */
+                // Hide all elements with class="tabcontent" by default
                 var i, tabcontent, tablinks;
                 tabcontent = document.getElementsByClassName("tabcontent");
                 for (i = 0; i < tabcontent.length; i++) {

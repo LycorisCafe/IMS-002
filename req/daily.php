@@ -1,3 +1,7 @@
+<div class="text-end">
+    <h3>Results Count : <span class="badge bg-secondary" id="count" style="font-size: 18pt; color: #ff0;"></span></h3>
+</div>
+
 <form action="Payments.php" method="post">
     <div class="row">
         <div class="col-4 mb-3">
@@ -63,6 +67,7 @@
                             $year = $_POST['year'];
                             if ($ins == "All") {
                                 if ($year == "All") {
+                                    $count = 0;
                                     $sql3 = "SELECT * FROM students";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -80,6 +85,8 @@
                                             $ins = $row3['institute'];
                                             $action = "";
                                             if ($status == 1) {
+                                                $countRow = mysqli_num_rows($result5);
+                                                $count += $countRow;
                                                 $action = "<font color='green'>Paid</font>";
                                                 echo "<tr>";
                                                 echo "<td>$name</td>";
@@ -90,7 +97,9 @@
                                             }
                                         }
                                     }
+                                    echo "<script>document.getElementById('count').textContent = $count;</script>";
                                 } else {
+                                    $count = 0;
                                     $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -108,6 +117,8 @@
                                             $ins = $row3['institute'];
                                             $action = "";
                                             if ($status == 1) {
+                                                $countRow = mysqli_num_rows($result5);
+                                                $count += $countRow;
                                                 $action = "<font color='green'>Paid</font>";
                                                 echo "<tr>";
                                                 echo "<td>$name</td>";
@@ -118,9 +129,11 @@
                                             }
                                         }
                                     }
+                                    echo "<script>document.getElementById('count').textContent = $count;</script>";
                                 }
                             } else {
                                 if ($year == "All") {
+                                    $count = 0;
                                     $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -138,6 +151,8 @@
                                             $ins = $row3['institute'];
                                             $action = "";
                                             if ($status == 1) {
+                                                $countRow = mysqli_num_rows($result5);
+                                                $count += $countRow;
                                                 $action = "<font color='green'>Paid</font>";
                                                 echo "<tr>";
                                                 echo "<td>$name</td>";
@@ -148,7 +163,9 @@
                                             }
                                         }
                                     }
+                                    echo "<script>document.getElementById('count').textContent = $count;</script>";
                                 } else {
+                                    $count = 0;
                                     $sql3 = "SELECT * FROM students WHERE al_year='$year' AND institute='$ins'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -166,6 +183,8 @@
                                             $ins = $row3['institute'];
                                             $action = "";
                                             if ($status == 1) {
+                                                $countRow = mysqli_num_rows($result5);
+                                                $count += $countRow;
                                                 $action = "<font color='green'>Paid</font>";
                                                 echo "<tr>";
                                                 echo "<td>$name</td>";
@@ -176,9 +195,11 @@
                                             }
                                         }
                                     }
+                                    echo "<script>document.getElementById('count').textContent = $count;</script>";
                                 }
                             }
                         } else {
+                            $count = 0;
                             $date = date("Y-m-d");
                             $name = $date = $ins = $status = $action = "";
                             $sql3 = "SELECT * FROM students";
@@ -198,6 +219,8 @@
                                     $ins = $row3['institute'];
                                     $action = "";
                                     if ($status == 1) {
+                                        $countRow = mysqli_num_rows($result5);
+                                        $count += $countRow;
                                         $action = "<font color='green'>Paid</font>";
                                         echo "<tr>";
                                         echo "<td>$name</td>";
@@ -208,6 +231,7 @@
                                     }
                                 }
                             }
+                            echo "<script>document.getElementById('count').textContent = $count;</script>";
                         }
                         ?>
                     </tbody>

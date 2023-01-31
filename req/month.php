@@ -1,3 +1,7 @@
+<div class="text-end">
+    <h3>Results Count : <span class="badge bg-secondary" id="count2" style="font-size: 18pt; color: #ff0;"></span></h3>
+</div>
+
 <form action="Payments.php" method="post">
     <div class="row">
         <div class="col-3 mb-3">
@@ -58,7 +62,7 @@
         </div>
     </div>
     <br />
-    <div class="bd-example-snippet bd-code-snippet"><br />
+    <div class="bd-example-snippet bd-code-snippet">
         <div class="bd-example"><br />
             <table class="table table-striped">
                 <thead>
@@ -71,10 +75,6 @@
                 </thead>
                 <tbody>
                     <?php
-                    function getData($year, $month, $ins, $ALyear, $status)
-                    {
-
-                    }
                     if (isset($_POST['search2'])) {
                         include_once '../connection.php';
                         $month = $_POST['month'];
@@ -85,7 +85,7 @@
                             if ($_POST['institute'] == "All") {
                                 if ($_POST['year'] == "All") {
                                     if ($_POST['status'] == "1") {
-                                        $name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -103,6 +103,8 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $countRow = mysqli_num_rows($result5);
+                                                    $count += $countRow;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -113,8 +115,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
-                                        $name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -124,6 +127,7 @@
                                             $row4 = mysqli_fetch_assoc($result4);
                                             $sql5 = "SELECT * FROM payments WHERE regclassID='" . $row4['id'] . "'";
                                             $result5 = mysqli_query($con, $sql5);
+                                            $countRow = mysqli_num_rows($result5);
                                             if (mysqli_num_rows($result5) > 0) {
                                                 $row5 = mysqli_fetch_assoc($result5);
                                                 $status = $row5['status'];
@@ -132,6 +136,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -141,6 +146,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -153,10 +159,11 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 } else {
                                     if ($_POST['status'] == "1") {
-                                        $name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -173,6 +180,7 @@
                                                 $date = $row5['pDate'];
                                                 $ins = $row3['institute'];
                                                 $action = "";
+                                                $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -182,8 +190,9 @@
                                                     echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
-                                        $name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -201,6 +210,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -210,6 +220,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -222,12 +233,13 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 }
                             } else {
                                 if ($_POST['year'] == "All") {
                                     if ($_POST['status'] == "1") {
-                                        //$name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -245,6 +257,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -255,8 +268,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
-                                        //$name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -274,6 +288,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -283,6 +298,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -295,9 +311,11 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 } else {
                                     if ($_POST['status'] == "1") {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -315,6 +333,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -325,7 +344,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -343,6 +364,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -352,6 +374,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -364,6 +387,7 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 }
                             }
@@ -374,6 +398,7 @@
                             if ($_POST['institute'] == "All") {
                                 if ($_POST['year'] == "All") {
                                     if ($_POST['status'] == "1") {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -391,6 +416,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -401,7 +427,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -419,6 +447,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -428,6 +457,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -440,10 +470,11 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 } else {
                                     if ($_POST['status'] == "1") {
-                                        $name = $date = $ins = $status = $action = "";
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -454,6 +485,7 @@
                                             $sql5 = "SELECT * FROM payments WHERE year='$year2' AND month='$month2' status='1' AND regclassID='" . $row4['id'] . "'";
                                             $result5 = mysqli_query($con, $sql5);
                                             if (mysqli_num_rows($result5) > 0) {
+                                                $count += 1;
                                                 $row5 = mysqli_fetch_assoc($result5);
                                                 $status = $row5['status'];
                                                 $name = $row3['fname'] . " " . $row3['lname'];
@@ -469,7 +501,9 @@
                                                     echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
+                                        $count =  0;
                                         $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -487,6 +521,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -496,6 +531,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -508,11 +544,13 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 }
                             } else {
                                 if ($_POST['year'] == "All") {
                                     if ($_POST['status'] == "1") {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -530,6 +568,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -540,7 +579,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -558,6 +599,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -567,6 +609,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -579,9 +622,11 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 } else {
                                     if ($_POST['status'] == "1") {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -599,6 +644,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 1) {
+                                                    $count += 1;
                                                     $action = "<font color='green'>Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -609,7 +655,9 @@
                                                 }
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     } else {
+                                        $count = 0;
                                         $sql3 = "SELECT * FROM students WHERE institute='$ins' AND al_year='$year'";
                                         $result3 = mysqli_query($con, $sql3);
                                         while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -627,6 +675,7 @@
                                                 $ins = $row3['institute'];
                                                 $action = "";
                                                 if ($status == 0) {
+                                                    $count += 1;
                                                     $action = "<font color='red'>Not Paid</font>";
                                                     echo "<tr>";
                                                     echo "<td>$name</td>";
@@ -636,6 +685,7 @@
                                                     echo "</tr>";
                                                 }
                                             } else {
+                                                $count += 1;
                                                 $name = $row3['fname'] . " " . $row3['lname'];
                                                 $date = "-";
                                                 $ins = $row3['institute'];
@@ -648,6 +698,7 @@
                                                 echo "</tr>";
                                             }
                                         }
+                                        echo "<script>document.getElementById('count2').textContent = $count;</script>";
                                     }
                                 }
                             }
