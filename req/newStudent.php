@@ -196,8 +196,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <div class="col-auto mb-3">
                             <label class="form-label">Admission Number: </label>
                             <input type="text" class="form-control" name="admissionNo" autocomplete="off" required placeholder="XXXX">
+                            
                         </div>
-                        <div class="col-auto mb-3">
+                        <div class="col-auto mb-3"> <i class="bi bi-person"></i>
                             <label class="form-label">Student ID: </label>
                             <input type="text" class="form-control" name="id2" autocomplete="off" required placeholder="XXXX">
                         </div>

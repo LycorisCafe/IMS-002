@@ -40,11 +40,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             }
 
             #daily {
-                background-color: green;
+                background-color: #212529;
             }
 
             #monthly {
-                background-color: orange;
+                background-color: #212529;
             }
         </style>
     </head>
@@ -65,6 +65,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             <div id="daily" class="tabcontent">
                 <h3>Daily Payments</h3><br/>
                 <?php require 'daily.php'; ?>
+                
             </div>
 
             <div id="monthly" class="tabcontent">
