@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <label class="form-label">Institute: </label>
                         <select class="form-control" name='institute' id="s1">
                             <option value="0">-- Select --</option>
-                            <option value="All">All</option>
+                            <option value="All" selected>All</option>
                             <?php
                             include_once '../connection.php';
                             $sql1 = "SELECT DISTINCT institute, city FROM classes";
@@ -73,7 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <label class="form-label">A/L Year: </label>
                         <select class="form-control" name='year' id="s2">
                             <option value="0">-- Select --</option>
-                            <option value="All">All</option>
+                            <option value="All" selected>All</option>
                             <?php
                             $sql2 = "SELECT DISTINCT al_year FROM classes";
                             $result2 = mysqli_query($con, $sql2);

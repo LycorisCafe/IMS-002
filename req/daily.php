@@ -12,7 +12,7 @@
             <label class="form-label">Institute :</label>
             <select class="form-control" name='institute' id="s1">
                 <option value="0">-- Select --</option>
-                <option value="All">All</option>
+                <option value="All" selected>All</option>
                 <?php
                 $day = date("N");
                 include_once '../connection.php';
@@ -29,7 +29,7 @@
             <label class="form-label">A/L Year :</label>
             <select class="form-control" name='year' id="s2">
                 <option value="0">-- Select --</option>
-                <option value="All">All</option>
+                <option value="All" selected>All</option>
                 <?php
                 $sql2 = "SELECT DISTINCT al_year FROM classes WHERE day='$day'";
                 $result2 = mysqli_query($con, $sql2);

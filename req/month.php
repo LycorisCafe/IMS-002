@@ -8,7 +8,7 @@
             <label class="form-label">Month: </label>
             <select class="form-control" name='month' id="s1">
                 <option value="0">-- Select --</option>
-                <option value="All">All</option>
+                <option value="All" selected>All</option>
                 <?php
                 include_once '../connection.php';
                 $sql1 = "SELECT DISTINCT year, month FROM payments";
@@ -24,7 +24,7 @@
             <label class="form-label">Institute :</label>
             <select class="form-control" name='institute' id="s1">
                 <option value="0">-- Select --</option>
-                <option value="All">All</option>
+                <option value="All" selected>All</option>
                 <?php
                 $sql1 = "SELECT DISTINCT institute, city FROM classes";
                 $result1 = mysqli_query($con, $sql1);
@@ -39,7 +39,7 @@
             <label class="form-label">A/L Year :</label>
             <select class="form-control" name='year' id="s2">
                 <option value="0">-- Select --</option>
-                <option value="All">All</option>
+                <option value="All" selected>All</option>
                 <?php
                 $sql2 = "SELECT DISTINCT al_year FROM classes";
                 $result2 = mysqli_query($con, $sql2);
@@ -53,7 +53,7 @@
             <label class="form-label">Status :</label>
             <select class="form-control" name='status'>
                 <option value="0">-- Select --</option>
-                <option value='1'>Paid</option>
+                <option value='1' selected>Paid</option>
                 <option value='2'>Not Paid</option>
             </select>
         </div>
