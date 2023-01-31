@@ -469,12 +469,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$fname = $_POST['fname'];
 				$lname = $_POST['lname'];
 				$admission = $_POST['admission'];
-				$sid = $_POST['sid'];
+				//$sid = $_POST['sid'];
 				$year = $_POST['year'];
 				$dob = $_POST['DOB'];
 
 				$id = $_SESSION['sid'];
-				$sql16 = "UPDATE students SET id='$sid', fname='$fname', lname='$lname', admissionNo='$admission', 
+				$sql16 = "UPDATE students SET fname='$fname', lname='$lname', admissionNo='$admission', 
 						  al_year='$year', DOB='$dob' WHERE id='$id'";
 				$result16 = mysqli_query($con, $sql16);
 				if($result16) {

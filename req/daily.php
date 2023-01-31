@@ -1,6 +1,10 @@
 <form action="Payments.php" method="post">
     <div class="row">
         <div class="col-4 mb-3">
+            <label class="form-label">Date: </label>
+            <input type="date" name="date" class="form-control">
+        </div>
+        <div class="col-4 mb-3">
             <label class="form-label">Institute :</label>
             <select class="form-control" name='institute' id="s1">
                 <option value="0">-- Select --</option>
@@ -50,14 +54,15 @@
                         <?php
 
                         include_once '../connection.php';
-                        $today = date("Y-m-d");
 
                         if (isset($_POST['search'])) {
+                            $d = $_POST['date'];
+                            $date = str_replace('/', '-', $d);
+                            $date = date("Y-m-d", strtotime($date));
                             $ins = $_POST['institute'];
                             $year = $_POST['year'];
                             if ($ins == "All") {
                                 if ($year == "All") {
-                                    $name = $date = $ins = $status = $action = "";
                                     $sql3 = "SELECT * FROM students";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -65,7 +70,7 @@
                                         $sql4 = "SELECT id FROM regclass WHERE studentId='$stdID'";
                                         $result4 = mysqli_query($con, $sql4);
                                         $row4 = mysqli_fetch_assoc($result4);
-                                        $sql5 = "SELECT * FROM payments WHERE pDate='$today' AND status='1' AND regclassID='" . $row4['id'] . "'";
+                                        $sql5 = "SELECT * FROM payments WHERE pDate='$date' AND status='1' AND regclassID='" . $row4['id'] . "'";
                                         $result5 = mysqli_query($con, $sql5);
                                         if (mysqli_num_rows($result5) > 0) {
                                             $row5 = mysqli_fetch_assoc($result5);
@@ -86,7 +91,6 @@
                                         }
                                     }
                                 } else {
-                                    $name = $date = $ins = $status = $action = "";
                                     $sql3 = "SELECT * FROM students WHERE al_year='$year'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -94,7 +98,7 @@
                                         $sql4 = "SELECT id FROM regclass WHERE studentId='$stdID'";
                                         $result4 = mysqli_query($con, $sql4);
                                         $row4 = mysqli_fetch_assoc($result4);
-                                        $sql5 = "SELECT * FROM payments WHERE pDate='$today' AND status='1' AND regclassID='" . $row4['id'] . "'";
+                                        $sql5 = "SELECT * FROM payments WHERE pDate='$date' AND status='1' AND regclassID='" . $row4['id'] . "'";
                                         $result5 = mysqli_query($con, $sql5);
                                         if (mysqli_num_rows($result5) > 0) {
                                             $row5 = mysqli_fetch_assoc($result5);
@@ -117,7 +121,6 @@
                                 }
                             } else {
                                 if ($year == "All") {
-                                    $name = $date = $ins = $status = $action = "";
                                     $sql3 = "SELECT * FROM students WHERE institute='$ins'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -125,7 +128,7 @@
                                         $sql4 = "SELECT id FROM regclass WHERE studentId='$stdID'";
                                         $result4 = mysqli_query($con, $sql4);
                                         $row4 = mysqli_fetch_assoc($result4);
-                                        $sql5 = "SELECT * FROM payments WHERE pDate='$today' AND status='1' AND regclassID='" . $row4['id'] . "'";
+                                        $sql5 = "SELECT * FROM payments WHERE pDate='$date' AND status='1' AND regclassID='" . $row4['id'] . "'";
                                         $result5 = mysqli_query($con, $sql5);
                                         if (mysqli_num_rows($result5) > 0) {
                                             $row5 = mysqli_fetch_assoc($result5);
@@ -146,7 +149,6 @@
                                         }
                                     }
                                 } else {
-                                    $name = $date = $ins = $status = $action = "";
                                     $sql3 = "SELECT * FROM students WHERE al_year='$year' AND institute='$ins'";
                                     $result3 = mysqli_query($con, $sql3);
                                     while ($row3 = mysqli_fetch_assoc($result3)) {
@@ -154,7 +156,7 @@
                                         $sql4 = "SELECT id FROM regclass WHERE studentId='$stdID'";
                                         $result4 = mysqli_query($con, $sql4);
                                         $row4 = mysqli_fetch_assoc($result4);
-                                        $sql5 = "SELECT * FROM payments WHERE pDate='$today' AND status='1' AND regclassID='" . $row4['id'] . "'";
+                                        $sql5 = "SELECT * FROM payments WHERE pDate='$date' AND status='1' AND regclassID='" . $row4['id'] . "'";
                                         $result5 = mysqli_query($con, $sql5);
                                         if (mysqli_num_rows($result5) > 0) {
                                             $row5 = mysqli_fetch_assoc($result5);
@@ -177,6 +179,7 @@
                                 }
                             }
                         } else {
+                            $date = date("Y-m-d");
                             $name = $date = $ins = $status = $action = "";
                             $sql3 = "SELECT * FROM students";
                             $result3 = mysqli_query($con, $sql3);
@@ -185,7 +188,7 @@
                                 $sql4 = "SELECT id FROM regclass WHERE studentId='$stdID'";
                                 $result4 = mysqli_query($con, $sql4);
                                 $row4 = mysqli_fetch_assoc($result4);
-                                $sql5 = "SELECT * FROM payments WHERE pDate='$today' AND status='1' AND regclassID='" . $row4['id'] . "'";
+                                $sql5 = "SELECT * FROM payments WHERE pDate='$date' AND status='1' AND regclassID='" . $row4['id'] . "'";
                                 $result5 = mysqli_query($con, $sql5);
                                 if (mysqli_num_rows($result5) > 0) {
                                     $row5 = mysqli_fetch_assoc($result5);
