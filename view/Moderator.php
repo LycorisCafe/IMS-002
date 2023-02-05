@@ -10,8 +10,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Modarator</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<script src="../js/jquery-3.6.3.min.js"></script>
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
+		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -41,7 +42,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						</div>
 					<?php } ?>
 						<form action="Moderator.php" method="post">
-							<input type="text" class="form-control" placeholder="Student ID" name="id">
+							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off">
 							<button class="btn btn-primary col-12" name="attend">Search and Mark Attend</button>
 							<button class="btn btn-outline-primary col-12" name="search">Search</button>
 						</form>
@@ -105,7 +106,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							}
 						} else {
 							$em = "Already marked the attendance!";
-							header("Location: Moderator.php?error='$em'");
+							header("Location: Moderator.php?error=$em");
 							exit;
 						}
 					}
@@ -130,20 +131,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					<h3>Student Search</h3>
 				</div>
 				<div class="card-body">
-					<div class="row g-3">
-						<div class="col-12">
-							<?php if(isset($_POST['searchAandAttend']) && $img != "") {
-								echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
-							} else {
-								echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
-							}
-							?>
-						</div>
-						<div class="col-12">
-							<h5 id="name">Name : <?php if(isset($_POST['search'])) {echo $name;}?></h5>
-							<h5 id="id">ID : <?php if(isset($_POST['search'])) {echo $id;}?></h5>
-							<h5 id="admision">Admission : <?php if(isset($_POST['search'])) {echo $admissionNo;}?></h5>
-						</div>
+					<div class="row g-1">
+						<table>
+							<tr>
+								<div class="col-12">
+									<td rowspan="3">
+											<?php if(isset($_POST['search']) && $img != "") {
+												echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
+											} else {
+												echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
+											}
+											?>
+									</td>
+								</div>
+								<div class="col-12"> 
+									<td>Name: <input type="text" name="name" class="form-control" readonly
+										value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $name;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+							</tr>
+							<tr>
+									<td>ID: <input type="text" name="id" id="id" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+							</tr>
+							<tr>
+									<td>Admission: <input type="text" name="admission" id="admission" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+							</tr>
+							</div>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -163,8 +175,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<div class="toast-container position-fixed bottom-0 end-0 p-3">
 			<div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-body">
-					<?php //if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
-					Hello
+					<?php if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
 					<div class="mt-2 pt-2 border-top">
 						<button type="button" class="btn btn-primary btn-sm">Take action</button>
 						<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
@@ -174,19 +185,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		</div>
 
 		<script>
-			// const toastTrigger = document.getElementById('liveToastBtn')
-			function showToast() {
+			 //const toastTrigger = document.getElementById('liveToastBtn')
+			 function showToast() {
 				const toastLiveExample = document.getElementById('liveToast')
 				//if (toastTrigger) {
-					toastTrigger.addEventListener('click', () => {
+					//toastTrigger.addEventListener('click', () => {
 						const toast = new bootstrap.Toast(toastLiveExample)
 						toast.show();
-					})
+					//})
 				//}
 			}
 		</script>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
+
+		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 	</body>
 
 	</html>
