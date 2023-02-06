@@ -13,6 +13,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<script src="../js/jquery-3.6.3.min.js"></script>
 		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../css/toastr.css" rel="stylesheet">
+		<script src="../js/toastr.js"></script>
+		<link href="../req/calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
+		<link href="../req/cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 	</head>
 
 	<body>
@@ -33,14 +37,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<div class="container col-sm-12 col-lg-6">
 			<div class="card text-center">
 				<div class="card-header">
-					<h2>Attendance Mark</h2>
+					<h2>Attendance Marking</h2>
 				</div>
 					<div class="d-grid gap-2">
-					<div class="card-body"><?php if (isset($_GET['error'])) { ?>
-						<div class='alert alert-danger' role='alert'>
-							<?= $_GET['error'] ?>
-						</div>
-					<?php } ?>
+					<div class="card-body">
+						<?php if (isset($_GET['error'])) { ?>
+							<div class='alert alert-danger' role='alert'>
+								<?= $_GET['error'] ?>
+							</div>
+						<?php } ?>
+						<?php if (isset($_GET['success'])) { ?>
+							<div class='alert alert-success' role='alert'>
+								<?= $_GET['success'] ?>
+							</div>
+						<?php } ?>
 						<form action="Moderator.php" method="post">
 							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off">
 							<button class="btn btn-primary col-12" name="attend">Search and Mark Attend</button>
@@ -101,11 +111,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						if(mysqli_num_rows($result4) < 1) {
 							$sql5 = "INSERT INTO attendance (regclassId, date_, d2d) VALUE ('$regclzid', '$today', '')";
 							if(mysqli_query($con, $sql5)) {
-								$msg = "Attendance Marked successfully!";
-								echo "<script>showToast();</script>";
+								echo "<script>toastr.success('Attendance Marked for $name ($id)');</script>";
 							}
 						} else {
-							$em = "Already marked the attendance!";
+							$em = "Already marked the attendance for <b>$name ($id)</b>!";
 							header("Location: Moderator.php?error=$em");
 							exit;
 						}
@@ -162,20 +171,79 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<hr>
 		</div>
 
+		<hr style="border: 2px solid red;">
+		<!-- CAALENDAR AREA -->
 		<div class="container">
-			<div class="d-grid gap-2 col-lg-7 col-sm-12 mx-auto">
-				<button class="btn btn-danger" type="button">Mark as Absent</button>
+			<?php
+			if (isset($_POST['search']) || isset($_POST['attend'])) {
+				$std_id = $id;
+				include '../req/Calendar.php';
+				include '../connection.php';
+				$fulldate = date("Y-m-d");
+				$sys_date = date("d");
+				$sys_month = date("m");
+				$sys_year = date("Y");
+				$firstDay = date('Y-m-01');
+				$lastDay = date('Y-m-t');
+				$calendar = new Calendar($fulldate);
+				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+				$result5 = mysqli_query($con, $sql5);
+				$row5 = mysqli_fetch_assoc($result5);
+				$reclassid = $row5['id'];
+
+				$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
+				$result6 = mysqli_query($con, $sql6);
+				if (mysqli_num_rows($result6) > 0) {
+					while ($row6 = mysqli_fetch_assoc($result6)) {
+						$date = $row6['date_'];
+						$d2d_done = $row6['d2d'];
+						if ($d2d_done == '1') {
+							$calendar->add_event('Attended, D2D', $date, 1, 'green');
+						} else {
+							$calendar->add_event('Attended', $date, 1, 'orange');
+						}
+					}
+				}
+			}
+			?>
+			<nav class="navtop">
+				<div>
+					<h1>Attendance</h1>
+				</div>
+			</nav>
+			<div class="content home">
+				<?php if (isset($_POST['search']) || isset($_POST['attend'])) {
+					echo $calendar;
+				} ?>
 			</div>
 		</div>
+
+		<div class="container">
+			<form action="Moderator.php" method="post">
+				<div class="d-grid gap-2 col-lg-7 col-sm-12 mx-auto">
+					<br><input type="button" name="finish" class="btn btn-warning" value="Finish">
+				</div>
+				<div class="d-grid gap-2 col-lg-7 col-sm-12 mx-auto">
+					<br><input type="button" name="absent" class="btn btn-danger" value="Mark as Absent">
+				</div>
+			</form>
+		</div>
+
+<?php
+	if(isset($_POST['finish'])) {
+		$sql11 = "UPDATE regclass SET attendance=0";
+		$result11 = mysqli_query($con, $sql11);
+		if($result11) {
+			echo "<script>toastr.info('Done');</script>";
+		}
+	}							
+?>
+
 		<br><br>
-
-
-		<button type="button" class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
 		<div class="toast-container position-fixed bottom-0 end-0 p-3">
 			<div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-body">
-					<?php if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
+					<?php //if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
 					<div class="mt-2 pt-2 border-top">
 						<button type="button" class="btn btn-primary btn-sm">Take action</button>
 						<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
@@ -187,10 +255,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<script>
 			 //const toastTrigger = document.getElementById('liveToastBtn')
 			 function showToast() {
-				const toastLiveExample = document.getElementById('liveToast')
+				const toastLiveExample = document.getElementById('liveToast');
 				//if (toastTrigger) {
 					//toastTrigger.addEventListener('click', () => {
-						const toast = new bootstrap.Toast(toastLiveExample)
+						const toast = new bootstrap.Toast(toastLiveExample);
 						toast.show();
 					//})
 				//}
