@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							</div>
 						<?php } ?>
 						<form action="Moderator.php" method="post">
-							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off">
+							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id']; }?>">
 							<button class="btn btn-primary col-12" name="attend">Search and Mark Attend</button>
 							<button class="btn btn-outline-primary col-12" name="search">Search</button>
 						</form>
@@ -236,25 +236,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			echo "<script>toastr.info('Done');</script>";
 		}
 		else {
-			echo "<script>toastr.error('Done');</script>";
+			echo "<script>toastr.error('An error occurred!');</script>";
 		}
-	}							
+	}
+
+	if(isset($_POST['absent'])) {
+		//
+	}
 ?>
 
 		<br><br>
-		<div class="toast-container position-fixed bottom-0 end-0 p-3">
+		<!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
 			<div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-body">
-					<?php //if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
 					<div class="mt-2 pt-2 border-top">
 						<button type="button" class="btn btn-primary btn-sm">Take action</button>
 						<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 
-		<script>
+<!-- 		<script>
 			 //const toastTrigger = document.getElementById('liveToastBtn')
 			 function showToast() {
 				const toastLiveExample = document.getElementById('liveToast');
@@ -265,7 +268,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					//})
 				//}
 			}
-		</script>
+		</script> -->
 
 		<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script> -->
 
