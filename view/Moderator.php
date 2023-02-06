@@ -11,10 +11,16 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Modarator</title>
 		<script src="../js/jquery-3.6.3.min.js"></script>
+		<link rel="stylesheet" href="style.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
 		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous"> -->
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/toastr.css" rel="stylesheet">
 		<script src="../js/toastr.js"></script>
+		<link rel="stylesheet" href="modstyle.css">
 		<link href="../req/calendar.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar -->
 		<link href="../req/cal-area.css" rel="stylesheet" type="text/css"> <!-- CSS for the calendar body -->
 	</head>
@@ -132,11 +138,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 		<div class="container col-sm-12 col-lg-6">
 			<hr>
-			<div class="card text-center">
-				<div class="card-header">
-					<h3>Student Search</h3>
+			<!-- <div class="card text-center ">
+				<div class="card-header"> -->
+					<center><h3>Student Search</h3></center>
 				</div>
-				<div class="card-body">
+				<!-- <div class="card-body">
 					<div class="row g-1">
 						<table>
 							<tr>
@@ -162,7 +168,57 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							</tr>
 							</div>
 						</table>
-					</div>
+					</div> -->
+
+					<div class="container mt-5">
+         <div class="row d-flex justify-content-center">
+             <div class="col-md-7">
+                 <div class="card p-2 text-center">
+                     <div class="row">
+                         <div class="col-md-7 border-right no-gutters">
+                             <div class="py-3"><img src="..\Media\dummy.jpg" width="100" class="rounded-circle">
+                                 <h4 class="text-secondary">Randil</h4>
+                                 <div class="allergy"><span>Lasith</span></div>
+                                 <div class="stats">
+                                     <table class="table table-borderless">
+                                         <tbody>
+                                             <tr>
+                                                 <td>
+                                                     <div class="d-flex flex-column"> <span class="text-left head">DOB</span> <span class="text-left bottom">03/13/2004</span> </div>
+                                                 </td>
+                                                 <td>
+                                                     <div class="d-flex flex-column"> <span class="text-left head">ID</span> <span class="text-left bottom">T23047</span> </div>
+                                                 </td>
+                                             </tr>
+                                             <tr>
+                                                 <td>
+                                                     <div class="d-flex flex-column"> <span class="text-left head">Admission</span> <span class="text-left bottom">1800</span> </div>
+                                                 </td>
+                                                 <td>
+                                                     <div class="d-flex flex-column"> <span class="text-left head">School</span> <span class="text-left bottom">-------------</span> </div>
+                                                 </td>
+                                             </tr>
+                                         </tbody>
+                                     </table>
+                                 </div>
+                               
+                             </div>
+                         </div>
+                         <!-- <div class="col-md-5">
+                             <div class="py-3">
+                                 <div> <span class="d-block head">Home Address</span> <span class="bottom">123 Broadway,New York,NY,10012</span> </div>
+                                 <div class="mt-4"> <span class="d-block head">Mobile Phone#</span> <span class="bottom">917 (543)-1234</span> </div>
+                                 <div class="mt-4"> <span class="d-block head">Home Phone#</span> <span class="bottom">212 (213)-1234</span> </div>
+                                 <div class="mt-4"> <span class="d-block head">Work Phone#</span> <span class="bottom">718 (702)-9876</span> </div>
+                                 <div class="mt-4"> <span class="d-block head">Email</span> <span class="bottom">j.smith@gmail.com</span> </div>
+                             </div>
+                         </div> -->
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
 				</div>
 			</div>
 			<hr>
