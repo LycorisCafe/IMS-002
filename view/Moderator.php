@@ -336,30 +336,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</form>
 		</div>
 		<br><br> <?php } ?>
-		<!-- <div class="toast-container position-fixed bottom-0 end-0 p-3">
-			<div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
-				<div class="toast-body">
-					<div class="mt-2 pt-2 border-top">
-						<button type="button" class="btn btn-primary btn-sm">Take action</button>
-						<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			 //const toastTrigger = document.getElementById('liveToastBtn')
-			 function showToast() {
-				const toastLiveExample = document.getElementById('liveToast');
-				//if (toastTrigger) {
-					//toastTrigger.addEventListener('click', () => {
-						const toast = new bootstrap.Toast(toastLiveExample);
-						toast.show();
-					//})
-				//}
-			}
-		</script>
-		<script src="../bootstrap/js/bootstrap.bundle.min.js"></script> -->
 	</body>
 
 	</html>

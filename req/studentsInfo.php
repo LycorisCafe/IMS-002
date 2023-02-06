@@ -308,13 +308,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						if (mysqli_num_rows($result6) > 0) {
 							while ($row6 = mysqli_fetch_assoc($result6)) {
 								$date = $row6['date_'];
-								$d2d_done = $row6['d2d'];
-								if ($d2d_done == '1') {
-									$calendar->add_event('Attended, D2D', $date, 1, 'green');
-								}
-								else {
-									$calendar->add_event('Attended', $date, 1, 'orange');
-								}
+									$calendar->add_event('Attended', $date, 1, 'green');
+							}
+
+							$sql15 = "SELECT * FROM payments WHERE regclassId='$reclassid' AND year='$sys_year' AND month='$sys_month'";
+							$result15 = mysqli_query($con, $sql15);
+							if(mysqli_num_rows($result15) > 0) {
+								$row15 = mysqli_fetch_assoc($result15);
+								$pDate = $row15['pDate'];
+								$calendar->add_event('Paid', $pDate, 1, 'red');
 							}
 						}
 					}
@@ -410,7 +412,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						</div>
 						<div class='col'>
 							<label class="form-label">Student ID: </label>
-							<input type="text" class="form-control" name="sid" id='sid' autocomplete="off" required placeholder="XXXXXX" disabled>s
+							<input type="text" class="form-control" name="sid" id='sid' autocomplete="off" required placeholder="XXXXXX" disabled>
 						</div>
 					</div><div class='row'>
 						<div class='col'>
