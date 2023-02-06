@@ -48,9 +48,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							</div>
 						<?php } ?>
 						<form action="Moderator.php" method="post">
+							<div class="input-group mb-2">
 							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
-							<button class="btn btn-outline-primary col-12" name="search">Search</button>
+							</div>
+							<div class="d-grid gap-2">
 							<button class="btn btn-primary col-12" name="attend">Search & Mark as Attend</button>
+							<button class="btn btn-outline-primary col-12" name="search">Search</button>
+							</div>
 						</form>
 					</div>
 				</div>
