@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<?php } ?>
 						<form action="Moderator.php" method="post">
 							<div class="input-group mb-2">
-							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
+							<input type="text" class="form-control" placeholder="Student ID" name="id" id="idno" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
 							</div>
 							<div class="d-grid gap-2">
 							<button class="btn btn-primary col-12" name="attend">Search & Mark as Attend</button>
@@ -337,6 +337,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		</div>
 		<br><br> <?php } ?>
 	</body>
+<script>
+$("#idno").keyup(function (){
+	var stid=$(this).val().trim();
+	$.ajax({
+		url:'search.php',
+		type:'post',
+		data : {sudentid : stid},
+		success:function(data){
+			alert(data);
+		}
+
+	});
+	
+});
+</script>
 
 	</html>
 
