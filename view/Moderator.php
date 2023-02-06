@@ -26,8 +26,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<div class="container-fluid">
 				<a class="navbar-brand">Lycoris Cafe</a>
 				<div class="d-flex d-grid gap-2">
-					<span style='color: #fff;' class="navbar">Role: <?php echo $_SESSION['role']; ?></span>
 					<span style='color: #fff;' class="navbar">User: <?php echo $_SESSION['name']; ?></span>
+					<span style='color: #fff;' class="navbar">&nbsp;&nbsp;Role: <?php echo $_SESSION['role']; ?></span>
 					<a href="../req/logout.php" class="btn btn-danger">Logout</a>
 				</div>
 			</div>
@@ -53,7 +53,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<form action="Moderator.php" method="post">
 							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
 							<button class="btn btn-outline-primary col-12" name="search">Search</button>
-							<button class="btn btn-primary col-12" name="attend">Search and Mark as Attend</button>
+							<button class="btn btn-primary col-12" name="attend">Mark as Attend</button>
 						</form>
 					</div>
 				</div>
