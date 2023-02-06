@@ -39,7 +39,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				<div class="card-header">
 					<h2>Attendance Marking</h2>
 				</div>
-					<div class="d-grid gap-2">
+				<div class="d-grid gap-2">
 					<div class="card-body">
 						<?php if (isset($_GET['error'])) { ?>
 							<div class='alert alert-danger' role='alert'>
@@ -52,9 +52,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							</div>
 						<?php } ?>
 						<form action="Moderator.php" method="post">
+						<div class="mb-2">
 							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off">
-							<button class="btn btn-primary col-12" name="attend">Search and Mark Attend</button>
-							<button class="btn btn-outline-primary col-12" name="search">Search</button>
+						</div>	
+							<div class="d-grid gap-2">
+								<button class="btn btn-primary col-12  " name="attend">Search and Mark Attend</button>
+								<button class="btn btn-outline-primary col-12 " name="search">Search</button>
+							</div>
 						</form>
 					</div>
 				</div>
@@ -69,9 +73,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$id = $_POST['id'];
 				$sql1 = "SELECT * FROM students WHERE id='$id'";
 				$result1 = mysqli_query($con, $sql1);
-				if(mysqli_num_rows($result1) > 0) {
+				if (mysqli_num_rows($result1) > 0) {
 					$row1 = mysqli_fetch_assoc($result1);
-					$name = $row1['fname']." ". $row1['lname'];
+					$name = $row1['fname'] . " " . $row1['lname'];
 					$id = $row1['id'];
 					$admissionNo = $row1['admissionNo'];
 					$img = $row1['pic'];
@@ -86,15 +90,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				exit;
 			}
 		}
-		if(isset($_POST['attend'])) {
+		if (isset($_POST['attend'])) {
 			if (!empty($_POST['id'])) {
 				$id = $_POST['id'];
 				$today = date("Y-m-d");
 				$sql1 = "SELECT * FROM students WHERE id='$id'";
 				$result1 = mysqli_query($con, $sql1);
-				if(mysqli_num_rows($result1) > 0) {
+				if (mysqli_num_rows($result1) > 0) {
 					$row1 = mysqli_fetch_assoc($result1);
-					$name = $row1['fname']." ". $row1['lname'];
+					$name = $row1['fname'] . " " . $row1['lname'];
 					$id = $row1['id'];
 					$admissionNo = $row1['admissionNo'];
 					$img = $row1['pic'];
@@ -105,12 +109,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$regclzid = $row2['id'];
 					$sql3 = "UPDATE regclass SET attendance='1' WHERE id='$regclzid'";
 					$result3 = mysqli_query($con, $sql3);
-					if($result3) {
+					if ($result3) {
 						$sql4 = "SELECT * FROM attendance WHERE regclassId='$regclzid' AND date_='$today'";
 						$result4 = mysqli_query($con, $sql4);
-						if(mysqli_num_rows($result4) < 1) {
+						if (mysqli_num_rows($result4) < 1) {
 							$sql5 = "INSERT INTO attendance (regclassId, date_, d2d) VALUE ('$regclzid', '$today', '')";
-							if(mysqli_query($con, $sql5)) {
+							if (mysqli_query($con, $sql5)) {
 								echo "<script>toastr.success('Attendance Marked for $name ($id)');</script>";
 							}
 						} else {
@@ -119,7 +123,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							exit;
 						}
 					}
-					
 				} else {
 					$em = "Invalid Student ID";
 					header("Location: Moderator.php?error=$em");
@@ -145,30 +148,35 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<tr>
 								<div class="col-12">
 									<td rowspan="3">
-											<?php if(isset($_POST['search']) && $img != "") {
-												echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
-											} else {
-												echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
-											}
-											?>
+										<?php if (isset($_POST['search']) && $img != "") {
+											echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
+										} else {
+											echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
+										}
+										?>
 									</td>
 								</div>
-								<div class="col-12"> 
-									<td>Name: <input type="text" name="name" class="form-control" readonly
-										value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $name;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+								<div class="col-12">
+									<td>Name: <input type="text" name="name" class="form-control" readonly value="<?php if (isset($_POST['search']) || isset($_POST['attend'])) {
+																														echo $name;
+																													} ?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>ID: <input type="text" name="id" id="id" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+								<td>ID: <input type="text" name="id" id="id" class="form-control" readonly value="<?php if (isset($_POST['search']) || isset($_POST['attend'])) {
+																														echo $id;
+																													} ?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>Admission: <input type="text" name="admission" id="admission" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+								<td>Admission: <input type="text" name="admission" id="admission" class="form-control" readonly value="<?php if (isset($_POST['search']) || isset($_POST['attend'])) {
+																																			echo $admissionNo;
+																																		} ?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
-							</div>
-						</table>
 					</div>
+					</table>
 				</div>
 			</div>
-			<hr>
+		</div>
+		<hr>
 		</div>
 
 		<hr style="border: 2px solid red;">
@@ -229,21 +237,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</form>
 		</div>
 
-<?php
-	if(isset($_POST['finish'])) {
-		$sql11 = "UPDATE regclass SET attendance=0";
-		$result11 = mysqli_query($con, $sql11);
-		if($result11) {
-			echo "<script>toastr.info('Done');</script>";
+		<?php
+		if (isset($_POST['finish'])) {
+			$sql11 = "UPDATE regclass SET attendance=0";
+			$result11 = mysqli_query($con, $sql11);
+			if ($result11) {
+				echo "<script>toastr.info('Done');</script>";
+			}
 		}
-	}							
-?>
+		?>
 
 		<br><br>
 		<div class="toast-container position-fixed bottom-0 end-0 p-3">
 			<div class="toast" id="liveToast" role="alert" aria-live="assertive" aria-atomic="true">
 				<div class="toast-body">
-					<?php //if(isset($_POST['attend']) && $msg != "") { echo $msg;} ?>
+					<?php //if(isset($_POST['attend']) && $msg != "") { echo $msg;} 
+					?>
 					<div class="mt-2 pt-2 border-top">
 						<button type="button" class="btn btn-primary btn-sm">Take action</button>
 						<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Close</button>
@@ -253,14 +262,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		</div>
 
 		<script>
-			 //const toastTrigger = document.getElementById('liveToastBtn')
-			 function showToast() {
+			//const toastTrigger = document.getElementById('liveToastBtn')
+			function showToast() {
 				const toastLiveExample = document.getElementById('liveToast');
 				//if (toastTrigger) {
-					//toastTrigger.addEventListener('click', () => {
-						const toast = new bootstrap.Toast(toastLiveExample);
-						toast.show();
-					//})
+				//toastTrigger.addEventListener('click', () => {
+				const toast = new bootstrap.Toast(toastLiveExample);
+				toast.show();
+				//})
 				//}
 			}
 		</script>
