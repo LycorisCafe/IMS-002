@@ -19,9 +19,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	</head>
 
 	<body>
-
-
-
 		<nav class="navbar bg-body-tertiary" data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand">Lycoris Cafe</a>
@@ -53,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<form action="Moderator.php" method="post">
 							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
 							<button class="btn btn-outline-primary col-12" name="search">Search</button>
-							<button class="btn btn-primary col-12" name="attend">Mark as Attend</button>
+							<button class="btn btn-primary col-12" name="attend">Search & Mark as Attend</button>
 						</form>
 					</div>
 				</div>
@@ -77,7 +74,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$admissionNo = $row1['admissionNo'];
 					$img = $row1['pic'];
 				} else {
-					$em = "Invalid Student ID";
+					$em = "Invalid Student ID testone";
 					header("Location: Moderator.php?error=$em");
 					exit;
 				}
@@ -89,7 +86,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		}
 		if(isset($_POST['attend'])) {
 			if (!empty($_POST['id'])) {
-				$id = $_SESSION['id'];
+				$id = $_POST['id'];
 				$today = date("Y-m-d");
 				$sql1 = "SELECT * FROM students WHERE id='$id'";
 				$result1 = mysqli_query($con, $sql1);
@@ -158,7 +155,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					}
 				}
 			} else {
-				$em = "Invalid Student ID";
+				$em = "Invalid Student ID three";
 				header("Location: Moderator.php?error=$em");
 				exit;
 			}
@@ -235,7 +232,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<tr>
 								<div class="col-12">
 									<td rowspan="3">
-											<?php if(isset($_POST['search']) && $img != "") {
+											<?php if(isset($_POST['search']) || isset($_POST['attend']) && $img != "") {
 												echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
 											} else {
 												echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
@@ -278,10 +275,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$firstDay = date('Y-m-01');
 				$lastDay = date('Y-m-t');
 				$calendar = new Calendar($fulldate);
-				$sql5 = "SELECT id FROM regClass WHERE studentId='$std_id'";
-				$result5 = mysqli_query($con, $sql5);
-				$row5 = mysqli_fetch_assoc($result5);
-				$reclassid = $row5['id'];
+				$sql16 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+				$result16 = mysqli_query($con, $sql16);
+				$row16 = mysqli_fetch_assoc($result16);
+				$reclassid = $row16['id'];
 
 				$sql6 = "SELECT * FROM attendance WHERE '$firstDay' <= date_ and date_ <= '$lastDay' AND regclassId='$reclassid'";
 				$result6 = mysqli_query($con, $sql6);
@@ -289,12 +286,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					while ($row6 = mysqli_fetch_assoc($result6)) {
 						$date = $row6['date_'];
 						$calendar->add_event('Attended', $date, 1, 'green');
-						//$d2d_done = $row6['d2d'];
-						// if ($d2d_done == '1') {
-						// 	$calendar->add_event('Attended, D2D', $date, 1, 'green');
-						// } else {
-						// 	$calendar->add_event('Attended', $date, 1, 'orange');
-						// }
 					}
 					$sql15 = "SELECT * FROM payments WHERE regclassId='$reclassid' AND year='$sys_year' AND month='$sys_month'";
 					$result15 = mysqli_query($con, $sql15);
