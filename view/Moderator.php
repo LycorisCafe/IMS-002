@@ -20,9 +20,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	</head>
 
 	<body>
-
-
-
 		<nav class="navbar bg-body-tertiary" data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand">LycorisCafe</a>
@@ -154,14 +151,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 									</td>
 								</div>
 								<div class="col-12"> 
-									<td>Name: <input type="text" name="name" class="form-control" readonly
+									<td>Name: <input type="text" class="form-control" readonly
 										value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $name;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>ID: <input type="text" name="id" id="id" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+									<td>ID: <input type="text" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>Admission: <input type="text" name="admission" id="admission" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
+									<td>Admission: <input type="text" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='border: none; color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							</div>
 						</table>
@@ -221,20 +218,25 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<div class="container">
 			<form action="Moderator.php" method="post">
 				<div class="d-grid gap-2 col-lg-7 col-sm-12 mx-auto">
-					<br><input type="button" name="finish" class="btn btn-warning" value="Finish">
+					<br><input type="submit" name="finish" class="btn btn-warning" value="Finish">
 				</div>
+			</form>
+			<form action="Moderator.php" method="post">
 				<div class="d-grid gap-2 col-lg-7 col-sm-12 mx-auto">
-					<br><input type="button" name="absent" class="btn btn-danger" value="Mark as Absent">
+					<br><input type="submit" name="absent" class="btn btn-danger" value="Mark as Absent">
 				</div>
 			</form>
 		</div>
 
 <?php
 	if(isset($_POST['finish'])) {
-		$sql11 = "UPDATE regclass SET attendance=0";
+		$sql11 = "UPDATE regclass SET attendance='0'";
 		$result11 = mysqli_query($con, $sql11);
 		if($result11) {
 			echo "<script>toastr.info('Done');</script>";
+		}
+		else {
+			echo "<script>toastr.error('Done');</script>";
 		}
 	}							
 ?>
