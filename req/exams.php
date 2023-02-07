@@ -249,7 +249,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     </div>
                 </form>
             </div>
-            </div>
 
             <br><br><br><br>
 
