@@ -31,7 +31,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			$sql = "INSERT INTO classes (al_year,  day, time,institute, city) VALUES ('$al_year', '$day', '$time', '$insName', '$city')";
 			$result = mysqli_query($con, $sql);
 			if ($result) {
-				echo "<script>alert('New Class adding completed!');</script>";
+				$em = "Successfully registered a New Class ($insName ".' - '."$al_year)";
+				header("Location: addClass.php?success=$em");
+				exit;
 			} else {
 				$em = "Error adding new class";
 				header("Location: addClass.php?error=$em");
@@ -115,6 +117,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<?php if (isset($_GET['error'])) { ?>
 								<div class='alert alert-danger' role='alert'>
 									<?= $_GET['error'] ?>
+								</div>
+							<?php } ?>
+							<?php if (isset($_GET['success'])) { ?>
+								<div class='alert alert-success' role='alert'>
+									<?= $_GET['success'] ?>
 								</div>
 							<?php } ?>
 							<div class="col-auto mb-3">
@@ -277,9 +284,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$year = $_SESSION['year'];
 					$sql16 = "DELETE FROM classes WHERE institute='$ins' AND al_year='$year'";
 					if (mysqli_query($con, $sql16)) {
-						echo "<script>alert('Class Removed!');</script>";
+						echo "<script>alert('Class Removed!')</script>";
 					} else {
-						echo "<script>alert('Error Removing Class');</script>";
+						echo "<script>alert('Faild to remove the class')</script>";
 					}
 				}
 				?>

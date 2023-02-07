@@ -49,7 +49,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<?php } ?>
 						<form action="Moderator.php" method="post">
 							<div class="input-group mb-2">
-							<input type="text" class="form-control" placeholder="Student ID" name="id" id="idno" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
+							<input type="text" class="form-control" placeholder="Student ID" name="id" autocomplete="off" value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $_POST['id'];}?>">
 							</div>
 							<div class="d-grid gap-2">
 							<button class="btn btn-primary col-12" name="attend">Search & Mark as Attend</button>
@@ -98,6 +98,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$row1 = mysqli_fetch_assoc($result1);
 					$name = $row1['fname']." ". $row1['lname'];
 					$id = $row1['id'];
+					$_SESSION['id'] = $id;
 					$admissionNo = $row1['admissionNo'];
 					$img = $row1['pic'];
 					$msg = "";
@@ -174,7 +175,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			$today = date("Y-m-d");
 			$regID = "";
 			if(isset($_POST['search']) || isset($_POST['attend'])) {
-				$id = $_SESSION['id'];
+				$id = $_POST['id'];
 				$sql12 = "SELECT * FROM regclass WHERE studentId='$id'";
 				$result12 = mysqli_query($con, $sql12);
 				$row12 = mysqli_fetch_assoc($result12);
@@ -232,29 +233,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				</div>
 				<div class="card-body">
 					<div class="row g-1">
+						<div class="text-center">
+							<?php 
+							if(isset($_POST['search']) || isset($_POST['attend']) && $img != "") {
+								echo "<img src='$img' class='rounded border border-success' width='200' height='200' alt='student img'>";
+							} else {
+								echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
+							}
+							?>
+
+						</div>
+					</div><br />
+					<div class="row g-1">
 						<table>
 							<tr>
-								<div class="col-12">
-									<td rowspan="3">
-											<?php if(isset($_POST['search']) || isset($_POST['attend']) && $img != "") {
-												echo "<img src='$img' class='rounded' width='200' height='200' alt='student img'>";
-											} else {
-												echo "<img src='../Media/dummy.jpg' class='rounded' width='200' height='200' alt='student img'>";
-											}
-											?>
-									</td>
-								</div>
-								<div class="col-12"> 
-									<td>Name: <input type="text" name="name" class="form-control" readonly
-										value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $name;}?>" style='color: #10A0FF; font-weight: 700;'></td>
+								<th>Name</th>
+								<td><input type="text" name="name" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $name;}?>" style='color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>ID: <input type="text" name="id_lbl" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='color: #10A0FF; font-weight: 700;'></td>
+								<th>Student ID</th>
+								<td><input type="text" name="id" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $id;}?>" style='color: #10A0FF; font-weight: 700;'></td>
 							</tr>
 							<tr>
-									<td>Admission: <input type="text" name="admission" id="admission" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='color: #10A0FF; font-weight: 700;'></td>
+								<th>Admission No.</th>
+								<td><input type="text" id="admission" class="form-control" readonly value="<?php if(isset($_POST['search']) || isset($_POST['attend'])) { echo $admissionNo;}?>" style='color: #10A0FF; font-weight: 700;'></td>
 							</tr>
-							</div>
 						</table>
 					</div>
 				</div>
@@ -279,7 +282,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$firstDay = date('Y-m-01');
 				$lastDay = date('Y-m-t');
 				$calendar = new Calendar($fulldate);
-				$sql16 = "SELECT id FROM regClass WHERE studentId='$std_id'";
+				$sql16 = "SELECT id FROM regclass WHERE studentId='$std_id'";
 				$result16 = mysqli_query($con, $sql16);
 				$row16 = mysqli_fetch_assoc($result16);
 				$reclassid = $row16['id'];
@@ -338,19 +341,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<br><br> <?php } ?>
 	</body>
 <script>
-$("#idno").keyup(function (){
-	var stid=$(this).val().trim();
-	$.ajax({
-		url:'search.php',
-		type:'post',
-		data : {sudentid : stid},
-		success:function(data){
-			alert(data);
-		}
+// $("#idno").keyup(function (){
+// 	var stid=$(this).val().trim();
+// 	$.ajax({
+// 		url:'search.php',
+// 		type:'post',
+// 		data : {sudentid : stid},
+// 		success:function(data){
+// 			//alert(data);
+// 		}
 
-	});
+// 	});
 	
-});
+// });
 </script>
 
 	</html>

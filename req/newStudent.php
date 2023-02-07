@@ -122,9 +122,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
                         $result3 = mysqli_query($con, $sql3);
                         if ($result && $result2 && $result3) {
-                            echo "<script>alert('New Student adding completed!');</script>";
+                            $m = "New Student registered successfully!";
+                            header("Location: newStudent.php?success=$m");
+                            exit;
                         } else {
-                            echo "<script>alert('New Student adding Unsuccess!');</script>";
+                            $em = "Faild to register the new Student!";
+                            header("Location: newStudent.php?error=$em");
+                            exit;
                         }
                     } else {
                         $em = "Student ID or Admission No. is already exist!";
@@ -150,9 +154,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             $result3 = mysqli_query($con, $sql3);
                         }
                         if ($result && $result2 && $result3) {
-                            echo "<script>alert('New Student adding completed!');</script>";
+                            $m = "New Student registered successfully!";
+                            header("Location: newStudent.php?success=$m");
+                            exit;
                         } else {
-                            echo "<script>alert('New Student adding Unsuccess!');</script>";
+                            $em = "Faild to register the new Student!";
+                            header("Location: newStudent.php?error=$em");
+                            exit;
                         }
                     } else {
                         $em = "$id is already exist!";
@@ -172,15 +180,20 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <body>
         <?php require_once "navbar.php"; ?>
         <div class="container col-lg-8 col-md-5 align-self-center" style="transform:translate(0%, 10%);">
-                    <h3 class='display-5 text-center' style='color: #fff;'>New Student</h3>
-                <div class="card-body">
+            <h3 class='display-5 text-center' style='color: #fff;'>New Student</h3>
+                <div class="card-body"><br><br>
                     <?php if (isset($_GET['error'])) { ?>
                         <div class='alert alert-danger' role='alert'>
                             <?= $_GET['error'] ?>
                         </div>
                     <?php } ?>
+                    <?php if (isset($_GET['success'])) { ?>
+                        <div class='alert alert-success' role='alert'>
+                            <?= $_GET['success'] ?>
+                        </div>
+                    <?php } ?>
                     <form action="newStudent.php" method="POST" enctype='multipart/form-data'>
-                        <br/><br/><div class="col-auto mb-3">
+                        <div class="col-auto mb-3">
                             <label class="form-label">Institute: </label>
                             <select class="form-control" name='institute'>
                                 <?php
