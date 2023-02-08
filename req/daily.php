@@ -16,7 +16,7 @@
                 <?php
                 $day = date("N");
                 include_once '../connection.php';
-                $sql1 = "SELECT DISTINCT institute, city FROM classes WHERE day='$day'";
+                $sql1 = "SELECT DISTINCT institute, city FROM classes";
                 $result1 = mysqli_query($con, $sql1);
                 while ($ri = mysqli_fetch_assoc($result1)) {
                     ?>
@@ -31,7 +31,7 @@
                 <option value="0">-- Select --</option>
                 <option value="All" selected>All</option>
                 <?php
-                $sql2 = "SELECT DISTINCT al_year FROM classes WHERE day='$day'";
+                $sql2 = "SELECT DISTINCT al_year FROM classes";
                 $result2 = mysqli_query($con, $sql2);
                 while ($ri2 = mysqli_fetch_assoc($result2)) {
                     ?>
