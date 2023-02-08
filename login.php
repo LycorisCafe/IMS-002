@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/style.css">
+	<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
 	<title>Lycoris Cafe</title>
 </head>
 

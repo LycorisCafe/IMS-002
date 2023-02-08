@@ -41,14 +41,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $sql2 = "INSERT INTO login (username, password, name, lastLogin, type) VALUE ('$username', '$pswd', '$name', '', '$type')";
                         $result2 = mysqli_query($con, $sql2);
                         if ($result2)
-                            echo "<script>alert('$type account added!')</script>";
-                        break;
+                            $m = "Successfully registered a New $type Account!";
+                            header("Location: Maintainer.php?success=$m");
+                            exit;
+                            break;
                     }
                 } else {
                     $sql2 = "INSERT INTO login (username, password, name, lastLogin, type) VALUE ('$username', '$pswd', '$name', '', '$type')";
                     $result2 = mysqli_query($con, $sql2);
                     if ($result2)
-                        echo "<script>alert('$type account added!')</script>";
+                        $m = "Successfully registered a New $type Account!";
+                        header("Location: Maintainer.php?success=$m");
+                        exit;
                     break;
                 }
             }
@@ -65,6 +69,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <?php if (isset($_GET['error'])) { ?>
                             <div class='alert alert-danger' role='alert'>
                                 <?= $_GET['error'] ?>
+                            </div>
+                        <?php } ?>
+                        <?php if (isset($_GET['success'])) { ?>
+                            <div class='alert alert-success' role='alert'>
+                                <?= $_GET['success'] ?>
                             </div>
                         <?php } ?>
                         <div class="col-auto mb-3">

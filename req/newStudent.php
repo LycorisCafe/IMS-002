@@ -122,7 +122,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $sql3 = "INSERT INTO regclass(studentId, classId, attendance) VALUES ('$id', '$classid', '0')";
                         $result3 = mysqli_query($con, $sql3);
                         if ($result && $result2 && $result3) {
-                            $m = "New Student registered successfully!";
+                            $m = "New Student <b><i>$fname $lname</i></b> successfully registered to $institute - ".$alYear."!";
                             header("Location: newStudent.php?success=$m");
                             exit;
                         } else {
@@ -154,7 +154,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             $result3 = mysqli_query($con, $sql3);
                         }
                         if ($result && $result2 && $result3) {
-                            $m = "New Student registered successfully!";
+                            $m = "New Student <b><i>$fname $lname</i></b> successfully registered to $institute - ".$alYear."!";
                             header("Location: newStudent.php?success=$m");
                             exit;
                         } else {
