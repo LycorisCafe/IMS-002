@@ -36,7 +36,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					<div class="card">
 						<div class="row">
 							<div class="col-4">
-								<img src="../Media/dummy.jpg" class="img-fluid rounded-start" alt="..." width="320" height="320">
+								<?php
+								if (isset($_POST['search'])) {
+									require_once '../connection.php';
+									$std_id = $_POST['std_id'];
+									$sql17 = "SELECT pic FROM students WHERE id='$std_id'";
+									$result17 = mysqli_query($con, $sql17);
+									if(mysqli_num_rows($result17) > 0) {
+										$row17 = mysqli_fetch_assoc($result17);
+										$img = $row17['pic'];
+										if($img != "") {
+											echo "<img src='$img' class='img-fluid rounded-start' alt='Student Image' width='320' height='320'>";
+										} else {
+											echo "<img src='../Media/dummy.jpg' class='img-fluid rounded-start' alt='Student Image' width='320' height='320'>";
+										}
+									} else {
+										echo "<img src='../Media/dummy.jpg' class='img-fluid rounded-start' alt='Student Image' width='320' height='320'>";
+									}
+								} else {
+									echo "<img src='../Media/dummy.jpg' class='img-fluid rounded-start' alt='Student Image' width='320' height='320'>";
+								}
+								?>
 							</div>
 							<div class="col-8">
 								<div class="card-body">
