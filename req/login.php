@@ -49,7 +49,7 @@ if (isset($_POST['uname']) && isset($_POST['pass']) && isset($_POST['role'])) {
                         $_SESSION['lastLogin'] = $lastLogin;
 
                         if ($role == "Admin") {
-                            header("Location: ../view/Admin.php");
+                            header("Location: ../view/Home.php");
                         } else if($role == "User") {
                             header("Location: ../view/Moderator.php");
                         } else {
