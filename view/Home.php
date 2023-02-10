@@ -60,6 +60,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						Exams
 					</a>
 
+					<a href="../req/school.php" class="col btn btn-light m-2 py-5">
+						<i class="fa fa-university fs-1"></i><br/>
+						Schools
+					</a>
+
 					<a href="../req/accounts.php" class="col btn btn-light m-2 py-5">
 						<i class="fa fa-user fs-1"></i><br/>
 						Accounts

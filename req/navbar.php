@@ -31,6 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/studentsInfo.php">Student Information</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/addClass.php">Classes</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/exams.php">Exams</a>
+                <a class="btn btn-primary btn-sm" aria-current="page" href="../req/school.php">Schools</a>
                 <a class="btn btn-primary btn-sm" aria-current="page" href="../req/accounts.php">Accounts</a>
                 <a class="btn btn-outline-danger btn-sm" aria-current="page" href="../req/logout.php">Logout</a>
             </div>
