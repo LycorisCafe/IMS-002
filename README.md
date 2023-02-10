@@ -15,14 +15,9 @@ Institute Management System
 - For : Mr. Prasath Wickramasinghe
 - Project Progress : 100%
 - Start Date : 28.12.2022
-- End Date : 25.01.2023
-- Release Date : 28.01.2023
-- Further Updates : Disabled
-
-> Time Durations : 
-- Project Development Duration : 28 days
-- QA Testing Duration : 2 Days
-- Total Project Duration : 30 days
+- End Date : 10.02.2023
+- Release Date : Pending...
+- Further Updates : Enabled
 
 > Vulnerability Check
 - Stage 1 : Pass
@@ -31,10 +26,10 @@ Institute Management System
 
 > QA Testing
 - Stage 1 : Done (Occurred some errors)
-- Stage 2 : Canceled
-- Stage 3 : Canceled
+- Stage 2 : Pending...
+- Stage 3 : Pending...
 
 > Final Test
-- PC Test : Canceled
-- Mobile Test : Canceled
-- System Test (PC & Mobile) : Canceled
+- PC Test : Pending...
+- Mobile Test : Pending...
+- System Test (PC & Mobile) : Pending...
