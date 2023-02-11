@@ -26,19 +26,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			<table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">#</th>
                         <th scope="col">School</th>
                         <th scope="col">City/ Town</th>
                         <th scope="col">District</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                    	<td>1</td>
-                    	<td>Christ Church Boys' College</td>
-                    	<td>Baddegama</td>
-                    	<td>Galle</td>
-                    </tr>
+                    <?php
+                    	include '../connection.php';
+
+						$sql1 = "SELECT * FROM schools";
+						$result1 = mysqli_query($con, $sql1);
+						if (mysqli_num_rows($result1) > 0) {
+							while ($row1 = mysqli_fetch_assoc($result1)) {
+								echo "
+									<tr>
+										<td>".$row1["id"]."</td>
+										<td>".$row1["school"]."</td>
+										<td>".$row1["town"]."</td>
+										<td>".$row1["district"]."</td>
+									</tr>";
+							}
+						}
+                    ?>
                 </tbody>
             </table>
 		</div><br/><br/>
@@ -46,10 +57,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<h1 class="display-6 container">Add new School</h1><br />
         <div class="container col-lg-8 col-md-5 align-self-center">
                 <div class="card-body">
-                    <form action="accounts.php" method="POST">
+                    <form action="../data/school-data.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
                             <div class='alert alert-danger' role='alert'>
                                 <?= $_GET['error'] ?>
+                            </div>
+                        <?php } ?><?php if (isset($_GET['success'])) { ?>
+                            <div class='alert alert-success' role='alert'>
+                                <?= $_GET['success'] ?>
                             </div>
                         <?php } ?>
                         <div class="col-auto mb-3">
