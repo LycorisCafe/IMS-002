@@ -17,66 +17,62 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 	<body>
 		<?php //require_once "../req/navbar.php"; ?>
-		<div class="container mt-5" style="transform: translate(0%, 10%);">
-			<div class="container col-sm-12 col-lg-8">
-				<div class="row p-3 d-flex justify-content-center">
-					<a href="../view/Admin.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+		<div class="container mt-5" style="transform: translate(10%, 10%);">
+			<div class="container text-center">
+				<div class="row row-cols-4">
+					<a href="../view/Admin.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-tachometer fs-1"></i><br/>
-						Dashboard<br>
+						Dashboard
 					</a>
 
-					<a href="../req/Students.php" class="col-sm-12 col-lg-6 btn btn-light gap-3 "><br>
+					<a href="../req/Students.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-graduation-cap fs-1"></i><br/>
-						Students<br>
+						Students
 					</a>
-</div>
-<div class="row p-3 d-flex justify-content-center">
 
-					<a href="../req/Payments.php" class="col-sm-12 col-lg-6 btn btn-light gap-3 "><br>
+					<a href="../req/Payments.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-money fs-1"></i><br/>
-						Payments<br>
+						Payments
 					</a>
 
-					<a href="../req/attendanceReport.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/attendanceReport.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-calendar-check-o fs-1"></i><br/>
-						Attendance Report<br>
+						Attendance Report
 					</a>
-</div>
-<div class="row p-3 d-flex justify-content-center">
 
-					<a href="../req/newStudent.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/newStudent.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-plus fs-1"></i><br/>
-						Add new Students<br>
+						Add new Students
 					</a>
 
-					<a href="../req/studentsInfo.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/studentsInfo.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-flag fs-1"></i><br/>
-						Student Information<br>
+						Student Information
 					</a>
-</div>
-<div class="row p-3 d-flex justify-content-center">
 
-					<a href="../req/addClass.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/addClass.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-cubes fs-1"></i><br/>
-						Classes<br>
+						Classes
 					</a>
 
-					<a href="../req/exams.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/school.php" class="col btn btn-light m-1 py-5">
+						<i class="fa fa-university fs-1"></i><br/>
+						School
+					</a>
+
+					<a href="../req/exams.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-pencil-square-o fs-1"></i><br/>
-						Exams<br>
+						Exams
 					</a>
-</div>
-<div class="row p-3 d-flex justify-content-center">
 
-					<a href="../req/accounts.php" class="col-sm-12 col-lg-6 btn btn-light gap-3"><br>
+					<a href="../req/accounts.php" class="col btn btn-light m-1 py-5">
 						<i class="fa fa-user fs-1"></i><br/>
-						Accounts<br>
+						Accounts
 					</a>
-					<a href="../req/logout.php" class="col-sm-12 col-lg-6 btn btn-warning gap-3" ><br>
+					<a href="../req/logout.php" class="col btn btn-warning m-1 py-5" >
 						<i class="fa fa-sign-out fs-1"></i><br/>
-						Logout<br>
+						Logout
 					</a>
-</div>
 				</div>
 			</div>
 		</div>
