@@ -54,43 +54,42 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         <?php } ?>
                         <div class="col-auto mb-3">
                             <label class="form-label">School: </label>
-                            <input type="text" class="form-control" name="school" aria-describedby="school" autocomplete="off" required placeholder="">
+                            <input type="text" class="form-control" name="school" aria-describedby="school" autocomplete="off" required placeholder="Stanford University">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">City/ Town: </label>
-                            <input type="password" class="form-control" name="town" aria-describedby="town" autocomplete="off" required placeholder="">
+                            <input type="password" class="form-control" name="town" aria-describedby="town" autocomplete="off" required placeholder="California">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">District: </label>
                             <select name="district" class="form-control">
-                            	<option>Galle</option>
-                            	<option>Matara</option>
-                            	<option>Hambanthota</option>
+                            	<option>Ampara</option>
+                            	<option>Anuradhapura</option>
+                            	<option>Badulla</option>
+                            	<option>Batticaloa</option>
                             	<option>Colombo</option>
-                            	<option>Kaluthara</option>
+                            	<option>Galle</option>
                             	<option>Gampaha</option>
+                            	<option>Hambantota</option>
+                            	<option>Jaffna</option>
+                            	<option>Kalutara</option>
+                            	<option>Kandy</option>
+                            	<option>Keglle</option>
+                            	<option>Kilinochchi</option>
+                            	<option>Kurunegala</option>
+                            	<option>Mannar</option>
+                            	<option>Matale</option>
+                            	<option>Matara</option>
+                            	<option>Monaragala</option>
+                            	<option>Mullaitivu</option>
                             	<option>Nuwara Eliya</option>
-                            	<option>Rathnapura</option>
-                            	<option>Puttalama</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
-                            	<option>Galle</option>
+                            	<option>Polonnaruwa</option>
+                            	<option>Puttalam</option>
+                            	<option>Ratnapura</option>
+                            	<option>Trincomalee</option>
+                            	<option>Vavuniya</option>
                             </select>
                         </div>
-                        HEH HEH HE
                         <div class="d-grid gap-2">
                             <button type="submit" class="btn btn-primary" name='submit'>Add</button>
                         </div>

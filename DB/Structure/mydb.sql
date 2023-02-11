@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2023 at 12:42 AM
+-- Generation Time: Feb 11, 2023 at 01:40 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -79,13 +79,6 @@ CREATE TABLE `login` (
   `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `login`
---
-
-INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
-(1, 'maintainer', 'lycoris2004', 'Lycoris Cafe', '', 'Maintainer');
-
 -- --------------------------------------------------------
 
 --
@@ -117,6 +110,19 @@ CREATE TABLE `regclass` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `schools`
+--
+
+CREATE TABLE `schools` (
+  `id` int(11) NOT NULL,
+  `school` varchar(255) NOT NULL,
+  `town` varchar(50) NOT NULL,
+  `district` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `students`
 --
 
@@ -126,6 +132,7 @@ CREATE TABLE `students` (
   `fname` varchar(30) NOT NULL,
   `lname` varchar(30) NOT NULL,
   `al_year` year(4) NOT NULL,
+  `scl_id` int(11) NOT NULL,
   `DOB` date NOT NULL,
   `pic` varchar(255) NOT NULL,
   `institute` varchar(30) NOT NULL
@@ -177,10 +184,17 @@ ALTER TABLE `regclass`
   ADD KEY `regclassId` (`classId`);
 
 --
+-- Indexes for table `schools`
+--
+ALTER TABLE `schools`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `scl_id` (`scl_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -208,7 +222,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -220,6 +234,12 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `regclass`
 --
 ALTER TABLE `regclass`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `schools`
+--
+ALTER TABLE `schools`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
