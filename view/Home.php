@@ -17,7 +17,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 	<body>
 		<?php //require_once "../req/navbar.php"; ?>
-		<div class="container mt-5" style="transform: translate(10%, 10%);">
+		<div class="container mt-5" style="transform: translate(0%, 10%);">
 			<div class="container col-sm-12 col-lg-8">
 				<div class="row p-3 d-flex justify-content-center">
 					<a href="../view/Admin.php" class="col-sm-12 col-lg-6 btn btn-light"><br>
