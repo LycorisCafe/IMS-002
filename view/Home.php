@@ -64,10 +64,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<i class="fa fa-user fs-1"></i><br/>
 						Accounts
 					</a>
-					<a href="../req/logout.php" class="col btn btn-warning m-2 py-5 col-12" >
+<div clasa="align-item-center>
+					<a href="../req/logout.php" class="col btn btn-warning m-2 py-5" >
 						<i class="fa fa-sign-out fs-1"></i><br/>
 						Logout
 					</a>
+</div>
 				</div>
 			</div>
 		</div>
