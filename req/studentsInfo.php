@@ -443,6 +443,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 							<label class="form-label">Date of Birthday (DOB): </label>
 							<input type="text" class="form-control" name="DOB" id='DOB' autocomplete="off" required placeholder="2020-01-01">
 						</div>
+					</div>
+					<div class='row'>
+						<div class='col'>
+							<label class="form-label">School: </label>
+							<select class="form-control" name='school' id="school">
+                                <option value='0'>-- Select --</option>
+                                <?php
+                                    include_once '../connection.php';
+                                    $sql6 = "SELECT id, school, town FROM schools";
+                                    $result6 = mysqli_query($con, $sql6);
+                                    while ($ri = mysqli_fetch_assoc($result6)) {
+                                ?>
+                                    <option value="<?php echo $ri['id'] ?>"><?php echo $ri['school'] . " - " . $ri['town'] ?></option>
+                                <?php } ?>
+                            </select>
+						</div>
+						<div class='col'>
+							<label class="form-label">Email: </label>
+							<input type="text" class="form-control" name="email" autocomplete="off" required placeholder="example@host.com" id="email">
+						</div>
 					</div><br/><br/>
 					<div class="d-grid gap-2">
 						<button class="btn btn-outline-warning" type="submit" name="update">UPDATE</button>
@@ -463,6 +483,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$sid = $row10['id'];
 					$year = $row10['al_year'];
 					$dob = $row10['DOB'];
+					$email = $row10['email'];
+					$scl_id = $row10['scl_id'];
+					$sql18 = "SELECT * FROM schools WHERE id='$scl_id'";
+					$result18 = mysqli_query($con, $sql18);
+					$row18 = mysqli_fetch_assoc($result18);
+					$scl_id = $row18['id'];
 
 					echo "<script>document.getElementById('fname').value = '$fname';</script>";
 					echo "<script>document.getElementById('lname').value = '$lname';</script>";
@@ -470,6 +496,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					echo "<script>document.getElementById('sid').value = '$sid';</script>";
 					echo "<script>document.getElementById('year').value = '$year';</script>";
 					echo "<script>document.getElementById('DOB').value = '$dob';</script>";
+					echo "<script>document.getElementById('school').value = '$scl_id';</script>";
+					echo "<script>document.getElementById('email').value = '$email';</script>";
 				}
 				else {
 					$fname = "";
@@ -477,6 +505,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					$admission = "";
 					$year = "";
 					$dob = "";
+					$email = "";
 
 					echo "<script>document.getElementById('fname').value = 'No Data';</script>";
 					echo "<script>document.getElementById('lname').value = 'No Data';</script>";
@@ -484,6 +513,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					echo "<script>document.getElementById('sid').value = 'No Data';</script>";
 					echo "<script>document.getElementById('year').value = 'No Data';</script>";
 					echo "<script>document.getElementById('DOB').value = 'No Data';s</script>";
+					echo "<script>document.getElementById('school').value = '0';</script>";
+					echo "<script>document.getElementById('email').value = 'No Data';</script>";
 				}
 			}
 

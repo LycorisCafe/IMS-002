@@ -92,6 +92,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                 $dob = $_POST['DOB'];
                 $alYear = $_POST['alYear'];
                 $institute = $_POST['institute'];
+                $scl_id = $_POST['school'];
+                $email = $_POST['email'];
 
                 $name = $_FILES['pic']['name'];
                 $type = $_FILES['pic']['type'];
@@ -110,8 +112,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     $result6 = mysqli_query($con, $sql6);
                     if (mysqli_num_rows($result6) < 1) {
 
-                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
-                                            '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '', '$institute')";
+                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, email, al_year, scl_id, DOB, pic, institute) VALUES ('$id', 
+                                            '$admissionNo', '$fname', '$lname', '$email', '$alYear', '$scl_id', '$dob', '', '$institute')";
                         $result = mysqli_query($con, $sql);
 
                         $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
@@ -143,8 +145,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     $sql7 = "SELECT id FROM students WHERE id='$id'";
                     $result7 = mysqli_query($con, $sql7);
                     if (mysqli_num_rows($result7) == 0) {
-                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, al_year, DOB, pic, institute) VALUES ('$id', 
-                                                '$admissionNo', '$fname', '$lname', '$alYear', '$dob', '$filename', '$institute')";
+                        $sql = "INSERT INTO students(id, admissionNo, fname, lname, email, al_year, scl_id, DOB, pic, institute) VALUES ('$id', 
+                        '$admissionNo', '$fname', '$lname', '$email' '$alYear', '$scl_id', '$dob', '$filename', '$institute')";
                         $result = mysqli_query($con, $sql);
                         $sql2 = "SELECT id FROM classes WHERE institute='$institute'";
                         $result2 = mysqli_query($con, $sql2);
@@ -224,8 +226,26 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             <input type="text" class="form-control" name="lname" autocomplete="off" required placeholder="Johns">
                         </div>
                         <div class="col-auto mb-3">
+                            <label class="form-label">Email: </label>
+                            <input type="text" class="form-control" name="email" autocomplete="off" required placeholder="example@host.com">
+                        </div>
+                        <div class="col-auto mb-3">
                             <label class="form-label">A/L year: </label>
                             <input type="text" class="form-control" name="alYear" autocomplete="off" required placeholder="2022">
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label class="form-label">School: </label>
+                            <select class="form-control" name='school'>
+                                <option>-- Select --</option>
+                                <?php
+                                    include_once '../connection.php';
+                                    $sql6 = "SELECT id, school, town FROM schools";
+                                    $result6 = mysqli_query($con, $sql6);
+                                    while ($ri = mysqli_fetch_assoc($result6)) {
+                                ?>
+                                    <option value="<?php echo $ri['id'] ?>"><?php echo $ri['school'] . " - " . $ri['town'] ?></option>
+                                <?php } ?>
+                            </select>
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Date of Birth (DOB): </label>

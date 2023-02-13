@@ -73,7 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">City/ Town: </label>
-                            <input type="password" class="form-control" name="town" aria-describedby="town" autocomplete="off" required placeholder="California">
+                            <input type="text" class="form-control" name="town" aria-describedby="town" autocomplete="off" required placeholder="California">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">District: </label>
