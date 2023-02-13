@@ -525,10 +525,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				//$sid = $_POST['sid'];
 				$year = $_POST['year'];
 				$dob = $_POST['DOB'];
+				$email = $_POST['email'];
+				$scl_id = $_POST['school'];
 
 				$id = $_SESSION['sid'];
 				$sql16 = "UPDATE students SET fname='$fname', lname='$lname', admissionNo='$admission', 
-						  al_year='$year', DOB='$dob' WHERE id='$id'";
+						  al_year='$year', DOB='$dob', email='$email', scl_id='$scl_id' WHERE id='$id'";
 				$result16 = mysqli_query($con, $sql16);
 				if($result16) {
 					echo "<script>alert('$fname\'s details updated!');</script>";
