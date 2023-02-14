@@ -46,7 +46,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $grade = "A";
                     } else if ($marks >= 65) {
                         $grade = "B";
-                    } else if ($marks >= 55) {
+                    } else if ($marks >= 50) {
                         $grade = "C";
                     } else if ($marks >= 35) {
                         $grade = "S";
@@ -147,6 +147,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             <?php
                 include_once '../connection.php';
                 if(isset($_POST['search'])) {
+                    $rank2 = "";
+                    $name2 = "";
                     if(!empty($_POST['stID'])) {
                         $stID = $_POST['stID'];
                         $sql4 = "SELECT * FROM students WHERE id='$stID'";
@@ -183,8 +185,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
             ?>
 
             <?php
-            $marks2 = "";
-            $rank2 = "";
                 include_once '../connection.php';
                 if(isset($_POST['update'])) {
                     if(!empty($_POST['id2']) && !empty($_POST['name2']) && !empty($_POST['marks2']) && !empty($_POST['rank2'])) {
@@ -193,12 +193,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         $rank2 = $_POST['rank2'];
                         $name = $_POST['name2'];
                         $grade = "";
+
+
                         if ($marks2 >= 0 && $marks2 <= 100) { 
                             if ($marks2 >= 75) {
                                 $grade = "A";
                             } else if ($marks2 >= 65) {
                                 $grade = "B";
-                            } else if ($marks2 >= 55) {
+                            } else if ($marks2 >= 50) {
                                 $grade = "C";
                             } else if ($marks2 >= 35) {
                                 $grade = "S";
@@ -211,13 +213,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             exit;
                         }
 
-                        $sql7 = "UPDATE exam SET marks='$marks2', grade='$grade', rank='$rank2'";
-                        if(mysqli_query($con, $sql7)) {
-                            echo "<script>alert('Successfully updates Marksheet of $name')</script>";
-                        } else {
-                            echo "<script>alert('Faild to update the Marsheet of $name')</script>";
-                        }
+                        $sql8 = "SELECT * FROM regclass WHERE studentId='$id'";
+                        $result8 = mysqli_query($con, $sql8);
+                        $row8 = mysqli_fetch_assoc($result8);
+                        $regid = $row8['id'];
 
+                        $sql9 = "SELECT * FROM exam WHERE regclassID='$regid' ORDER BY date DESC LIMIT 1";
+                        $result9 = mysqli_query($con, $sql9);
+                        if(mysqli_num_rows($result9) > 0 && mysqli_num_rows($result9) < 2) {
+                            $row9 = mysqli_fetch_assoc($result9);
+                            $date = $row9['date'];
+
+                            $sql7 = "UPDATE exam SET marks='$marks2', grade='$grade', rank='$rank2' WHERE date='$date'";
+                            if(mysqli_query($con, $sql7)) {
+                                echo "<script>alert('Successfully updates Marksheet of $name')</script>";
+                            } else {
+                                echo "<script>alert('Faild to update the Marsheet of $name')</script>";
+                            }
+
+                        } else {
+                            echo "<script>alert('No recent exam records for $id')</script>";
+                        }
                     }
                 }
             ?>

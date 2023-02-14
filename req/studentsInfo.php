@@ -195,7 +195,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
 
 		<div class="container">
-			<h1 class="display-6">Latest Exam Result (Last Day)</h1><br />
+			<h1 class="display-6">Recent Exam Result (Last Day)</h1><br />
 			<table class="table table-striped">
 				<thead>
 					<tr>

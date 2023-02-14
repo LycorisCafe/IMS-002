@@ -11,6 +11,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Modarator</title>
 		<script src="../js/jquery-3.6.3.min.js"></script>
+		<link rel="icon" type="image/x-icon" href="../Media/favicon.png">
 		<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link href="../css/toastr.css" rel="stylesheet">
 		<script src="../js/toastr.js"></script>
@@ -146,10 +147,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$row8 = mysqli_fetch_assoc($result8);
 				$reglassid = $row8['id'];
 
-				$sql9 = "UPDATE regclass SET attendance=0";
+				$sql9 = "UPDATE regclass SET attendance=0 WHERE id='$reglassid'";
 				$result9 = mysqli_query($con, $sql9);
 				if($result9) {
-					//echo "<script>toastr.info('Done');</script>";
 					$sql10 = "SELECT * FROM attendance WHERE regclassId='$reglassid' AND date_='$today'";
 					$result10 = mysqli_query($con, $sql10);
 					if(mysqli_num_rows($result10) < 2 && mysqli_num_rows($result10) > 0) {
@@ -168,6 +168,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 		?>
 
 		<?php
+			require_once '../connection.php';
+			if(isset($_POST['finish'])) {
+				$sql17 = "UPDATE regclass SET attendance=0";
+				$result17 = mysqli_query($con, $sql17);
+				if($result17) {
+					echo "<script>toastr.info('Done');</script>";
+				} else {
+					echo "<script>toastr.error('Error occurred');</script>";
+				}
+			}
+		?>
+
+		<?php
 			// check if the student had paid the class fees
 			$val = "";
 			$year = date("Y");
@@ -181,7 +194,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 				$row12 = mysqli_fetch_assoc($result12);
 				$regID = $row12['id'];
 
-				$sql13 = "SELECT * FROM payments WHERE regclassID='$regID'";
+				$sql13 = "SELECT * FROM payments WHERE regclassID='$regID' AND year='$year' AND month='$month'";
 				$result13 = mysqli_query($con, $sql13);
 				if(mysqli_num_rows($result13) < 1) {
 					$val = 0;
@@ -316,45 +329,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 			</div>
 		</div>
 
-<?php
-	require_once '../connection.php';
-	if(isset($_POST['finish'])) {
-		$sql11 = "UPDATE regclass SET attendance=0";
-		$result11 = mysqli_query($con, $sql11);
-		if($result11) {
-			echo "<script>toastr.info('Done');</script>";
-		}
-	}
-?>
 		<div class="container">
-				<form method="POST" action="Moderator.php">
-					<div class="d-grid gap-2 col-lg-5 col-sm-12 mx-auto">
-					<br><button class="btn btn-warning" type="submit" name="finish">Finish</button>
-					</div>
-				</form>
-				<form method="POST" action="Moderator.php">
-					<div class="d-grid gap-2 col-lg-5 col-sm-12 mx-auto">
+			<form method="POST" action="Moderator.php">
+				<div class="d-grid gap-2 col-lg-5 col-sm-12 mx-auto">
 					<br><button class="btn btn-danger" type="submit" name="absent">Mark as Absent</button>
-					</div>
-				</form>
+				</div>
+			</form>
 		</div>
 		<br><br> <?php } ?>
+		<div class="container">
+			<form method="POST" action="Moderator.php">
+			<div class="d-grid gap-2 col-lg-5 col-sm-12 mx-auto">
+				<br><button class="btn btn-warning" type="submit" name="finish">Finish</button>
+			</div>
+		</form>
+		</div>
 	</body>
-<script>
-// $("#idno").keyup(function (){
-// 	var stid=$(this).val().trim();
-// 	$.ajax({
-// 		url:'search.php',
-// 		type:'post',
-// 		data : {sudentid : stid},
-// 		success:function(data){
-// 			//alert(data);
-// 		}
-
-// 	});
-	
-// });
-</script>
 
 	</html>
 
