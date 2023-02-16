@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 ?>
 
-<!DOCTYPE html>
+	<!DOCTYPE html>
 	<html lang="en" data-bs-theme="dark">
 
 	<head>
@@ -16,73 +16,90 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	</head>
 
 	<body>
-		<?php //require_once "../req/navbar.php"; ?>
-		<div class="container mt-5" style="transform: translate(10%, 10%);">
-			<div class="container text-center">
-				<div class="row row-cols-4">
-					<a href="../view/Admin.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-tachometer fs-1"></i><br/>
+		<?php //require_once "../req/navbar.php"; 
+		?>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../view/Admin.php" class="btn btn-light col py-5">
+						<i class="fa fa-tachometer fs-1"></i><br />
 						Dashboard
 					</a>
-
-					<a href="../req/Students.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-graduation-cap fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/Students.php" class="btn btn-light col py-5">
+						<i class="fa fa-graduation-cap fs-1"></i><br />
 						Students
 					</a>
-
-					<a href="../req/Payments.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-money fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/Payments.php" class="btn btn-light col py-5">
+						<i class="fa fa-money fs-1"></i><br />
 						Payments
 					</a>
-
-					<a href="../req/attendanceReport.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-calendar-check-o fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/attendanceReport.php" class="btn btn-light col py-5">
+						<i class="fa fa-calendar-check-o fs-1"></i><br />
 						Attendance Report
 					</a>
-
-					<a href="../req/newStudent.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-plus fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/newStudent.php" class="btn btn-light col py-5">
+						<i class="fa fa-plus fs-1"></i><br />
 						Add new Students
 					</a>
-
-					<a href="../req/studentsInfo.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-flag fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/studentsInfo.php" class="btn btn-light col py-5">
+						<i class="fa fa-flag fs-1"></i><br />
 						Student Information
 					</a>
-
-					<a href="../req/addClass.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-cubes fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/addClass.php" class="btn btn-light col py-5">
+						<i class="fa fa-cubes fs-1"></i><br />
 						Classes
 					</a>
-
-					<a href="../req/school.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-university fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/school.php" class="btn btn-light col py-5">
+						<i class="fa fa-university fs-1"></i><br />
 						School
 					</a>
-
-					<a href="../req/exams.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-pencil-square-o fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/exams.php" class="btn btn-light col py-5">
+						<i class="fa fa-pencil-square-o fs-1"></i><br />
 						Exams
 					</a>
-
-					<a href="../req/accounts.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-user fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/accounts.php" class="btn btn-light col py-5">
+						<i class="fa fa-user fs-1"></i><br />
 						Accounts
 					</a>
-					<a href="../req/share.php" class="col btn btn-light m-1 py-5">
-						<i class="fa fa-share-alt fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/share.php" class="btn btn-light col py-5">
+						<i class="fa fa-share-alt fs-1"></i><br />
 						Share
 					</a>
-					<a href="../req/logout.php" class="col btn btn-warning m-1 py-5" >
-						<i class="fa fa-sign-out fs-1"></i><br/>
+				</div>
+				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
+					<a href="../req/logout.php" class="btn btn-warning col py-5">
+						<i class="fa fa-sign-out fs-1"></i><br />
 						Logout
 					</a>
 				</div>
 			</div>
 		</div>
+		<br><br>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 	</body>
 
-</html>
+	</html>
 
 <?php } else {
 	header("Location: ../login.php");
