@@ -1,9 +1,9 @@
-# IMS-customized
-Institute Management System
-[ IMS-002 ]
+# IMS-Extended
+Institute Management System - Extended Version
+[ IMS-002-E ]
 
 > Coding :
-- Version : 1.2
+- Version : 1.0
 - Base Language : PHP
 - Used Language/s : HTML, CSS, JavaScript (Also known as JS), SQL (MySQL), Java
 - Framework : Bootstrap (CSS Framework)
@@ -14,18 +14,13 @@ Institute Management System
 > Project Details :
 - For : Mr. Prasath Wickramasinghe
 - Project Progress : 100%
-- Start Date : 28.12.2022
-- End Date : 10.02.2023
+- Start Date : 1302.2023
+- End Date : Pending...
 - Release Date : Pending...
 - Further Updates : Enabled
 
-> Vulnerability Check
-- Stage 1 : Pass
-- Stage 2 : Pass
-- Stage 3 : Pass
-
 > QA Testing
-- Stage 1 : Done (Occurred some errors)
+- Stage 1 : Pending...
 - Stage 2 : Pending...
 - Stage 3 : Pending...
 

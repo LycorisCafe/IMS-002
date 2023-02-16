@@ -16,14 +16,14 @@ if(isset($_POST['submit'])) {
 	$school = input_data($_POST["school"]);    
 	if (preg_match ("/^[0-9]*$/", $school)) {  
 		$sclError = "Only alphabets are allowed";
-		header("Location: ../data/school.php?error=$sclError");
+		header("Location: ../req/school.php?error=$sclError");
 		exit;
 	}
 
 	$town = input_data($_POST["town"]);  
 	if (preg_match ("/^[0-9]*$/", $town)) {  
 		$townError = "Only alphabets are allowed";
-		header("Location: ../data/school.php?error=$townError");
+		header("Location: ../req/school.php?error=$townError");
 		exit;
 	}
 }

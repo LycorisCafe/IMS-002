@@ -138,7 +138,64 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                     ?>
                 </tbody>
             </table><br>
-        </div>
+        </div><br/>
+
+        <?php
+            if(isset($_POST['save'])) {
+                $mail = $_POST['email'];
+                $name2 = $_POST['name2'];
+                $sql4 = "SELECT * FROM share";
+                $result4 = mysqli_query($con, $sql4);
+                if(mysqli_num_rows($result4) < 1) {
+                    $sql5 = "INSERT INTO share (email, name) VALUE ('$mail', '$name2')";
+                    if(mysqli_query($con, $sql5)){
+                        $m = "New email settings saved";
+                        header("Location: Maintainer.php?success2=$m");
+                        exit;
+                    }
+                } else {
+                    $sql5 = "UPDATE share SET email='$mail', name='$name2'";
+                    if(mysqli_query($con, $sql5)){
+                        $m = "New email settings changes saved";
+                        header("Location: Maintainer.php?success2=$m");
+                        exit;
+                    }
+                }
+            }
+        ?>
+
+        <div class="container">
+            <h1 class="display-5" style="color: #10A0FF;">Mail Settings</h1><br />
+            <div>
+                <form action="Maintainer.php" method="post">
+                <?php if (isset($_GET['error2'])) { ?>
+                            <div class='alert alert-danger' role='alert'>
+                                <?= $_GET['error2'] ?>
+                            </div>
+                        <?php } ?>
+                        <?php if (isset($_GET['success2'])) { ?>
+                            <div class='alert alert-success' role='alert'>
+                                <?= $_GET['success2'] ?>
+                            </div>
+                        <?php } ?>
+                    
+                        <div class="col-auto mb-3">
+                            <label class="form-label">Admin Email (<i>Email will send with this email</i>): </label>
+                            <input type="email" class="form-control" name="email" autocomplete="off" required placeholder="example@host.com">
+                        </div>
+                        <div class="col-auto mb-3">
+                            <label class="form-label">Name (<i>This will show in the email body</i>): </label>
+                            <input type="text" class="form-control" name="name2" autocomplete="off" required placeholder="David Johns">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" name='save'>Save Mail Details</button>
+                        </div>
+
+                </form>
+            </div>
+        </div><br/>
+
         <div class="d-grid gap-2 col-6 mx-auto">
             <a class="btn btn-outline-danger btn-sm" role="button" data-bs-toggle="button" href="../req/logout.php">Logout</a>
         </div>

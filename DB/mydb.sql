@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 13, 2023 at 01:38 PM
+-- Generation Time: Feb 14, 2023 at 09:37 AM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -79,6 +79,15 @@ CREATE TABLE `login` (
   `type` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `username`, `password`, `name`, `lastLogin`, `type`) VALUES
+(1, 'maintainer', 'lycoris2004', 'Lycoris Cafe', '2023-02-14 09:20:42 AM', 'Maintainer'),
+(2, 'admin', 'admin', 'Avatar Roku', '2023-02-14 07:25:11 AM', 'Admin'),
+(3, 'user', 'user', 'Avatar Kiyoshi', '', 'User');
+
 -- --------------------------------------------------------
 
 --
@@ -118,6 +127,18 @@ CREATE TABLE `schools` (
   `school` varchar(255) NOT NULL,
   `town` varchar(50) NOT NULL,
   `district` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `share`
+--
+
+CREATE TABLE `share` (
+  `id` int(5) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `name` varchar(150) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -191,6 +212,12 @@ ALTER TABLE `schools`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `share`
+--
+ALTER TABLE `share`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `students`
 --
 ALTER TABLE `students`
@@ -223,7 +250,7 @@ ALTER TABLE `exam`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -242,6 +269,12 @@ ALTER TABLE `regclass`
 --
 ALTER TABLE `schools`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `share`
+--
+ALTER TABLE `share`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

@@ -47,7 +47,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <body>
         <!-- Imports -->
         <?php require_once "navbar.php"; ?>
-        <h1 class="display-2 text-center">User Accounts</h1><br />
+        <h1 class="display-1 text-center">User Accounts</h1><br />
         <div class="container">
             <h1 class="display-6">Registered Accounts (Moderators)</h1><br />
             <table class="table table-striped">

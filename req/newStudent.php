@@ -182,7 +182,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
     <body>
         <?php require_once "navbar.php"; ?>
         <div class="container col-lg-8 col-md-5 align-self-center" style="transform:translate(0%, 10%);">
-            <h3 class='display-5 text-center' style='color: #fff;'>New Student</h3>
+            <h3 class='display-1 text-center' style='color: #fff;'>New Student</h3>
                 <div class="card-body"><br><br>
                     <?php if (isset($_GET['error'])) { ?>
                         <div class='alert alert-danger' role='alert'>

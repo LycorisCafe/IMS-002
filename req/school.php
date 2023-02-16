@@ -20,7 +20,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 	<body>
 		<!-- Imports -->
 		<?php require_once "navbar.php"; ?>
-		<br/><h1 class="display-2 text-center">Schools</h1><br/>
+		<br/><h1 class="display-1 text-center">Schools</h1><br/>
 		<div class="container">
 			<h1 class="display-6">Registered Schools</h1><br/>
 			<table class="table table-striped">

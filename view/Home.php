@@ -69,6 +69,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 						<i class="fa fa-user fs-1"></i><br/>
 						Accounts
 					</a>
+					<a href="../req/share.php" class="col btn btn-light m-1 py-5">
+						<i class="fa fa-share-alt fs-1"></i><br/>
+						Share
+					</a>
 					<a href="../req/logout.php" class="col btn btn-warning m-1 py-5" >
 						<i class="fa fa-sign-out fs-1"></i><br/>
 						Logout

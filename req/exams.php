@@ -117,6 +117,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             </div>
                         <?php } ?>
                         <div class="col-auto mb-3">
+                            <label class="form-label">Date: </label>
+                            <input type="date" class="form-control" name="date" autocomplete="off" required>
+                        </div>
+                        <div class="col-auto mb-3">
                             <label class="form-label">Student ID: </label>
                             <input type="text" class="form-control" name="id" autocomplete="off" required placeholder="123456">
                         </div>
@@ -160,8 +164,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             $result5 = mysqli_query($con, $sql5);
                             $row5 = mysqli_fetch_assoc($result5);
                             $regID = $row5['id'];
-                            $today = date("Y-m-d");
-                            $sql6 = "SELECT * FROM exam WHERE regclassID='$regID' AND date='$today'";
+                            //$date = date("Y-m-d");
+                            $d = $_POST['date'];
+                            $date = str_replace('/', '-', $d);
+                            $date = date("Y-m-d", strtotime($date));
+                            $sql6 = "SELECT * FROM exam WHERE regclassID='$regID' AND date='$date'";
                             $result6 = mysqli_query($con, $sql6);
                             if(mysqli_num_rows($result6) > 0) {
                                 $row6 = mysqli_fetch_assoc($result6);

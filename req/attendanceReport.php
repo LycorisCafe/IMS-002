@@ -21,7 +21,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <!-- Imports -->
         <?php require_once "navbar.php"; ?>
         <div class="container"><br />
-            <h1 class="display-2 text-center" style="color: #fff;">Attendance Report</h1><br><br />
+            <h1 class="display-1 text-center" style="color: #fff;">Attendance Report</h1><br><br />
         </div>
 
         <div class="container">

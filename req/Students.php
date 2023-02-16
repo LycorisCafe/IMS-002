@@ -39,7 +39,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <!-- Imports -->
         <?php require_once "navbar.php"; ?>
         <div class="container"><br />
-            <h1 class="display-2 text-center" style="color: #fff;">Students</h1><br><br />
+            <h1 class="display-1 text-center" style="color: #fff;">Students</h1><br><br />
             <form action="Students.php" method="POST">
                 <div class="row">
                     <div class="col">
