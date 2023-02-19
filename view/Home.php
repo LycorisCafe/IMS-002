@@ -82,12 +82,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 					</a>
 				</div>
 				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
-					<a href="../req/share.php" class="btn btn-light col py-5">
-						<i class="fa fa-share-alt fs-1"></i><br />
-						Share
-					</a>
-				</div>
-				<div class="col-sm-12 col-lg-4 p-1 d-flex justify-content-center">
 					<a href="../req/logout.php" class="btn btn-warning col py-5">
 						<i class="fa fa-sign-out fs-1"></i><br />
 						Logout

@@ -8,9 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/fonts/icomoon/style.css">
   <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/owl.carousel.min.css">
-
   <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/bootstrap.min.css">
-
   <link rel="stylesheet" href="https://preview.colorlib.com/theme/bootstrap/website-menu-03/css/style.css">
   <link rel="icon" type="image/x-icon" href="Media/favicon.png">
   <title>Lycoris Cafe</title>
@@ -38,8 +36,8 @@
           <nav class="site-navigation position-relative text-right" role="navigation">
             <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
               <li class="active"><a href="index.php"><span>Home</span></a></li>
-              <li><a href="aboutUs.php"><span>About</span></a></li>
               <li><a href="login.php"><span>Login</span></a></li>
+              <li><a href="aboutUs.php"><span>About Us</span></a></li>
             </ul>
           </nav>
         </div>
