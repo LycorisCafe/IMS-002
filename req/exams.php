@@ -13,10 +13,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <title>Exams</title>
         <link rel="icon" type="image/x-icon" href="../Media/favicon.png">
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="../css/fonts.css">
         <link rel="stylesheet" href="../css/temp.css">
         <script src="../fontawesome.com.js"></script>
+        <script src="../js/jquery-3.6.3.min.js"></script>
+
     </head>
 
     <body>
@@ -25,7 +26,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
         <div class="container"><h1 class="display-5" style="color: #10A0FF;">Add Marks</h1></div>
         <div class="container col-lg-8 col-md-5 align-self-center" style="transform: translate(0%, 5%);">
                 <div class="card-body">
-                    <form action="exams.php" method="POST">
+                    <form action="../data/exam-data.php" method="POST">
                         <?php if (isset($_GET['error'])) { ?>
                             <div class='alert alert-danger' role='alert'>
                                 <?= $_GET['error'] ?>
@@ -37,8 +38,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                             </div>
                         <?php } ?>
                         <div class="col-auto mb-3">
+                            <label class="form-label">Date: </label>
+                            <input type="date" class="form-control" name="date" required>
+                        </div>
+                        <div class="col-auto mb-3">
                             <label class="form-label">Student ID: </label>
-                            <input type="text" class="form-control" name="id" autocomplete="off" required placeholder="123456">
+                            <input type="text" class="form-control" name="id" autocomplete="off" required placeholder="123456" id="id">
                         </div>
                         <div class="col-auto mb-3">
                             <label class="form-label">Marks: </label>
@@ -50,7 +55,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
                         </div>
 
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary" name='submit'>Search & Submit</button>
+                            <button type="submit" class="btn btn-primary" name='submit'>Submit</button>
                         </div>
                     </form>
             </div></div></div>
@@ -58,32 +63,43 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
             <div class="container">
                 <h1 class="display-5 text-warning">Edit Marks</h1><br />
-                <form class="d-flex mb-3" method="POST" action="exams.php">
+                <?php if (isset($_GET['error2'])) { ?>
+                        <div class='alert alert-danger' role='alert'>
+                            <?= $_GET['error2'] ?>
+                        </div>
+                    <?php } ?>
+                    <?php if (isset($_GET['success2'])) { ?>
+                        <div class='alert alert-success' role='alert'>
+                            <?= $_GET['success2'] ?>
+                        </div>
+                    <?php } ?>
+                <form class="d-flex mb-3" method="POST" action="../data/exam-data.php">
                     <input class="form-control me-2" type="search" placeholder="Search for Student by ID" name="stID" autocomplete="off" id="id">
-                <button class="btn btn-outline-success" type="submit" name="search">Search</button>
-            </form>
+                    <input type="date" class="form-control" name="date2" required>
+                    <button class="btn btn-outline-success" type="submit" name="search">Search</button>
+                </form>
             </div>
 
             <div class="container">
                 <br>
-                <form action="exams.php" method="POST">
+                <form action="../data/exam-data.php" method="POST">
                 <div class='row'>
                         <div class='col'>
                             <label class="form-label">Student ID: </label>
-                            <input type="text" class="form-control" name="id2" autocomplete="off" readonly value="<?php if(isset($_POST['search'])) { echo $stID; } ?>">
+                            <input type="text" class="form-control" name="id2" autocomplete="off" readonly value="<?php if (isset($_GET['data'])) { echo explode(",",$_GET['data'])[0]; } ?>">
                         </div>
                         <div class='col'>
                             <label class="form-label">Name: </label>
-                            <input type="text" class="form-control" name="name2" autocomplete="off" readonly value="<?php if(isset($_POST['search'])) { echo $name; } ?>">
+                            <input type="text" class="form-control" name="name2" autocomplete="off" readonly value="<?php if (isset($_GET['data'])) { echo explode(",",$_GET['data'])[1]; } ?>">
                         </div>
                     </div><div class='row'>
                         <div class='col'>
                             <label class="form-label">Marks: </label>
-                            <input type="text" class="form-control" name="marks2" autocomplete="off" required placeholder="000" value="<?php if(isset($_POST['search']) && $marks2 != "") { echo $marks2; } ?>">
+                            <input type="text" class="form-control" name="marks2" autocomplete="off" required placeholder="000" value="<?php if (isset($_GET['data'])) { echo explode(",",$_GET['data'])[2]; } ?>">
                         </div>
                         <div class='col'>
                             <label class="form-label">Rank: </label>
-                            <input type="text" class="form-control" name="rank2" autocomplete="off" required placeholder="000" value="<?php if(isset($_POST['search']) && $rank2 != "") { echo $rank2; } ?>">
+                            <input type="text" class="form-control" name="rank2" autocomplete="off" required placeholder="000" value="<?php if (isset($_GET['data'])) { echo explode(",",$_GET['data'])[3]; } ?>">
                         </div>
                     </div><br/>
                     <div class="d-grid gap-2">
@@ -96,6 +112,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['role'])) {
 
             <?php include 'footer.php'; ?>
             
+        <script>
+            // $(document).ready(function() {
+            //     $("#id").keypress(function() {
+            //         $.ajax({
+            //             type: 'POST',
+            //             url: '../data/exam-data.php',
+            //             data: {
+            //                 name: $("#id").val(),
+            //             },
+            //             success: function(data) {
+            //                 //
+            //             }
+            //         });
+            //     });
+            // });
+        </script>
+
     </body>
 
     </html>
