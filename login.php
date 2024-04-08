@@ -66,7 +66,7 @@
 					<form action="req/login.php" method="POST">
 						<div class="col-auto mb-3">
 							<label class="form-label">Login As :</label>
-							<select class="form-control" name='role'>
+							<select class="form-control" name='role' required>
 								<option value='1'>Administrator</option>
 								<option value='2'>Moderator</option>
 								<option value='3'>Maintainer</option>
@@ -75,11 +75,11 @@
 						</div>
 						<div class="col-auto mb-3">
 							<label class="form-label">Username :</label>
-							<input type="text" class="form-control" name="uname" aria-describedby="username" autocomplete="off">
+							<input type="text" class="form-control" name="uname" aria-describedby="username" autocomplete="off" required>
 						</div>
 						<div class="col-auto mb-3">
 							<label class="form-label">Password :</label>
-							<input type="password" class="form-control" name="pass" aria-describedby="password" autocomplete="off">
+							<input type="password" class="form-control" name="pass" aria-describedby="password" autocomplete="off" required>
 						</div>
 						<div class="d-grid gap-2">
 							<button type="submit" class="btn btn-primary" name='submit'>Login</button>
