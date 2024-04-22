@@ -29,10 +29,10 @@ Institute Management System
 
 > QA Testing
 - Stage 1 : Done (Occurred some errors)
-- Stage 2 : Pending...
-- Stage 3 : Pending...
+- Stage 2 : Terminated
+- Stage 3 : Terminated
 
 > Final Test
 - PC Test : Done
 - Mobile Test : Done
-- System Test (PC & Mobile) : Done
+- System Test (PC & Mobile) : Faild
