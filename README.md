@@ -1,4 +1,7 @@
 # IMS-customized
+
+## ```*Project Terminated*```
+
 Institute Management System
 [ IMS-002 ]
 
@@ -13,11 +16,11 @@ Institute Management System
 
 > Project Details :
 - For : Mr. Prasath Wickramasinghe
-- Project Progress : 100%
+- Project Progress : 51%
 - Start Date : 28.12.2022
-- End Date : 19.02.2023
-- Release Date : Pending...
-- Further Updates : Disabled
+- End Date : Terminated
+- Release Date : Terminated
+- Further Updates : Terminated
 
 > Vulnerability Check
 - Stage 1 : Pass
