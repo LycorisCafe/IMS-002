@@ -1,6 +1,6 @@
 # IMS-customized
 
-## ```*Project Terminated*```
+## *```Project Terminated```*
 
 Institute Management System
 [ IMS-002 ]
